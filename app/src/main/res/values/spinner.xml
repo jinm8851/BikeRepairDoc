@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="spinner_item">
+        <item>선택</item>
+        <item>오일</item>
+        <item>오일필터</item>
+        <item>앞브레이크패드</item>
+        <item>뒷브레이크패드</item>
+        <item>앞타이어</item>
+        <item>뒷타이어</item>
+        <item>벨트</item>
+        <item>무브볼</item>
+        <item>미션오일</item>
+        <item>에어클리너</item>
+        <item>슈</item>
+        <item>베어링</item>
+        <item>프러그</item>
+        <item>벨브조절</item>
+        <item>기타구동계</item>
+        <item>기타엔진계</item>
+        <item>기타램프</item>
+        <item>기타</item>
+    </string-array>
+</resources>

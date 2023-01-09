@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">BikeRepairDoc</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="reference">버그만 125 기준으로\n 실제 체험을 바탕으로 나온수치며\n 이 내용은 단순히 참고용으로 사용하시고\n 오토바이 수리 시 정확한 내용은 본인이\n 숙지하시어 사용하시기 바랍니다.\n 이 내용으로 인한 책임은 지지 않습니다.</string>
+    <string name="oil">오일은 10일에서 15일 사이에\n 1500km에 갈고 있습니다.\n가격은 가장 저렴한걸로 갈고\n 메뉴얼에는 버그만125 기준 \n처음 1천km,이후3천km에 \n그후4000km에 한번씩 교환으로 나와있습니다. </string>
+    <string name="oilfillter">오일필터는 약 10000키로 정도\n 오일 갈때 같이 갈고있음\n메뉴얼에는 처음 1000키로 다음부터 8000키로\n 교환주기로 나와있음</string>
+    <string name="brakepad">브래이크 패드는 바퀴쪽에서\n 사각사각하는 소리가 들릴때 갈고있음\n 디스크가 마모되면\n 더 빨리 브래이크 패드가 닳음</string>
+    <string name="tire">타이어는 사람들이 생각외로\n 가볍게 생각하지만 제일중요한 부품입니다.\n 마모선이 다 되어 넘기전에\n 꼭 교체하시기 바랍니다.</string>
+    <string name="belt">벨트는 버그만125 기준으로 20000키로\n 정도에 갈고 있으며 사람마다\n 오토바이마다 차이가 있음\n 메뉴얼엔 12000키로에\n 갈라고 나와있음</string>
+    <string name="moveball">무브볼은 벨트갈때 점검하고\n 40000키로 정도에 갈고 있음\n 오토바이가 잘 안나가면\n 점검해보기바람</string>
+    <string name="missionoil">미션오일은 버그만125 기준으로\n 벨트갈때 같이 갈고있으며 \n약 20000키로에 한번씩 갈고있음</string>
+    <string name="aircleaner">에어크리너는 자주 청소를 못해서\n 약 10000키로 정도에 갈고있음\n 메뉴얼에는 3000키로에 한번씩 청소하고\n 12000키로 갈라고 나와있음</string>
+    <string name="shu">슈 나 폴리 같은 경우에는\n 약 4~7만 사이에 고장나는거 같음\n 편차가 크고 비싸서 미리 갈기\n 곤란하고 고장날때 갈고있음 </string>
+    <string name="bearing">베어링은 약 30000만 이상에서는\n 타이어갈때 자주 점검해주고\n 갈때는 베어링고무도 같이 갈아주어야함\n 베어링이 나가면 요란한 소리가남</string>
+    <string name="plug">플러그는 약 20000키로 정도에 가는데\n 오토바이가 찐빠가 나거나\n 힘이 없어지면 갈면됨\n 메뉴얼에는 8000키로에 갈라고 나와있음</string>
+    <string name="valve">벨브간극조절은 약 3–5만키로 정도에\n 한번씩 한는거 같음 증상은 가다가 서면\n 시동이 꺼짐 또는 시동이 자주 꺼짐\n 저 키로수에 시동꺼짐이 발생하면\n 점검해봐야함</string>
+    <string name="drivesystem">구동계는 뚜껑열때마다 점검해서\n 가다 서는 일이 없도록 잘 점검합시다</string>
+    <string name="engine">엔진은 거의 고장나는일이 없지만\n 눈으로 보기 힘드니 오토바이가\n 힘이없어지거나 찐빠를 가끔씩하면\n 한번씩 점검해봅시다</string>
+    <string name="lamp">램프는 비오는날 많이 타면\n 더 자주 나가니 비 또는 눈이 오는\n 날에는 집에서 있읍시다</string>
+    <string name="etc">기타 다른 고장없이 자주 점검해서\n 오래 오래 탑시다</string>
+</resources>
