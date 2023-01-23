@@ -38,6 +38,7 @@ android {
 }
 
 dependencies {
+    def room_version = "2.4.3"
 
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
@@ -50,7 +51,7 @@ dependencies {
     implementation("androidx.viewpager2:viewpager2:1.0.0")
 
     //Room
-    implementation("androidx.room:room-runtime:2.4.3")
-    kapt("androidx.room:room-compiler:2.4.3")
-
+    implementation("androidx.room:room-runtime:$room_version")
+    annotationProcessor("androidx.room:room-compiler:$room_version")
+    kapt("androidx.room:room-compiler:$room_version")
 }
