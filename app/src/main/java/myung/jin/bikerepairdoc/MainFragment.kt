@@ -1,16 +1,19 @@
 package myung.jin.bikerepairdoc
 
 
+import android.app.Activity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.DatePicker
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import kotlinx.coroutines.CoroutineScope
@@ -33,7 +36,7 @@ class MainFragment : Fragment(), OnDeleteListener {
     lateinit var helper: RoomHelper
     lateinit var bikeAdapter: RecyclerAdapter
     lateinit var bikeMemoDao: BikeMemoDao
-     var totalAmount1 = 0
+    var totalAmount1 = 0
 
 
     override fun onCreateView(
@@ -68,51 +71,77 @@ class MainFragment : Fragment(), OnDeleteListener {
 
             save.setOnClickListener {
 
-                    var bikeName1 = bikeName.text.toString()
-                    var startDate1 = startDate.text.toString()
-                    var content1 = content.text.toString()
-                    var repairDate1 = repairDate.text.toString()
-                    var km1 = km.text as Int
-                    var amount1 = amount.text as Int
-                    var note1 = note.text.toString()
+                //null check 후 메모 리스트를 만들어서 바이크리스트에 적용 후 인서트
+                var bikeName1 = bikeName.text.toString()
+                if (bikeName1.isEmpty()) {
+                    Toast.makeText(requireContext(), "애칭이 비어있습니다.", Toast.LENGTH_LONG).show()
+                    bikeName1 = ""
+                    content.text = ""
+                }
+                //구입날짜나 다른것이 비어있으면 참고를 빈 문자로 변경
+                var startDate1 = startDate.text.toString()
+                if (startDate1.isEmpty()) {
+                    startDate1=""
+                    content.text = ""
+                }
+                var repairDate1 = repairDate.text.toString()
+                if (repairDate1.isEmpty()) {
+                    repairDate1 = ""
+                    content.text = ""
+                }
+                //텍스트를 받아 인트로 변환
+                var km2 = km.text.toString()
+                var km1: Int
+                if (km2.isNotEmpty()) {
+                    km1 = km2.toInt()
+                } else {
+                    km1 = 0
+                    content.text = ""
+                }
+                var content1 = content.text.toString()
+                if (content1.isEmpty()) {
+                    content1 = ""
+                }
 
-                    if (bikeName1.isNotEmpty()) {
-                        startDate1
-                        content1
-                        repairDate1
-                        if (km1==null){ km1=0 }else{ km1 }
-                        if (amount1==null){ amount1=0 }else{ amount1 }
-                        if (note1.isNotEmpty()){ note1 }else{ note1 = "" }
-                        val tAmount = totalAmount1+amount1
-                        totalAmount.setText(tAmount)
+                var amount2 = amount.text.toString()
+                var amount1: Int
+                if (amount2.isNotEmpty()) {
+                    amount1 = amount2.toInt()
+                } else {
+                    amount1 = 0
+                    content.text = ""
+                }
+                var note1 = note.text.toString()
+                if (note1.isEmpty()) {
+                    note1 = ""
+                    content.text = ""
+                }
+                //금액을 더해 토탈금액에 적용
+                totalAmount1 += amount1
 
-                        val memo = BikeMemo(bikeName1,startDate1,repairDate1,km1,content1,amount1,note1,tAmount)
-                        insertBikeMemo(memo)
-                    } else {
-                        Toast.makeText(requireContext(), "애칭이 비어있습니다.", Toast.LENGTH_LONG).show()
-                        bikeName1 = ""
-                        startDate1 = ""
-                        content1 = ""
-                        repairDate1 = ""
-                        km1 = 0
-                        amount1 = 0
-                        note1 = ""
-                    }
+                totalAmount.text = totalAmount1.toString()
+
+                val memo = BikeMemo(
+                    bikeName1,
+                    startDate1,
+                    repairDate1,
+                    km1,
+                    content1,
+                    amount1,
+                    note1,
+                    totalAmount1
+                )
+                insertBikeMemo(memo)
 
 
-
-
-
-
+                 
             }
         }
 
     }
 
 
-
-
-    fun insertBikeMemo(memo: BikeMemo){
+    private fun insertBikeMemo(memo: BikeMemo) {
         CoroutineScope(Dispatchers.IO).launch {
             bikeMemoDao.insert(memo)
 
@@ -121,7 +150,7 @@ class MainFragment : Fragment(), OnDeleteListener {
     }
 
 
-    fun refreshAdapter() {
+    private fun refreshAdapter() {
         CoroutineScope(Dispatchers.IO).launch {
             var date = binding.repairDate.text.toString()
             bikeList.clear()
@@ -132,6 +161,13 @@ class MainFragment : Fragment(), OnDeleteListener {
         }
     }
 
+    private fun deleteBikememo(bikeMemo: BikeMemo) {
+        CoroutineScope(Dispatchers.IO).launch {
+            bikeMemoDao.delete(bikeMemo)
+            refreshAdapter()
+        }
+    }
+
 
     override fun onDestroy() {
         super.onDestroy()
@@ -139,7 +175,7 @@ class MainFragment : Fragment(), OnDeleteListener {
     }
 
     //날짜 적용 함수
-    fun dateSet() {
+    private fun dateSet() {
         val now = System.currentTimeMillis()
         val date = Date(now)
         val sdf = SimpleDateFormat("YYYY-MM-DD")
@@ -147,7 +183,7 @@ class MainFragment : Fragment(), OnDeleteListener {
         binding.repairDate.setText(timestamp)
     }
 
-    fun spinnerSelected() {
+    private fun spinnerSelected() {
         // 스피너 적용
         val spinner: Spinner = binding.planetsSpinner
         //프레그먼트에서 컨텍스트를 얻을때는 requireContext() 로 얻을수 있습니다.
@@ -170,7 +206,7 @@ class MainFragment : Fragment(), OnDeleteListener {
                 position: Int,
                 id: Long
             ) {
-//spinner가 선택이 선택되면 "참고"로 초기화 그렇지않으면 선택단어 컨텐츠  변경
+//spinner 가 선택이 선택되면 "참고"로 초기화 그렇지않으면 선택단어 컨텐츠  변경
 
                 with(binding) {
                     if ("선택" == parent?.getItemAtPosition(position).toString()) {
@@ -219,8 +255,10 @@ class MainFragment : Fragment(), OnDeleteListener {
     }
 
     override fun onDeleteListener(bikeMemo: BikeMemo) {
-        TODO("Not yet implemented")
+        deleteBikememo(bikeMemo)
     }
+
+
 
 
 }

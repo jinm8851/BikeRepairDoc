@@ -83,8 +83,9 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="16dp"
         android:background="@null"
-        android:hint="100000"
+        android:hint="0"
         android:inputType="number"
+        android:textAlignment="viewEnd"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/textView9"
         app:layout_constraintStart_toEndOf="@+id/repair_date"
@@ -97,8 +98,9 @@
         android:layout_marginTop="16dp"
         android:background="@null"
         android:gravity="center"
-        android:hint="2000000"
+        android:hint="0"
         android:inputType="numberSigned|number"
+        android:textAlignment="viewEnd"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/textView10"
         app:layout_constraintTop_toBottomOf="@+id/planets_spinner" />
@@ -264,12 +266,11 @@
         android:layout_width="108dp"
         android:layout_height="34dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
         android:gravity="center"
         android:hint="0"
-        android:textAlignment="center"
+        android:textAlignment="viewEnd"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/main_recyclerView" />
 
     <TextView
@@ -280,8 +281,22 @@
         android:layout_marginEnd="1dp"
         android:gravity="center"
         android:text="합계"
+        android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@+id/totalAmount"
+        app:layout_constraintTop_toBottomOf="@+id/main_recyclerView" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="34dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
+        android:text="원"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/main_recyclerView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
