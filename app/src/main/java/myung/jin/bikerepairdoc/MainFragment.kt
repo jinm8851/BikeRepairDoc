@@ -1,19 +1,22 @@
 package myung.jin.bikerepairdoc
 
 
-import android.app.Activity
+
 import android.os.Bundle
+import android.util.Log
+
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
+
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.DatePicker
+
 import android.widget.Spinner
 import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.lifecycle.viewmodel.CreationExtras
+
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import kotlinx.coroutines.CoroutineScope
@@ -26,16 +29,20 @@ import java.text.SimpleDateFormat
 import java.util.Date
 
 
+
 class MainFragment : Fragment(), OnDeleteListener {
 
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
 
-    val bikeList = mutableListOf<BikeMemo>()
-    lateinit var spinerRefer: String
+    private val bikeList = mutableListOf<BikeMemo>()
+ //   private val bikeList2 = mutableListOf<BikeMemo>()
+
     lateinit var helper: RoomHelper
     lateinit var bikeAdapter: RecyclerAdapter
+  //  lateinit var bikeAdapter2 : RecyclerAdapter
     lateinit var bikeMemoDao: BikeMemoDao
+
     var totalAmount1 = 0
 
 
@@ -54,6 +61,7 @@ class MainFragment : Fragment(), OnDeleteListener {
         dateSet()
 //스피너 선택 밎 적용
         spinnerSelected()
+
         //헬퍼에 바이크메모 적용
         helper = Room.databaseBuilder(requireContext(), RoomHelper::class.java, "bike_memo")
             .fallbackToDestructiveMigration()
@@ -62,8 +70,9 @@ class MainFragment : Fragment(), OnDeleteListener {
         bikeMemoDao = helper.bikeMemoDao()
 
         bikeAdapter = RecyclerAdapter(bikeList, this)
-
         refreshAdapter()
+
+
 
         with(binding) {
             mainRecyclerView.adapter = bikeAdapter
@@ -74,20 +83,21 @@ class MainFragment : Fragment(), OnDeleteListener {
                 //null check 후 메모 리스트를 만들어서 바이크리스트에 적용 후 인서트
                 var bikeName1 = bikeName.text.toString()
                 if (bikeName1.isEmpty()) {
-                    Toast.makeText(requireContext(), "애칭이 비어있습니다.", Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireContext(), "애칭이 비어있습니다. 애칭을 입력해주세요", Toast.LENGTH_LONG).show()
                     bikeName1 = ""
-                    content.text = ""
+
                 }
                 //구입날짜나 다른것이 비어있으면 참고를 빈 문자로 변경
                 var startDate1 = startDate.text.toString()
                 if (startDate1.isEmpty()) {
+                    Toast.makeText(requireContext(),"구입날짜가 비어있습니다. 구입날짜를 입력해주세요",Toast.LENGTH_LONG).show()
                     startDate1=""
-                    content.text = ""
+
                 }
                 var repairDate1 = repairDate.text.toString()
                 if (repairDate1.isEmpty()) {
                     repairDate1 = ""
-                    content.text = ""
+
                 }
                 //텍스트를 받아 인트로 변환
                 var km2 = km.text.toString()
@@ -96,7 +106,7 @@ class MainFragment : Fragment(), OnDeleteListener {
                     km1 = km2.toInt()
                 } else {
                     km1 = 0
-                    content.text = ""
+
                 }
                 var content1 = content.text.toString()
                 if (content1.isEmpty()) {
@@ -109,12 +119,12 @@ class MainFragment : Fragment(), OnDeleteListener {
                     amount1 = amount2.toInt()
                 } else {
                     amount1 = 0
-                    content.text = ""
+
                 }
                 var note1 = note.text.toString()
                 if (note1.isEmpty()) {
                     note1 = ""
-                    content.text = ""
+
                 }
                 //금액을 더해 토탈금액에 적용
                 totalAmount1 += amount1
@@ -133,7 +143,7 @@ class MainFragment : Fragment(), OnDeleteListener {
                 )
                 insertBikeMemo(memo)
 
-
+                amount.setText("")
                  
             }
         }
@@ -155,8 +165,14 @@ class MainFragment : Fragment(), OnDeleteListener {
             var date = binding.repairDate.text.toString()
             bikeList.clear()
             bikeList.addAll(bikeMemoDao.getDate(date))
+//토탈금액 앱을 다시켜면 0이 되는 문제 해결중 (수리 날짜를 바꿘다 다시 불러오면 합계가 안맞음)
+            // bikeList 의 마지막인 a 가 널이면 0을 로 초기화
+           var a: Int = bikeList.lastOrNull()?.totalAmount ?: 0
+
             withContext(Dispatchers.Main) {
                 bikeAdapter.notifyDataSetChanged()
+                //합계금액을 날짜 리스트에서 뽑아와 저장
+            binding.totalAmount.text = a.toString()
             }
         }
     }
@@ -178,12 +194,12 @@ class MainFragment : Fragment(), OnDeleteListener {
     private fun dateSet() {
         val now = System.currentTimeMillis()
         val date = Date(now)
-        val sdf = SimpleDateFormat("YYYY-MM-DD")
+        val sdf = SimpleDateFormat("yyyy-MM-dd")
         val timestamp: String = sdf.format(date)
         binding.repairDate.setText(timestamp)
     }
 
-    private fun spinnerSelected() {
+     fun spinnerSelected() {
         // 스피너 적용
         val spinner: Spinner = binding.planetsSpinner
         //프레그먼트에서 컨텍스트를 얻을때는 requireContext() 로 얻을수 있습니다.
@@ -213,7 +229,7 @@ class MainFragment : Fragment(), OnDeleteListener {
                         content.text = "참고"
                     } else {
                         content.text = parent?.getItemAtPosition(position).toString()
-                        spinerRefer = parent?.getItemAtPosition(position).toString()
+
                     }
                     //컨텐츠가 변경되면 리퍼렌스 내용 변경
                     contentSelect()
@@ -250,13 +266,27 @@ class MainFragment : Fragment(), OnDeleteListener {
                 "기타램프" -> reference.setText(R.string.lamp)
                 "기타" -> reference.setText(R.string.etc)
                 "참고" -> reference.setText(R.string.reference)
+                else -> {reference.setText(R.string.reference)}
             }
         }
     }
 
     override fun onDeleteListener(bikeMemo: BikeMemo) {
+       val dMemo = bikeMemo.amount
+        totalAmount1-=dMemo
+        binding.totalAmount.text = totalAmount1.toString()
         deleteBikememo(bikeMemo)
     }
+
+   /*   fun totalAmountSet(blist: MutableList<BikeMemo>){
+        CoroutineScope(Dispatchers.IO).launch{
+        val tAmount = blist.last().totalAmount
+        totalAmount1 = tAmount
+            withContext(Dispatchers.Main){
+        binding.totalAmount.text = totalAmount1.toString()
+            }
+        }
+    }*/
 
 
 
