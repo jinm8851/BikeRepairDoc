@@ -3,6 +3,7 @@ package myung.jin.bikerepairdoc
 
 
 import android.os.Bundle
+import android.text.Editable
 import android.util.Log
 
 import androidx.fragment.app.Fragment
@@ -26,8 +27,7 @@ import kotlinx.coroutines.withContext
 
 import myung.jin.bikerepairdoc.databinding.FragmentMainBinding
 import java.text.SimpleDateFormat
-import java.util.Date
-
+import java.util.*
 
 
 class MainFragment : Fragment(), OnDeleteListener {
@@ -42,7 +42,8 @@ class MainFragment : Fragment(), OnDeleteListener {
     lateinit var bikeAdapter: RecyclerAdapter
   //  lateinit var bikeAdapter2 : RecyclerAdapter
     lateinit var bikeMemoDao: BikeMemoDao
-
+// 년도만 추출
+    lateinit var year: String
     var totalAmount1 = 0
 
 
@@ -80,69 +81,8 @@ class MainFragment : Fragment(), OnDeleteListener {
 
             save.setOnClickListener {
 
-                //null check 후 메모 리스트를 만들어서 바이크리스트에 적용 후 인서트
-                var bikeName1 = bikeName.text.toString()
-                if (bikeName1.isEmpty()) {
-                    Toast.makeText(requireContext(), "애칭이 비어있습니다. 애칭을 입력해주세요", Toast.LENGTH_LONG).show()
-                    bikeName1 = ""
-
-                }
-                //구입날짜나 다른것이 비어있으면 참고를 빈 문자로 변경
-                var startDate1 = startDate.text.toString()
-                if (startDate1.isEmpty()) {
-                    Toast.makeText(requireContext(),"구입날짜가 비어있습니다. 구입날짜를 입력해주세요",Toast.LENGTH_LONG).show()
-                    startDate1=""
-
-                }
-                var repairDate1 = repairDate.text.toString()
-                if (repairDate1.isEmpty()) {
-                    repairDate1 = ""
-
-                }
-                //텍스트를 받아 인트로 변환
-                var km2 = km.text.toString()
-                var km1: Int
-                if (km2.isNotEmpty()) {
-                    km1 = km2.toInt()
-                } else {
-                    km1 = 0
-
-                }
-                var content1 = content.text.toString()
-                if (content1.isEmpty()) {
-                    content1 = ""
-                }
-
-                var amount2 = amount.text.toString()
-                var amount1: Int
-                if (amount2.isNotEmpty()) {
-                    amount1 = amount2.toInt()
-                } else {
-                    amount1 = 0
-
-                }
-                var note1 = note.text.toString()
-                if (note1.isEmpty()) {
-                    note1 = ""
-
-                }
-                //금액을 더해 토탈금액에 적용
-                totalAmount1 += amount1
-
-                totalAmount.text = totalAmount1.toString()
-
-                val memo = BikeMemo(
-                    bikeName1,
-                    startDate1,
-                    repairDate1,
-                    km1,
-                    content1,
-                    amount1,
-                    note1,
-                    totalAmount1
-                )
-                insertBikeMemo(memo)
-
+                checkMemo()
+                // 버튼을 누른 후 금액 입력란을 빈칸으로 초기화
                 amount.setText("")
                  
             }
@@ -150,6 +90,75 @@ class MainFragment : Fragment(), OnDeleteListener {
 
     }
 
+    //버튼을 눌렀을때 앱의 값을 불러와 널체크 후 값입력 메모를 만들고 인서트
+    private fun checkMemo() {
+        with(binding){
+            //null check 후 메모 리스트를 만들어서 바이크리스트에 적용 후 인서트
+            var bikeName1 = bikeName.text.toString()
+            if (bikeName1.isEmpty()) {
+                Toast.makeText(requireContext(), "애칭이 비어있습니다. 애칭을 입력해주세요", Toast.LENGTH_LONG).show()
+                bikeName1 = ""
+
+            }
+            //구입날짜나 다른것이 비어있으면 참고를 빈 문자로 변경
+            var startDate1 = startDate.text.toString()
+            if (startDate1.isEmpty()) {
+                Toast.makeText(requireContext(),"구입날짜가 비어있습니다. 구입날짜를 입력해주세요",Toast.LENGTH_LONG).show()
+                startDate1=""
+
+            }
+            var repairDate1 = repairDate.text.toString()
+            if (repairDate1.isEmpty()) {
+                repairDate1 = ""
+
+            }
+            //텍스트를 받아 인트로 변환
+            var km2 = km.text.toString()
+            var km1: Int
+            if (km2.isNotEmpty()) {
+                km1 = km2.toInt()
+            } else {
+                km1 = 0
+
+            }
+            var content1 = content.text.toString()
+            if (content1.isEmpty()) {
+                content1 = ""
+            }
+
+            var amount2 = amount.text.toString()
+            var amount1: Int
+            if (amount2.isNotEmpty()) {
+                amount1 = amount2.toInt()
+            } else {
+                amount1 = 0
+
+            }
+            var note1 = note.text.toString()
+            if (note1.isEmpty()) {
+                note1 = ""
+
+            }
+            if (year.isEmpty()) year = ""
+            //금액을 더해 토탈금액에 적용
+            totalAmount1 += amount1
+
+            totalAmount.text = totalAmount1.toString()
+
+            val memo = BikeMemo(
+                bikeName1,
+                startDate1,
+                repairDate1,
+                km1,
+                content1,
+                amount1,
+                note1,
+                year,
+                totalAmount1
+            )
+            insertBikeMemo(memo)
+        }
+    }
 
     private fun insertBikeMemo(memo: BikeMemo) {
         CoroutineScope(Dispatchers.IO).launch {
@@ -194,9 +203,14 @@ class MainFragment : Fragment(), OnDeleteListener {
     private fun dateSet() {
         val now = System.currentTimeMillis()
         val date = Date(now)
+        //날자로 저장
         val sdf = SimpleDateFormat("yyyy-MM-dd")
         val timestamp: String = sdf.format(date)
         binding.repairDate.setText(timestamp)
+        //수리날짜 년도로 저장
+//        val redate: String = binding.repairDate.text.toString()
+//
+//        year = redate.substring(0,4)
     }
 
      fun spinnerSelected() {
@@ -278,15 +292,7 @@ class MainFragment : Fragment(), OnDeleteListener {
         deleteBikememo(bikeMemo)
     }
 
-   /*   fun totalAmountSet(blist: MutableList<BikeMemo>){
-        CoroutineScope(Dispatchers.IO).launch{
-        val tAmount = blist.last().totalAmount
-        totalAmount1 = tAmount
-            withContext(Dispatchers.Main){
-        binding.totalAmount.text = totalAmount1.toString()
-            }
-        }
-    }*/
+
 
 
 
