@@ -3,8 +3,8 @@ package myung.jin.bikerepairdoc
 
 
 import android.os.Bundle
-import android.text.Editable
 import android.util.Log
+
 
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -16,7 +16,7 @@ import android.widget.ArrayAdapter
 
 import android.widget.Spinner
 import android.widget.Toast
-import androidx.lifecycle.viewmodel.CreationExtras
+
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
@@ -30,21 +30,24 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-class MainFragment : Fragment(), OnDeleteListener {
+class MainFragment : Fragment(), OnDeleteListener  {
 
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
 
-    private val bikeList = mutableListOf<BikeMemo>()
- //   private val bikeList2 = mutableListOf<BikeMemo>()
+
+     val bikeList = mutableListOf<BikeMemo>()
+
+
+
 
     lateinit var helper: RoomHelper
     lateinit var bikeAdapter: RecyclerAdapter
-  //  lateinit var bikeAdapter2 : RecyclerAdapter
     lateinit var bikeMemoDao: BikeMemoDao
 // 년도만 추출
     lateinit var year: String
     var totalAmount1 = 0
+
 
 
     override fun onCreateView(
@@ -58,6 +61,10 @@ class MainFragment : Fragment(), OnDeleteListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+
+        
 //날짜 적용
         dateSet()
 //스피너 선택 밎 적용
@@ -71,7 +78,8 @@ class MainFragment : Fragment(), OnDeleteListener {
         bikeMemoDao = helper.bikeMemoDao()
 
         bikeAdapter = RecyclerAdapter(bikeList, this)
-        refreshAdapter()
+
+
 
 
 
@@ -79,14 +87,18 @@ class MainFragment : Fragment(), OnDeleteListener {
             mainRecyclerView.adapter = bikeAdapter
             mainRecyclerView.layoutManager = LinearLayoutManager(requireContext())
 
+
+
             save.setOnClickListener {
 
+                reDateSet()
                 checkMemo()
                 // 버튼을 누른 후 금액 입력란을 빈칸으로 초기화
                 amount.setText("")
-                 
+
             }
         }
+
 
     }
 
@@ -140,10 +152,9 @@ class MainFragment : Fragment(), OnDeleteListener {
 
             }
             if (year.isEmpty()) year = ""
-            //금액을 더해 토탈금액에 적용
-            totalAmount1 += amount1
 
-            totalAmount.text = totalAmount1.toString()
+
+
 
             val memo = BikeMemo(
                 bikeName1,
@@ -174,17 +185,28 @@ class MainFragment : Fragment(), OnDeleteListener {
             var date = binding.repairDate.text.toString()
             bikeList.clear()
             bikeList.addAll(bikeMemoDao.getDate(date))
+
 //토탈금액 앱을 다시켜면 0이 되는 문제 해결중 (수리 날짜를 바꿘다 다시 불러오면 합계가 안맞음)
             // bikeList 의 마지막인 a 가 널이면 0을 로 초기화
-           var a: Int = bikeList.lastOrNull()?.totalAmount ?: 0
+            //for 문으로 해결 바이크리스트에서 어마운트만빼서 더해 합계에 넣음
+            var   dAmount: Int = 0
+
+            for (bike in bikeList){
+                dAmount += bike.amount
+            }
+            totalAmount1=dAmount
+            Log.d("테스트","$dAmount+$totalAmount1")
 
             withContext(Dispatchers.Main) {
                 bikeAdapter.notifyDataSetChanged()
                 //합계금액을 날짜 리스트에서 뽑아와 저장
-            binding.totalAmount.text = a.toString()
+            binding.totalAmount.text = dAmount.toString()
             }
         }
     }
+
+
+
 
     private fun deleteBikememo(bikeMemo: BikeMemo) {
         CoroutineScope(Dispatchers.IO).launch {
@@ -207,10 +229,14 @@ class MainFragment : Fragment(), OnDeleteListener {
         val sdf = SimpleDateFormat("yyyy-MM-dd")
         val timestamp: String = sdf.format(date)
         binding.repairDate.setText(timestamp)
-        //수리날짜 년도로 저장
-//        val redate: String = binding.repairDate.text.toString()
-//
-//        year = redate.substring(0,4)
+
+    }
+
+       // 수리날짜 년도로 저장
+    private fun reDateSet(){
+        val redate: String = binding.repairDate.text.toString()
+
+        year = redate.substring(0,4)
     }
 
      fun spinnerSelected() {
@@ -286,7 +312,7 @@ class MainFragment : Fragment(), OnDeleteListener {
     }
 
     override fun onDeleteListener(bikeMemo: BikeMemo) {
-       val dMemo = bikeMemo.amount
+        val dMemo = bikeMemo.amount
         totalAmount1-=dMemo
         binding.totalAmount.text = totalAmount1.toString()
         deleteBikememo(bikeMemo)
@@ -294,7 +320,15 @@ class MainFragment : Fragment(), OnDeleteListener {
 
 
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 
-
-
+    //라이프사이클을 통한 두 프레그먼트간에 데이터 교환
+    override fun onResume() {
+        super.onResume()
+        refreshAdapter()
+    }
 }
+

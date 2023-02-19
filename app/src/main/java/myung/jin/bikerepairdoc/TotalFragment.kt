@@ -1,25 +1,119 @@
 package myung.jin.bikerepairdoc
 
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
-import myung.jin.bikerepairdoc.databinding.ItemRecyclerviewBinding
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.room.Room
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import myung.jin.bikerepairdoc.databinding.FragmentTotalBinding
 
-class MyViewHolder(val binding: ItemRecyclerviewBinding) : RecyclerView.ViewHolder(binding.root)
 
-class TotalFragment : Fragment() {
+class TotalFragment : Fragment(),OnDeleteListener {
+
+    private var _binding: FragmentTotalBinding? = null
+    val totalBinding get() = _binding!!
+
+    val bikeList2 = mutableListOf<BikeMemo>()
+
+
+    lateinit var helper: RoomHelper
+    lateinit var bikeAdapter2: RecyclerAdapter2
+    lateinit var bikeMemoDao: BikeMemoDao
+
+    private lateinit var model: String
+    private lateinit var year : String
+
+    var tAmout :Int =0
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_total, container, false)
+        _binding = FragmentTotalBinding.inflate(inflater, container, false)
+        return totalBinding.root
+
+
     }
 
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
+
+
+
+
+        helper = Room.databaseBuilder(requireContext(), RoomHelper::class.java, "bike_memo")
+            .fallbackToDestructiveMigration()
+            .build()
+        bikeMemoDao = helper.bikeMemoDao()
+
+        bikeAdapter2 = RecyclerAdapter2(bikeList2,this)
+
+
+
+        totalBinding.totalRecycler.adapter = bikeAdapter2
+        totalBinding.totalRecycler.layoutManager = LinearLayoutManager(requireContext())
+
+    }
+    //작성중
+    private fun searchMemo() {
+
+    }
+//화면 이동시 다시 실행
+    private fun refreshMemo() {
+        CoroutineScope(Dispatchers.IO).launch {
+
+            bikeList2.clear()
+            bikeList2.addAll(bikeMemoDao.getAll())
+            // 합계금액 적용
+            var dAmout: Int = 0
+            for (bike in bikeList2){
+                dAmout += bike.amount
+            }
+            tAmout = dAmout
+            withContext(Dispatchers.Main) {
+                bikeAdapter2.notifyDataSetChanged()
+                totalBinding.totalTotalAmount.text = tAmout.toString()
+            }
+        }
+    }
+// 화면 전환시 리즘에서 처리해야 화면 이동시 작동함
+    override fun onResume() {
+        super.onResume()
+        refreshMemo()
+    }
+// 바인딩 해제
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
+//바이크메모에서 데이터를 가져와 적용 길게 누르면 삭제
+   override  fun onDeleteListener(bikeMemo: BikeMemo) {
+        CoroutineScope(Dispatchers.IO).launch {
+
+            val amount = bikeMemo.amount
+            tAmout-=amount
+
+
+            bikeMemoDao.delete(bikeMemo)
+                bikeList2.remove(bikeMemo)
+            withContext(Dispatchers.Main) {
+                bikeAdapter2.notifyDataSetChanged()
+                // 합계금액을 리스크에서 뽑아와 저장
+                totalBinding.totalTotalAmount.text = tAmout.toString()
+            }
+        }
+    }
 }

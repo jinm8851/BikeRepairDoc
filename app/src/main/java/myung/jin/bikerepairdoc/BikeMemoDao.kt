@@ -27,5 +27,5 @@ interface BikeMemoDao {
     fun getTotalAmount(totalAmount : Int) : List<BikeMemo>
 
     @Query("select * from bike_memo WHERE year = :year")
-    fun getyear(year : String) : List<BikeMemo>
+    fun getYear(year : String) : List<BikeMemo>
 }
