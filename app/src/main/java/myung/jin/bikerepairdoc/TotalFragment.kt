@@ -1,13 +1,12 @@
 package myung.jin.bikerepairdoc
 
-import android.app.Activity
-import android.content.Context
 import android.os.Bundle
+import android.text.Editable
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import kotlinx.coroutines.CoroutineScope
@@ -66,12 +65,67 @@ class TotalFragment : Fragment(),OnDeleteListener {
         totalBinding.totalRecycler.adapter = bikeAdapter2
         totalBinding.totalRecycler.layoutManager = LinearLayoutManager(requireContext())
 
-    }
-    //작성중
-    private fun searchMemo() {
+        totalBinding.searchButton.setOnClickListener {
+
+            searchMemo(bikeList2)
+
+        }
 
     }
-//화면 이동시 다시 실행
+    //작성중
+    private fun searchMemo(bikeMemo: MutableList<BikeMemo>) {
+        var searchE  = totalBinding.searchEdit.text.toString()
+        Log.d("str","$searchE")
+        for (bike in bikeMemo){
+            if (bike.model == searchE) {
+
+                CoroutineScope(Dispatchers.IO).launch {
+
+                    val filteredBikes = bikeMemoDao.getModel(searchE)
+                    for (list in bikeList2){
+                        Log.d("list","${list.model}")
+                    }
+                    // 합계금액 적용
+                    var dAmout: Int = 0
+                    for (bike in bikeList2){
+                        dAmout += bike.amount
+                    }
+                    tAmout = dAmout
+
+                    withContext(Dispatchers.Main){
+                    bikeList2.clear()
+                    bikeList2.addAll(filteredBikes)
+                        bikeAdapter2.notifyDataSetChanged()
+                        totalBinding.totalTotalAmount.text = tAmout.toString()
+
+                    }
+                }
+            }
+        }
+
+    }
+
+//    private fun searchMemo(bikeMemo: MutableList<BikeMemo>, str: String) {
+//        bikeMemo.find { it.model == str }?.let { bike ->
+//            CoroutineScope(Dispatchers.IO).launch {
+//                bikeList2.apply {
+//                    clear()
+//                    addAll(bikeMemoDao.getModel(str))
+//                }
+//
+//                tAmout = bikeList2.sumBy { it.amount }
+//
+//                withContext(Dispatchers.Main) {
+//                    bikeAdapter2.notifyDataSetChanged()
+//                    totalBinding.totalTotalAmount.text = tAmout.toString()
+//                }
+//            }
+//        }
+//    }
+
+
+
+    //화면 이동시 다시 실행
     private fun refreshMemo() {
         CoroutineScope(Dispatchers.IO).launch {
 

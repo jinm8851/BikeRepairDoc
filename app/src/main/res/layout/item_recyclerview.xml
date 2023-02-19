@@ -23,7 +23,7 @@
         android:id="@+id/itemKm"
         android:layout_width="wrap_content"
         android:layout_height="25dp"
-        android:layout_marginStart="22dp"
+        android:layout_marginStart="16dp"
         android:gravity="center"
         android:hint="900000"
         android:textAlignment="viewEnd"
