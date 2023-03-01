@@ -2,7 +2,9 @@ package myung.jin.bikerepairdoc
 
 
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.text.Editable
 import android.util.Log
 
 
@@ -13,8 +15,10 @@ import android.view.ViewGroup
 
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.EditText
 
 import android.widget.Spinner
+import android.widget.TextView
 import android.widget.Toast
 
 
@@ -31,40 +35,26 @@ import java.util.*
 
 
 class MainFragment : Fragment(), OnDeleteListener  {
-
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
-
-
-     val bikeList = mutableListOf<BikeMemo>()
-
-
-
-
+     private val bikeList = mutableListOf<BikeMemo>()
     lateinit var helper: RoomHelper
     lateinit var bikeAdapter: RecyclerAdapter
     lateinit var bikeMemoDao: BikeMemoDao
+
 // 년도만 추출
     lateinit var year: String
     var totalAmount1 = 0
-
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentMainBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
-
-        
 //날짜 적용
         dateSet()
 //스피너 선택 밎 적용
@@ -74,19 +64,19 @@ class MainFragment : Fragment(), OnDeleteListener  {
         helper = Room.databaseBuilder(requireContext(), RoomHelper::class.java, "bike_memo")
             .fallbackToDestructiveMigration()
             .build()
-
         bikeMemoDao = helper.bikeMemoDao()
-
         bikeAdapter = RecyclerAdapter(bikeList, this)
-
-
-
-
 
         with(binding) {
             mainRecyclerView.adapter = bikeAdapter
             mainRecyclerView.layoutManager = LinearLayoutManager(requireContext())
 
+            // 모델 넘버와 구입 날짜 앱 재 실행시 사라지는 문제 해결 중
+//            if (bikeList.isNotEmpty() && bikeList.last().model.isNotEmpty()){
+//
+//            val modelText: String = bikeList.last().model
+//            bikeName.setText(modelText)
+//            }else{ bikeName.setText("")}
 
 
             save.setOnClickListener {
@@ -110,52 +100,47 @@ class MainFragment : Fragment(), OnDeleteListener  {
             if (bikeName1.isEmpty()) {
                 Toast.makeText(requireContext(), "애칭이 비어있습니다. 애칭을 입력해주세요", Toast.LENGTH_LONG).show()
                 bikeName1 = ""
-
             }
+
             //구입날짜나 다른것이 비어있으면 참고를 빈 문자로 변경
             var startDate1 = startDate.text.toString()
             if (startDate1.isEmpty()) {
                 Toast.makeText(requireContext(),"구입날짜가 비어있습니다. 구입날짜를 입력해주세요",Toast.LENGTH_LONG).show()
                 startDate1=""
-
             }
+
             var repairDate1 = repairDate.text.toString()
             if (repairDate1.isEmpty()) {
                 repairDate1 = ""
-
             }
+
             //텍스트를 받아 인트로 변환
-            var km2 = km.text.toString()
-            var km1: Int
-            if (km2.isNotEmpty()) {
-                km1 = km2.toInt()
+            val km2 = km.text.toString()
+            val km1: Int = if (km2.isNotEmpty()) {
+                km2.toInt()
             } else {
-                km1 = 0
-
+                0
             }
+
             var content1 = content.text.toString()
             if (content1.isEmpty()) {
                 content1 = ""
             }
 
-            var amount2 = amount.text.toString()
-            var amount1: Int
-            if (amount2.isNotEmpty()) {
-                amount1 = amount2.toInt()
+            val amount2 = amount.text.toString()
+            val amount1: Int = if (amount2.isNotEmpty()) {
+                amount2.toInt()
             } else {
-                amount1 = 0
-
+                0
             }
+
             var note1 = note.text.toString()
             if (note1.isEmpty()) {
                 note1 = ""
-
             }
+
             if (year.isEmpty()) year = ""
-
-
-
-
+// 바이크 메모에 생성자로 넘겨줌
             val memo = BikeMemo(
                 bikeName1,
                 startDate1,
@@ -164,13 +149,12 @@ class MainFragment : Fragment(), OnDeleteListener  {
                 content1,
                 amount1,
                 note1,
-                year,
-                totalAmount1
+                year
             )
             insertBikeMemo(memo)
         }
     }
-
+//바이크 메모를 룸에 입력
     private fun insertBikeMemo(memo: BikeMemo) {
         CoroutineScope(Dispatchers.IO).launch {
             bikeMemoDao.insert(memo)
@@ -179,24 +163,27 @@ class MainFragment : Fragment(), OnDeleteListener  {
         }
     }
 
-
+//바이크메모를 룸에서 수리 날짜로 불러와 바이크리스트에 입력
+//린트는 개발자가 완벽히 알맞은 코드나 충돌 가능성이 있는 코드를 사용할때 @SuppressLint(...)를 붙여 사용할 수 있게 해줍니다.
+//
+//@SuppressLint("NewApi")는 해당 프로젝트의 설정 된 minSdkVersion 이후에 나온 API를 사용할때  warning을 없애고 개발자가 해당 APi를 사용할 수 있게 합니다.
+    @SuppressLint("NotifyDataSetChanged")
     private fun refreshAdapter() {
         CoroutineScope(Dispatchers.IO).launch {
-            var date = binding.repairDate.text.toString()
+            val date = binding.repairDate.text.toString()
             bikeList.clear()
             bikeList.addAll(bikeMemoDao.getDate(date))
 
 //토탈금액 앱을 다시켜면 0이 되는 문제 해결중 (수리 날짜를 바꿘다 다시 불러오면 합계가 안맞음)
             // bikeList 의 마지막인 a 가 널이면 0을 로 초기화
             //for 문으로 해결 바이크리스트에서 어마운트만빼서 더해 합계에 넣음
-            var   dAmount: Int = 0
-
-            for (bike in bikeList){
-                dAmount += bike.amount
-            }
+//            for (bike in bikeList){
+//                dAmount += bike.amount
+//            }
+            // 챗 gpt 코드로 변경
+            val dAmount = bikeList.sumOf { it.amount }
             totalAmount1=dAmount
-            Log.d("테스트","$dAmount+$totalAmount1")
-
+  //          Log.d("테스트","$dAmount+$totalAmount1")
             withContext(Dispatchers.Main) {
                 bikeAdapter.notifyDataSetChanged()
                 //합계금액을 날짜 리스트에서 뽑아와 저장
@@ -207,7 +194,7 @@ class MainFragment : Fragment(), OnDeleteListener  {
 
 
 
-
+// 바이크 메모 삭제
     private fun deleteBikememo(bikeMemo: BikeMemo) {
         CoroutineScope(Dispatchers.IO).launch {
             bikeMemoDao.delete(bikeMemo)
@@ -215,13 +202,14 @@ class MainFragment : Fragment(), OnDeleteListener  {
         }
     }
 
-
+//바인딩 해제
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
     }
 
     //날짜 적용 함수
+    @SuppressLint("SimpleDateFormat")
     private fun dateSet() {
         val now = System.currentTimeMillis()
         val date = Date(now)
@@ -232,7 +220,7 @@ class MainFragment : Fragment(), OnDeleteListener  {
 
     }
 
-       // 수리날짜 년도로 저장
+       // 수리날짜 년도로 저장 입력 날짜를 받아 앞에서 4자리까지 잘라서 넣음
     private fun reDateSet(){
         val redate: String = binding.repairDate.text.toString()
 
@@ -252,6 +240,8 @@ class MainFragment : Fragment(), OnDeleteListener  {
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             // Apply the adapter to the spinner
             spinner.adapter = adapter
+
+
         }
 
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -275,8 +265,9 @@ class MainFragment : Fragment(), OnDeleteListener  {
                     contentSelect()
                 }
             }
-
+            //아무것도 선택되지 않았을때 적용
             override fun onNothingSelected(parent: AdapterView<*>?) {
+                binding.reference.setText(R.string.reference)
             }
 
         }
@@ -310,7 +301,7 @@ class MainFragment : Fragment(), OnDeleteListener  {
             }
         }
     }
-
+// 리사이클러 뷰를 클릭했을때 룸 삭제 및 리사이클러 재 설정
     override fun onDeleteListener(bikeMemo: BikeMemo) {
         val dMemo = bikeMemo.amount
         totalAmount1-=dMemo
@@ -320,12 +311,7 @@ class MainFragment : Fragment(), OnDeleteListener  {
 
 
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
-    //라이프사이클을 통한 두 프레그먼트간에 데이터 교환
+    //라이프사이클을 통한 두 프레그먼트간에 데이터 교환 리즘에서 재설정을 해야 화면에 보임
     override fun onResume() {
         super.onResume()
         refreshAdapter()

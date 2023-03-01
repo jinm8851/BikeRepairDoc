@@ -23,8 +23,7 @@ interface BikeMemoDao {
     @Query("select * from bike_memo WHERE model = :model")
     fun getModel(model : String) : List<BikeMemo>
 
-    @Query("select * from bike_memo WHERE totalAmount = :totalAmount")
-    fun getTotalAmount(totalAmount : Int) : List<BikeMemo>
+
 
     @Query("select * from bike_memo WHERE year = :year")
     fun getYear(year : String) : List<BikeMemo>

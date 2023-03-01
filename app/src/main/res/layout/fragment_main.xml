@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#3DFFFFFF"
+    android:backgroundTint="#FFEB3B"
     tools:context=".MainFragment">
 
 
@@ -15,6 +17,7 @@
         android:gravity="center"
         android:text="구입날짜"
         android:textAlignment="center"
+        android:textColor="#256A80"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/start_date"
@@ -25,11 +28,12 @@
         android:layout_width="100dp"
         android:layout_height="40dp"
         android:layout_marginTop="28dp"
-        android:background="@null"
+        android:background="#328552E1"
         android:gravity="center"
+        android:hint="버그만"
         android:inputType="textPersonName"
-        android:text="버그만125"
         android:textAlignment="center"
+        android:textColor="#703BE1"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/textView3"
         app:layout_constraintTop_toTopOf="parent" />
@@ -43,6 +47,7 @@
         android:gravity="center"
         android:text="애칭"
         android:textAlignment="center"
+        android:textColor="#256A80"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/bikeName"
@@ -55,11 +60,12 @@
         android:layout_height="40dp"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="16dp"
-        android:background="@null"
+        android:background="#328552E1"
         android:gravity="center"
+        android:hint="2000-01-01"
         android:inputType="date"
-        android:text="2000-01-01"
         android:textAlignment="center"
+        android:textColor="#703BE1"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -71,6 +77,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="7dp"
         android:layout_marginEnd="16dp"
+        android:background="#32E1DF52"
+        android:fadingEdge="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="parent"
@@ -82,10 +90,11 @@
         android:layout_height="23dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="16dp"
-        android:background="@null"
+        android:background="#328552E1"
         android:hint="0"
         android:inputType="number"
         android:textAlignment="viewEnd"
+        android:textColor="#703BE1"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/textView9"
         app:layout_constraintStart_toEndOf="@+id/repair_date"
@@ -96,14 +105,16 @@
         android:layout_width="70dp"
         android:layout_height="23dp"
         android:layout_marginTop="16dp"
-        android:background="@null"
+        android:background="#328552E1"
         android:gravity="center"
         android:hint="0"
         android:inputType="numberSigned|number"
         android:textAlignment="viewEnd"
+        android:textColor="#703BE1"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/textView10"
-        app:layout_constraintTop_toBottomOf="@+id/planets_spinner" />
+        app:layout_constraintTop_toBottomOf="@+id/planets_spinner"
+        tools:ignore="RtlCompat" />
 
     <TextView
         android:id="@+id/textView10"
@@ -112,6 +123,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:text="원"
+        android:textColor="#256A80"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/planets_spinner" />
@@ -122,10 +134,11 @@
         android:layout_height="41dp"
         android:layout_marginStart="9dp"
         android:layout_marginTop="8dp"
-        android:background="@null"
+        android:background="#328552E1"
         android:gravity="center"
-        android:hint="비고"
+        android:hint="기타"
         android:inputType="textPersonName"
+        android:textColor="#703BE1"
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/textView8"
         app:layout_constraintTop_toBottomOf="@+id/km" />
@@ -137,6 +150,7 @@
         android:layout_marginTop="16dp"
         android:gravity="center"
         android:text="Km"
+        android:textColor="#256A80"
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/km"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
@@ -148,9 +162,10 @@
         android:layout_marginTop="16dp"
         android:background="@null"
         android:gravity="center"
-        android:hint="금액"
+        android:text="금액"
         android:inputType="textPersonName"
         android:textAlignment="center"
+        android:textColor="#256A80"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/amount"
         app:layout_constraintTop_toBottomOf="@+id/planets_spinner" />
@@ -165,6 +180,7 @@
         android:gravity="center"
         android:text="주행거리"
         android:textAlignment="center"
+        android:textColor="#256A80"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
@@ -175,6 +191,7 @@
         android:layout_height="23dp"
         android:layout_marginTop="17dp"
         android:layout_marginEnd="16dp"
+        android:background="#328552E1"
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
@@ -189,6 +206,7 @@
         android:gravity="center"
         android:text="수리 날짜"
         android:textAlignment="center"
+        android:textColor="#256A80"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bikeName" />
@@ -201,8 +219,9 @@
         android:layout_marginTop="8dp"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="비고"
+        android:text="기타"
         android:textAlignment="center"
+        android:textColor="#256A80"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/repair_date" />
 
@@ -212,10 +231,11 @@
         android:layout_height="23dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:background="@null"
+        android:background="#328552E1"
         android:gravity="center"
         android:hint="2000-01-01"
         android:inputType="date"
+        android:textColor="#703BE1"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -225,39 +245,46 @@
         android:layout_width="329dp"
         android:layout_height="29dp"
         android:layout_marginStart="43dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="44dp"
         android:gravity="center"
         android:text="참고"
         android:textAlignment="center"
+        android:textColor="#256A80"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_recyclerView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
     <TextView
         android:id="@+id/reference"
         android:layout_width="376dp"
         android:layout_height="228dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:gravity="center"
+        android:gravity="center|top"
         android:text="@string/reference"
+        android:textColor="#256A80"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/content" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/save"
         android:layout_width="85dp"
         android:layout_height="40dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
+        android:background="#328552E1"
         android:text="저장"
+        android:textColor="#703BE1"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/amount" />
 
@@ -266,12 +293,15 @@
         android:layout_width="108dp"
         android:layout_height="34dp"
         android:layout_marginTop="8dp"
-        android:gravity="center"
+        android:background="#32E1DF52"
+        android:gravity="center_vertical"
         android:hint="0"
-        android:textAlignment="viewEnd"
+        android:textColor="@color/text"
+        android:textAlignment="textEnd"
         android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/main_recyclerView" />
+        app:layout_constraintTop_toBottomOf="@+id/main_recyclerView"
+        tools:ignore="RtlCompat" />
 
     <TextView
         android:id="@+id/textView7"
@@ -282,6 +312,7 @@
         android:gravity="center"
         android:text="합계"
         android:textAlignment="center"
+        android:textColor="#256A80"
         android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@+id/totalAmount"
         app:layout_constraintTop_toBottomOf="@+id/main_recyclerView" />
@@ -295,6 +326,7 @@
         android:gravity="center"
         android:text="원"
         android:textAlignment="center"
+        android:textColor="#256A80"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/main_recyclerView" />

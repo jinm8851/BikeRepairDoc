@@ -35,12 +35,11 @@ class BikeMemo {
     @ColumnInfo(name = "year")
     var year : String = "년도"
 
-    @ColumnInfo(name = "totalAmount")
-    var totalAmount :Int = 0
 
 
 
-    constructor(model:String,purchaseDate:String,date:String,km:Int,refer:String,amount:Int,note:String,year:String,totalAmount:Int){
+
+    constructor(model:String, purchaseDate:String, date:String, km:Int, refer:String, amount:Int, note:String, year:String){
         this.model = model
         this.purchaseDate = purchaseDate
         this.date = date
@@ -49,6 +48,6 @@ class BikeMemo {
         this.amount = amount
         this.note = note
         this.year = year
-        this.totalAmount = totalAmount
+
     }
 }

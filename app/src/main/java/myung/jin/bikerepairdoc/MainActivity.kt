@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
 
     // 뷰페이져2 관련 크레스
     class MyFragmentPagerAdapter(activiy: FragmentActivity): FragmentStateAdapter(activiy){
-        val fragment: List<Fragment>
+        private val fragment: List<Fragment>
         init {
             fragment = listOf(MainFragment(),TotalFragment())
         }
