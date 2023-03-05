@@ -9,11 +9,9 @@
 
     <TextView
         android:id="@+id/itemRepairDate"
-        android:layout_width="0dp"
+        android:layout_width="90dp"
         android:layout_height="25dp"
-        android:layout_marginStart="16dp"
         android:gravity="center"
-        android:hint="2023-12-31"
         android:textAlignment="center"
         android:textColor="#256A80"
         android:textSize="16sp"
@@ -22,16 +20,15 @@
 
     <TextView
         android:id="@+id/itemKm"
-        android:layout_width="wrap_content"
+        android:layout_width="63dp"
         android:layout_height="25dp"
-        android:layout_marginStart="16dp"
         android:gravity="center"
-        android:hint="900000"
         android:textAlignment="viewEnd"
         android:textColor="#256A80"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/itemRepairDate"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="RtlCompat" />
 
     <TextView
         android:id="@+id/textView16"
@@ -47,34 +44,32 @@
 
     <TextView
         android:id="@+id/itemRePair"
-        android:layout_width="0dp"
+        android:layout_width="90dp"
         android:layout_height="25dp"
-        android:layout_marginEnd="8dp"
         android:gravity="center"
-        android:hint="뒷브레이크패드"
-        android:textAlignment="center"
+        android:textAlignment="viewEnd"
         android:textColor="#256A80"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/itemAmount"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="RtlCompat" />
 
     <TextView
         android:id="@+id/itemAmount"
-        android:layout_width="0dp"
+        android:layout_width="63dp"
         android:layout_height="25dp"
         android:gravity="center"
-        android:hint="100000"
         android:textAlignment="viewEnd"
         android:textColor="#256A80"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/textView17"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="RtlCompat" />
 
     <TextView
         android:id="@+id/textView17"
         android:layout_width="0dp"
         android:layout_height="25dp"
-        android:layout_marginEnd="16dp"
         android:gravity="center"
         android:text="원"
         android:textColor="#256A80"

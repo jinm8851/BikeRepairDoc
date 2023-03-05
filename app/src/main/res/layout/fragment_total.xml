@@ -25,49 +25,50 @@
     <EditText
         android:id="@+id/searchEdit"
         android:layout_width="wrap_content"
-        android:layout_height="45dp"
-        android:layout_marginStart="36dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:background="#328552E1"
         android:ems="10"
         android:hint="2023-01-01, 2023, 애칭"
-        android:inputType="textPersonName"
+        android:inputType="textFilter"
+        android:textColor="#703BE1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/totalRecycler"
-        android:layout_width="375dp"
-        android:layout_height="367dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:background="#32E1DF52"
+        app:layout_constraintBottom_toTopOf="@+id/totalTotalAmount"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchEdit" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/searchButton"
-        android:layout_width="120dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginEnd="16dp"
         android:background="#328552E1"
         android:text="검색"
         android:textColor="#703BE1"
         android:textSize="18sp"
         android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="@+id/searchEdit"
-        app:layout_constraintStart_toEndOf="@+id/searchEdit"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/searchEdit"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/totalTotalAmount"
-        android:layout_width="190dp"
+        android:layout_width="wrap_content"
         android:layout_height="49dp"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginBottom="36dp"
         android:background="#32E1DF52"
         android:gravity="center"
         android:hint="0"
@@ -75,18 +76,21 @@
         android:textColor="#256A80"
         android:textSize="34sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/totalRecycler"
         tools:ignore="RtlCompat" />
 
     <TextView
         android:id="@+id/textView13"
-        android:layout_width="75dp"
-        android:layout_height="48dp"
+        android:layout_width="38dp"
+        android:layout_height="49dp"
+        android:background="#32E1DF52"
         android:text="원"
         android:textColor="#256A80"
         android:textSize="34sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/totalTotalAmount"
         app:layout_constraintStart_toEndOf="@+id/totalTotalAmount"
         app:layout_constraintTop_toTopOf="@+id/totalTotalAmount" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -71,24 +71,41 @@ class MainFragment : Fragment(), OnDeleteListener  {
             mainRecyclerView.adapter = bikeAdapter
             mainRecyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-            // 모델 넘버와 구입 날짜 앱 재 실행시 사라지는 문제 해결 중
-//            if (bikeList.isNotEmpty() && bikeList.last().model.isNotEmpty()){
-//
-//            val modelText: String = bikeList.last().model
-//            bikeName.setText(modelText)
-//            }else{ bikeName.setText("")}
-
+            //마지막 입력한 모델명 이나 구입 날짜를 가져와 EditText 에 넣어 주는 코드
+            textSet()
 
             save.setOnClickListener {
-
+                //수리날짜 연도로 저장
                 reDateSet()
                 checkMemo()
                 // 버튼을 누른 후 금액 입력란을 빈칸으로 초기화
                 amount.setText("")
+                note.setText("")
 
             }
         }
 
+
+
+    }
+
+    private fun textSet(){
+        // 모델 넘버와 구입 날짜 앱 재 실행시 사라 지는 문제 해결 중
+        // 바이크 리스트 를 전부 불러와 모델과 날짜를 입력 하고 바이크 리스트 를 지워 버림
+        CoroutineScope(Dispatchers.IO).launch{
+            bikeList.addAll(bikeMemoDao.getAll())
+            withContext(Dispatchers.Main){
+                if (bikeList.isNotEmpty() && bikeList.last().model.isNotEmpty()){
+                    val modelText: String = bikeList.last().model
+                    binding.bikeName.setText(modelText)
+                }else{ binding.bikeName.setText("")}
+                if (bikeList.isNotEmpty() && bikeList.last().purchaseDate.isNotEmpty()){
+                    val pDate : String = bikeList.last().purchaseDate
+                    binding.stDated.setText(pDate)
+                }else{binding.stDated.setText("")}
+            }
+                bikeList.clear()
+        }
 
     }
 
@@ -103,7 +120,7 @@ class MainFragment : Fragment(), OnDeleteListener  {
             }
 
             //구입날짜나 다른것이 비어있으면 참고를 빈 문자로 변경
-            var startDate1 = startDate.text.toString()
+            var startDate1 = stDated.text.toString()
             if (startDate1.isEmpty()) {
                 Toast.makeText(requireContext(),"구입날짜가 비어있습니다. 구입날짜를 입력해주세요",Toast.LENGTH_LONG).show()
                 startDate1=""
@@ -139,8 +156,10 @@ class MainFragment : Fragment(), OnDeleteListener  {
                 note1 = ""
             }
 
-            if (year.isEmpty()) year = ""
-// 바이크 메모에 생성자로 넘겨줌
+            if (year.isEmpty()) {
+                year = ""
+            }
+// 바이크 메모에 생성자 로 넘겨줌
             val memo = BikeMemo(
                 bikeName1,
                 startDate1,
@@ -254,6 +273,7 @@ class MainFragment : Fragment(), OnDeleteListener  {
             ) {
 //spinner 가 선택이 선택되면 "참고"로 초기화 그렇지않으면 선택단어 컨텐츠  변경
 
+
                 with(binding) {
                     if ("선택" == parent?.getItemAtPosition(position).toString()) {
                         content.text = "참고"
@@ -279,11 +299,11 @@ class MainFragment : Fragment(), OnDeleteListener  {
         with(binding) {
             when (content.text.toString()) {
                 "오일" -> reference.setText(R.string.oil)
-                "오일필터" -> reference.setText(R.string.oilfillter)
-                "앞브레이크패드" -> reference.setText(R.string.brakepad)
-                "뒷브레이크패드" -> reference.setText(R.string.brakepad)
-                "앞타이어" -> reference.setText(R.string.tire)
-                "뒷타이어" -> reference.setText(R.string.tire)
+                "오일 필터" -> reference.setText(R.string.oilfillter)
+                "앞 패드" -> reference.setText(R.string.brakepad)
+                "뒷 패드" -> reference.setText(R.string.brakepad)
+                "앞 타이어" -> reference.setText(R.string.tire)
+                "뒷 타이어" -> reference.setText(R.string.tire)
                 "벨트" -> reference.setText(R.string.belt)
                 "무브볼" -> reference.setText(R.string.moveball)
                 "미션오일" -> reference.setText(R.string.missionoil)
@@ -291,12 +311,15 @@ class MainFragment : Fragment(), OnDeleteListener  {
                 "슈" -> reference.setText(R.string.shu)
                 "베어링" -> reference.setText(R.string.bearing)
                 "프러그" -> reference.setText(R.string.plug)
-                "벨브조절" -> reference.setText(R.string.valve)
-                "기타구동계" -> reference.setText(R.string.drivesystem)
-                "기타엔진계" -> reference.setText(R.string.engine)
-                "기타램프" -> reference.setText(R.string.lamp)
+                "벨브 조절" -> reference.setText(R.string.valve)
+                "기타 구동계" -> reference.setText(R.string.drivesystem)
+                "기타 엔진계" -> reference.setText(R.string.engine)
+                "기타 램프" -> reference.setText(R.string.lamp)
                 "기타" -> reference.setText(R.string.etc)
                 "참고" -> reference.setText(R.string.reference)
+                "앞 디스크" -> reference.setText(R.string.disk)
+                "뒷 디스크" -> reference.setText(R.string.disk)
+                "선택" -> reference.setText(R.string.reference)
                 else -> {reference.setText(R.string.reference)}
             }
         }

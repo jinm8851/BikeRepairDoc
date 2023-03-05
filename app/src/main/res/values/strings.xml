@@ -19,4 +19,20 @@
     <string name="engine">엔진은 거의 고장나는일이 없지만\n 눈으로 보기 힘드니 오토바이가\n 힘이없어지거나 찐빠를 가끔씩하면\n 한번씩 점검해봅시다</string>
     <string name="lamp">램프는 비오는날 많이 타면\n 더 자주 나가니 비 또는 눈이 오는\n 날에는 집에서 있읍시다</string>
     <string name="etc">기타 다른 고장없이 자주 점검해서\n 오래 오래 탑시다</string>
+    <string name="disk">디스크는 오래되면 달아서 갈아주어야합니다 오래되도 갈지 않으면 브레이크패드가 빨리 달고 재동력이 조금씩 떨어집니다</string>
+    <string name="구입날짜">구입날짜</string>
+    <string name="버그만">버그만</string>
+    <string name="km">Km</string>
+    <string name="기타수리내용">기타 수리 내용</string>
+    <string name="원">원</string>
+    <string name="애칭">애칭</string>
+    <string name="_2000_01_01">2000-01-01</string>
+    <string name="_0000000">0000000</string>
+    <string name="금액">금액</string>
+    <string name="주행거리">주행거리</string>
+    <string name="수리날짜">수리 날짜</string>
+    <string name="기타">기타</string>
+    <string name="저장">저장</string>
+    <string name="_0">0</string>
+    <string name="합계">합계</string>
 </resources>

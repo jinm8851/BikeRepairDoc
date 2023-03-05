@@ -16,7 +16,7 @@ class TotalFragment : Fragment(), OnDeleteListener {
 
     private var _binding: FragmentTotalBinding? = null
     private val totalBinding get() = _binding!!
-    private val bikeList2 = mutableListOf<BikeMemo>()
+    private val  bikeList2 = mutableListOf<BikeMemo>()
     lateinit var helper: RoomHelper
     lateinit var bikeAdapter2: RecyclerAdapter2
     lateinit var bikeMemoDao: BikeMemoDao
@@ -64,7 +64,7 @@ class TotalFragment : Fragment(), OnDeleteListener {
             return
         }
 // 코루틴스코프를 사용해서 when문을 이용해 날짜나 숫자 그밖에 나머지를 검색함
-        // filteredBikes를 이용해 bikeMemoDao 를 조건에 맞게 저장고 메인에서 리스트를 업데이트함
+        // filteredBikes를 이용해 bikeMemoDao 를 조건에 맞게 저장고 메인에서 리스트를 업데이트함 (정규직사용)
         CoroutineScope(Dispatchers.IO).launch {
             val filteredBikes = when {
                 searchE.matches(Regex("\\d{4}-\\d{2}-\\d{2}")) -> {
