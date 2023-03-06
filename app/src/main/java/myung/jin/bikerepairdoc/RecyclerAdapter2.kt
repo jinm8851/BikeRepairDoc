@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import myung.jin.bikerepairdoc.databinding.ItemRecyclerviewBinding
 
+
 class RecyclerAdapter2(private val bikeMemoList: List<BikeMemo>, var onDeleteListener: OnDeleteListener):
     RecyclerView.Adapter<RecyclerAdapter2.Holder>(){
 
