@@ -95,7 +95,7 @@
         android:inputType="date"
         android:textAlignment="viewEnd"
         android:textColor="#703BE1"
-        android:textSize="16sp"
+        android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="@+id/repair_date"
         app:layout_constraintStart_toEndOf="@+id/repair_date"
         app:layout_constraintTop_toTopOf="@+id/repair_date" />
@@ -110,7 +110,7 @@
         android:inputType="date"
         android:textAlignment="viewEnd"
         android:textColor="#703BE1"
-        android:textSize="16sp"
+        android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView10"
         app:layout_constraintEnd_toStartOf="@+id/textView10"
         app:layout_constraintTop_toTopOf="@+id/textView10"
@@ -125,7 +125,7 @@
         android:gravity="center"
         android:text="@string/원"
         android:textColor="#256A80"
-        android:textSize="16sp"
+        android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="@+id/repair_date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/repair_date" />
@@ -140,7 +140,7 @@
         android:hint="@string/기타수리내용"
         android:inputType="textPersonName"
         android:textColor="#703BE1"
-        android:textSize="16sp"
+        android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView8"
         app:layout_constraintStart_toEndOf="@+id/textView8"
         app:layout_constraintTop_toTopOf="@+id/textView8" />
@@ -153,7 +153,7 @@
         android:gravity="center"
         android:text="@string/km"
         android:textColor="#256A80"
-        android:textSize="16sp"
+        android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="@+id/km"
         app:layout_constraintStart_toEndOf="@+id/km"
         app:layout_constraintTop_toTopOf="@+id/km" />
@@ -169,7 +169,7 @@
         android:text="@string/금액"
         android:textAlignment="center"
         android:textColor="#256A80"
-        android:textSize="16sp"
+        android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="@+id/amount"
         app:layout_constraintEnd_toStartOf="@+id/amount"
         app:layout_constraintTop_toTopOf="@+id/amount" />
@@ -226,7 +226,7 @@
         android:text="@string/기타"
         android:textAlignment="center"
         android:textColor="#256A80"
-        android:textSize="16sp"
+        android:textSize="17sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/repair_date" />
 
@@ -241,7 +241,7 @@
         android:hint="@string/_2000_01_01"
         android:inputType="textPersonName"
         android:textColor="#703BE1"
-        android:textSize="16sp"
+        android:textSize="17sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -286,7 +286,7 @@
         android:background="#328552E1"
         android:text="@string/저장"
         android:textColor="#703BE1"
-        android:textSize="16sp"
+        android:textSize="17sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/textView8"
         app:layout_constraintEnd_toEndOf="parent"

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1014785864624",
+    "project_id": "bikerepairdoc-28330",
+    "storage_bucket": "bikerepairdoc-28330.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1014785864624:android:1ed4c8a6be16daa8885c75",
+        "android_client_info": {
+          "package_name": "myung.jin.bikerepairdoc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1014785864624-0j1aj43ggrfpkfh3uf72es7m12fca78h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHsSvT_WbsYg0JoE5wWRNFzOtlt77v2ys"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1014785864624-0j1aj43ggrfpkfh3uf72es7m12fca78h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

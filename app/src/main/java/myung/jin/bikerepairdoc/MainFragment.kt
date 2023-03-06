@@ -4,8 +4,7 @@ package myung.jin.bikerepairdoc
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.text.Editable
-import android.util.Log
+
 
 
 import androidx.fragment.app.Fragment
@@ -15,10 +14,10 @@ import android.view.ViewGroup
 
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.EditText
+
 
 import android.widget.Spinner
-import android.widget.TextView
+
 import android.widget.Toast
 
 
@@ -38,13 +37,13 @@ class MainFragment : Fragment(), OnDeleteListener  {
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
      private val bikeList = mutableListOf<BikeMemo>()
-    lateinit var helper: RoomHelper
-    lateinit var bikeAdapter: RecyclerAdapter
-    lateinit var bikeMemoDao: BikeMemoDao
+   private lateinit var helper: RoomHelper
+   private lateinit var bikeAdapter: RecyclerAdapter
+   private lateinit var bikeMemoDao: BikeMemoDao
 
 // 년도만 추출
-    lateinit var year: String
-    var totalAmount1 = 0
+    private lateinit var year: String
+    private var totalAmount1 = 0
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -246,7 +245,7 @@ class MainFragment : Fragment(), OnDeleteListener  {
         year = redate.substring(0,4)
     }
 
-     fun spinnerSelected() {
+     private fun spinnerSelected() {
         // 스피너 적용
         val spinner: Spinner = binding.planetsSpinner
         //프레그먼트에서 컨텍스트를 얻을때는 requireContext() 로 얻을수 있습니다.

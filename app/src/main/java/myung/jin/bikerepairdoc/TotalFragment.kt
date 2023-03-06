@@ -17,9 +17,9 @@ class TotalFragment : Fragment(), OnDeleteListener {
     private var _binding: FragmentTotalBinding? = null
     private val totalBinding get() = _binding!!
     private val  bikeList2 = mutableListOf<BikeMemo>()
-    lateinit var helper: RoomHelper
-    lateinit var bikeAdapter2: RecyclerAdapter2
-    lateinit var bikeMemoDao: BikeMemoDao
+    private lateinit var helper: RoomHelper
+    private lateinit var bikeAdapter2: RecyclerAdapter2
+    private lateinit var bikeMemoDao: BikeMemoDao
     private var tAmount: Int = 0
 
     override fun onCreateView(
