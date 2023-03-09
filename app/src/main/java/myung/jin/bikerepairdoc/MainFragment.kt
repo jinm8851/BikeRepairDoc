@@ -3,6 +3,7 @@ package myung.jin.bikerepairdoc
 
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.os.Bundle
 
 
@@ -11,14 +12,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-
-
-import android.widget.Spinner
-
-import android.widget.Toast
+import android.widget.*
 
 
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -282,6 +276,8 @@ class MainFragment : Fragment(), OnDeleteListener  {
                     }
                     //컨텐츠가 변경되면 리퍼렌스 내용 변경
                     contentSelect()
+                    //스피너 처음 표시되는 컬러 색상 변경
+                    (parent?.getChildAt(position) as TextView).setTextColor(Color.parseColor("#703BE1"))
                 }
             }
             //아무것도 선택되지 않았을때 적용
