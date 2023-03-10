@@ -1,41 +1,34 @@
 package myung.jin.bikerepairdoc
 
 
-
 import android.annotation.SuppressLint
-import android.graphics.Color
 import android.os.Bundle
-
-
-
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-
-
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-
 import myung.jin.bikerepairdoc.databinding.FragmentMainBinding
-import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 
-class MainFragment : Fragment(), OnDeleteListener  {
+class MainFragment : Fragment(), OnDeleteListener {
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
-     private val bikeList = mutableListOf<BikeMemo>()
-   private lateinit var helper: RoomHelper
-   private lateinit var bikeAdapter: RecyclerAdapter
-   private lateinit var bikeMemoDao: BikeMemoDao
+    private val bikeList = mutableListOf<BikeMemo>()
+    private lateinit var helper: RoomHelper
+    private lateinit var bikeAdapter: RecyclerAdapter
+    private lateinit var bikeMemoDao: BikeMemoDao
 
-// 년도만 추출
+    // 년도만 추출
     private lateinit var year: String
     private var totalAmount1 = 0
     override fun onCreateView(
@@ -79,32 +72,35 @@ class MainFragment : Fragment(), OnDeleteListener  {
         }
 
 
-
     }
 
-    private fun textSet(){
+    private fun textSet() {
         // 모델 넘버와 구입 날짜 앱 재 실행시 사라 지는 문제 해결 중
         // 바이크 리스트 를 전부 불러와 모델과 날짜를 입력 하고 바이크 리스트 를 지워 버림
-        CoroutineScope(Dispatchers.IO).launch{
+        CoroutineScope(Dispatchers.IO).launch {
             bikeList.addAll(bikeMemoDao.getAll())
-            withContext(Dispatchers.Main){
-                if (bikeList.isNotEmpty() && bikeList.last().model.isNotEmpty()){
+            withContext(Dispatchers.Main) {
+                if (bikeList.isNotEmpty() && bikeList.last().model.isNotEmpty()) {
                     val modelText: String = bikeList.last().model
                     binding.bikeName.setText(modelText)
-                }else{ binding.bikeName.setText("")}
-                if (bikeList.isNotEmpty() && bikeList.last().purchaseDate.isNotEmpty()){
-                    val pDate : String = bikeList.last().purchaseDate
+                } else {
+                    binding.bikeName.setText("")
+                }
+                if (bikeList.isNotEmpty() && bikeList.last().purchaseDate.isNotEmpty()) {
+                    val pDate: String = bikeList.last().purchaseDate
                     binding.stDated.setText(pDate)
-                }else{binding.stDated.setText("")}
+                } else {
+                    binding.stDated.setText("")
+                }
             }
-                bikeList.clear()
+            bikeList.clear()
         }
 
     }
 
     //버튼을 눌렀을때 앱의 값을 불러와 널체크 후 값입력 메모를 만들고 인서트
     private fun checkMemo() {
-        with(binding){
+        with(binding) {
             //null check 후 메모 리스트를 만들어서 바이크리스트에 적용 후 인서트
             var bikeName1 = bikeName.text.toString()
             if (bikeName1.isEmpty()) {
@@ -115,8 +111,9 @@ class MainFragment : Fragment(), OnDeleteListener  {
             //구입날짜나 다른것이 비어있으면 참고를 빈 문자로 변경
             var startDate1 = stDated.text.toString()
             if (startDate1.isEmpty()) {
-                Toast.makeText(requireContext(),"구입날짜가 비어있습니다. 구입날짜를 입력해주세요",Toast.LENGTH_LONG).show()
-                startDate1=""
+                Toast.makeText(requireContext(), "구입날짜가 비어있습니다. 구입날짜를 입력해주세요", Toast.LENGTH_LONG)
+                    .show()
+                startDate1 = ""
             }
 
             var repairDate1 = repairDate.text.toString()
@@ -166,7 +163,8 @@ class MainFragment : Fragment(), OnDeleteListener  {
             insertBikeMemo(memo)
         }
     }
-//바이크 메모를 룸에 입력
+
+    //바이크 메모를 룸에 입력
     private fun insertBikeMemo(memo: BikeMemo) {
         CoroutineScope(Dispatchers.IO).launch {
             bikeMemoDao.insert(memo)
@@ -175,7 +173,7 @@ class MainFragment : Fragment(), OnDeleteListener  {
         }
     }
 
-//바이크메모를 룸에서 수리 날짜로 불러와 바이크리스트에 입력
+    //바이크메모를 룸에서 수리 날짜로 불러와 바이크리스트에 입력
 //린트는 개발자가 완벽히 알맞은 코드나 충돌 가능성이 있는 코드를 사용할때 @SuppressLint(...)를 붙여 사용할 수 있게 해줍니다.
 //
 //@SuppressLint("NewApi")는 해당 프로젝트의 설정 된 minSdkVersion 이후에 나온 API를 사용할때  warning을 없애고 개발자가 해당 APi를 사용할 수 있게 합니다.
@@ -194,19 +192,18 @@ class MainFragment : Fragment(), OnDeleteListener  {
 //            }
             // 챗 gpt 코드로 변경
             val dAmount = bikeList.sumOf { it.amount }
-            totalAmount1=dAmount
-  //          Log.d("테스트","$dAmount+$totalAmount1")
+            totalAmount1 = dAmount
+            //          Log.d("테스트","$dAmount+$totalAmount1")
             withContext(Dispatchers.Main) {
                 bikeAdapter.notifyDataSetChanged()
                 //합계금액을 날짜 리스트에서 뽑아와 저장
-            binding.totalAmount.text = dAmount.toString()
+                binding.totalAmount.text = dAmount.toString()
             }
         }
     }
 
 
-
-// 바이크 메모 삭제
+    // 바이크 메모 삭제
     private fun deleteBikememo(bikeMemo: BikeMemo) {
         CoroutineScope(Dispatchers.IO).launch {
             bikeMemoDao.delete(bikeMemo)
@@ -214,15 +211,20 @@ class MainFragment : Fragment(), OnDeleteListener  {
         }
     }
 
-//바인딩 해제
+    //바인딩 해제
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
     }
 
-    //날짜 적용 함수
-    @SuppressLint("SimpleDateFormat")
-    private fun dateSet() {
+    //날짜 적용 함수 (chat gpt 가 만들어준 함수)
+    fun dateSet() {
+        val currentDate = LocalDate.now()
+
+        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.getDefault())
+        binding.repairDate.setText(currentDate.format(formatter))
+    }
+    /*private fun dateSet() {
         val now = System.currentTimeMillis()
         val date = Date(now)
         //날자로 저장
@@ -230,16 +232,16 @@ class MainFragment : Fragment(), OnDeleteListener  {
         val timestamp: String = sdf.format(date)
         binding.repairDate.setText(timestamp)
 
-    }
+    }*/
 
-       // 수리날짜 년도로 저장 입력 날짜를 받아 앞에서 4자리까지 잘라서 넣음
-    private fun reDateSet(){
+    // 수리날짜 년도로 저장 입력 날짜를 받아 앞에서 4자리까지 잘라서 넣음
+    private fun reDateSet() {
         val redate: String = binding.repairDate.text.toString()
 
-        year = redate.substring(0,4)
+        year = redate.substring(0, 4)
     }
 
-     private fun spinnerSelected() {
+    private fun spinnerSelected() {
         // 스피너 적용
         val spinner: Spinner = binding.planetsSpinner
         //프레그먼트에서 컨텍스트를 얻을때는 requireContext() 로 얻을수 있습니다.
@@ -252,8 +254,6 @@ class MainFragment : Fragment(), OnDeleteListener  {
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             // Apply the adapter to the spinner
             spinner.adapter = adapter
-
-
         }
 
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -266,20 +266,24 @@ class MainFragment : Fragment(), OnDeleteListener  {
             ) {
 //spinner 가 선택이 선택되면 "참고"로 초기화 그렇지않으면 선택단어 컨텐츠  변경
 
+                val selecedItem = parent?.getItemAtPosition(position).toString()
+
 
                 with(binding) {
-                    if ("선택" == parent?.getItemAtPosition(position).toString()) {
+                    if ("선택" == selecedItem) {
                         content.text = "참고"
                     } else {
-                        content.text = parent?.getItemAtPosition(position).toString()
+                        content.text = selecedItem
 
                     }
                     //컨텐츠가 변경되면 리퍼렌스 내용 변경
                     contentSelect()
-                    //스피너 처음 표시되는 컬러 색상 변경
-                    (parent?.getChildAt(position) as TextView).setTextColor(Color.parseColor("#703BE1"))
+                    //스피너 처음 표시되는 컬러 색상 변경은 테마에서 변경
+
                 }
+
             }
+
             //아무것도 선택되지 않았을때 적용
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 binding.reference.setText(R.string.reference)
@@ -315,18 +319,20 @@ class MainFragment : Fragment(), OnDeleteListener  {
                 "앞 디스크" -> reference.setText(R.string.disk)
                 "뒷 디스크" -> reference.setText(R.string.disk)
                 "선택" -> reference.setText(R.string.reference)
-                else -> {reference.setText(R.string.reference)}
+                else -> {
+                    reference.setText(R.string.reference)
+                }
             }
         }
     }
-// 리사이클러 뷰를 클릭했을때 룸 삭제 및 리사이클러 재 설정
+
+    // 리사이클러 뷰를 클릭했을때 룸 삭제 및 리사이클러 재 설정
     override fun onDeleteListener(bikeMemo: BikeMemo) {
         val dMemo = bikeMemo.amount
-        totalAmount1-=dMemo
+        totalAmount1 -= dMemo
         binding.totalAmount.text = totalAmount1.toString()
         deleteBikememo(bikeMemo)
     }
-
 
 
     //라이프사이클을 통한 두 프레그먼트간에 데이터 교환 리즘에서 재설정을 해야 화면에 보임

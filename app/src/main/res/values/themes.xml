@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Theme.BikeRepairDoc" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
@@ -21,11 +21,11 @@
     <!-- 스피너 안에 글자 색깔 변경 코드추가-->
     <style name="SpinnerItem" parent="android:Widget.TextView.SpinnerItem">
         <item name="android:textColor">@color/text</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">17sp</item>
     </style>
     <style name="SpinnerItem.DropDownItem" parent="@android:style/Widget.DropDownItem.Spinner">
         <item name="android:textColor">@color/text</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">17sp</item>
     </style>
 
 

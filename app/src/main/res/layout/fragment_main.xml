@@ -165,7 +165,7 @@
         android:layout_marginEnd="2dp"
         android:background="#FEF9CF"
         android:gravity="center"
-        android:inputType="textPersonName"
+        android:inputType="none"
         android:text="@string/금액"
         android:textAlignment="center"
         android:textColor="#256A80"
@@ -184,7 +184,7 @@
         android:text="@string/주행거리"
         android:textAlignment="center"
         android:textColor="#256A80"
-        android:textSize="20sp"
+        android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView4"
         app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toTopOf="@+id/textView4" />
@@ -211,7 +211,7 @@
         android:text="@string/수리날짜"
         android:textAlignment="center"
         android:textColor="#256A80"
-        android:textSize="20sp"
+        android:textSize="17sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bikeName" />
 
@@ -253,7 +253,7 @@
         android:layout_marginTop="4dp"
         android:layout_marginEnd="43dp"
         android:gravity="center"
-        android:text="참고"
+        android:text="@string/참고"
         android:textAlignment="center"
         android:textColor="#256A80"
         android:textSize="24sp"
