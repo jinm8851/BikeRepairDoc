@@ -36,4 +36,7 @@
     <string name="_0">0</string>
     <string name="합계">합계</string>
     <string name="참고">참고</string>
+    <string name="검색">검색</string>
+    <string name="검색가능">애칭 또는 날짜 또는 년도 검색가능</string>
+    <string name="날짜애칭">2023-01-01, 2023, 애칭</string>
 </resources>

@@ -3,6 +3,7 @@ package myung.jin.bikerepairdoc
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.NonDisposableHandle.parent
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import myung.jin.bikerepairdoc.databinding.FragmentMainBinding
@@ -58,7 +60,8 @@ class MainFragment : Fragment(), OnDeleteListener {
             mainRecyclerView.layoutManager = LinearLayoutManager(requireContext())
 
             //마지막 입력한 모델명 이나 구입 날짜를 가져와 EditText 에 넣어 주는 코드
-            textSet()
+           // textSet()
+
 
             save.setOnClickListener {
                 //수리날짜 연도로 저장
@@ -78,22 +81,27 @@ class MainFragment : Fragment(), OnDeleteListener {
         // 모델 넘버와 구입 날짜 앱 재 실행시 사라 지는 문제 해결 중
         // 바이크 리스트 를 전부 불러와 모델과 날짜를 입력 하고 바이크 리스트 를 지워 버림
         CoroutineScope(Dispatchers.IO).launch {
+            bikeList.clear()
             bikeList.addAll(bikeMemoDao.getAll())
             withContext(Dispatchers.Main) {
+
                 if (bikeList.isNotEmpty() && bikeList.last().model.isNotEmpty()) {
                     val modelText: String = bikeList.last().model
                     binding.bikeName.setText(modelText)
+
                 } else {
                     binding.bikeName.setText("")
                 }
                 if (bikeList.isNotEmpty() && bikeList.last().purchaseDate.isNotEmpty()) {
                     val pDate: String = bikeList.last().purchaseDate
                     binding.stDated.setText(pDate)
+
                 } else {
                     binding.stDated.setText("")
                 }
+
             }
-            bikeList.clear()
+
         }
 
     }
@@ -177,7 +185,7 @@ class MainFragment : Fragment(), OnDeleteListener {
 //린트는 개발자가 완벽히 알맞은 코드나 충돌 가능성이 있는 코드를 사용할때 @SuppressLint(...)를 붙여 사용할 수 있게 해줍니다.
 //
 //@SuppressLint("NewApi")는 해당 프로젝트의 설정 된 minSdkVersion 이후에 나온 API를 사용할때  warning을 없애고 개발자가 해당 APi를 사용할 수 있게 합니다.
-    @SuppressLint("NotifyDataSetChanged")
+    @SuppressLint("notifyDataSetChanged")
     private fun refreshAdapter() {
         CoroutineScope(Dispatchers.IO).launch {
             val date = binding.repairDate.text.toString()
@@ -187,17 +195,38 @@ class MainFragment : Fragment(), OnDeleteListener {
 //토탈금액 앱을 다시켜면 0이 되는 문제 해결중 (수리 날짜를 바꿘다 다시 불러오면 합계가 안맞음)
             // bikeList 의 마지막인 a 가 널이면 0을 로 초기화
             //for 문으로 해결 바이크리스트에서 어마운트만빼서 더해 합계에 넣음
+ //           var dAmount = 0
 //            for (bike in bikeList){
 //                dAmount += bike.amount
+//                Log.d("테스트","$dAmount+$totalAmount1")
 //            }
             // 챗 gpt 코드로 변경
-            val dAmount = bikeList.sumOf { it.amount }
-            totalAmount1 = dAmount
-            //          Log.d("테스트","$dAmount+$totalAmount1")
+
+           val dAmount = bikeList.sumOf { it.amount }
+
+           // totalAmount1 = dAmount
+                    //  Log.d("테스트","$dAmount+$totalAmount1")
             withContext(Dispatchers.Main) {
                 bikeAdapter.notifyDataSetChanged()
                 //합계금액을 날짜 리스트에서 뽑아와 저장
                 binding.totalAmount.text = dAmount.toString()
+
+                // 모델 넘버와 구입 날짜 앱 재 실행시 사라 지는 문제 해결 중
+                // 바이크 리스트 를 전부 불러와 모델과 날짜를 입력 하고 바이크 리스트 를 지워 버림
+                if (bikeList.isNotEmpty() && bikeList.last().model.isNotEmpty()) {
+                    val modelText: String = bikeList.last().model
+                    binding.bikeName.setText(modelText)
+
+                } else {
+                    binding.bikeName.setText("")
+                }
+                if (bikeList.isNotEmpty() && bikeList.last().purchaseDate.isNotEmpty()) {
+                    val pDate: String = bikeList.last().purchaseDate
+                    binding.stDated.setText(pDate)
+
+                } else {
+                    binding.stDated.setText("")
+                }
             }
         }
     }
@@ -263,6 +292,7 @@ class MainFragment : Fragment(), OnDeleteListener {
                 view: View?,
                 position: Int,
                 id: Long
+
             ) {
 //spinner 가 선택이 선택되면 "참고"로 초기화 그렇지않으면 선택단어 컨텐츠  변경
 

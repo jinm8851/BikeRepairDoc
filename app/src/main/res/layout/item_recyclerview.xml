@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
-    android:layout_height="45dp">
+    android:layout_height="60dp">
 
 
     <TextView
         android:id="@+id/itemRepairDate"
-        android:layout_width="90dp"
-        android:layout_height="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:textAlignment="center"
         android:textColor="#256A80"
@@ -20,32 +20,33 @@
 
     <TextView
         android:id="@+id/itemKm"
-        android:layout_width="63dp"
-        android:layout_height="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:textAlignment="viewEnd"
         android:textColor="#256A80"
         android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/itemRepairDate"
+        app:layout_constraintEnd_toStartOf="@+id/textView16"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="RtlCompat" />
 
     <TextView
         android:id="@+id/textView16"
-        android:layout_width="0dp"
-        android:layout_height="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Km"
+        android:text="@string/km"
         android:textAlignment="center"
         android:textColor="#256A80"
         android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/itemKm"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/itemRePair"
-        android:layout_width="90dp"
-        android:layout_height="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
         android:gravity="center"
         android:textAlignment="viewEnd"
         android:textColor="#256A80"
@@ -56,8 +57,8 @@
 
     <TextView
         android:id="@+id/itemAmount"
-        android:layout_width="63dp"
-        android:layout_height="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:textAlignment="viewEnd"
         android:textColor="#256A80"
@@ -68,10 +69,10 @@
 
     <TextView
         android:id="@+id/textView17"
-        android:layout_width="0dp"
-        android:layout_height="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="원"
+        android:text="@string/원"
         android:textColor="#256A80"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -79,8 +80,8 @@
 
     <TextView
         android:id="@+id/itemNote"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:gravity="bottom|center"
@@ -89,5 +90,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/itemRePair" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="206dp"
+        android:layout_marginEnd="205dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintGuide_begin="182dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#3DFFFFFF"
-    android:backgroundTint="#FFEB3B"
+    android:background="#FEF9CF"
     tools:context=".TotalFragment">
 
     <TextView
@@ -13,12 +12,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="8dp"
-        android:text="애칭 또는 날짜 또는 년도 검색가능"
+        android:text="@string/검색가능"
         android:textColor="#256A80"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,9 +28,10 @@
         android:layout_height="48dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:background="#328552E1"
+        android:background="#32B193E6"
         android:ems="10"
-        android:hint="2023-01-01, 2023, 애칭"
+        android:hint="@string/날짜애칭"
+        android:importantForAutofill="noExcludeDescendants"
         android:inputType="textFilter"
         android:textColor="#703BE1"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,8 +55,8 @@
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginEnd="16dp"
-        android:background="#328552E1"
-        android:text="검색"
+        android:background="#32B193E6"
+        android:text="@string/검색"
         android:textColor="#703BE1"
         android:textSize="18sp"
         android:textStyle="normal"
@@ -67,30 +68,28 @@
     <TextView
         android:id="@+id/totalTotalAmount"
         android:layout_width="wrap_content"
-        android:layout_height="49dp"
+        android:layout_height="wrap_content"
+
         android:layout_marginBottom="36dp"
         android:background="#32E1DF52"
-        android:gravity="center"
-        android:hint="0"
-        android:textAlignment="textEnd"
+        android:hint="@string/_0"
         android:textColor="#256A80"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="RtlCompat" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView13"
-        android:layout_width="38dp"
-        android:layout_height="49dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="#32E1DF52"
-        android:text="원"
+        android:text="@string/원"
         android:textColor="#256A80"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/totalTotalAmount"
         app:layout_constraintStart_toEndOf="@+id/totalTotalAmount"
-        app:layout_constraintTop_toTopOf="@+id/totalTotalAmount" />
+        app:layout_constraintTop_toBottomOf="@+id/totalRecycler" />
 </androidx.constraintlayout.widget.ConstraintLayout>

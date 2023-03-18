@@ -19,8 +19,8 @@
         <item>앞 디스크</item>
         <item>뒷 디스크</item>
         <item>벨브 조절</item>
-        <item>기타 구동계</item>
-        <item>기타 엔진계</item>
+        <item>기타구동계</item>
+        <item>기타엔진계</item>
         <item>기타 램프</item>
         <item>기타</item>
     </string-array>
