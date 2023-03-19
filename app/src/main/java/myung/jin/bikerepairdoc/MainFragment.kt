@@ -3,7 +3,6 @@ package myung.jin.bikerepairdoc
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.NonDisposableHandle.parent
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import myung.jin.bikerepairdoc.databinding.FragmentMainBinding
@@ -30,6 +28,7 @@ class MainFragment : Fragment(), OnDeleteListener {
     private lateinit var bikeAdapter: RecyclerAdapter
     private lateinit var bikeMemoDao: BikeMemoDao
 
+    private val bikeListMS = mutableListOf<BikeMemo>()
     // 년도만 추출
     private lateinit var year: String
     private var totalAmount1 = 0
@@ -60,7 +59,7 @@ class MainFragment : Fragment(), OnDeleteListener {
             mainRecyclerView.layoutManager = LinearLayoutManager(requireContext())
 
             //마지막 입력한 모델명 이나 구입 날짜를 가져와 EditText 에 넣어 주는 코드
-           // textSet()
+            textSet()
 
 
             save.setOnClickListener {
@@ -81,19 +80,19 @@ class MainFragment : Fragment(), OnDeleteListener {
         // 모델 넘버와 구입 날짜 앱 재 실행시 사라 지는 문제 해결 중
         // 바이크 리스트 를 전부 불러와 모델과 날짜를 입력 하고 바이크 리스트 를 지워 버림
         CoroutineScope(Dispatchers.IO).launch {
-            bikeList.clear()
-            bikeList.addAll(bikeMemoDao.getAll())
+            bikeListMS.clear()
+            bikeListMS.addAll(bikeMemoDao.getAll())
             withContext(Dispatchers.Main) {
 
-                if (bikeList.isNotEmpty() && bikeList.last().model.isNotEmpty()) {
-                    val modelText: String = bikeList.last().model
+                if (bikeListMS.isNotEmpty() && bikeListMS.last().model.isNotEmpty()) {
+                    val modelText: String = bikeListMS.last().model
                     binding.bikeName.setText(modelText)
 
                 } else {
                     binding.bikeName.setText("")
                 }
-                if (bikeList.isNotEmpty() && bikeList.last().purchaseDate.isNotEmpty()) {
-                    val pDate: String = bikeList.last().purchaseDate
+                if (bikeListMS.isNotEmpty() && bikeListMS.last().purchaseDate.isNotEmpty()) {
+                    val pDate: String = bikeListMS.last().purchaseDate
                     binding.stDated.setText(pDate)
 
                 } else {
@@ -211,22 +210,7 @@ class MainFragment : Fragment(), OnDeleteListener {
                 //합계금액을 날짜 리스트에서 뽑아와 저장
                 binding.totalAmount.text = dAmount.toString()
 
-                // 모델 넘버와 구입 날짜 앱 재 실행시 사라 지는 문제 해결 중
-                // 바이크 리스트 를 전부 불러와 모델과 날짜를 입력 하고 바이크 리스트 를 지워 버림
-                if (bikeList.isNotEmpty() && bikeList.last().model.isNotEmpty()) {
-                    val modelText: String = bikeList.last().model
-                    binding.bikeName.setText(modelText)
 
-                } else {
-                    binding.bikeName.setText("")
-                }
-                if (bikeList.isNotEmpty() && bikeList.last().purchaseDate.isNotEmpty()) {
-                    val pDate: String = bikeList.last().purchaseDate
-                    binding.stDated.setText(pDate)
-
-                } else {
-                    binding.stDated.setText("")
-                }
             }
         }
     }
