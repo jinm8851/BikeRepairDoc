@@ -16,7 +16,7 @@ class TotalFragment : Fragment(), OnDeleteListener {
 
     private var _binding: FragmentTotalBinding? = null
     private val totalBinding get() = _binding!!
-    private val  bikeList2 = mutableListOf<BikeMemo>()
+    private var bikeList2 = mutableListOf<BikeMemo>()
     private lateinit var helper: RoomHelper
     private lateinit var bikeAdapter2: RecyclerAdapter2
     private lateinit var bikeMemoDao: BikeMemoDao
@@ -37,6 +37,9 @@ class TotalFragment : Fragment(), OnDeleteListener {
         bikeMemoDao = helper.bikeMemoDao()
 
         bikeAdapter2 = RecyclerAdapter2(bikeList2, this)
+
+
+
 
 
         with(totalBinding) {
@@ -84,6 +87,7 @@ class TotalFragment : Fragment(), OnDeleteListener {
             withContext(Dispatchers.Main) {
                 bikeList2.clear()
                 bikeList2.addAll(filteredBikes)
+
                 //리스트에서 어마운트 합을 구함
                 tAmount = bikeList2.sumOf { it.amount }
                 bikeAdapter2.notifyDataSetChanged()
@@ -101,6 +105,7 @@ class TotalFragment : Fragment(), OnDeleteListener {
             withContext(Dispatchers.Main) {
                 bikeList2.clear()
                 bikeList2.addAll(filteredBikes)
+
                 // 합계금액 적용
 
                 tAmount = bikeList2.sumOf { it.amount }

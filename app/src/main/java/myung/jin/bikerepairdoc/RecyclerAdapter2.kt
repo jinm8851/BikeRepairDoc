@@ -6,8 +6,12 @@ import androidx.recyclerview.widget.RecyclerView
 import myung.jin.bikerepairdoc.databinding.ItemRecyclerviewBinding
 
 
-class RecyclerAdapter2(private val bikeMemoList: List<BikeMemo>, var onDeleteListener: OnDeleteListener):
+class RecyclerAdapter2(private var bikeMemoList: List<BikeMemo>, var onDeleteListener: OnDeleteListener):
     RecyclerView.Adapter<RecyclerAdapter2.Holder>(){
+
+
+
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
      val binding = ItemRecyclerviewBinding.inflate(LayoutInflater.from(parent.context),parent,false)
@@ -19,7 +23,8 @@ class RecyclerAdapter2(private val bikeMemoList: List<BikeMemo>, var onDeleteLis
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-       val memo = bikeMemoList.get(position)
+        //날짜를 역순으로 리사이클뷰에 정렬
+       val memo = bikeMemoList.sortedByDescending { it.date }.get(position)
 
         holder.setMemo(memo)
         holder.itemView.setOnLongClickListener {
