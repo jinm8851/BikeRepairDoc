@@ -50,4 +50,5 @@ class BikeMemo {
         this.year = year
 
     }
+    constructor(){}
 }
