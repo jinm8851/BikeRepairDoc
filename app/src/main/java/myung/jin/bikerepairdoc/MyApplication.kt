@@ -15,7 +15,7 @@ class MyApplication: MultiDexApplication() {
 
         //인증이 된건지 체크하는 함수를 이쪽 저쪽에서 사용하기 위해서
         fun checkAuth(): Boolean {
-            var currentUser = auth.currentUser
+            val currentUser = auth.currentUser
             return currentUser?.let {
                 email = currentUser.email
                 currentUser.isEmailVerified

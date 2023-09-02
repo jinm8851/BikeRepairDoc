@@ -111,14 +111,14 @@ class MainFragment : Fragment(), OnDeleteListener {
             //null check 후 메모 리스트를 만들어서 바이크리스트에 적용 후 인서트
             var bikeName1 = bikeName.text.toString()
             if (bikeName1.isEmpty()) {
-                Toast.makeText(requireContext(), "애칭이 비어있습니다. 애칭을 입력해주세요", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), R.string.nickem, Toast.LENGTH_LONG).show()
                 bikeName1 = ""
             }
 
             //구입날짜나 다른것이 비어있으면 참고를 빈 문자로 변경
             var startDate1 = stDated.text.toString()
             if (startDate1.isEmpty()) {
-                Toast.makeText(requireContext(), "구입날짜가 비어있습니다. 구입날짜를 입력해주세요", Toast.LENGTH_LONG)
+                Toast.makeText(requireContext(), R.string.purem, Toast.LENGTH_LONG)
                     .show()
                 startDate1 = ""
             }
@@ -284,8 +284,8 @@ class MainFragment : Fragment(), OnDeleteListener {
 
 
                 with(binding) {
-                    if ("선택" == selecedItem) {
-                        content.text = "참고"
+                    if (getText(R.string.select) == selecedItem) {
+                        content.text = getText(R.string.reference)
                     } else {
                         content.text = selecedItem
 
@@ -300,7 +300,7 @@ class MainFragment : Fragment(), OnDeleteListener {
 
             //아무것도 선택되지 않았을때 적용
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                binding.reference.setText(R.string.reference)
+                binding.reference.setText(R.string.referenceinfo)
             }
 
         }
@@ -311,30 +311,30 @@ class MainFragment : Fragment(), OnDeleteListener {
         //컨텐츠가 변경되면 리퍼렌스 내용 변경
         with(binding) {
             when (content.text.toString()) {
-                "오일" -> reference.setText(R.string.oil)
-                "오일 필터" -> reference.setText(R.string.oilfillter)
-                "앞 패드" -> reference.setText(R.string.brakepad)
-                "뒷 패드" -> reference.setText(R.string.brakepad)
-                "앞 타이어" -> reference.setText(R.string.tire)
-                "뒷 타이어" -> reference.setText(R.string.tire)
-                "벨트" -> reference.setText(R.string.belt)
-                "무브볼" -> reference.setText(R.string.moveball)
-                "미션오일" -> reference.setText(R.string.missionoil)
-                "에어클리너" -> reference.setText(R.string.aircleaner)
-                "슈" -> reference.setText(R.string.shu)
-                "베어링" -> reference.setText(R.string.bearing)
-                "프러그" -> reference.setText(R.string.plug)
-                "벨브 조절" -> reference.setText(R.string.valve)
-                "기타 구동계" -> reference.setText(R.string.drivesystem)
-                "기타 엔진계" -> reference.setText(R.string.engine)
-                "기타 램프" -> reference.setText(R.string.lamp)
-                "기타" -> reference.setText(R.string.etc)
-                "참고" -> reference.setText(R.string.reference)
-                "앞 디스크" -> reference.setText(R.string.disk)
-                "뒷 디스크" -> reference.setText(R.string.disk)
-                "선택" -> reference.setText(R.string.reference)
+                getText(R.string.oil) -> reference.setText(R.string.oilinfo)
+                getText(R.string.oilfilter) -> reference.setText(R.string.oilfillterinfo)
+                getText(R.string.fpad) -> reference.setText(R.string.brakepadinfo)
+                getText(R.string.rpad) -> reference.setText(R.string.brakepadinfo)
+                getText(R.string.ftire) -> reference.setText(R.string.tireinfo)
+                getText(R.string.rtire) -> reference.setText(R.string.tireinfo)
+                getText(R.string.belt) -> reference.setText(R.string.beltinfo)
+                getText(R.string.moveball) -> reference.setText(R.string.moveballinfo)
+                getText(R.string.missionoil) -> reference.setText(R.string.missionoilinfo)
+                getText(R.string.aircleaner) -> reference.setText(R.string.aircleanerinfo)
+                getText(R.string.shu) -> reference.setText(R.string.shuinfo)
+                getText(R.string.bearing) -> reference.setText(R.string.bearinginfo)
+                getText(R.string.plug) -> reference.setText(R.string.pluginfo)
+                getText(R.string.valve) -> reference.setText(R.string.valveinfo)
+                getText(R.string.drivesystem) -> reference.setText(R.string.drivesysteminfo)
+                getText(R.string.engine) -> reference.setText(R.string.engineinfo)
+                getText(R.string.lamp) -> reference.setText(R.string.lampinfo)
+                getText(R.string.etc) -> reference.setText(R.string.etcinfo)
+                getText(R.string.reference) -> reference.setText(R.string.referenceinfo)
+                getText(R.string.fdisk) -> reference.setText(R.string.diskinfo)
+                getText(R.string.rdisk) -> reference.setText(R.string.diskinfo)
+                getText(R.string.select) -> reference.setText(R.string.referenceinfo)
                 else -> {
-                    reference.setText(R.string.reference)
+                    reference.setText(R.string.referenceinfo)
                 }
             }
         }

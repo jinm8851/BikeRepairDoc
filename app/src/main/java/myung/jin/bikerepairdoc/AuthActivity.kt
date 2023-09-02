@@ -1,6 +1,6 @@
 package myung.jin.bikerepairdoc
 
-import android.content.Intent
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -59,8 +59,8 @@ class AuthActivity : AppCompatActivity() {
                 val credential = GoogleAuthProvider.getCredential(account.idToken,null)
                 //인증서가 유효한지 판단
                 MyApplication.auth.signInWithCredential(credential)
-                    .addOnCompleteListener(this){task ->
-                        if (task.isSuccessful){
+                    .addOnCompleteListener(this){resultTask ->
+                        if (resultTask.isSuccessful){
                             MyApplication.email = account.email
                             changeVisibility("login")
                         }else {
@@ -110,14 +110,14 @@ class AuthActivity : AppCompatActivity() {
                         MyApplication.auth.currentUser?.sendEmailVerification() //인증메일보내기
                             ?.addOnCompleteListener{ sendTask ->
                                 if (sendTask.isSuccessful){
-                                    Toast.makeText(baseContext,"회원가입에서 성공 ,전송된 메일을 확인해 주세요", Toast.LENGTH_LONG).show()
+                                    Toast.makeText(baseContext,R.string.authsuc, Toast.LENGTH_LONG).show()
                                     changeVisibility("logout")
                                 }else{
-                                    Toast.makeText(baseContext,"메일발송 실패", Toast.LENGTH_LONG).show()
+                                    Toast.makeText(baseContext,R.string.emailfail, Toast.LENGTH_LONG).show()
                                 }
                             }
                     }else{
-                        Toast.makeText(baseContext,"회원가입 실패", Toast.LENGTH_LONG).show()
+                        Toast.makeText(baseContext,R.string.authfail, Toast.LENGTH_LONG).show()
                         changeVisibility("logout")
                     }
                 }
@@ -138,10 +138,10 @@ class AuthActivity : AppCompatActivity() {
                             MyApplication.email = email
                             changeVisibility("login")
                         }else{
-                            Toast.makeText(baseContext,"전송된 메일로 이메일 인증이 되지 않았습니다.", Toast.LENGTH_LONG).show()
+                            Toast.makeText(baseContext,R.string.eauthfail, Toast.LENGTH_LONG).show()
                         }
                     }else{
-                        Toast.makeText(baseContext,"로그인 실패", Toast.LENGTH_LONG).show()
+                        Toast.makeText(baseContext,R.string.logfail, Toast.LENGTH_LONG).show()
                     }
                 }
 
@@ -151,7 +151,7 @@ class AuthActivity : AppCompatActivity() {
             if (MyApplication.checkAuth()) {
                 saveStore()
             }else{
-                Toast.makeText(this,"인증진행해주세요.", Toast.LENGTH_LONG).show()
+                Toast.makeText(this,R.string.authrun, Toast.LENGTH_LONG).show()
             }
         }
         binding.datapull.setOnClickListener {
@@ -167,15 +167,15 @@ class AuthActivity : AppCompatActivity() {
         }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+   /* override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         //구글 로그인 결과처리
 
-    }
+    }*/
     fun changeVisibility(mode: String){
         if(mode === "login"){
             binding.run {
-                authMainTextView.text = "${MyApplication.email} 님 반갑습니다."
+                authMainTextView.text = "${MyApplication.email}\n\n" + getString(R.string.nice)
                 logoutBtn.visibility= View.VISIBLE
                 goSignInBtn.visibility= View.GONE
                 googleLoginBtn.visibility= View.GONE
@@ -189,7 +189,7 @@ class AuthActivity : AppCompatActivity() {
 
         }else if(mode === "logout"){
             binding.run {
-                authMainTextView.text = "로그인 하거나 회원가입 해주세요."
+                authMainTextView.text = getString(R.string.authlogin)
                 logoutBtn.visibility = View.GONE
                 goSignInBtn.visibility = View.VISIBLE
                 googleLoginBtn.visibility = View.VISIBLE
@@ -226,10 +226,10 @@ class AuthActivity : AppCompatActivity() {
         MyApplication.db.collection("room")
             .add(data)
             .addOnSuccessListener {
-                Toast.makeText(this,"데이터전송이 끝났습니다.", Toast.LENGTH_LONG).show()
+                Toast.makeText(this,R.string.datacom, Toast.LENGTH_LONG).show()
             }
             .addOnFailureListener{
-                Toast.makeText(this,"데이터전송이 실패했습니다.", Toast.LENGTH_LONG).show()
+                Toast.makeText(this,R.string.datafail, Toast.LENGTH_LONG).show()
             }
     }
 
@@ -267,7 +267,7 @@ class AuthActivity : AppCompatActivity() {
                         Log.d("bikename", bikeName)
                         Log.d("email","$email")
                     }
-                    Toast.makeText(this,"ID ${email} 님 데이터를 전송받았습니다.", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this,"ID ${email}  ${getString(R.string.sent)}", Toast.LENGTH_LONG).show()
                 }
             }
             .addOnFailureListener{
