@@ -14,7 +14,7 @@ class RecyclerAdapter2(private var bikeMemoList: List<BikeMemo>, var onDeleteLis
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
-     val binding = ItemRecyclerviewBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val binding = ItemRecyclerviewBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return Holder(binding)
     }
 

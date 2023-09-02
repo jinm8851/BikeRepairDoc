@@ -33,4 +33,6 @@ class MyApplication: MultiDexApplication() {
         auth = Firebase.auth
         db = FirebaseFirestore.getInstance()
     }
+
+
 }

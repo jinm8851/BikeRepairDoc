@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?><resources>
+      
+  <string name="app_name">ซ่อมจักรยานหมอ</string>
+      
+  <string name="hello_blank_fragment">สวัสดีส่วนที่ว่างเปล่า</string>
+      
+  <string name="referenceinfo">นี่เป็นตัวเลขจากประสบการณ์จริงของ Bugman 125 และข้อมูลนี้ใช้เป็นข้อมูลอ้างอิงเท่านั้น ไม่มีความรับผิดใด ๆ สำหรับเนื้อหานี้</string>
+      
+  <string name="oilinfo">เปลี่ยนถ่ายน้ำมันเครื่องเป็นเวลา 10 ถึง 15 วันที่ระยะทาง 1,500 กม. ราคาเปลี่ยนถูกที่สุด ตามคู่มือ โดยอิงจาก Bugman 125 1,000 กม. แรก จากนั้น 3,000 กม. หลังจากนั้นจะเปลี่ยนทุกๆ 4000 กม. ถูกระบุว่าเป็น </string>
+      
+  <string name="brakepadinfo">ผ้าเบรกมีการเจียรเมื่อคุณได้ยินเสียงดังจากล้อเมื่อจานเบรกสึก ผ้าเบรกจะสึกเร็วขึ้น</string>
+      
+  <string name="tireinfo">ยางถูกมองว่าเบาโดยไม่คาดคิด แต่เป็นส่วนที่สำคัญที่สุด  อย่าลืมเปลี่ยนก่อนที่เส้นสึกหรอจะหมด</string>
+      
+  <string name="beltinfo">สายพานเปลี่ยนที่ประมาณ 20,000 กม. ตาม Bugman 125\n และแต่ละคนก็แตกต่างจากมอเตอร์ไซค์\n ไปที่มอเตอร์ไซค์ คู่มือบอกว่าให้เปลี่ยนที่ 12,000 กม.</string>
+      
+  <string name="moveballinfo">ผมเช็คลูกเคลื่อนที่ตอนเปลี่ยนสายพานผมเปลี่ยนที่ประมาณ 40,000 กม. ถ้ามอไซค์ใช้งานไม่ดีก็อยากเช็คครับ</string>
+      
+  <string name="missionoilinfo">จาก Bugman 125 น้ำมันภารกิจจะเปลี่ยนพร้อมกับการเปลี่ยนสายพาน และจะเปลี่ยนทุกๆ 20,000 กม.</string>
+      
+  <string name="aircleanerinfo">เครื่องฟอกอากาศไม่ได้ทำความสะอาดบ่อย โดยเปลี่ยนที่ประมาณ 10,000 กม. คู่มือบอกว่าให้ทำความสะอาดทุกๆ 3,000 กม. และเปลี่ยนที่ 12,000 กม.</string>
+      
+  <string name="shuinfo">กรณีรองเท้าคลัตช์หรือชุดมู่เล่ย์น่าจะพังลงมาระหว่าง 40,000 ถึง 70,000.  รูปแบบมีขนาดใหญ่และมีราคาแพง ดังนั้นจึงยากต่อการบดล่วงหน้า และยากต่อการเปลี่ยนแปลงเมื่อแตกหัก </string>
+      
+  <string name="bearinginfo">ควรตรวจสอบตลับลูกปืนบ่อยๆ เมื่อเปลี่ยนยางหลังจากระยะทางประมาณ 30,000 กม. ขึ้นไป และควรเปลี่ยนลูกปืนเมื่อเปลี่ยนยางด้วย</string>
+      
+  <string name="pluginfo">เปลี่ยนปลั๊กที่ระยะทางประมาณ 20,000 กม. และเปลี่ยนใหม่เมื่อมอเตอร์ไซค์มีเสียงเขย่าแล้วหมดแรง  คู่มือบอกว่าให้เปลี่ยนที่ 8,000 กม.</string>
+      
+  <string name="valveinfo">ดูเหมือนว่าการปรับระยะห่างวาล์วจะทำทุกๆ 30,000 ถึง 50,000 กม. อาการคือเมื่อคุณไปยืนเครื่องยนต์ดับหรือเครื่องยนต์ดับบ่อยหากเครื่องยนต์ดับตามจำนวนกิโลนั้นคุณต้องตรวจสอบ</string>
+      
+  <string name="drivesysteminfo">ตรวจสอบระบบขับเคลื่อนทุกครั้งที่เปิดเพื่อให้แน่ใจว่าไม่หยุดขณะวิ่ง</string>
+      
+  <string name="engineinfo">เครื่องยนต์ไม่ค่อยพังแต่ก็ตรวจเช็คเป็นระยะๆ</string>
+      
+  <string name="lampinfo">โคมไฟจะหักบ่อยขึ้นในวันที่ฝนตกหากไฟไหม้มากดังนั้นให้อยู่บ้านในวันที่ฝนตกหรือหิมะตก </string>
+      
+  <string name="etcinfo">ตรวจเช็คบ่อยๆไม่มีชำรุดใดๆให้มีอายุยืนยาวครับ</string>
+      
+  <string name="diskinfo">ควรสวมและเปลี่ยนแผ่นดิสก์เมื่อเก่า  หากไม่ได้เปลี่ยนผ้าเบรกจะเสื่อมสภาพอย่างรวดเร็วและกำลังจะค่อยๆลดลง</string>
+      
+  <string name="구입날짜">วันที่\n ซื้อ</string>
+      
+  <string name="버그만">บั๊กแมน</string>
+      
+  <string name="km">กม</string>
+      
+  <string name="기타수리내용">การซ่อมแซมอื่นๆ</string>
+      
+  <string name="원">$</string>
+      
+  <string name="애칭">ชื่อเล่น</string>
+      
+  <string name="_2000_01_01">2000\-01\-01</string>
+      
+  <string name="_0000000">0000000</string>
+      
+  <string name="금액">จำนวน</string>
+      
+  <string name="주행거리">ขับเคลื่อนด้วยระยะทาง</string>
+      
+  <string name="수리날짜">วันที่ซ่อม</string>
+      
+  <string name="etc">ฯลฯ</string>
+      
+  <string name="저장">บันทึก</string>
+      
+  <string name="_0">0</string>
+      
+  <string name="합계">ทั้งหมด</string>
+      
+  <string name="reference">อ้างอิง</string>
+      
+  <string name="검색">ค้นหา</string>
+      
+  <string name="검색가능">ค้นหาได้จากชื่อเล่น วันที่ หรือปี</string>
+      
+  <string name="날짜애칭">2000\-01\-01 2023 ชื่อเล่น</string>
+      
+  <string name="logininfo">ไม่มีข้อมูลการเข้าสู่ระบบ \n โปรดดำเนินการตรวจสอบความถูกต้องต่อไป\n การรับรองความถูกต้องของ Google หรือที่อยู่อีเมล\n กรุณาลงทะเบียนและเข้าสู่ระบบ\n หลังจากเข้าสู่ระบบแล้วให้ส่งข้อมูล\n \n บนอุปกรณ์ที่คุณต้องการถ่ายโอนข้อมูลเพื่อเข้าสู่ระบบอีกครั้ง\n หากคุณได้รับข้อมูล\n ข้อมูลจะถูกถ่ายโอนไปยังอุปกรณ์</string>
+      
+  <string name="tran">การรับรองความถูกต้อง</string>
+      
+  <string name="logout">ออกจากระบบ</string>
+      
+  <string name="signin">เข้าร่วมเป็นสมาชิก</string>
+      
+  <string name="gglogin">การรับรองความถูกต้องของ Google</string>
+      
+  <string name="email">อีเมล</string>
+      
+  <string name="sign">\tการเข้าร่วม</string>
+      
+  <string name="lonin">เข้าสู่ระบบ</string>
+      
+  <string name="dataput">ส่งข้อมูล</string>
+      
+  <string name="datapull">รับข้อมูล</string>
+      
+  <string name="_6">รหัสผ่านอย่างน้อย 6 ตัวอักษร</string>
+      
+  <string name="authsuc">ลงทะเบียนสำเร็จ โปรดตรวจสอบอีเมลที่ส่ง</string>
+      
+  <string name="emailfail">การส่งอีเมลล้มเหลว</string>
+      
+  <string name="authfail">การสมัครสมาชิกล้มเหลว</string>
+      
+  <string name="eauthfail">การยืนยันอีเมลไม่เสร็จสิ้นเมื่อส่งอีเมลไปแล้ว</string>
+      
+  <string name="logfail">การเข้าสู่ระบบล้มเหลว</string>
+      
+  <string name="authrun">โปรดดำเนินการตรวจสอบความถูกต้องต่อไป</string>
+      
+  <string name="nice">ยินดีที่ได้รู้จัก</string>
+      
+  <string name="authlogin">กรุณาเข้าสู่ระบบหรือลงทะเบียน</string>
+      
+  <string name="datacom">การส่งข้อมูลเสร็จสมบูรณ์</string>
+      
+  <string name="datafail">การส่งข้อมูลล้มเหลว</string>
+      
+  <string name="sent">ข้อมูลของคุณถูกส่งแล้ว</string>
+      
+  <string name="nickem">ชื่อเล่นว่างเปล่า กรุณากรอกชื่อเล่นของคุณ</string>
+      
+  <string name="purem">วันที่ซื้อว่างเปล่า กรุณากรอกวันที่ซื้อ</string>
+      
+  <string name="select">เลือก</string>
+      
+  <string name="oil">น้ำมัน</string>
+      
+  <string name="oilfilter">กรองน้ำมัน</string>
+      
+  <string name="fpad">ผ้าเบรกหน้า</string>
+      
+  <string name="rpad">ผ้าเบรกหลัง</string>
+      
+  <string name="ftire">ยางหน้า</string>
+      
+  <string name="rtire">ยางหลัง</string>
+      
+  <string name="belt">เข็มขัด</string>
+      
+  <string name="moveball">ย้ายลูกบอล</string>
+      
+  <string name="missionoil">น้ำมันภารกิจ</string>
+      
+  <string name="aircleaner">เครื่องฟอกอากาศ</string>
+      
+  <string name="shu">รองเท้าคลัช</string>
+      
+  <string name="bearing">การแบก</string>
+      
+  <string name="plug">หัวเทียน</string>
+      
+  <string name="valve">การตั้งค่าวาล์ว</string>
+      
+  <string name="drivesystem">ระบบขับเคลื่อนอื่นๆ</string>
+      
+  <string name="engine">เครื่องยนต์อื่นๆ</string>
+      
+  <string name="lamp">โคมไฟอื่นๆ</string>
+      
+  <string name="fdisk">ดิสก์หน้า</string>
+      
+  <string name="rdisk">ดิสก์ด้านหลัง</string>
+      
+  <string name="oilfillterinfo">ไส้กรองน้ำมันเครื่องเปลี่ยนเมื่อประมาณ 10,000 กม. เมื่อเปลี่ยนน้ำมันเครื่อง ในคู่มือ 1,000 กม. แรกและ 8,000 กม. ถัดไปจะระบุเป็นรอบการแลกเปลี่ยน</string>
+
+  <string name="emailnice">%1$s\n\n ยินดีที่ได้รู้จัก</string>
+</resources>

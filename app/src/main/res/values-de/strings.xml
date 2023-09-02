@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?><resources>
+      
+  <string name="app_name">BikeRepairDoc</string>
+      
+  <string name="hello_blank_fragment">Hallo leeres Fragment</string>
+      
+  <string name="referenceinfo">Hierbei handelt es sich um einen Wert, der auf tatsächlichen Erfahrungen mit dem Bugman 125 basiert und diese Informationen lediglich als Referenz dienen. Für diese Inhalte wird keine Haftung übernommen.</string>
+      
+  <string name="oilinfo">Das Öl wird alle 10 bis 15 Tage bei 1500 km gewechselt. Der Preis wird am günstigsten geändert. Laut Handbuch, basierend auf Bugman 125. Die ersten 1.000 km, dann 3.000 km. Danach wird er alle 4.000 km einmal geändert. wird aufgeführt als </string>
+      
+  <string name="brakepadinfo">Die Bremsbeläge schleifen, wenn Sie ein knirschendes Geräusch vom Rad hören. Wenn die Scheibe abgenutzt ist, nutzen sich die Bremsbeläge schneller ab</string>
+      
+  <string name="tireinfo">Über Reifen wird überraschenderweise wenig nachgedacht,  aber sie sind der wichtigste Teil.  Achten Sie darauf, sie auszutauschen, bevor die Verschleißlinie aufgebraucht ist</string>
+      
+  <string name="beltinfo">Der Riemenwechsel erfolgt bei ca. 20.000 km basierend auf dem Bugman 125,\n und jeder Mensch ist anders als Motorrad\n zum Motorrad Laut Handbuch soll der Wechsel bei 12.000 km erfolgen.</string>
+      
+  <string name="moveballinfo">Ich überprüfe die Bewegungskugel, wenn ich den Riemen wechsle. Ich wechsle sie nach etwa 40.000 km. Wenn das Motorrad nicht gut funktioniert, würde ich es gerne überprüfen</string>
+      
+  <string name="missionoilinfo">Basierend auf Bugman 125 wird das Missionsöl gleichzeitig mit dem Riemenwechsel gewechselt, und zwar einmal alle 20.000 km.</string>
+      
+  <string name="aircleanerinfo">Der Luftfilter wird nicht oft gereinigt. Er wird bei etwa 10.000 km gewechselt. Im Handbuch steht, dass man ihn alle 3.000 km einmal reinigen und bei 12.000 km wechseln soll.</string>
+      
+  <string name="shuinfo">Bei einer Kupplungsbacke oder einem Riemenscheibensatz scheint es zwischen 40.000 und 70.000 kaputt zu gehen.  Die Variation ist groß und teuer, daher ist es schwierig, sie im Voraus zu mahlen, und es ist schwierig, sie auszutauschen, wenn sie kaputt geht. </string>
+      
+  <string name="bearinginfo">Bei einem Reifenwechsel nach ca. 30.000 km oder mehr sollten die Lager häufig überprüft werden und bei einem Reifenwechsel auch die Lagergummis erneuert werden.</string>
+      
+  <string name="pluginfo">Ersetzen Sie den Stecker nach etwa 20.000 km und ersetzen Sie ihn,wenn das Motorrad klappert und die Leistung verliert.  Im Handbuch steht,dass der Wechsel bei 8.000 km erfolgen soll.</string>
+      
+  <string name="valveinfo">Die Einstellung des Ventilspiels scheint einmal alle 30.000 bis 50.000 km durchgeführt zu werden. Das Symptom ist, dass der Motor abschaltet, wenn Sie stehen, oder dass der Motor häufig abschaltet. Wenn der Motor bei dieser Kilozahl abschaltet, müssen Sie dies überprüfen.</string>
+      
+  <string name="drivesysteminfo">Überprüfen Sie den Antriebsstrang jedes Mal, wenn Sie ihn öffnen, um sicherzustellen, dass er während der Fahrt nicht stoppt.</string>
+      
+  <string name="engineinfo">Der Motor geht selten kaputt, aber überprüfen Sie ihn von Zeit zu Zeit.</string>
+      
+  <string name="lampinfo">An regnerischen Tagen gehen Lampen häufiger kaputt, wenn sie viel brennen. Bleiben Sie also an regnerischen oder verschneiten Tagen zu Hause </string>
+      
+  <string name="etcinfo">Überprüfen Sie es häufig, ohne dass andere Störungen auftreten. Lasst uns noch lange leben</string>
+      
+  <string name="diskinfo">Scheiben sollten abgenutzt und ersetzt werden, wenn sie alt sind.  Wenn sie nicht ausgetauscht werden, verschleißen die Bremsbeläge schnell und die Leistung lässt allmählich nach.</string>
+      
+  <string name="구입날짜">Datum von\n kaufen</string>
+      
+  <string name="버그만">Bugman</string>
+      
+  <string name="km">Km</string>
+      
+  <string name="기타수리내용">Sonstige Reparaturen</string>
+      
+  <string name="원">$</string>
+      
+  <string name="애칭">Spitzname</string>
+      
+  <string name="_2000_01_01">01\-01\-2000</string>
+      
+  <string name="_0000000">0000000</string>
+      
+  <string name="금액">Menge</string>
+      
+  <string name="주행거리">Zurückgelegte Strecke</string>
+      
+  <string name="수리날짜">Reparaturdatum</string>
+      
+  <string name="etc">Usw</string>
+      
+  <string name="저장">Speichern</string>
+      
+  <string name="_0">0</string>
+      
+  <string name="합계">Gesamt</string>
+      
+  <string name="reference">Referenz</string>
+      
+  <string name="검색">Suchen</string>
+      
+  <string name="검색가능">Durchsuchbar nach Spitzname, Datum oder Jahr</string>
+      
+  <string name="날짜애칭">01\-01\-2023, 2023, Spitzname</string>
+      
+  <string name="logininfo">Keine Anmeldeinformationen. \n Bitte fahren Sie mit der Authentifizierung fort.\n Google-Authentifizierung oder E-Mail-Adresse\n Bitte registrieren Sie sich und loggen Sie sich ein.\n Nach der Anmeldung Daten senden\n \n Auf dem Gerät, auf dem Sie die Daten übertragen möchten, melden Sie sich erneut an\n Wenn Sie Daten erhalten\n Die Daten werden an das Gerät übertragen.</string>
+      
+  <string name="tran">Authentifizierung</string>
+      
+  <string name="logout">Ausloggen</string>
+      
+  <string name="signin">Treten Sie der Mitgliedschaft bei</string>
+      
+  <string name="gglogin">Google-Authentifizierung</string>
+      
+  <string name="email">Email</string>
+      
+  <string name="sign">die Aufnahme</string>
+      
+  <string name="lonin">Anmeldung</string>
+      
+  <string name="dataput">Daten senden</string>
+      
+  <string name="datapull">Empfange Daten</string>
+      
+  <string name="_6">Passwort mindestens 6 Zeichen</string>
+      
+  <string name="authsuc">Die Registrierung war erfolgreich. Bitte überprüfen Sie die gesendete E-Mail</string>
+      
+  <string name="emailfail">Der E-Mail-Versand ist fehlgeschlagen</string>
+      
+  <string name="authfail">Die Registrierung der Mitgliedschaft ist fehlgeschlagen</string>
+      
+  <string name="eauthfail">Die E-Mail-Verifizierung wurde mit der gesendeten E-Mail nicht durchgeführt.</string>
+      
+  <string name="logfail">Fehler bei der Anmeldung</string>
+      
+  <string name="authrun">Bitte fahren Sie mit der Authentifizierung fort.</string>
+      
+  <string name="nice">Freut mich, Sie kennenzulernen</string>
+      
+  <string name="authlogin">Bitte einloggen oder anmelden.</string>
+      
+  <string name="datacom">Die Datenübertragung ist abgeschlossen.</string>
+      
+  <string name="datafail">Die Datenübertragung ist fehlgeschlagen.</string>
+      
+  <string name="sent">Ihre Daten wurden abgesendet.</string>
+      
+  <string name="nickem">Spitzname ist leer. Bitte geben Sie ihren Spitznamen ein</string>
+      
+  <string name="purem">Das Kaufdatum ist leer. Bitte geben Sie das Kaufdatum ein</string>
+      
+  <string name="select">Wählen</string>
+      
+  <string name="oil">Öl</string>
+      
+  <string name="oilfilter">Ölfilter</string>
+      
+  <string name="fpad">Vorderer Bremsbelag</string>
+      
+  <string name="rpad">Bremsbelag hinten</string>
+      
+  <string name="ftire">Vorderrad</string>
+      
+  <string name="rtire">Hinterrad</string>
+      
+  <string name="belt">Gürtel</string>
+      
+  <string name="moveball">Ball bewegen</string>
+      
+  <string name="missionoil">Missionsöl</string>
+      
+  <string name="aircleaner">Luftreiniger</string>
+      
+  <string name="shu">Kupplungsschuh</string>
+      
+  <string name="bearing">Lager</string>
+      
+  <string name="plug">Zündkerzen</string>
+      
+  <string name="valve">Ventileinstellung</string>
+      
+  <string name="drivesystem">Anderer Antriebsstrang</string>
+      
+  <string name="engine">Andere Motoren</string>
+      
+  <string name="lamp">Andere Lampen</string>
+      
+  <string name="fdisk">Vordere Scheibe</string>
+      
+  <string name="rdisk">Hintere Scheibe</string>
+      
+  <string name="oilfillterinfo">Der Ölfilter wird beim Ölwechsel etwa nach 10.000 km gewechselt. Im Handbuch sind die ersten 1.000 km und die nächsten 8.000 km als Austauschzyklus angegeben.</string>
+
+  <string name="emailnice">%1$s\n\n Freut mich, Sie kennenzulernen</string>
+</resources>

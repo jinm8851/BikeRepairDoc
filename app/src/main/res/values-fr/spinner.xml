@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><resources>
+      
+  <string-array name="spinner_item">
+            
+    <item>Sélectionner</item>
+            
+    <item>Huile</item>
+            
+    <item>Filtre à l\'huile</item>
+            
+    <item>Plaquette de frein avant</item>
+            
+    <item>Plaquette de frein arrière</item>
+            
+    <item>Pneu avant</item>
+            
+    <item>Roue arriére</item>
+            
+    <item>Ceinture</item>
+            
+    <item>Déplacer la balle</item>
+            
+    <item>Huile de mission</item>
+            
+    <item>Purificateur d\'air</item>
+            
+    <item>Patin d\'embrayage</item>
+            
+    <item>Palier</item>
+            
+    <item>Bougies</item>
+            
+    <item>Disque avant </item>
+            
+    <item>Disque arrière</item>
+            
+    <item>Réglage des vannes</item>
+            
+    <item>Autre transmission</item>
+            
+    <item>Autres moteurs</item>
+            
+    <item>D\'autres lampes</item>
+            
+    <item>Etc</item>
+        
+  </string-array>
+  
+</resources>

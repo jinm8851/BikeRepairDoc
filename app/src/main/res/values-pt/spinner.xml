@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><resources>
+      
+  <string-array name="spinner_item">
+            
+    <item>Selecione</item>
+            
+    <item>Óleo</item>
+            
+    <item>Filtro de óleo</item>
+            
+    <item>Pastilha de freio dianteiro</item>
+            
+    <item>Pastilha de freio traseiro</item>
+            
+    <item>Pneu dianteiro</item>
+            
+    <item>Pneu traseiro</item>
+            
+    <item>Cinto</item>
+            
+    <item>Mover bola</item>
+            
+    <item>Óleo de missão</item>
+            
+    <item>Filtro de ar</item>
+            
+    <item>Sapato de embreagem</item>
+            
+    <item>Consequência</item>
+            
+    <item>Velas de ignição</item>
+            
+    <item>Disco frontal </item>
+            
+    <item>Disco traseiro</item>
+            
+    <item>Configuração da válvula</item>
+            
+    <item>Outro trem de força</item>
+            
+    <item>Outros motores</item>
+            
+    <item>Outras lâmpadas</item>
+            
+    <item>Etc.</item>
+        
+  </string-array>
+  
+</resources>

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?><resources>
+      
+  <string name="app_name">BikeRepairDoc</string>
+      
+  <string name="hello_blank_fragment">Olá fragmento em branco</string>
+      
+  <string name="referenceinfo">Este é um valor baseado na experiência real do Bugman 125, e esta informação é usada simplesmente como referência. Nenhuma responsabilidade é assumida por este conteúdo.</string>
+      
+  <string name="oilinfo">O óleo é trocado entre 10 e 15 dias a 1500km. O preço é alterado para o mais barato De acordo com o manual, baseado no Bugman 125 Os primeiros 1.000 km, depois 3.000 km Depois disso, é trocado uma vez a cada 4.000 km. está listado como </string>
+      
+  <string name="brakepadinfo">As pastilhas de freio estão rangendo quando você ouve um som de trituração vindo da roda quando o disco se desgasta as pastilhas de freio se desgastam mais rápido</string>
+      
+  <string name="tireinfo">Os pneus são inesperadamente considerados levianamente,  mas são a parte mais importante.  Certifique-se de substituí-los antes que a linha de desgaste acabe</string>
+      
+  <string name="beltinfo">A correia é trocada em cerca de 20.000 km com base no Bugman 125,\n e cada pessoa é diferente da motocicleta\n para motocicleta O manual diz para trocar aos 12.000 km.</string>
+      
+  <string name="moveballinfo">Verifico a bola de movimento quando troco a correia Troco a cerca de 40.000 km Se a moto não funcionar bem gostaria de verificar</string>
+      
+  <string name="missionoilinfo">Baseado no Bugman 125, o óleo da missão é trocado ao mesmo tempo que a troca da correia e é trocado uma vez a cada 20.000 km.</string>
+      
+  <string name="aircleanerinfo">O filtro de ar não é limpo com frequência. É trocado a cerca de 10.000 km. O manual diz para limpá-lo uma vez a cada 3.000 km e trocá-lo a 12.000 km.</string>
+      
+  <string name="shuinfo">No caso de uma sapata de embreagem ou conjunto de polia, parece quebrar entre 40.000 e 70.000.  A variação é grande e cara, por isso é difícil moer com antecedência e é difícil trocar quando quebra. </string>
+      
+  <string name="bearinginfo">Os rolamentos devem ser verificados frequentemente ao trocar os pneus após cerca de 30.000 km ou mais e a borracha dos rolamentos também deve ser trocada durante a troca.</string>
+      
+  <string name="pluginfo">Substitua o plugue a cerca de 20.000 km e substitua-o quando a motocicleta chacoalhar e perder potência.  O manual diz para trocá-lo aos 8.000 km.</string>
+      
+  <string name="valveinfo">O ajuste da folga das válvulas parece ser feito uma vez a cada 30.000 a 50.000 km, o sintoma é que quando você fica parado o motor desliga ou o motor desliga com frequência, se o motor desligar com essa quantidade de quilos é preciso verificar.</string>
+      
+  <string name="drivesysteminfo">Verifique o sistema de transmissão sempre que abri-lo para garantir que ele não pare durante a condução.</string>
+      
+  <string name="engineinfo">O motor raramente quebra, mas verifique-o de vez em quando.</string>
+      
+  <string name="lampinfo">As lâmpadas quebram com mais frequência em dias de chuva se queimarem muito, então vamos ficar em casa em dias de chuva ou neve </string>
+      
+  <string name="etcinfo">Verifique frequentemente sem qualquer outro defeito Vamos viver muito tempo</string>
+      
+  <string name="diskinfo">Os discos devem ser desgastados e substituídos quando estiverem velhos.  Se não forem substituídas, as pastilhas dos travões desgastar-se-ão rapidamente e a potência diminuirá gradualmente.</string>
+      
+  <string name="구입날짜">Data de\n comprar</string>
+      
+  <string name="버그만">homem inseto</string>
+      
+  <string name="km">Km</string>
+      
+  <string name="기타수리내용">Outros reparos</string>
+      
+  <string name="원">$</string>
+      
+  <string name="애칭">Apelido</string>
+      
+  <string name="_2000_01_01">2000\-01\-01</string>
+      
+  <string name="_0000000">0000000</string>
+      
+  <string name="금액">Quantia</string>
+      
+  <string name="주행거리">Distância percorrida</string>
+      
+  <string name="수리날짜">Data do reparo</string>
+      
+  <string name="etc">Etc.</string>
+      
+  <string name="저장">Salvar</string>
+      
+  <string name="_0">0</string>
+      
+  <string name="합계">Total</string>
+      
+  <string name="reference">Referência</string>
+      
+  <string name="검색">Procurar</string>
+      
+  <string name="검색가능">Pesquisável por apelido, data ou ano</string>
+      
+  <string name="날짜애칭">2023\-01\-01, 2023, Apelido</string>
+      
+  <string name="logininfo">Nenhuma informação de login. \n Prossiga com a autenticação.\n Autenticação do Google ou endereço de e-mail\n Por favor, inscreva-se e faça login.\n Após fazer login, envie dados\n \n no dispositivo para o qual deseja transferir os dados para fazer login novamente\n Se você receber dados\n Os dados são transferidos para o dispositivo.</string>
+      
+  <string name="tran">Autenticação</string>
+      
+  <string name="logout">Sair</string>
+      
+  <string name="signin">junte-se à adesão</string>
+      
+  <string name="gglogin">Autenticação Google</string>
+      
+  <string name="email">E-mail</string>
+      
+  <string name="sign">\ta afiliação</string>
+      
+  <string name="lonin">Conecte-se</string>
+      
+  <string name="dataput">Enviar dados</string>
+      
+  <string name="datapull">Receber dados</string>
+      
+  <string name="_6">Senha com pelo menos 6 caracteres</string>
+      
+  <string name="authsuc">Cadastro realizado com sucesso, verifique o e-mail enviado</string>
+      
+  <string name="emailfail">Falha no envio de e-mail</string>
+      
+  <string name="authfail">Falha no registro de membro</string>
+      
+  <string name="eauthfail">A verificação do email não foi feita com o email enviado.</string>
+      
+  <string name="logfail">falha no login</string>
+      
+  <string name="authrun">Prossiga com a autenticação.</string>
+      
+  <string name="nice">Prazer em conhecê-lo</string>
+      
+  <string name="authlogin">Por favor faça o login ou registre-se.</string>
+      
+  <string name="datacom">A transmissão de dados está concluída.</string>
+      
+  <string name="datafail">A transmissão de dados falhou.</string>
+      
+  <string name="sent">Seus dados foram enviados.</string>
+      
+  <string name="nickem">O apelido está vazio. Por favor insira seu apelido</string>
+      
+  <string name="purem">A data de compra está em branco. Por favor insira a data de compra</string>
+      
+  <string name="select">Selecione</string>
+      
+  <string name="oil">Óleo</string>
+      
+  <string name="oilfilter">Filtro de óleo</string>
+      
+  <string name="fpad">Pastilha de freio dianteiro</string>
+      
+  <string name="rpad">Pastilha de freio traseiro</string>
+      
+  <string name="ftire">Pneu dianteiro</string>
+      
+  <string name="rtire">Pneu traseiro</string>
+      
+  <string name="belt">Cinto</string>
+      
+  <string name="moveball">Mover bola</string>
+      
+  <string name="missionoil">Óleo de missão</string>
+      
+  <string name="aircleaner">Filtro de ar</string>
+      
+  <string name="shu">Sapato de embreagem</string>
+      
+  <string name="bearing">Consequência</string>
+      
+  <string name="plug">Velas de ignição</string>
+      
+  <string name="valve">Configuração da válvula</string>
+      
+  <string name="drivesystem">Outro trem de força</string>
+      
+  <string name="engine">Outros motores</string>
+      
+  <string name="lamp">Outras lâmpadas</string>
+      
+  <string name="fdisk">Disco frontal</string>
+      
+  <string name="rdisk">Disco traseiro</string>
+      
+  <string name="oilfillterinfo">O filtro de óleo é trocado em cerca de 10.000 km quando o óleo é trocado. No manual, os primeiros 1.000 km e os próximos 8.000 km são indicados como ciclo de troca.</string>
+
+  <string name="emailnice">%1$s\n\n Prazer em conhecê-lo</string>
+</resources>

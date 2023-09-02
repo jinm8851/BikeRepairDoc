@@ -4,9 +4,10 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="referenceinfo">This is a figure based on actual experience based on the Bugman 125, and this information is simply used as a reference. No liability is assumed for this content.</string>
     <string name="oilinfo">"The oil is changed between 10 and 15 days at 1500km. The price is changed at the cheapest  According to the manual, based on Bugman 125 The first 1,000km, then 3,000km After that, it is changed once every 4000km. is listed as "</string>
+    <string name="oilfillterinfo">The oil filter is changed at about 10,000 km when the oil is changed. In the manual, the first 1,000 km and the next 8,000 km are indicated as an exchange cycle.</string>
     <string name="brakepadinfo">The brake pads are grinding  when you hear a crunching sound from the wheel  when the disc wears out  the brake pads wear out faster</string>
     <string name="tireinfo">Tires are unexpectedly thought of lightly,  but they are the most important part.  Be sure to replace them before the wear line runs out</string>
-    <string name="beltinfo">The belt is changed at about 20,000 km based on the Bugman 125,\n and each person differs from motorcycle\n to motorcycle The manual says to change at 12,000 km.</string>
+    <string name="beltinfo">The belt is changed at about 20,000 km based on the Bugman 125,  and each person differs from motorcycle  to motorcycle The manual says to change at 12,000 km.</string>
     <string name="moveballinfo">I check the move ball when I change the belt  I change it at about 40,000 km  If the motorcycle doesn\'t work well  I\'d like to check it</string>
     <string name="missionoilinfo">Based on Bugman 125,  the mission oil is changed at the same time as changing the belt,  and it is changed once every 20,000 km.</string>
     <string name="aircleanerinfo">The air cleaner is not cleaned often  It is changed at about 10000 km  The manual says to clean it once every 3000 km  and change it at 12000 km.</string>
@@ -90,6 +91,5 @@
     <string name="lamp">Other lamps</string>
     <string name="fdisk">Front disk</string>
     <string name="rdisk">Rear disk</string>
-    <string name="oilfillterinfo">The oil filter is changed at about 10,000 km when the oil is changed. In the manual, the first 1,000 km and the next 8,000 km are indicated as an exchange cycle.</string>
     <string name="emailnice">%1$s\n\n Nice to meet you</string>
 </resources>

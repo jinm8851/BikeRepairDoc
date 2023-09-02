@@ -173,9 +173,10 @@ class AuthActivity : AppCompatActivity() {
 
     }*/
     fun changeVisibility(mode: String){
+       val myemail = MyApplication.email.toString()
         if(mode === "login"){
             binding.run {
-                authMainTextView.text = "${MyApplication.email}\n\n" + getString(R.string.nice)
+                authMainTextView.text = getString(R.string.emailnice,myemail)
                 logoutBtn.visibility= View.VISIBLE
                 goSignInBtn.visibility= View.GONE
                 googleLoginBtn.visibility= View.GONE

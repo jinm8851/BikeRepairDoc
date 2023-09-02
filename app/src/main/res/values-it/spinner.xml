@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><resources>
+      
+  <string-array name="spinner_item">
+            
+    <item>Selezionare</item>
+            
+    <item>Olio</item>
+            
+    <item>Filtro dell\'olio</item>
+            
+    <item>Pastiglia freno anteriore</item>
+            
+    <item>Pastiglia freno posteriore</item>
+            
+    <item>Pneumatico anteriore</item>
+            
+    <item>Pneumatico posteriore</item>
+            
+    <item>Cintura</item>
+            
+    <item>Muovi la palla</item>
+            
+    <item>Olio di missione</item>
+            
+    <item>Filtro dell\'aria</item>
+            
+    <item>Ganascia della frizione</item>
+            
+    <item>Cuscinetto</item>
+            
+    <item>Candele di accensione</item>
+            
+    <item>Disco anteriore </item>
+            
+    <item>Disco posteriore</item>
+            
+    <item>Impostazione della valvola</item>
+            
+    <item>Altra trasmissione</item>
+            
+    <item>Altri motori</item>
+            
+    <item>Altre lampade</item>
+            
+    <item>Eccetera</item>
+        
+  </string-array>
+  
+</resources>

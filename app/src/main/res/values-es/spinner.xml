@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><resources>
+      
+  <string-array name="spinner_item">
+            
+    <item>Seleccionar</item>
+            
+    <item>Aceite</item>
+            
+    <item>Filtro de aceite</item>
+            
+    <item>Pastilla de freno delantero</item>
+            
+    <item>Pastilla de freno trasero</item>
+            
+    <item>Neumático delantero</item>
+            
+    <item>Llanta trasera</item>
+            
+    <item>Cinturón</item>
+            
+    <item>mover pelota</item>
+            
+    <item>aceite de misión</item>
+            
+    <item>Filtro de aire</item>
+            
+    <item>Zapato de embrague</item>
+            
+    <item>Cojinete</item>
+            
+    <item>Bujías</item>
+            
+    <item>Disco frontal </item>
+            
+    <item>Disco trasero</item>
+            
+    <item>Ajuste de válvula</item>
+            
+    <item>Otra transmisión</item>
+            
+    <item>Otros motores</item>
+            
+    <item>Otras lámparas</item>
+            
+    <item>Etc</item>
+        
+  </string-array>
+  
+</resources>

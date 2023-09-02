@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><resources>
+      
+  <string-array name="spinner_item">
+            
+    <item>Pilih</item>
+            
+    <item>Minyak</item>
+            
+    <item>Saringan minyak</item>
+            
+    <item>Kampas rem depan</item>
+            
+    <item>Kampas rem belakang</item>
+            
+    <item>Ban Depan</item>
+            
+    <item>Ban Belakang</item>
+            
+    <item>Sabuk</item>
+            
+    <item>Pindahkan bola</item>
+            
+    <item>Minyak misi</item>
+            
+    <item>Pembersih udara</item>
+            
+    <item>Sepatu kopling</item>
+            
+    <item>Bantalan</item>
+            
+    <item>Busi</item>
+            
+    <item>Disk depan </item>
+            
+    <item>Disk belakang</item>
+            
+    <item>Pengaturan katup</item>
+            
+    <item>Drivetrain lainnya</item>
+            
+    <item>Mesin lainnya</item>
+            
+    <item>Lampu lainnya</item>
+            
+    <item>Dll</item>
+        
+  </string-array>
+  
+</resources>

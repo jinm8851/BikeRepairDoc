@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><resources>
+      
+  <string-array name="spinner_item">
+            
+    <item>選択する</item>
+            
+    <item>油</item>
+            
+    <item>オイルフィルター</item>
+            
+    <item>フロントブレーキパッド</item>
+            
+    <item>リアブレーキパッド</item>
+            
+    <item>フロントタイヤ</item>
+            
+    <item>リアタイヤ</item>
+            
+    <item>ベルト</item>
+            
+    <item>ボールを動かす</item>
+            
+    <item>ミッションオイル</item>
+            
+    <item>エアクリーナー</item>
+            
+    <item>クラッチシュー</item>
+            
+    <item>ベアリング</item>
+            
+    <item>点火プラグ</item>
+            
+    <item>フロントディスク</item>
+            
+    <item>リアディスク</item>
+            
+    <item>バルブ設定</item>
+            
+    <item>その他のドライブトレイン</item>
+            
+    <item>その他のエンジン</item>
+            
+    <item>その他のランプ</item>
+            
+    <item>等</item>
+        
+  </string-array>
+  
+</resources>

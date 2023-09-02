@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?><resources>
+      
+  <string name="app_name">自転車修理ドクター</string>
+      
+  <string name="hello_blank_fragment">こんにちは、空白のフラグメント</string>
+      
+  <string name="referenceinfo">バグマン 125 をベースとした実体験に基づく数値であり、あくまで参考値としてご利用ください。この内容については一切の責任を負いません。</string>
+      
+  <string name="oilinfo">オイル交換は 1500km 走行で 10 ～ 15 日程度です。価格は一番安いところで交換します 説明書によるとバグマン 125 をベースに 最初は 1,000km、次は 3,000km 以降は 4000km に 1 回交換です。としてリストされています</string>
+      
+  <string name="brakepadinfo">ブレーキパッドが磨耗している ホイールからカリカリ音が聞こえる ディスクが磨耗すると、ブレーキパッドの磨耗が早くなる</string>
+      
+  <string name="tireinfo">タイヤは意外と軽く考えられていますが、最も重要な部品です。摩耗ラインがなくなる前に必ず交換してください</string>
+      
+  <string name="beltinfo">バグマン 125 をベースに 2 万 km 程度でベルト交換、\n そしてバイクは人それぞれです\n バイクへ 説明書には 12,000km で交換と書いてあります。</string>
+      
+  <string name="moveballinfo">ベルト交換時にムーブボールをチェックします 4 万 km くらいで交換します バイクの調子が悪くなったらチェックしたいです</string>
+      
+  <string name="missionoilinfo">バグマン 125 をベースにミッションオイルもベルト交換と同時に交換し、2 万 km に 1 回交換しています。</string>
+      
+  <string name="aircleanerinfo">エアクリーナーは頻繁に掃除していません 10000km くらいで交換しています 説明書には 3000km に 1 回掃除、12000km で交換と書いてあります。</string>
+      
+  <string name="shuinfo">クラッチシューやプーリーセットの場合は 4 万～ 7 万くらいで収まるようです。バリエーションが大きく高価なので、事前に研磨するのが難しく、壊れた場合に変更するのが困難です。</string>
+      
+  <string name="bearinginfo">約 30,000km 以上のタイヤ交換時にはベアリングを頻繁に点検し、交換時にはベアリングゴムも交換してください。</string>
+      
+  <string name="pluginfo">プラグは 20,000km 程度で交換し、バイクのガタつきやパワーがなくなったら交換してください。説明書には 8000km で交換と書いてあります。</string>
+      
+  <string name="valveinfo">バルブギャップ調整は 3 万キロから 5 万キロに一度行うようですが、症状としては、行って立つとエンジンが止まったり、頻繁にエンジンが止まったりするので、そのキロ数でエンジンが止まる場合は要確認です。</string>
+      
+  <string name="drivesysteminfo">ドライブトレインを開くたびにチェックして、走行中に停止しないことを確認してください。</string>
+      
+  <string name="engineinfo">エンジンが壊れることはほとんどありませんが、時々点検してください。</string>
+      
+  <string name="lampinfo">雨の日はランプがたくさん燃えると壊れやすいので、雨や雪の日は家で過ごしましょう</string>
+      
+  <string name="etcinfo">他に不具合がないかよくチェックして長生きしましょう</string>
+      
+  <string name="diskinfo">ディスクは摩耗し、古くなったら交換する必要があります。ブレーキパッドを交換しないと摩耗が早くなり、徐々にパワーが低下します。</string>
+      
+  <string name="구입날짜">日付\n 購入</string>
+      
+  <string name="버그만">バグマン</string>
+      
+  <string name="km">キロ</string>
+      
+  <string name="기타수리내용">その他の修理</string>
+      
+  <string name="원">$</string>
+      
+  <string name="애칭">ニックネーム</string>
+      
+  <string name="_2000_01_01">2000\-01\-01</string>
+      
+  <string name="_0000000">0000000</string>
+      
+  <string name="금액">額</string>
+      
+  <string name="주행거리">走行距離</string>
+      
+  <string name="수리날짜">修理日</string>
+      
+  <string name="etc">等</string>
+      
+  <string name="저장">保存</string>
+      
+  <string name="_0">0</string>
+      
+  <string name="합계">合計</string>
+      
+  <string name="reference">参照</string>
+      
+  <string name="검색">検索</string>
+      
+  <string name="검색가능">ニックネームや日付、年で検索可能</string>
+      
+  <string name="날짜애칭">2023\-01\-01、2023、ニックネーム</string>
+      
+  <string name="logininfo">ログイン情報がありません。\n 認証を進めてください。\n Google 認証またはメールアドレス\n サインアップしてログインしてください。\n ログイン後、データを送信\n \n データを移行したい端末で再度ログインしてください\n データを受信した場合\n データがデバイスに転送されます。</string>
+      
+  <string name="tran">認証</string>
+      
+  <string name="logout">ログアウト</string>
+      
+  <string name="signin">メンバーシップに参加する</string>
+      
+  <string name="gglogin">Google 認証</string>
+      
+  <string name="email">E メール</string>
+      
+  <string name="sign">加入</string>
+      
+  <string name="lonin">ログイン</string>
+      
+  <string name="dataput">データを送る</string>
+      
+  <string name="datapull">データを受信する</string>
+      
+  <string name="_6">パスワードは 6 文字以上</string>
+      
+  <string name="authsuc">登録に成功しました。送信されたメールをご確認ください</string>
+      
+  <string name="emailfail">メール送信に失敗しました</string>
+      
+  <string name="authfail">会員登録に失敗しました</string>
+      
+  <string name="eauthfail">送信されたメールではメール認証が行われていませんでした。</string>
+      
+  <string name="logfail">ログインに失敗しました</string>
+      
+  <string name="authrun">認証を進めてください。</string>
+      
+  <string name="nice">はじめまして</string>
+      
+  <string name="authlogin">ログインまたは登録してください。</string>
+      
+  <string name="datacom">データ送信が完了しました。</string>
+      
+  <string name="datafail">データ送信に失敗しました。</string>
+      
+  <string name="sent">データは送信されました。</string>
+      
+  <string name="nickem">ニックネームは空です。ニックネームを入力してください</string>
+      
+  <string name="purem">購入日は空白です。購入日を入力してください</string>
+      
+  <string name="select">選択する</string>
+      
+  <string name="oil">油</string>
+      
+  <string name="oilfilter">オイルフィルター</string>
+      
+  <string name="fpad">フロントブレーキパッド</string>
+      
+  <string name="rpad">リアブレーキパッド</string>
+      
+  <string name="ftire">フロントタイヤ</string>
+      
+  <string name="rtire">リアタイヤ</string>
+      
+  <string name="belt">ベルト</string>
+      
+  <string name="moveball">ボールを動かす</string>
+      
+  <string name="missionoil">ミッションオイル</string>
+      
+  <string name="aircleaner">エアクリーナー</string>
+      
+  <string name="shu">クラッチシュー</string>
+      
+  <string name="bearing">ベアリング</string>
+      
+  <string name="plug">点火プラグ</string>
+      
+  <string name="valve">バルブ設定</string>
+      
+  <string name="drivesystem">その他のドライブトレイン</string>
+      
+  <string name="engine">その他のエンジン</string>
+      
+  <string name="lamp">その他のランプ</string>
+      
+  <string name="fdisk">フロントディスク</string>
+      
+  <string name="rdisk">リアディスク</string>
+      
+  <string name="oilfillterinfo">オイルフィルターはオイル交換時約 10,000km で交換します。説明書には最初の 1,000km と次の 8,000km が交換周期として記載されています。</string>
+
+  <string name="emailnice">%1$s\n\n はじめまして</string>
+</resources>

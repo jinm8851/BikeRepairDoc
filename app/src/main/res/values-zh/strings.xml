@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?><resources>
+      
+  <string name="app_name">自行车维修文档</string>
+      
+  <string name="hello_blank_fragment">你好空白片段</string>
+      
+  <string name="referenceinfo">这是根据 Bugman 125 的实际经验得出的数字，此信息仅作为参考。对此内容不承担任何责任。</string>
+      
+  <string name="oilinfo">1500 公里时，10 至 15 天更换一次机油。价格最便宜换根据手册，以 Bugman 125 为基础，前 1000 公里，然后 3000 公里，之后每 4000 公里更换一次。被列为</string>
+      
+  <string name="brakepadinfo">当您听到车轮发出嘎吱嘎吱的声音时，说明刹车片正在磨损 当刹车盘磨损时 刹车片磨损得更快</string>
+      
+  <string name="tireinfo">轮胎意外地被轻视，但却是最重要的部件。请务必在磨损线耗尽之前更换它们</string>
+      
+  <string name="beltinfo">皮带在 Bugman 125 的基础上每行驶 2 万公里左右进行更换，\n 而且每个人的摩托车都不一样\n 摩托车说明书上说 12000 公里就换。</string>
+      
+  <string name="moveballinfo">我在更换皮带时检查移动球 我在大约 40,000 公里时更换 如果摩托车不能正常工作我想检查它</string>
+      
+  <string name="missionoilinfo">以 Bugman 125 为基础，在更换皮带的同时更换任务油，每 2 万公里更换一次。</string>
+      
+  <string name="aircleanerinfo">空气滤清器不经常清洗 10000 公里左右更换 说明书上说每 3000 公里清洗一次，12000 公里更换一次。</string>
+      
+  <string name="shuinfo">就离合器蹄片或滑轮组而言，其故障似乎在 40,000 至 70,000 之间。变异大且价格昂贵，故提前磨削困难，断裂时难以更换。</string>
+      
+  <string name="bearinginfo">大约 3 万公里以上更换轮胎时应经常检查轴承，更换时也应更换轴承橡胶。</string>
+      
+  <string name="pluginfo">2 万公里左右更换插头，摩托车嘎嘎声没电时更换。说明书上说 8000 公里换。</string>
+      
+  <string name="valveinfo">气门间隙调整好像每 3 万到 5 万公里调整一次，症状是停车时发动机熄火或者经常熄火，如果到了这个公斤数就熄火了，需要检查一下。</string>
+      
+  <string name="drivesysteminfo">每次打开传动系统时都要检查传动系统，以确保其在行驶时不会停止。</string>
+      
+  <string name="engineinfo">发动机很少出现故障，但要时常检查。</string>
+      
+  <string name="lampinfo">下雨天灯烧多了就更容易坏，所以下雨雪天就待在家里吧</string>
+      
+  <string name="etcinfo">经常检查没有其他故障就可以长寿了</string>
+      
+  <string name="diskinfo">圆盘用旧后应磨损并更换。如果不更换，刹车片会很快磨损，动力也会逐渐下降。</string>
+      
+  <string name="구입날짜">日期\n 购买</string>
+      
+  <string name="버그만">巴格曼</string>
+      
+  <string name="km">公里</string>
+      
+  <string name="기타수리내용">其他维修</string>
+      
+  <string name="원">$</string>
+      
+  <string name="애칭">昵称</string>
+      
+  <string name="_2000_01_01">2000\-01\-01</string>
+      
+  <string name="_0000000">0000000</string>
+      
+  <string name="금액">数量</string>
+      
+  <string name="주행거리">行驶距离</string>
+      
+  <string name="수리날짜">修复日期</string>
+      
+  <string name="etc">ETC</string>
+      
+  <string name="저장">节省</string>
+      
+  <string name="_0">0</string>
+      
+  <string name="합계">全部的</string>
+      
+  <string name="reference">参考</string>
+      
+  <string name="검색">搜索</string>
+      
+  <string name="검색가능">可按昵称、日期或年份搜索</string>
+      
+  <string name="날짜애칭">2003\-01\-01, 2023, 昵称</string>
+      
+  <string name="logininfo">没有登录信息。\n 请继续进行身份验证。\n Google 身份验证或电子邮件地址\n 请注册并登录。\n 登录后发送数据\n \n 在您要传输数据的设备上重新登录\n 如果您收到数据\n 数据传输到设备。</string>
+      
+  <string name="tran">验证</string>
+      
+  <string name="logout">登出</string>
+      
+  <string name="signin">加入会员</string>
+      
+  <string name="gglogin">谷歌认证</string>
+      
+  <string name="email">电子邮件</string>
+      
+  <string name="sign">加入</string>
+      
+  <string name="lonin">登录</string>
+      
+  <string name="dataput">发送数据</string>
+      
+  <string name="datapull">接收数据</string>
+      
+  <string name="_6">密码至少 6 个字符</string>
+      
+  <string name="authsuc">注册成功，请查收发送的邮件</string>
+      
+  <string name="emailfail">邮件发送失败</string>
+      
+  <string name="authfail">会员注册失败</string>
+      
+  <string name="eauthfail">发送的电子邮件未完成电子邮件验证。</string>
+      
+  <string name="logfail">登录失败</string>
+      
+  <string name="authrun">请继续进行身份验证。</string>
+      
+  <string name="nice">很高兴见到你</string>
+      
+  <string name="authlogin">请登录或注册。</string>
+      
+  <string name="datacom">数据传输完成。</string>
+      
+  <string name="datafail">数据传输失败。</string>
+      
+  <string name="sent">您的数据已发送。</string>
+      
+  <string name="nickem">昵称为空。请输入您的昵称</string>
+      
+  <string name="purem">购买日期为空。请输入购买日期</string>
+      
+  <string name="select">选择</string>
+      
+  <string name="oil">油</string>
+      
+  <string name="oilfilter">机油滤清器</string>
+      
+  <string name="fpad">前刹车片</string>
+      
+  <string name="rpad">后刹车片</string>
+      
+  <string name="ftire">前轮胎</string>
+      
+  <string name="rtire">后轮胎</string>
+      
+  <string name="belt">腰带</string>
+      
+  <string name="moveball">移动球</string>
+      
+  <string name="missionoil">使命油</string>
+      
+  <string name="aircleaner">空气净化器</string>
+      
+  <string name="shu">离合蹄</string>
+      
+  <string name="bearing">轴承</string>
+      
+  <string name="plug">火花塞</string>
+      
+  <string name="valve">阀门设置</string>
+      
+  <string name="drivesystem">其他传动系统</string>
+      
+  <string name="engine">其他发动机</string>
+      
+  <string name="lamp">其他灯具</string>
+      
+  <string name="fdisk">前盘</string>
+      
+  <string name="rdisk">后盘</string>
+      
+  <string name="oilfillterinfo">机油滤清器在行驶 10000 公里左右更换机油时更换。手册中将前 1000 公里和接下来的 8000 公里标注为一个交换周期。</string>
+
+  <string name="emailnice">%1$s\n\n 很高兴见到你</string>
+</resources>

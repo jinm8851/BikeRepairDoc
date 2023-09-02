@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="spinner_item">
+        <item>Select</item>
+        <item>Oil</item>
+        <item>Oil filter</item>
+        <item>Front brake pad</item>
+        <item>Rear brake pad</item>
+        <item>Front Tire</item>
+        <item>Rear Tire</item>
+        <item>Belt</item>
+        <item>Move ball</item>
+        <item>Mission oil</item>
+        <item>Air Cleaner</item>
+        <item>Clutch shoe</item>
+        <item>Bearing</item>
+        <item>Spark plugs</item>
+        <item>Front disk </item>
+        <item>Rear disk</item>
+        <item>Valve setting</item>
+        <item>Other drivetrain</item>
+        <item>Other engines</item>
+        <item>Other lamps</item>
+        <item>Etc</item>
+    </string-array>
+</resources>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><resources>
+      
+  <string-array name="spinner_item">
+            
+    <item>เลือก</item>
+            
+    <item>น้ำมัน</item>
+            
+    <item>กรองน้ำมัน</item>
+            
+    <item>ผ้าเบรกหน้า</item>
+            
+    <item>ผ้าเบรกหลัง</item>
+            
+    <item>ยางหน้า</item>
+            
+    <item>ยางหลัง</item>
+            
+    <item>เข็มขัด</item>
+            
+    <item>ย้ายลูกบอล</item>
+            
+    <item>น้ำมันภารกิจ</item>
+            
+    <item>เครื่องฟอกอากาศ</item>
+            
+    <item>รองเท้าคลัช</item>
+            
+    <item>การแบก</item>
+            
+    <item>หัวเทียน</item>
+            
+    <item>ดิสก์หน้า </item>
+            
+    <item>ดิสก์ด้านหลัง</item>
+            
+    <item>การตั้งค่าวาล์ว</item>
+            
+    <item>ระบบขับเคลื่อนอื่นๆ</item>
+            
+    <item>เครื่องยนต์อื่นๆ</item>
+            
+    <item>โคมไฟอื่นๆ</item>
+            
+    <item>ฯลฯ</item>
+        
+  </string-array>
+  
+</resources>

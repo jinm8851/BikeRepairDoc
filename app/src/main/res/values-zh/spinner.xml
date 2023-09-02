@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><resources>
+      
+  <string-array name="spinner_item">
+            
+    <item>选择</item>
+            
+    <item>油</item>
+            
+    <item>机油滤清器</item>
+            
+    <item>前刹车片</item>
+            
+    <item>后刹车片</item>
+            
+    <item>前轮胎</item>
+            
+    <item>后轮胎</item>
+            
+    <item>腰带</item>
+            
+    <item>移动球</item>
+            
+    <item>使命油</item>
+            
+    <item>空气净化器</item>
+            
+    <item>离合蹄</item>
+            
+    <item>轴承</item>
+            
+    <item>火花塞</item>
+            
+    <item>前盘</item>
+            
+    <item>后盘</item>
+            
+    <item>阀门设置</item>
+            
+    <item>其他传动系统</item>
+            
+    <item>其他发动机</item>
+            
+    <item>其他灯具</item>
+            
+    <item>ETC</item>
+        
+  </string-array>
+  
+</resources>

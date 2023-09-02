@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?><resources>
+      
+  <string name="app_name">BikeRepairDoc</string>
+      
+  <string name="hello_blank_fragment">Bonjour fragment vierge</string>
+      
+  <string name="referenceinfo">Il s\'agit d\'un chiffre basé sur une expérience réelle basée sur le Bugman 125, et cette information est simplement utilisée comme référence. Aucune responsabilité n\'est assumée pour ce contenu.</string>
+      
+  <string name="oilinfo">La vidange est effectuée entre 10 et 15 jours à 1500km. Le prix est changé au moins cher Selon le manuel, basé sur Bugman 125 Les premiers 1 000 km, puis 3 000 km Après cela, il est changé une fois tous les 4 000 km. est répertorié comme </string>
+      
+  <string name="brakepadinfo">Les plaquettes de frein grincent lorsque vous entendez un craquement provenant de la roue lorsque le disque s\'use les plaquettes de frein s\'usent plus vite</string>
+      
+  <string name="tireinfo">Étonnamment, les pneus sont considérés à la légère, mais ils constituent la partie la plus importante.  Assurez-vous de les remplacer avant que la ligne d\'usure ne soit épuisée</string>
+      
+  <string name="beltinfo">La courroie est changée à environ 20 000 km sur la base du Bugman 125,\n et chaque personne est différente de la moto\n à moto Le manuel dit de changer à 12 000 km.</string>
+      
+  <string name="moveballinfo">Je vérifie la boule de déplacement lorsque je change la courroie Je la change vers 40 000 km Si la moto ne fonctionne pas bien j\'aimerais la vérifier</string>
+      
+  <string name="missionoilinfo">Basé sur Bugman 125, l\'huile de mission est changée en même temps que le changement de courroie, et elle est changée une fois tous les 20 000 km.</string>
+      
+  <string name="aircleanerinfo">Le filtre à air n\'est pas nettoyé souvent. Il est changé tous les 10 000 km environ. Le manuel indique de le nettoyer une fois tous les 3 000 km et de le changer tous les 12 000 km.</string>
+      
+  <string name="shuinfo">Dans le cas d\'un patin d\'embrayage ou d\'un jeu de poulies, celui-ci semble tomber en panne entre 40 000 et 70 000.  La variation est importante et coûteuse, il est donc difficile de la broyer à l\'avance et il est difficile de la changer en cas de casse. </string>
+      
+  <string name="bearinginfo">Les roulements doivent être vérifiés fréquemment lors d\'un changement de pneus après environ 30 000 km ou plus et le caoutchouc des roulements doit également être changé lors du changement.</string>
+      
+  <string name="pluginfo">Remplacez la fiche après environ 20 000 km et remplacez-la lorsque la moto tremble et perd de la puissance.  Le manuel dit de le changer à 8 000 km.</string>
+      
+  <string name="valveinfo">Le réglage de l\'écartement des soupapes semble être effectué une fois tous les 30 000 à 50 000 km,le symptôme est que lorsque vous vous arrêtez,le moteur s\'arrête ou le moteur s\'éteint fréquemment si le moteur s\'arrête à ce nombre de kilos , vous devez le vérifier.</string>
+      
+  <string name="drivesysteminfo">Vérifiez la transmission chaque fois que vous l\'ouvrez pour vous assurer qu\'elle ne s\'arrête pas en cours de route.</string>
+      
+  <string name="engineinfo">Le moteur tombe rarement en panne mais vérifiez-le de temps en temps.</string>
+      
+  <string name="lampinfo">Les lampes se cassent plus souvent les jours de pluie si elles brûlent beaucoup, alors restons à la maison les jours de pluie ou de neige. </string>
+      
+  <string name="etcinfo">Vérifiez-le souvent sans autre dysfonctionnement Vivons longtemps</string>
+      
+  <string name="diskinfo">Les disques doivent être usés et remplacés lorsqu\'ils sont vieux.  Si elles ne sont pas remplacées, les plaquettes de frein s’useront rapidement et la puissance diminuera progressivement.</string>
+      
+  <string name="구입날짜">Date de\n achat</string>
+      
+  <string name="버그만">Bugman</string>
+      
+  <string name="km">Km</string>
+      
+  <string name="기타수리내용">Autres réparations</string>
+      
+  <string name="원">$</string>
+      
+  <string name="애칭">Surnom</string>
+      
+  <string name="_2000_01_01">2000\-01\-01</string>
+      
+  <string name="_0000000">0000000</string>
+      
+  <string name="금액">Montant</string>
+      
+  <string name="주행거리">Distance parcourue</string>
+      
+  <string name="수리날짜">Date de réparation</string>
+      
+  <string name="etc">Etc</string>
+      
+  <string name="저장">Sauvegarder</string>
+      
+  <string name="_0">0</string>
+      
+  <string name="합계">Total</string>
+      
+  <string name="reference">Référence</string>
+      
+  <string name="검색">Recherche</string>
+      
+  <string name="검색가능">Recherche par pseudonyme, date ou année</string>
+      
+  <string name="날짜애칭">2000\-01\-01, 2023, Pseudo</string>
+      
+  <string name="logininfo">Aucune information de connexion. \n Veuillez procéder à l\'authentification.\n Authentification Google ou adresse e-mail\n Veuillez vous inscrire et vous connecter.\n Après vous être connecté, envoyez les données\n \n sur l\'appareil sur lequel vous souhaitez transférer les données pour vous reconnecter\n Si vous recevez des données\n Les données sont transférées vers l\'appareil.</string>
+      
+  <string name="tran">Authentification</string>
+      
+  <string name="logout">Se déconnecter</string>
+      
+  <string name="signin">rejoindre l\'adhésion</string>
+      
+  <string name="gglogin">Authentification Google</string>
+      
+  <string name="email">E-mail</string>
+      
+  <string name="sign">" affiliation"</string>
+      
+  <string name="lonin">Se connecter</string>
+      
+  <string name="dataput">Envoyer des données</string>
+      
+  <string name="datapull">Recevoir des données</string>
+      
+  <string name="_6">Mot de passe d\'au moins 6 caractères</string>
+      
+  <string name="authsuc">Inscription réussie, merci de vérifier l\'email envoyé</string>
+      
+  <string name="emailfail">L\'envoi du courrier a échoué</string>
+      
+  <string name="authfail">L\'enregistrement de l\'adhésion a échoué</string>
+      
+  <string name="eauthfail">La vérification de l\'e-mail n\'a pas été effectuée avec l\'e-mail envoyé.</string>
+      
+  <string name="logfail">La connexion a échoué</string>
+      
+  <string name="authrun">Veuillez procéder à l\'authentification.</string>
+      
+  <string name="nice">Ravi de vous rencontrer</string>
+      
+  <string name="authlogin">S\'il vous plaît vous connecter ou vous inscrire.</string>
+      
+  <string name="datacom">La transmission des données est terminée.</string>
+      
+  <string name="datafail">La transmission des données a échoué.</string>
+      
+  <string name="sent">Vos données ont été envoyées.</string>
+      
+  <string name="nickem">Le pseudo est vide. s\'il vous plait, entrez ton surnom</string>
+      
+  <string name="purem">La date d\'achat est vide. Veuillez entrer la date d\'achat</string>
+      
+  <string name="select">Sélectionner</string>
+      
+  <string name="oil">Huile</string>
+      
+  <string name="oilfilter">Filtre à l\'huile</string>
+      
+  <string name="fpad">Plaquette de frein avant</string>
+      
+  <string name="rpad">Plaquette de frein arrière</string>
+      
+  <string name="ftire">Pneu avant</string>
+      
+  <string name="rtire">Roue arriére</string>
+      
+  <string name="belt">Ceinture</string>
+      
+  <string name="moveball">Déplacer la balle</string>
+      
+  <string name="missionoil">Huile de mission</string>
+      
+  <string name="aircleaner">Purificateur d\'air</string>
+      
+  <string name="shu">Patin d\'embrayage</string>
+      
+  <string name="bearing">Palier</string>
+      
+  <string name="plug">Bougies</string>
+      
+  <string name="valve">Réglage des vannes</string>
+      
+  <string name="drivesystem">Autre transmission</string>
+      
+  <string name="engine">Autres moteurs</string>
+      
+  <string name="lamp">D\'autres lampes</string>
+      
+  <string name="fdisk">Disque avant</string>
+      
+  <string name="rdisk">Disque arrière</string>
+      
+  <string name="oilfillterinfo">Le filtre à huile est changé tous les 10 000 km environ lors de la vidange d\'huile. Dans le manuel, les 1 000 premiers km et les 8 000 km suivants sont indiqués comme cycle d\'échange.</string>
+
+  <string name="emailnice">%1$s\n\n Ravi de vous rencontrer</string>
+</resources>

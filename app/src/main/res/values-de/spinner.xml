@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><resources>
+      
+  <string-array name="spinner_item">
+            
+    <item>Wählen</item>
+            
+    <item>Öl</item>
+            
+    <item>Ölfilter</item>
+            
+    <item>Vorderer Bremsbelag</item>
+            
+    <item>Bremsbelag hinten</item>
+            
+    <item>Vorderrad</item>
+            
+    <item>Hinterrad</item>
+            
+    <item>Gürtel</item>
+            
+    <item>Ball bewegen</item>
+            
+    <item>Missionsöl</item>
+            
+    <item>Luftreiniger</item>
+            
+    <item>Kupplungsschuh</item>
+            
+    <item>Lager</item>
+            
+    <item>Zündkerzen</item>
+            
+    <item>Vordere Scheibe </item>
+            
+    <item>Hintere Scheibe</item>
+            
+    <item>Ventileinstellung</item>
+            
+    <item>Anderer Antriebsstrang</item>
+            
+    <item>Andere Motoren</item>
+            
+    <item>Andere Lampen</item>
+            
+    <item>Usw</item>
+        
+  </string-array>
+  
+</resources>
