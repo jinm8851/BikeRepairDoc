@@ -92,4 +92,8 @@
     <string name="fdisk">Front disk</string>
     <string name="rdisk">Rear disk</string>
     <string name="emailnice">%1$s\n\n Nice to meet you</string>
+    <string name="deletion">Delete Confirmation</string>
+    <string name="wantDeletion">Are you sure you want to delete it?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>

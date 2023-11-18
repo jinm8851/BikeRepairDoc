@@ -92,4 +92,9 @@
     <string name="fdisk">앞 디스크</string>
     <string name="rdisk">뒷 디스크</string>
     <string name="emailnice">%1$s\n\n 님 반갑습니다.</string>
+    <string name="deletion">삭제 확인</string>
+    <string name="wantDeletion">정말로 삭제하시겠습니까?</string>
+    <string name="yes">예</string>
+    <string name="no">아니요</string>
+
 </resources>

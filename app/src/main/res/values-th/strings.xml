@@ -167,4 +167,8 @@
   <string name="oilfillterinfo">ไส้กรองน้ำมันเครื่องเปลี่ยนเมื่อประมาณ 10,000 กม. เมื่อเปลี่ยนน้ำมันเครื่อง ในคู่มือ 1,000 กม. แรกและ 8,000 กม. ถัดไปจะระบุเป็นรอบการแลกเปลี่ยน</string>
 
   <string name="emailnice">%1$s\n\n ยินดีที่ได้รู้จัก</string>
+    <string name="deletion">ยืนยันการลบ</string>
+  <string name="wantDeletion">คุณแน่ใจหรือว่าต้องการลบมัน?</string>
+  <string name="yes">ใช่</string>
+  <string name="no">ไม่</string>
 </resources>

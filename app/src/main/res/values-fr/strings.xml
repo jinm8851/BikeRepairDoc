@@ -167,4 +167,8 @@
   <string name="oilfillterinfo">Le filtre à huile est changé tous les 10 000 km environ lors de la vidange d\'huile. Dans le manuel, les 1 000 premiers km et les 8 000 km suivants sont indiqués comme cycle d\'échange.</string>
 
   <string name="emailnice">%1$s\n\n Ravi de vous rencontrer</string>
+    <string name="deletion">Confirmer la suppression</string>
+  <string name="wantDeletion">Tu es sûr de vouloir l\'effacer ?</string>
+  <string name="yes">Oui.</string>
+  <string name="no">Non.</string>
 </resources>

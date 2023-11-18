@@ -167,4 +167,8 @@
   <string name="oilfillterinfo">El filtro de aceite se cambia a unos 10.000 km cuando se cambia el aceite. En el manual los primeros 1.000 km y los siguientes 8.000 km están indicados como ciclo de cambio.</string>
 
   <string name="emailnice">%1$s\n\n Encantado de conocerlo</string>
+    <string name="deletion">Confirmar la eliminación.</string>
+  <string name="wantDeletion">¿Seguro que quieres borrarlo?</string>
+  <string name="yes">Sí.</string>
+  <string name="no">No.</string>
 </resources>

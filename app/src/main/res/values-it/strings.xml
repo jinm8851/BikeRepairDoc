@@ -167,4 +167,8 @@
   <string name="oilfillterinfo">Il filtro dell\'olio viene cambiato a circa 10.000 km quando si cambia l\'olio. Nel manuale i primi 1.000 km ed i successivi 8.000 km sono indicati come ciclo di scambio.</string>
 
   <string name="emailnice">%1$s\n\n Piacere di conoscerti</string>
+    <string name="deletion">Confirmazione della cancellazione</string>
+  <string name="wantDeletion">E\' sicuro di volerlo cancellare?</string>
+  <string name="yes">sì</string>
+  <string name="no">N. di</string>
 </resources>

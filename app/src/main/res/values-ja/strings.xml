@@ -167,4 +167,8 @@
   <string name="oilfillterinfo">オイルフィルターはオイル交換時約 10,000km で交換します。説明書には最初の 1,000km と次の 8,000km が交換周期として記載されています。</string>
 
   <string name="emailnice">%1$s\n\n はじめまして</string>
+    <string name="deletion">削除の確認</string>
+  <string name="wantDeletion">削除してよろしいですか？</string>
+  <string name="yes">はい</string>
+  <string name="no">いいえ</string>
 </resources>

@@ -167,4 +167,8 @@
   <string name="oilfillterinfo">Filter oli diganti sekitar 10.000 km saat oli diganti. Dalam manual, 1.000 km pertama dan 8.000 km berikutnya diindikasikan sebagai siklus pertukaran.</string>
 
   <string name="emailnice">%1$s\n\n Senang berkenalan dengan Anda</string>
+    <string name="deletion">Konfirmasi penghapusan</string>
+  <string name="wantDeletion">Apakah Anda yakin ingin menghapusnya?</string>
+  <string name="yes">ya</string>
+  <string name="no">Tidak</string>
 </resources>

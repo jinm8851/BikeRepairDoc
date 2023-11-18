@@ -1,5 +1,8 @@
 package myung.jin.bikerepairdoc
 
+import android.annotation.SuppressLint
+import android.app.AlertDialog
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -20,9 +23,32 @@ class RecyclerAdapter(private val bikeMemoList: List<BikeMemo>, var onDeleteList
         // 2. 홀더에 데이터를 전달
         holder.setMemo(memo)
         holder.itemView.setOnLongClickListener {
-            onDeleteListener.onDeleteListener(memo)
+            //삭제 다이얼로그 실행
+            showDeleteDialog(holder.itemView.context,memo)
             return@setOnLongClickListener true
         }
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    private fun showDeleteDialog(context: Context, bikeMemo: BikeMemo) {
+        val alertDialogBuilder = AlertDialog.Builder(context)
+
+        alertDialogBuilder.setTitle(R.string.deletion)
+        alertDialogBuilder.setMessage(R.string.wantDeletion)
+
+        alertDialogBuilder.setPositiveButton(R.string.yes) { _, _ ->
+            // "예" 버튼을 눌렀을 때의 동작 수행
+            onDeleteListener.onDeleteListener(bikeMemo)
+            notifyDataSetChanged() // 데이터셋이 변경되었음을 알려서 RecyclerView를 갱신
+        }
+
+        alertDialogBuilder.setNegativeButton(R.string.no) { dialog, _ ->
+            // "아니오" 버튼을 눌렀을 때의 동작 수행
+            dialog.dismiss()
+        }
+
+        val alertDialog = alertDialogBuilder.create()
+        alertDialog.show()
     }
 //리스트 갯수 전달
     override fun getItemCount(): Int {
