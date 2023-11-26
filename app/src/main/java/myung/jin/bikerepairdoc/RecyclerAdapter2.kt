@@ -49,13 +49,14 @@ class RecyclerAdapter2(private var bikeMemoList: List<BikeMemo>, var onDeleteLis
 
         holder.itemView.setOnLongClickListener {
             //삭제 다이얼로그 실행
-            showDeleteDialog(holder.itemView.context,memo)
+            showDeleteDialog(holder.itemView.context,memo,position)
             return@setOnLongClickListener true
+
         }
     }
 
-    //삭제다이얼로그 작성함수
-    private fun showDeleteDialog(context: Context, bikeMemo: BikeMemo) {
+    //삭제다이얼로그 작성함수 홀더에 포지션까지 같이 파라미터로 받아서넘기면 notifyItemRemoved(sellect)를 사용할수있음
+    private fun showDeleteDialog(context: Context, bikeMemo: BikeMemo, position: Int) {
         val alertDialogBuilder = AlertDialog.Builder(context)
 
         alertDialogBuilder.setTitle(R.string.deletion)
@@ -64,7 +65,9 @@ class RecyclerAdapter2(private var bikeMemoList: List<BikeMemo>, var onDeleteLis
         alertDialogBuilder.setPositiveButton(R.string.yes) { _, _ ->
             // "예" 버튼을 눌렀을 때의 동작 수행
             onDeleteListener.onDeleteListener(bikeMemo)
-            notifyDataSetChanged() // 데이터셋이 변경되었음을 알려서 RecyclerView를 갱신
+          //  notifyDataSetChanged() // 데이터셋이 변경되었음을 알려서 RecyclerView를 갱신
+            // 홀더에 포지션까지 같이 파라미터로 받아서넘기면 notifyItemRemoved(position)를 사용할수있음
+            notifyItemRemoved(position)
         }
 
         alertDialogBuilder.setNegativeButton(R.string.no) { dialog, _ ->

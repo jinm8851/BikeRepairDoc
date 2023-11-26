@@ -1,6 +1,6 @@
 package myung.jin.bikerepairdoc
 
-import android.annotation.SuppressLint
+
 import android.app.AlertDialog
 import android.content.Context
 import android.view.LayoutInflater
@@ -23,14 +23,14 @@ class RecyclerAdapter(private val bikeMemoList: List<BikeMemo>, var onDeleteList
         // 2. 홀더에 데이터를 전달
         holder.setMemo(memo)
         holder.itemView.setOnLongClickListener {
-            //삭제 다이얼로그 실행
-            showDeleteDialog(holder.itemView.context,memo)
+            //삭제 다이얼로그 실행 ,position 까지 같이넘김
+            showDeleteDialog(holder.itemView.context,memo,position)
             return@setOnLongClickListener true
         }
     }
 
-    @SuppressLint("NotifyDataSetChanged")
-    private fun showDeleteDialog(context: Context, bikeMemo: BikeMemo) {
+
+    private fun showDeleteDialog(context: Context, bikeMemo: BikeMemo , position: Int) {
         val alertDialogBuilder = AlertDialog.Builder(context)
 
         alertDialogBuilder.setTitle(R.string.deletion)
@@ -39,7 +39,9 @@ class RecyclerAdapter(private val bikeMemoList: List<BikeMemo>, var onDeleteList
         alertDialogBuilder.setPositiveButton(R.string.yes) { _, _ ->
             // "예" 버튼을 눌렀을 때의 동작 수행
             onDeleteListener.onDeleteListener(bikeMemo)
-            notifyDataSetChanged() // 데이터셋이 변경되었음을 알려서 RecyclerView를 갱신
+          //  notifyDataSetChanged() // 데이터셋이 변경되었음을 알려서 RecyclerView를 갱신
+            // 홀더에 포지션까지 같이 파라미터로 받아서넘기면 notifyItemRemoved(position)를 사용할수있음
+            notifyItemRemoved(position)
         }
 
         alertDialogBuilder.setNegativeButton(R.string.no) { dialog, _ ->
