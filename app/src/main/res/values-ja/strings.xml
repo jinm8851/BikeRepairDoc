@@ -171,4 +171,6 @@
   <string name="wantDeletion">削除してよろしいですか？</string>
   <string name="yes">はい</string>
   <string name="no">いいえ</string>
+  <string name="emailnm">Eメールが一致しません。</string>
+  <string name="fdata">データの受信に失敗しました。</string>
 </resources>

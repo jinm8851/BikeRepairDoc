@@ -171,4 +171,6 @@
   <string name="wantDeletion">Apakah Anda yakin ingin menghapusnya?</string>
   <string name="yes">ya</string>
   <string name="no">Tidak</string>
+  <string name="emailnm">Email tidak cocok.</string>
+  <string name="fdata">Gagal menerima data.</string>
 </resources>

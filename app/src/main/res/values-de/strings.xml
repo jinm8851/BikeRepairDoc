@@ -171,4 +171,6 @@
   <string name="wantDeletion">Sind Sie sicher, dass Sie es löschen möchten?</string>
   <string name="yes">Ja.</string>
   <string name="no">Nein!</string>
+  <string name="emailnm">E-Mail passt nicht.</string>
+  <string name="fdata">Die Daten wurden nicht empfangen.</string>
 </resources>

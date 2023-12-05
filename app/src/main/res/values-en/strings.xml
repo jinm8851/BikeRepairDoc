@@ -96,4 +96,6 @@
     <string name="wantDeletion">Are you sure you want to delete it?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="emailnm">Email does not match.</string>
+    <string name="fdata">Failed to receive data.</string>
 </resources>

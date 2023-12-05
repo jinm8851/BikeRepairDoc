@@ -148,19 +148,21 @@ class AuthActivity : AppCompatActivity() {
         }
 
         binding.dataput.setOnClickListener {
-            if (MyApplication.checkAuth()) {
-                saveStore()
-            }else{
-                Toast.makeText(this,R.string.authrun, Toast.LENGTH_LONG).show()
+            CoroutineScope(Dispatchers.IO).launch {
+                if (MyApplication.checkAuth()) {
+                    saveStore()
+                }else{
+                    withContext(Dispatchers.Main){
+                        Toast.makeText(applicationContext,R.string.authrun, Toast.LENGTH_LONG).show()
+                    }
+                }
+
             }
         }
         binding.datapull.setOnClickListener {
             //룸을 코루틴으로 돌리지 않으면 오류남
             CoroutineScope(Dispatchers.IO).launch {
-
                 receiveStore()
-                deleted()
-
                 withContext(Dispatchers.Main){
                 }
             }
@@ -216,7 +218,7 @@ class AuthActivity : AppCompatActivity() {
         }
     }
 
-    //데이터 저장
+    //데이터 저장 컬렉션을 사용자이메일로 변경
     private fun saveStore() {
 
         val data = mapOf(
@@ -224,7 +226,7 @@ class AuthActivity : AppCompatActivity() {
             "roomdata" to bikeList3
         )
 
-        MyApplication.db.collection("room")
+        MyApplication.db.collection("${MyApplication.email}")
             .add(data)
             .addOnSuccessListener {
                 Toast.makeText(this,R.string.datacom, Toast.LENGTH_LONG).show()
@@ -233,10 +235,10 @@ class AuthActivity : AppCompatActivity() {
                 Toast.makeText(this,R.string.datafail, Toast.LENGTH_LONG).show()
             }
     }
-
+    //데이터 수신 메서드 사용자 이메일로 받음 삭제함
     private fun receiveStore() {
 
-        MyApplication.db.collection("room")
+        MyApplication.db.collection("${MyApplication.email}")
             .get()
             .addOnSuccessListener { result ->
                 bikeList3.clear()
@@ -244,49 +246,60 @@ class AuthActivity : AppCompatActivity() {
                     val item = document.toObject(ItemData::class.java)
                     item.docId = document.id
                     val email = item.email
-                    bikeList3 = item.roomdata
-                    for (room in bikeList3){
-                        val bikeName = room.model
-                        val startDate = room.purchaseDate
-                        val repairDate = room.date
-                        val km = room.km
-                        val content = room.refer
-                        val amount = room.amount
-                        val note = room.note
-                        val year = room.year
-                        val memo = BikeMemo(
-                            bikeName,
-                            startDate,
-                            repairDate,
-                            km,
-                            content,
-                            amount,
-                            note,
-                            year
-                        )
-                        insertBikeMemo(memo)
-                        Log.d("bikename", bikeName)
-                        Log.d("email","$email")
+                    if (MyApplication.email == email){
+                        bikeList3 = item.roomdata
+                        for (room in bikeList3){
+                            val bikeName = room.model
+                            val startDate = room.purchaseDate
+                            val repairDate = room.date
+                            val km = room.km
+                            val content = room.refer
+                            val amount = room.amount
+                            val note = room.note
+                            val year = room.year
+                            val memo = BikeMemo(
+                                bikeName,
+                                startDate,
+                                repairDate,
+                                km,
+                                content,
+                                amount,
+                                note,
+                                year
+                            )
+                            insertBikeMemo(memo)
+                            Log.d("bikename", bikeName)
+                            Log.d("email","$email")
+                        }
+                        Toast.makeText(this,"ID $email  ${getString(R.string.sent)}", Toast.LENGTH_LONG).show()
+                        deleted()
+                    }else{
+                        Toast.makeText(this, R.string.emailnm,Toast.LENGTH_LONG).show()
                     }
-                    Toast.makeText(this,"ID ${email}  ${getString(R.string.sent)}", Toast.LENGTH_LONG).show()
+
                 }
             }
             .addOnFailureListener{
+                Toast.makeText(this, R.string.fdata,Toast.LENGTH_LONG).show()
                 Log.d("doc","doc...error")
             }
     }
 
+    //삭제 메서드 사용자 이메일로 삭제함
     private fun deleted(){
-        MyApplication.db.collection("room")
-            .get()
-            .addOnSuccessListener {
-                for (document in it){
-                    MyApplication.db.collection("room").document(document.id).delete().addOnSuccessListener {
-                        Log.d("delete","deleteSuccess")
+
+            MyApplication.db.collection("${MyApplication.email}")
+                .get()
+                .addOnSuccessListener {
+                    //이메일로된 컬렉션의 모든 다규먼트아이디를 삭제함
+                    for (document in it){
+                        MyApplication.db.collection("${MyApplication.email}").document(document.id).delete().addOnSuccessListener {
+                            Log.d("delete","deleteSuccess")
+                        }
                     }
+
                 }
 
-            }
     }
 
     //바이크 메모를 룸에 입력

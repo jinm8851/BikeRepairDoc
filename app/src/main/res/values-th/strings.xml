@@ -171,4 +171,6 @@
   <string name="wantDeletion">คุณแน่ใจหรือว่าต้องการลบมัน?</string>
   <string name="yes">ใช่</string>
   <string name="no">ไม่</string>
+  <string name="emailnm">อีเมลไม่ตรงกัน</string>
+  <string name="fdata">ไม่สามารถรับข้อมูลได้</string>
 </resources>
