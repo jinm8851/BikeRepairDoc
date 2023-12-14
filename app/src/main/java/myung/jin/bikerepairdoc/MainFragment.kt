@@ -207,6 +207,9 @@ class MainFragment : Fragment(), OnDeleteListener {
                     //  Log.d("테스트","$dAmount+$totalAmount1")
             withContext(Dispatchers.Main) {
                 bikeAdapter.notifyDataSetChanged()
+//                for (index in bikeList.indices){
+//                    bikeAdapter.notifyItemChanged(index)
+//                }
                 //합계금액을 날짜 리스트에서 뽑아와 저장
                 binding.totalAmount.text = dAmount.toString()
 

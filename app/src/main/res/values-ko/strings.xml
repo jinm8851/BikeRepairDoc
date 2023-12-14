@@ -39,11 +39,9 @@
     <string name="검색">검색</string>
     <string name="검색가능">애칭 또는 날짜 또는 년도 검색가능</string>
     <string name="날짜애칭">2023\-01\-01, 2023, 애칭</string>
-    <string name="logininfo">로그인 정보가 없습니다. \n
-        인증을 진행해 주세요.\n
-        휴대폰을 변경하셨다면 \n
+    <string name="logininfo">"         휴대폰을 변경하셨다면 \n
     구글 인증 혹은 이메일 주소로\n
-        회원가입 후 로그인 하십시요.\n
+        회원가입 후 로그인 하십시요.\n\n
     로그인 후 데이터 전송을 하시고\n
     데이터를 이전할 기기 에서 \n
         다시 로그인 후 \n
@@ -99,5 +97,6 @@
     <string name="no">아니요</string>
     <string name="emailnm">email이 일치하지 않습니다.</string>
     <string name="fdata">데이터를 받지 못했습니다.</string>
+    <string name="backwords">뒤로가기</string>
 
 </resources>

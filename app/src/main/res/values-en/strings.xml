@@ -98,4 +98,5 @@
     <string name="no">No</string>
     <string name="emailnm">Email does not match.</string>
     <string name="fdata">Failed to receive data.</string>
+    <string name="backwords">backwords</string>
 </resources>

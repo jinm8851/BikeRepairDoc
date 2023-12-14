@@ -173,4 +173,5 @@
   <string name="no">没有</string>
   <string name="emailnm">电子邮件不匹配。</string>
   <string name="fdata">无法接收数据。</string>
+    <string name="backwords">向后</string>
 </resources>

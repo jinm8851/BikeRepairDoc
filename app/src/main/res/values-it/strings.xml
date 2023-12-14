@@ -173,4 +173,5 @@
   <string name="no">N. di</string>
   <string name="emailnm">L\'email non corrisponde.</string>
   <string name="fdata">Impossibile ricevere i dati.</string>
+    <string name="backwords">indietro</string>
 </resources>

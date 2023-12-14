@@ -173,4 +173,5 @@
   <string name="no">Não.</string>
   <string name="emailnm">O email não coincide.</string>
   <string name="fdata">Não conseguiu receber dados.</string>
+    <string name="backwords">para trás</string>
 </resources>

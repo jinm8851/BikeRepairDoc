@@ -111,6 +111,7 @@ class TotalFragment : Fragment(), OnDeleteListener {
                 tAmount = bikeList2.sumOf { it.amount }
                 bikeAdapter2.notifyDataSetChanged()
                 totalBinding.totalTotalAmount.text = tAmount.toString()
+
             }
         }
     }

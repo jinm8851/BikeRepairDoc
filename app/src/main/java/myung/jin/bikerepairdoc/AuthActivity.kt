@@ -167,6 +167,17 @@ class AuthActivity : AppCompatActivity() {
                 }
             }
         }
+       // 뒤로가기 버튼
+        binding.backwords.setOnClickListener {
+            // 현재 프래그먼트 스택이 비어있지 않으면 이전 프래그먼트로 이동
+            if (supportFragmentManager.backStackEntryCount > 0) {
+                supportFragmentManager.popBackStack()
+            } else {
+                // 프래그먼트 스택이 비어있을 경우, 이전 화면(액티비티)로 돌아가도록 할 수 있습니다.
+                finish()
+            }
+        }
+
     }
 
    /* override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

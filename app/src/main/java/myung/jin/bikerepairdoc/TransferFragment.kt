@@ -47,7 +47,7 @@ class TransferFragment : Fragment() {
 
 
         } else {
-            binding.logoutTextView.visibility = View.GONE
+            binding.logoutTextView.visibility = View.VISIBLE
 
 
         }

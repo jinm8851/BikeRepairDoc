@@ -173,4 +173,5 @@
   <string name="no">ไม่</string>
   <string name="emailnm">อีเมลไม่ตรงกัน</string>
   <string name="fdata">ไม่สามารถรับข้อมูลได้</string>
+    <string name="backwords"><n>[fig.]</n> ย้อนกลับไป</string>
 </resources>
