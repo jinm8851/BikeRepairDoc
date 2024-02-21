@@ -1,12 +1,12 @@
 package myung.jin.bikerepairdoc
 
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import androidx.room.Room
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -27,7 +27,7 @@ class AuthActivity : AppCompatActivity() {
     private var bikeList3 = mutableListOf<BikeMemo>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding= ActivityAuthBinding.inflate(layoutInflater)
+        binding = ActivityAuthBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         helper = Room.databaseBuilder(this, RoomHelper::class.java, "bike_memo")
@@ -37,37 +37,39 @@ class AuthActivity : AppCompatActivity() {
         //룸을 코루틴으로 돌리지 않으면 오류남
         CoroutineScope(Dispatchers.IO).launch {
             val filteredBikes = bikeMemoDao.getAll()
-            withContext(Dispatchers.Main){
+            withContext(Dispatchers.Main) {
                 bikeList3.addAll(filteredBikes)
             }
         }
 
-        if(MyApplication.checkAuth()){
+        if (MyApplication.checkAuth()) {
             changeVisibility("login")
-        }else {
+        } else {
             changeVisibility("logout")
         }
 
         //구글 로그인 결과 처리 구글에 인증처리된 결과를 받음
 
+
         val requestLauncher = registerForActivityResult(
-            ActivityResultContracts.StartActivityForResult()) {
+            ActivityResultContracts.StartActivityForResult()
+        ) {
             try {
                 val task = GoogleSignIn.getSignedInAccountFromIntent(it.data)
                 val account = task.getResult(ApiException::class.java)!!
                 //인증서 구글에서 얻기
-                val credential = GoogleAuthProvider.getCredential(account.idToken,null)
+                val credential = GoogleAuthProvider.getCredential(account.idToken, null)
                 //인증서가 유효한지 판단
                 MyApplication.auth.signInWithCredential(credential)
-                    .addOnCompleteListener(this){resultTask ->
-                        if (resultTask.isSuccessful){
+                    .addOnCompleteListener(this) { resultTask -> //통신 완료가 된 후 무슨일을 할지
+                        if (resultTask.isSuccessful) {
                             MyApplication.email = account.email
                             changeVisibility("login")
-                        }else {
+                        } else {
                             changeVisibility("logout")
                         }
                     }
-            }catch (e: ApiException){
+            } catch (e: ApiException) {
                 changeVisibility("logout")
             }
         }
@@ -80,44 +82,55 @@ class AuthActivity : AppCompatActivity() {
 
         }
         //로그인 화면으로 전환
-        binding.goSignInBtn.setOnClickListener{
+        binding.goSignInBtn.setOnClickListener {
             changeVisibility("signin")
         }
+
 
         binding.googleLoginBtn.setOnClickListener {
             //구글 로그인.................... 위에준비한 런처를 실행시킨다
             val gso = GoogleSignInOptions
-                .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN) //기본 로그인 방식 사용
                 .requestIdToken(getString(R.string.default_web_client_id))
+                //requestIdToken :필수사항이다. 사용자의 식별값(token)을 사용하겠다.
+                //(App이 구글에게 요청)
                 .requestEmail()
+                // 사용자의 이메일을 사용하겠다.(App이 구글에게 요청)
                 .build()  //정보 정도
             //구글기본앱 내부에 보이지 않는앱 구글인증을포괄적으로 처리해주는앱
-            val signInIntent = GoogleSignIn.getClient(this@AuthActivity,gso).signInIntent
+            val signInIntent = GoogleSignIn.getClient(this@AuthActivity, gso).signInIntent // 내 앱에서 구글의 계정을 가져다 쓸거니 알고 있어라!
             requestLauncher.launch(signInIntent)  //requestLauncher.launch()는 ActivityResultLauncher를 사용하여 startActivityForResult()를 대체하는 방법 중 하나입니다¹.
         }
+
+
 
         binding.signBtn.setOnClickListener {
             //이메일,비밀번호 회원가입........................
             val email = binding.authEmailEditView.text.toString()
             val password = binding.authPasswordEditView.text.toString()
             //구글에 등록이 됬고
-            MyApplication.auth.createUserWithEmailAndPassword(email,password)
-                .addOnCompleteListener(this){task ->
+            MyApplication.auth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this) { task -> //통신 완료가 된 후 무슨일을 할지
                     binding.authEmailEditView.text.clear()
                     binding.authPasswordEditView.text.clear()
                     //회원가입이 성공했으면 인증메일보내기 작업
-                    if (task.isSuccessful){
+                    if (task.isSuccessful) {
                         MyApplication.auth.currentUser?.sendEmailVerification() //인증메일보내기
-                            ?.addOnCompleteListener{ sendTask ->
-                                if (sendTask.isSuccessful){
-                                    Toast.makeText(baseContext,R.string.authsuc, Toast.LENGTH_LONG).show()
+                            ?.addOnCompleteListener { sendTask ->
+                                if (sendTask.isSuccessful) {
+                                    Toast.makeText(baseContext, R.string.authsuc, Toast.LENGTH_LONG)
+                                        .show()
                                     changeVisibility("logout")
-                                }else{
-                                    Toast.makeText(baseContext,R.string.emailfail, Toast.LENGTH_LONG).show()
+                                } else {
+                                    Toast.makeText(
+                                        baseContext,
+                                        R.string.emailfail,
+                                        Toast.LENGTH_LONG
+                                    ).show()
                                 }
                             }
-                    }else{
-                        Toast.makeText(baseContext,R.string.authfail, Toast.LENGTH_LONG).show()
+                    } else {
+                        Toast.makeText(baseContext, R.string.authfail, Toast.LENGTH_LONG).show()
                         changeVisibility("logout")
                     }
                 }
@@ -128,20 +141,21 @@ class AuthActivity : AppCompatActivity() {
             //이메일, 비밀번호 로그인.......................
             val email = binding.authEmailEditView.text.toString()
             val password = binding.authPasswordEditView.text.toString()
-            Log.d("kkang","email:$email, password:$password")
-            MyApplication.auth.signInWithEmailAndPassword(email,password) //firebase와 연동
-                .addOnCompleteListener(this){ task ->
+            Log.d("kkang", "email:$email, password:$password")
+            MyApplication.auth.signInWithEmailAndPassword(email, password) //firebase와 연동
+                .addOnCompleteListener(this) { task ->
                     binding.authEmailEditView.text.clear()
                     binding.authPasswordEditView.text.clear()
-                    if (task.isSuccessful){
-                        if (MyApplication.checkAuth()){
+                    if (task.isSuccessful) {
+                        if (MyApplication.checkAuth()) {
                             MyApplication.email = email
                             changeVisibility("login")
-                        }else{
-                            Toast.makeText(baseContext,R.string.eauthfail, Toast.LENGTH_LONG).show()
+                        } else {
+                            Toast.makeText(baseContext, R.string.eauthfail, Toast.LENGTH_LONG)
+                                .show()
                         }
-                    }else{
-                        Toast.makeText(baseContext,R.string.logfail, Toast.LENGTH_LONG).show()
+                    } else {
+                        Toast.makeText(baseContext, R.string.logfail, Toast.LENGTH_LONG).show()
                     }
                 }
 
@@ -151,9 +165,10 @@ class AuthActivity : AppCompatActivity() {
             CoroutineScope(Dispatchers.IO).launch {
                 if (MyApplication.checkAuth()) {
                     saveStore()
-                }else{
-                    withContext(Dispatchers.Main){
-                        Toast.makeText(applicationContext,R.string.authrun, Toast.LENGTH_LONG).show()
+                } else {
+                    withContext(Dispatchers.Main) {
+                        Toast.makeText(applicationContext, R.string.authrun, Toast.LENGTH_LONG)
+                            .show()
                     }
                 }
 
@@ -163,11 +178,11 @@ class AuthActivity : AppCompatActivity() {
             //룸을 코루틴으로 돌리지 않으면 오류남
             CoroutineScope(Dispatchers.IO).launch {
                 receiveStore()
-                withContext(Dispatchers.Main){
+                withContext(Dispatchers.Main) {
                 }
             }
         }
-       // 뒤로가기 버튼
+        // 뒤로가기 버튼
         binding.backwords.setOnClickListener {
             // 현재 프래그먼트 스택이 비어있지 않으면 이전 프래그먼트로 이동
             if (supportFragmentManager.backStackEntryCount > 0) {
@@ -180,28 +195,28 @@ class AuthActivity : AppCompatActivity() {
 
     }
 
-   /* override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        //구글 로그인 결과처리
+    /* override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+         super.onActivityResult(requestCode, resultCode, data)
+         //구글 로그인 결과처리
 
-    }*/
-    fun changeVisibility(mode: String){
-       val myemail = MyApplication.email.toString()
-        if(mode === "login"){
+     }*/
+    fun changeVisibility(mode: String) {
+        val myemail = MyApplication.email.toString()
+        if (mode === "login") {
             binding.run {
-                authMainTextView.text = getString(R.string.emailnice,myemail)
-                logoutBtn.visibility= View.VISIBLE
-                goSignInBtn.visibility= View.GONE
-                googleLoginBtn.visibility= View.GONE
-                authEmailEditView.visibility= View.GONE
-                authPasswordEditView.visibility= View.GONE
-                signBtn.visibility= View.GONE
-                loginBtn.visibility= View.GONE
-                dataput.visibility= View.VISIBLE
-                datapull.visibility= View.VISIBLE
+                authMainTextView.text = getString(R.string.emailnice, myemail)
+                logoutBtn.visibility = View.VISIBLE
+                goSignInBtn.visibility = View.GONE
+                googleLoginBtn.visibility = View.GONE
+                authEmailEditView.visibility = View.GONE
+                authPasswordEditView.visibility = View.GONE
+                signBtn.visibility = View.GONE
+                loginBtn.visibility = View.GONE
+                dataput.visibility = View.VISIBLE
+                datapull.visibility = View.VISIBLE
             }
 
-        }else if(mode === "logout"){
+        } else if (mode === "logout") {
             binding.run {
                 authMainTextView.text = getString(R.string.authlogin)
                 logoutBtn.visibility = View.GONE
@@ -211,10 +226,10 @@ class AuthActivity : AppCompatActivity() {
                 authPasswordEditView.visibility = View.VISIBLE
                 signBtn.visibility = View.GONE
                 loginBtn.visibility = View.VISIBLE
-                datapull.visibility= View.GONE
-                dataput.visibility= View.GONE
+                datapull.visibility = View.GONE
+                dataput.visibility = View.GONE
             }
-        }else if(mode === "signin"){
+        } else if (mode === "signin") {
             binding.run {
                 logoutBtn.visibility = View.GONE
                 goSignInBtn.visibility = View.GONE
@@ -224,7 +239,7 @@ class AuthActivity : AppCompatActivity() {
                 signBtn.visibility = View.VISIBLE
                 loginBtn.visibility = View.GONE
                 dataput.visibility = View.GONE
-                datapull.visibility= View.GONE
+                datapull.visibility = View.GONE
             }
         }
     }
@@ -240,12 +255,13 @@ class AuthActivity : AppCompatActivity() {
         MyApplication.db.collection("${MyApplication.email}")
             .add(data)
             .addOnSuccessListener {
-                Toast.makeText(this,R.string.datacom, Toast.LENGTH_LONG).show()
+                Toast.makeText(this, R.string.datacom, Toast.LENGTH_LONG).show()
             }
-            .addOnFailureListener{
-                Toast.makeText(this,R.string.datafail, Toast.LENGTH_LONG).show()
+            .addOnFailureListener {
+                Toast.makeText(this, R.string.datafail, Toast.LENGTH_LONG).show()
             }
     }
+
     //데이터 수신 메서드 사용자 이메일로 받음 삭제함
     private fun receiveStore() {
 
@@ -253,13 +269,13 @@ class AuthActivity : AppCompatActivity() {
             .get()
             .addOnSuccessListener { result ->
                 bikeList3.clear()
-                for (document in result){
+                for (document in result) {
                     val item = document.toObject(ItemData::class.java)
                     item.docId = document.id
                     val email = item.email
-                    if (MyApplication.email == email){
+                    if (MyApplication.email == email) {
                         bikeList3 = item.roomdata
-                        for (room in bikeList3){
+                        for (room in bikeList3) {
                             val bikeName = room.model
                             val startDate = room.purchaseDate
                             val repairDate = room.date
@@ -280,36 +296,41 @@ class AuthActivity : AppCompatActivity() {
                             )
                             insertBikeMemo(memo)
                             Log.d("bikename", bikeName)
-                            Log.d("email","$email")
+                            Log.d("email", "$email")
                         }
-                        Toast.makeText(this,"ID $email  ${getString(R.string.sent)}", Toast.LENGTH_LONG).show()
+                        Toast.makeText(
+                            this,
+                            "ID $email  ${getString(R.string.sent)}",
+                            Toast.LENGTH_LONG
+                        ).show()
                         deleted()
-                    }else{
-                        Toast.makeText(this, R.string.emailnm,Toast.LENGTH_LONG).show()
+                    } else {
+                        Toast.makeText(this, R.string.emailnm, Toast.LENGTH_LONG).show()
                     }
 
                 }
             }
-            .addOnFailureListener{
-                Toast.makeText(this, R.string.fdata,Toast.LENGTH_LONG).show()
-                Log.d("doc","doc...error")
+            .addOnFailureListener {
+                Toast.makeText(this, R.string.fdata, Toast.LENGTH_LONG).show()
+                Log.d("doc", "doc...error")
             }
     }
 
     //삭제 메서드 사용자 이메일로 삭제함
-    private fun deleted(){
+    private fun deleted() {
 
-            MyApplication.db.collection("${MyApplication.email}")
-                .get()
-                .addOnSuccessListener {
-                    //이메일로된 컬렉션의 모든 다규먼트아이디를 삭제함
-                    for (document in it){
-                        MyApplication.db.collection("${MyApplication.email}").document(document.id).delete().addOnSuccessListener {
-                            Log.d("delete","deleteSuccess")
-                        }
+        MyApplication.db.collection("${MyApplication.email}")
+            .get()
+            .addOnSuccessListener {
+                //이메일로된 컬렉션의 모든 다규먼트아이디를 삭제함
+                for (document in it) {
+                    MyApplication.db.collection("${MyApplication.email}").document(document.id)
+                        .delete().addOnSuccessListener {
+                        Log.d("delete", "deleteSuccess")
                     }
-
                 }
+
+            }
 
     }
 

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BikeRepairDoc</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="referenceinfo">This is a figure based on actual experience based on the Bugman 125, and this information is simply used as a reference. No liability is assumed for this content.</string>
+    <string name="oilinfo">"The oil is changed between 10 and 15 days at 1500km. The price is changed at the cheapest  According to the manual, based on Bugman 125 The first 1,000km, then 3,000km After that, it is changed once every 4000km. is listed as "</string>
+    <string name="oilfillterinfo">The oil filter is changed at about 10,000 km when the oil is changed. In the manual, the first 1,000 km and the next 8,000 km are indicated as an exchange cycle.</string>
+    <string name="brakepadinfo">The brake pads are grinding  when you hear a crunching sound from the wheel  when the disc wears out  the brake pads wear out faster</string>
+    <string name="tireinfo">Tires are unexpectedly thought of lightly,  but they are the most important part.  Be sure to replace them before the wear line runs out</string>
+    <string name="beltinfo">The belt is changed at about 20,000 km based on the Bugman 125,  and each person differs from motorcycle  to motorcycle The manual says to change at 12,000 km.</string>
+    <string name="moveballinfo">I check the move ball when I change the belt  I change it at about 40,000 km  If the motorcycle doesn\'t work well  I\'d like to check it</string>
+    <string name="missionoilinfo">Based on Bugman 125,  the mission oil is changed at the same time as changing the belt,  and it is changed once every 20,000 km.</string>
+    <string name="aircleanerinfo">The air cleaner is not cleaned often  It is changed at about 10000 km  The manual says to clean it once every 3000 km  and change it at 12000 km.</string>
+    <string name="shuinfo">"In the case of a clutch shoe or pulley set,  it seems to break down between 40,000 and 70,000.  The variation is large and expensive, so it is difficult to grind in advance  and it is difficult to change when it breaks. "</string>
+    <string name="bearinginfo">Bearings should be checked frequently  when changing tires after about 30,000 km or more  and bearing rubber should also be changed when changing.</string>
+    <string name="pluginfo">Replace the plug at about 20,000 km  and replace it when the motorcycle rattles loses power.  The manual says to change it at 8,000 km.</string>
+    <string name="valveinfo">The valve gap adjustment seems to be done once every 30,000 to 50,000 km , the symptom is that when you go and stand  the engine shuts off or the engine turns off frequently  if the engine shuts off at that number of kilos  you need to check it.</string>
+    <string name="drivesysteminfo">Check the drivetrain every time you open it  to make sure it doesn\'t stop while going.</string>
+    <string name="engineinfo">The engine rarely breaks  but check it from time to time.</string>
+    <string name="lampinfo">"Lamps break more often on rainy days  if they burn a lot, so let's stay at home on rainy or snowy days "</string>
+    <string name="etcinfo">Check it often without any other malfunction  Let\'s live a long time</string>
+    <string name="diskinfo">Discs should be worn and replaced when they are old.  If they are not replaced, the brake pads will wear out quickly and the power will gradually decrease.</string>
+    <string name="구입날짜">Date of\n purchase</string>
+    <string name="버그만">Bugman</string>
+    <string name="km">Km</string>
+    <string name="기타수리내용">Other repairs</string>
+    <string name="원">$</string>
+    <string name="애칭">Nickname</string>
+    <string name="_2000_01_01">2000\-01\-01</string>
+    <string name="_0000000">0000000</string>
+    <string name="금액">Amount</string>
+    <string name="주행거리">Distance driven</string>
+    <string name="수리날짜">Repair date</string>
+    <string name="etc">Etc</string>
+    <string name="저장">Save</string>
+    <string name="_0">0</string>
+    <string name="합계">Total</string>
+    <string name="reference">Reference</string>
+    <string name="검색">Search</string>
+    <string name="검색가능">Searchable by nickname or date or year</string>
+    <string name="날짜애칭">2023\-01\-01, 2023, Nickname</string>
+    <string name="logininfo">No login information. \n
+         Please proceed with authentication.\n
+     Google authentication or email address\n
+         Please sign up and log in.\n
+     After logging in, send data\n
+     \n on the device you want to transfer the data to
+         log in again \n
+         If you receive data\n
+     Data is transferred to the device.</string>
+    <string name="tran">Authentication</string>
+    <string name="logout">Log out</string>
+    <string name="signin">join the membership</string>
+    <string name="gglogin">Google Authentication</string>
+    <string name="email">Email</string>
+    <string name="sign">Join</string>
+    <string name="lonin">Log in</string>
+    <string name="dataput">Send data</string>
+    <string name="datapull">Receive data</string>
+    <string name="_6">Password at least 6 characters</string>
+    <string name="authsuc">Succeeded in registration, please check the sent email</string>
+    <string name="emailfail">Mail sending failed</string>
+    <string name="authfail">Membership registration failed</string>
+    <string name="eauthfail">Email verification was not done with the email sent.</string>
+    <string name="logfail">login failed</string>
+    <string name="authrun">Please proceed with authentication.</string>
+    <string name="nice">Nice to meet you</string>
+    <string name="authlogin">Please log in or register.</string>
+    <string name="datacom">Data transmission is complete.</string>
+    <string name="datafail">Data transmission failed.</string>
+    <string name="sent">Your data has been sent.</string>
+    <string name="nickem">Nickname is empty. Please enter your nickname</string>
+    <string name="purem">Purchase date is blank. Please enter purchase date</string>
+    <string name="select">Select</string>
+    <string name="oil">Oil</string>
+    <string name="oilfilter">Oil filter</string>
+    <string name="fpad">Front brake pad</string>
+    <string name="rpad">Rear brake pad</string>
+    <string name="ftire">Front Tire</string>
+    <string name="rtire">Rear Tire</string>
+    <string name="belt">Belt</string>
+    <string name="moveball">Move ball</string>
+    <string name="missionoil">Mission oil</string>
+    <string name="aircleaner">Air Cleaner</string>
+    <string name="shu">Clutch shoe</string>
+    <string name="bearing">Bearing</string>
+    <string name="plug">Spark plugs</string>
+    <string name="valve">Valve setting</string>
+    <string name="drivesystem">Other drivetrain</string>
+    <string name="engine">Other engines</string>
+    <string name="lamp">Other lamps</string>
+    <string name="fdisk">Front disk</string>
+    <string name="rdisk">Rear disk</string>
+    <string name="emailnice">%1$s\n\n Nice to meet you</string>
+    <string name="deletion">Delete Confirmation</string>
+    <string name="wantDeletion">Are you sure you want to delete it?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="emailnm">Email does not match.</string>
+    <string name="fdata">Failed to receive data.</string>
+    <string name="backwords">backwords</string>
+</resources>
