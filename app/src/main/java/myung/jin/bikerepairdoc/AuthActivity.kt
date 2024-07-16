@@ -50,7 +50,6 @@ class AuthActivity : AppCompatActivity() {
 
         //구글 로그인 결과 처리 구글에 인증처리된 결과를 받음
 
-
         val requestLauncher = registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()
         ) {
@@ -59,6 +58,7 @@ class AuthActivity : AppCompatActivity() {
                 val account = task.getResult(ApiException::class.java)!!
                 //인증서 구글에서 얻기
                 val credential = GoogleAuthProvider.getCredential(account.idToken, null)
+
                 //인증서가 유효한지 판단
                 MyApplication.auth.signInWithCredential(credential)
                     .addOnCompleteListener(this) { resultTask -> //통신 완료가 된 후 무슨일을 할지
@@ -73,6 +73,9 @@ class AuthActivity : AppCompatActivity() {
                 changeVisibility("logout")
             }
         }
+
+
+
 
         binding.logoutBtn.setOnClickListener {
             //로그아웃...........
@@ -98,7 +101,10 @@ class AuthActivity : AppCompatActivity() {
                 // 사용자의 이메일을 사용하겠다.(App이 구글에게 요청)
                 .build()  //정보 정도
             //구글기본앱 내부에 보이지 않는앱 구글인증을포괄적으로 처리해주는앱
-            val signInIntent = GoogleSignIn.getClient(this@AuthActivity, gso).signInIntent // 내 앱에서 구글의 계정을 가져다 쓸거니 알고 있어라!
+            val signInIntent = GoogleSignIn.getClient(
+                this@AuthActivity,
+                gso
+            ).signInIntent // 내 앱에서 구글의 계정을 가져다 쓸거니 알고 있어라!
             requestLauncher.launch(signInIntent)  //requestLauncher.launch()는 ActivityResultLauncher를 사용하여 startActivityForResult()를 대체하는 방법 중 하나입니다¹.
         }
 
@@ -269,46 +275,49 @@ class AuthActivity : AppCompatActivity() {
             .get()
             .addOnSuccessListener { result ->
                 bikeList3.clear()
-                for (document in result) {
-                    val item = document.toObject(ItemData::class.java)
-                    item.docId = document.id
-                    val email = item.email
-                    if (MyApplication.email == email) {
-                        bikeList3 = item.roomdata
-                        for (room in bikeList3) {
-                            val bikeName = room.model
-                            val startDate = room.purchaseDate
-                            val repairDate = room.date
-                            val km = room.km
-                            val content = room.refer
-                            val amount = room.amount
-                            val note = room.note
-                            val year = room.year
-                            val memo = BikeMemo(
-                                bikeName,
-                                startDate,
-                                repairDate,
-                                km,
-                                content,
-                                amount,
-                                note,
-                                year
-                            )
-                            insertBikeMemo(memo)
-                            Log.d("bikename", bikeName)
-                            Log.d("email", "$email")
+
+                    for (document in result) {
+                        val item = document.toObject(ItemData::class.java)
+                        item.docId = document.id
+                        val email = item.email
+                        if (MyApplication.email == email) {
+                            bikeList3 = item.roomdata
+                            for (room in bikeList3) {
+                                val bikeName = room.model
+                                val startDate = room.purchaseDate
+                                val repairDate = room.date
+                                val km = room.km
+                                val content = room.refer
+                                val amount = room.amount
+                                val note = room.note
+                                val year = room.year
+                                val memo = BikeMemo(
+                                    bikeName,
+                                    startDate,
+                                    repairDate,
+                                    km,
+                                    content,
+                                    amount,
+                                    note,
+                                    year
+                                )
+                                insertBikeMemo(memo)
+                                Log.d("bikename", bikeName)
+                                Log.d("email", "$email")
+                            }
+
+                            Toast.makeText(
+                                baseContext,
+                                "ID $email  ${getString(R.string.sent)}",
+                                Toast.LENGTH_LONG
+                            ).show()
+                            deleted()
+                        } else {
+                            Toast.makeText(baseContext, R.string.emailnm, Toast.LENGTH_LONG).show()
                         }
-                        Toast.makeText(
-                            this,
-                            "ID $email  ${getString(R.string.sent)}",
-                            Toast.LENGTH_LONG
-                        ).show()
-                        deleted()
-                    } else {
-                        Toast.makeText(this, R.string.emailnm, Toast.LENGTH_LONG).show()
+
                     }
 
-                }
             }
             .addOnFailureListener {
                 Toast.makeText(this, R.string.fdata, Toast.LENGTH_LONG).show()
@@ -326,8 +335,8 @@ class AuthActivity : AppCompatActivity() {
                 for (document in it) {
                     MyApplication.db.collection("${MyApplication.email}").document(document.id)
                         .delete().addOnSuccessListener {
-                        Log.d("delete", "deleteSuccess")
-                    }
+                            Log.d("delete", "deleteSuccess")
+                        }
                 }
 
             }
