@@ -77,7 +77,7 @@
       
   <string name="search_hint">Recherche par pseudonyme, date ou année</string>
       
-  <string name="search_description">2000\-01\-01, 2023, Pseudo</string>
+  <string name="search_description">Rechercher par 2023\\-01\\-01, 2023, option sélectionnée ou pseudo.</string>
       
   <string name="login_info">Aucune information de connexion. \n Veuillez procéder à l\'authentification.\n Authentification Google ou adresse e-mail\n Veuillez vous inscrire et vous connecter.\n Après vous être connecté, envoyez les données\n \n sur l\'appareil sur lequel vous souhaitez transférer les données pour vous reconnecter\n Si vous recevez des données\n Les données sont transférées vers l\'appareil.</string>
       
@@ -171,7 +171,7 @@
       
   <string name="oil_filter_info">Le filtre à huile est changé tous les 10 000 km environ lors de la vidange d\'huile. Dans le manuel, les 1 000 premiers km et les 8 000 km suivants sont indiqués comme cycle d\'échange.</string>
 
-  <string name="email_nice">%1$s\n\n Ravi de vous rencontrer</string>
+  <string name="email_nice">%1$s   Ravi de vous rencontrer</string>
     <string name="deletion">Confirmer la suppression</string>
   <string name="want_deletion">Tu es sûr de vouloir l\'effacer ?</string>
   <string name="yes">Oui.</string>

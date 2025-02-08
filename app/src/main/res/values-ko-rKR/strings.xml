@@ -51,7 +51,7 @@
     <string name="reference">참고</string>
     <string name="search">검색</string>
     <string name="search_hint">애칭 또는 날짜 또는 년도 검색가능</string>
-    <string name="search_description">2023\-01\-01 또는 2023 또는 애칭으로 검색하세요</string>
+    <string name="search_description">2023\\-01\\-01 또는 2023 또는 선택내욜 닉네임으로 검색하세요</string>
     <string name="login_info"> 휴대폰을 변경하셨다면 구글 인증 또는 이메일 주소로 회원가입 후 로그인 하십시요. 로그인 후 데이터 전송을 하시고 데이터를 이전할 기기 에서 다시 로그인 후 데이터 수신을 하시면 새로운 기기에 데이터가 이전 됩니다.</string>
     <string name="tran">인증</string>
     <string name="logout">로그아웃</string>
@@ -72,7 +72,7 @@
     <string name="nice">님 반갑습니다.</string>
     <string name="auth_login">구글인증 하거나 회원가입 후 로그인 해주세요.</string>
     <string name="logout_screen_info">구글인증 로그인 이나 또는 이메일 회원가입 하시고 이메일 회원가입 하신분은 이메일로 로그인 하세요.</string>
-    <string name="login_screen_info">데이터를 전송하시려면 데이터 전송 버튼을 누르시고 데이터를 받으실 휴대폰에서 로그인 하시고 데이터수신 버튼을 누르세요.</string>
+    <string name="login_screen_info">데이터를 복사하려면 데이터 전송 버튼을 누르시고 데이터를 받으실 휴대폰에서 로그인 하시고 데이터수신 버튼을 누르세요.</string>
     <string name="data_transfer_success">데이터전송이 끝났습니다.</string>
     <string name="data_transfer_failed">데이터전송이 실패했습니다.</string>
     <string name="data_transfer_received">님 데이터를 전송받았습니다.</string>

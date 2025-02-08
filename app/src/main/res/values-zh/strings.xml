@@ -77,7 +77,7 @@
       
   <string name="search_hint">可按昵称、日期或年份搜索</string>
       
-  <string name="search_description">2003\-01\-01, 2023, 昵称</string>
+  <string name="search_description">按2023\\-01\\-01或2023选择内容或昵称搜索.</string>
       
   <string name="login_info">没有登录信息。\n 请继续进行身份验证。\n Google 身份验证或电子邮件地址\n 请注册并登录。\n 登录后发送数据\n \n 在您要传输数据的设备上重新登录\n 如果您收到数据\n 数据传输到设备。</string>
       
@@ -171,7 +171,7 @@
       
   <string name="oil_filter_info">机油滤清器在行驶 10000 公里左右更换机油时更换。手册中将前 1000 公里和接下来的 8000 公里标注为一个交换周期。</string>
 
-  <string name="email_nice">%1$s\n\n 很高兴见到你</string>
+  <string name="email_nice">%1$s   很高兴见到你</string>
     <string name="deletion">删节扩</string>
   <string name="want_deletion">确认删除</string>
   <string name="yes">是的</string>

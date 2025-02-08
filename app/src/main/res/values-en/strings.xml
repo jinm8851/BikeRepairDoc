@@ -41,7 +41,7 @@
     <string name="reference">Reference</string>
     <string name="search">Search</string>
     <string name="search_hint">Searchable by nickname or date or year</string>
-    <string name="search_description">2023\-01\-01, 2023, Nickname</string>
+    <string name="search_description">Search by 2023\\-01\\-01 or 2023  selected option, or nickname.</string>
     <string name="login_info">No login information. \n
          Please proceed with authentication.\n
      Google authentication or email address\n
@@ -96,7 +96,7 @@
     <string name="lamp">Other lamps</string>
     <string name="front_dist">Front disk</string>
     <string name="back_disk">Rear disk</string>
-    <string name="email_nice">%1$s\n\n Nice to meet you</string>
+    <string name="email_nice">%1$s   Nice to meet you</string>
     <string name="deletion">Delete Confirmation</string>
     <string name="want_deletion">Are you sure you want to delete it?</string>
     <string name="yes">Yes</string>

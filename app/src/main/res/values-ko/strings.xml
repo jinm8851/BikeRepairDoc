@@ -41,7 +41,7 @@
     <string name="reference">참고</string>
     <string name="search">검색</string>
     <string name="search_hint">애칭 또는 날짜 또는 년도 검색가능</string>
-    <string name="search_description">2023\-01\-01, 2023, 애칭</string>
+    <string name="search_description">2023\\-01\\-01 또는 2023 또는 선택내욜 닉네임으로 검색하세요</string>
     <string name="login_info">"         휴대폰을 변경하셨다면 \n
         앱 업데이트 후\n
     구글 인증 혹은 이메일 주소로\n

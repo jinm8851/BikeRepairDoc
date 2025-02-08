@@ -76,7 +76,7 @@
       
   <string name="search_hint">Durchsuchbar nach Spitzname, Datum oder Jahr</string>
       
-  <string name="search_description">01\-01\-2023, 2023, Spitzname</string>
+  <string name="search_description">Suche nach 2023\\-01\\-01 oder 2023 oder nach einer Option oder einem Nickname.</string>
       
   <string name="login_info">Keine Anmeldeinformationen. \n Bitte fahren Sie mit der Authentifizierung fort.\n Google-Authentifizierung oder E-Mail-Adresse\n Bitte registrieren Sie sich und loggen Sie sich ein.\n Nach der Anmeldung Daten senden\n \n Auf dem Gerät, auf dem Sie die Daten übertragen möchten, melden Sie sich erneut an\n Wenn Sie Daten erhalten\n Die Daten werden an das Gerät übertragen.</string>
       
@@ -170,7 +170,7 @@
       
   <string name="oil_filter_info">Der Ölfilter wird beim Ölwechsel etwa nach 10.000 km gewechselt. Im Handbuch sind die ersten 1.000 km und die nächsten 8.000 km als Austauschzyklus angegeben.</string>
 
-  <string name="email_nice">%1$s\n\n Freut mich, Sie kennenzulernen</string>
+  <string name="email_nice">%1$s   Freut mich, Sie kennenzulernen</string>
     <string name="deletion">Bestätigen Sie die Löschung</string>
   <string name="want_deletion">Sind Sie sicher, dass Sie es löschen möchten?</string>
   <string name="yes">Ja.</string>

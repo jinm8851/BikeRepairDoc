@@ -77,7 +77,7 @@
       
   <string name="search_hint">Ricercabile per nickname, data o anno</string>
       
-  <string name="search_description">2023\-01\-01, 2023, Soprannome</string>
+  <string name="search_description">Cerca per 2023\\-01\\-01 o 2023 o opzione selezionata o nickname.</string>
       
   <string name="login_info">Nessuna informazione di accesso. \n Procedi con l\'autenticazione.\n Autenticazione Google o indirizzo email\n Per favore registrati e accedi.\n Dopo aver effettuato l\'accesso, inviare i dati\n \n sul dispositivo su cui desideri trasferire i dati per accedere nuovamente\n Se ricevi dati\n I dati vengono trasferiti al dispositivo.</string>
       
@@ -171,7 +171,7 @@
       
   <string name="oil_filter_info">Il filtro dell\'olio viene cambiato a circa 10.000 km quando si cambia l\'olio. Nel manuale i primi 1.000 km ed i successivi 8.000 km sono indicati come ciclo di scambio.</string>
 
-  <string name="email_nice">%1$s\n\n Piacere di conoscerti</string>
+  <string name="email_nice">%1$s   Piacere di conoscerti</string>
     <string name="deletion">Confirmazione della cancellazione</string>
   <string name="want_deletion">E\' sicuro di volerlo cancellare?</string>
   <string name="yes">sì</string>
