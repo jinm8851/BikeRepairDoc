@@ -1,150 +1,155 @@
 <?xml version="1.0" encoding="UTF-8"?><resources>
       
   <string name="app_name">Perbaikan SepedaDokter</string>
-      
+
+  <string name="authChange">Dari ponsel -> Salin data dari ponsel lain</string>
   <string name="hello_blank_fragment">Halo fragmen kosong</string>
       
-  <string name="referenceinfo">Ini adalah angka berdasarkan pengalaman aktual berdasarkan Bugman 125, dan informasi ini hanya digunakan sebagai referensi. Tidak ada tanggung jawab yang ditanggung atas konten ini.</string>
+  <string name="reference_info">Ini adalah angka berdasarkan pengalaman aktual berdasarkan Bugman 125, dan informasi ini hanya digunakan sebagai referensi. Tidak ada tanggung jawab yang ditanggung atas konten ini.</string>
       
-  <string name="oilinfo">Oli diganti antara 10 dan 15 hari pada jarak 1500 km. Harga diubah paling murah Sesuai manual, berdasarkan Bugman 125 1.000km pertama, lalu 3.000km Setelah itu, diganti setiap 4000km sekali. terdaftar sebagai </string>
+  <string name="oil_info">Oli diganti antara 10 dan 15 hari pada jarak 1500 km. Harga diubah paling murah Sesuai manual, berdasarkan Bugman 125 1.000km pertama, lalu 3.000km Setelah itu, diganti setiap 4000km sekali. terdaftar sebagai </string>
       
-  <string name="brakepadinfo">Kampas rem bergesekan ketika terdengar bunyi berderak dari roda, padahal cakram sudah aus maka kampas rem lebih cepat aus</string>
+  <string name="brake_pad_info">Kampas rem bergesekan ketika terdengar bunyi berderak dari roda, padahal cakram sudah aus maka kampas rem lebih cepat aus</string>
       
-  <string name="tireinfo">Ban secara tidak terduga dianggap remeh,  padahal ban adalah bagian yang paling penting.  Pastikan untuk menggantinya sebelum garis keausannya habis</string>
+  <string name="tire_info">Ban secara tidak terduga dianggap remeh,  padahal ban adalah bagian yang paling penting.  Pastikan untuk menggantinya sebelum garis keausannya habis</string>
       
-  <string name="beltinfo">Sabuk diganti sekitar 20.000 km berdasarkan Bugman 125,\n dan setiap orang berbeda dengan sepeda motor\n ke sepeda motor Manualnya bilang ganti pada 12.000 km.</string>
+  <string name="belt_info">Sabuk diganti sekitar 20.000 km berdasarkan Bugman 125,\n dan setiap orang berbeda dengan sepeda motor\n ke sepeda motor Manualnya bilang ganti pada 12.000 km.</string>
       
-  <string name="moveballinfo">Saya cek move ball saat ganti belt Saya ganti sekitar 40.000 km Kalau motor tidak berfungsi dengan baik saya mau cek</string>
+  <string name="move_ball_info">Saya cek move ball saat ganti belt Saya ganti sekitar 40.000 km Kalau motor tidak berfungsi dengan baik saya mau cek</string>
       
-  <string name="missionoilinfo">Berdasarkan Bugman 125, oli misi diganti bersamaan dengan penggantian sabuk, dan diganti setiap 20.000 km sekali.</string>
+  <string name="mission_oil_info">Berdasarkan Bugman 125, oli misi diganti bersamaan dengan penggantian sabuk, dan diganti setiap 20.000 km sekali.</string>
       
-  <string name="aircleanerinfo">Pembersih udara tidak sering dibersihkan. Diganti sekitar 10.000 km. Manual mengatakan untuk membersihkannya setiap 3.000 km sekali dan menggantinya setelah 12.000 km.</string>
+  <string name="air_cleaner_info">Pembersih udara tidak sering dibersihkan. Diganti sekitar 10.000 km. Manual mengatakan untuk membersihkannya setiap 3.000 km sekali dan menggantinya setelah 12.000 km.</string>
       
-  <string name="shuinfo">Untuk sepatu kopling atau set katrol, sepertinya rusak antara 40.000 dan 70.000.  Variasinya besar dan mahal, sehingga sulit untuk digiling terlebih dahulu dan sulit diubah jika rusak. </string>
+  <string name="shu_info">Untuk sepatu kopling atau set katrol, sepertinya rusak antara 40.000 dan 70.000.  Variasinya besar dan mahal, sehingga sulit untuk digiling terlebih dahulu dan sulit diubah jika rusak. </string>
       
-  <string name="bearinginfo">Bantalan harus sering diperiksa saat mengganti ban setelah menempuh jarak sekitar 30.000 km atau lebih dan karet bantalan juga harus diganti saat mengganti.</string>
+  <string name="bearing_info">Bantalan harus sering diperiksa saat mengganti ban setelah menempuh jarak sekitar 30.000 km atau lebih dan karet bantalan juga harus diganti saat mengganti.</string>
       
-  <string name="pluginfo">Gantilah busi pada jarak sekitar 20.000 km dan gantilah ketika sepeda motor kehilangan tenaga.  Manualnya mengatakan untuk mengubahnya pada 8.000 km.</string>
+  <string name="plug_info">Gantilah busi pada jarak sekitar 20.000 km dan gantilah ketika sepeda motor kehilangan tenaga.  Manualnya mengatakan untuk mengubahnya pada 8.000 km.</string>
       
-  <string name="valveinfo">Penyetelan celah klep sepertinya dilakukan setiap 30.000 hingga 50.000 km sekali, gejalanya saat jalan dan berdiri mesin mati atau mesin sering mati, jika mesin mati pada jumlah kilo tersebut perlu dilakukan pengecekan.</string>
+  <string name="valve_info">Penyetelan celah klep sepertinya dilakukan setiap 30.000 hingga 50.000 km sekali, gejalanya saat jalan dan berdiri mesin mati atau mesin sering mati, jika mesin mati pada jumlah kilo tersebut perlu dilakukan pengecekan.</string>
       
-  <string name="drivesysteminfo">Periksa drivetrain setiap kali Anda membukanya untuk memastikan tidak berhenti saat melaju.</string>
+  <string name="drive_system_info">Periksa drivetrain setiap kali Anda membukanya untuk memastikan tidak berhenti saat melaju.</string>
       
-  <string name="engineinfo">Mesin jarang rusak tetapi periksalah sesekali.</string>
+  <string name="engine_info">Mesin jarang rusak tetapi periksalah sesekali.</string>
       
-  <string name="lampinfo">Lampu lebih sering rusak di hari hujan jika banyak menyala, jadi mari kita tetap di rumah saat hujan atau bersalju </string>
+  <string name="lamp_info">Lampu lebih sering rusak di hari hujan jika banyak menyala, jadi mari kita tetap di rumah saat hujan atau bersalju </string>
       
-  <string name="etcinfo">Sering-sering periksa tanpa ada kerusakan lain Biar umur panjang</string>
+  <string name="etc_info">Sering-sering periksa tanpa ada kerusakan lain Biar umur panjang</string>
       
-  <string name="diskinfo">Cakram harus dipakai dan diganti bila sudah tua.  Jika tidak diganti maka kampas rem akan cepat aus dan tenaganya lambat laun berkurang.</string>
+  <string name="disk_info">Cakram harus dipakai dan diganti bila sudah tua.  Jika tidak diganti maka kampas rem akan cepat aus dan tenaganya lambat laun berkurang.</string>
       
-  <string name="구입날짜">Tanggal\n pembelian</string>
+  <string name="purchase_date">Tanggal\n pembelian</string>
       
-  <string name="버그만">manusia serangga</string>
+  <string name="bike_model">manusia serangga</string>
       
   <string name="km">km</string>
       
-  <string name="기타수리내용">Perbaikan lainnya</string>
+  <string name="other_repair_detail">Perbaikan lainnya</string>
+
+  <string name="other_details">Lainnya</string>
+  <string name="currency_unit">$</string>
       
-  <string name="원">$</string>
-      
-  <string name="애칭">Nama panggilan</string>
+  <string name="nickname">Nama panggilan</string>
       
   <string name="_2000_01_01">2000\-01\-01</string>
       
   <string name="_0000000">0000000</string>
       
-  <string name="금액">Jumlah</string>
+  <string name="amount">Jumlah</string>
       
-  <string name="주행거리">Jarak didorong</string>
+  <string name="mileage">Jarak didorong</string>
       
-  <string name="수리날짜">Tanggal perbaikan</string>
+  <string name="repair_date">Tanggal perbaikan</string>
       
   <string name="etc">Dll</string>
       
-  <string name="저장">Menyimpan</string>
-      
+  <string name="save">Menyimpan</string>
+
+  <string name="korea_cancel">penghapusan</string>
   <string name="_0">0</string>
       
-  <string name="합계">Total</string>
+  <string name="total">Total</string>
       
   <string name="reference">Referensi</string>
       
-  <string name="검색">Mencari</string>
+  <string name="search">Mencari</string>
       
-  <string name="검색가능">Dapat dicari berdasarkan nama panggilan atau tanggal atau tahun</string>
+  <string name="search_hint">Dapat dicari berdasarkan nama panggilan atau tanggal atau tahun</string>
       
-  <string name="날짜애칭">2000\-01\-01, 2023, Nama Panggilan</string>
+  <string name="search_description">2000\-01\-01, 2023, Nama Panggilan</string>
       
-  <string name="logininfo">Tidak ada informasi masuk. \n Silakan lanjutkan dengan otentikasi.\n Otentikasi Google atau alamat email\n Silakan mendaftar dan masuk.\n Setelah login, kirim data\n \n pada perangkat yang ingin Anda transfer datanya untuk login kembali\n Jika Anda menerima data\n Data ditransfer ke perangkat.</string>
+  <string name="login_info">Tidak ada informasi masuk. \n Silakan lanjutkan dengan otentikasi.\n Otentikasi Google atau alamat email\n Silakan mendaftar dan masuk.\n Setelah login, kirim data\n \n pada perangkat yang ingin Anda transfer datanya untuk login kembali\n Jika Anda menerima data\n Data ditransfer ke perangkat.</string>
       
   <string name="tran">Autentikasi</string>
       
   <string name="logout">Keluar</string>
       
-  <string name="signin">bergabung dengan keanggotaan</string>
+  <string name="sign_in_email">bergabung dengan keanggotaan</string>
       
-  <string name="gglogin">Otentikasi Google</string>
+  <string name="sign_in_google">Otentikasi Google</string>
       
   <string name="email">Surel</string>
       
-  <string name="sign">terdaftar</string>
+  <string name="sign_up_button">terdaftar</string>
       
   <string name="lonin">Gabung</string>
+
+  <string name="login">log in</string>
+  <string name="data_put">Kirim data</string>
       
-  <string name="dataput">Kirim data</string>
-      
-  <string name="datapull">Menerima data</string>
+  <string name="data_pull">Menerima data</string>
       
   <string name="_6">Kata sandi minimal 6 karakter</string>
       
-  <string name="authsuc">Pendaftaran berhasil, silakan periksa email yang dikirimkan</string>
+  <string name="sign_up_success">Pendaftaran berhasil, silakan periksa email yang dikirimkan</string>
       
-  <string name="emailfail">Pengiriman email gagal</string>
+  <string name="email_fail">Pengiriman email gagal</string>
       
-  <string name="authfail">Pendaftaran keanggotaan gagal</string>
+  <string name="auth_fail">Pendaftaran keanggotaan gagal</string>
       
-  <string name="eauthfail">Verifikasi email tidak dilakukan dengan email yang dikirim.</string>
+  <string name="email_auth_fail">Verifikasi email tidak dilakukan dengan email yang dikirim.</string>
       
-  <string name="logfail">gagal masuk</string>
+  <string name="login_fail">gagal masuk</string>
       
-  <string name="authrun">Silakan lanjutkan dengan otentikasi.</string>
+  <string name="auth_run">Silakan lanjutkan dengan otentikasi.</string>
       
   <string name="nice">Senang berkenalan dengan Anda</string>
       
-  <string name="authlogin">Silakan masuk atau daftar.</string>
+  <string name="auth_login">Silakan masuk atau daftar.</string>
+
+  <string name="login_screen_info">Untuk mentransfer data, tekan tombol Data Transfer, masuk dari ponsel tempat Anda menerima data, dan tekan tombol Data Receive.</string>
+  <string name="data_transfer_success">Transmisi data selesai.</string>
       
-  <string name="datacom">Transmisi data selesai.</string>
+  <string name="data_transfer_failed">Transmisi data gagal.</string>
       
-  <string name="datafail">Transmisi data gagal.</string>
+  <string name="data_transfer_received">Data Anda telah terkirim.</string>
       
-  <string name="sent">Data Anda telah terkirim.</string>
+  <string name="nickname_empty">Nama panggilan kosong. Silakan masukkan nama panggilan Anda</string>
       
-  <string name="nickem">Nama panggilan kosong. Silakan masukkan nama panggilan Anda</string>
-      
-  <string name="purem">Tanggal pembelian kosong. Silakan masukkan tanggal pembelian</string>
+  <string name="purchase_data_empty">Tanggal pembelian kosong. Silakan masukkan tanggal pembelian</string>
       
   <string name="select">Pilih</string>
       
   <string name="oil">Minyak</string>
       
-  <string name="oilfilter">Saringan minyak</string>
+  <string name="oil_filter">Saringan minyak</string>
       
-  <string name="fpad">Kampas rem depan</string>
+  <string name="front_pad">Kampas rem depan</string>
       
-  <string name="rpad">Kampas rem belakang</string>
+  <string name="back_pad">Kampas rem belakang</string>
       
-  <string name="ftire">Ban Depan</string>
+  <string name="front_tire">Ban Depan</string>
       
-  <string name="rtire">Ban Belakang</string>
+  <string name="back_tire">Ban Belakang</string>
       
   <string name="belt">Sabuk</string>
       
-  <string name="moveball">Pindahkan bola</string>
+  <string name="move_ball">Pindahkan bola</string>
       
-  <string name="missionoil">Minyak misi</string>
+  <string name="mission_oil">Minyak misi</string>
       
-  <string name="aircleaner">Pembersih udara</string>
+  <string name="air_cleaner">Pembersih udara</string>
       
   <string name="shu">Sepatu kopling</string>
       
@@ -154,24 +159,67 @@
       
   <string name="valve">Pengaturan katup</string>
       
-  <string name="drivesystem">Drivetrain lainnya</string>
+  <string name="drive_system">Drivetrain lainnya</string>
       
   <string name="engine">Mesin lainnya</string>
       
   <string name="lamp">Lampu lainnya</string>
       
-  <string name="fdisk">Disk depan</string>
+  <string name="front_dist">Disk depan</string>
       
-  <string name="rdisk">Disk belakang</string>
+  <string name="back_disk">Disk belakang</string>
       
-  <string name="oilfillterinfo">Filter oli diganti sekitar 10.000 km saat oli diganti. Dalam manual, 1.000 km pertama dan 8.000 km berikutnya diindikasikan sebagai siklus pertukaran.</string>
+  <string name="oil_filter_info">Filter oli diganti sekitar 10.000 km saat oli diganti. Dalam manual, 1.000 km pertama dan 8.000 km berikutnya diindikasikan sebagai siklus pertukaran.</string>
 
-  <string name="emailnice">%1$s\n\n Senang berkenalan dengan Anda</string>
+  <string name="email_nice">%1$s\n\n Senang berkenalan dengan Anda</string>
     <string name="deletion">Konfirmasi penghapusan</string>
-  <string name="wantDeletion">Apakah Anda yakin ingin menghapusnya?</string>
+  <string name="want_deletion">Apakah Anda yakin ingin menghapusnya?</string>
   <string name="yes">ya</string>
   <string name="no">Tidak</string>
-  <string name="emailnm">Email tidak cocok.</string>
-  <string name="fdata">Gagal menerima data.</string>
-    <string name="backwords">mundur</string>
+  <string name="email_not_match">Email tidak cocok.</string>
+  <string name="data_not_receive">Gagal menerima data.</string>
+    <string name="back_words">mundur</string>
+  <string name="mainScreen">Layar penyimpanan rincian perbaikan</string>
+  <string name="totalScreen">Layar riwayat lengkap</string>
+  <string name="profile_provider">Account provider: %1$s</string>
+  <string name="update">Update</string>
+  <string name="or">or</string>
+  <string name="signInScreen">Layar keanggotaan</string>
+  <string name="forward_button">Forward</string>
+  <string name="back_button">Back</string>
+  <string name="editScreen">Ubah layar riwayat</string>
+  <string name="authScreen">Layar verifikasi</string>
+  <string name="authDetailScreen">Layar detail otentikasi</string>
+  <string name="edit">membuahi</string>
+  <string name="logout_screen_info">Login verifikasi Google atau mendaftar sebagai anggota email, dan log in melalui email jika Anda telah mendaftar sebagai anggota email.</string>
+  <string name="auto_insert">Penyisipan Otomatis</string>
+  <string name="example_number">Contoh: 10000</string>
+  <string name="enter_other_content">Masukkan konten lain</string>
+  <string name="select_option">pilih</string>
+  <string name="bike_repair_records">buku pembantu untuk perbaikan sepeda.</string>
+  <string name="total_amount">Total %s dolar</string>
+  <string name="bike_memo_edit_title">Sunting Memo Sepeda</string>
+  <string name="edit_item_title">Sunting Butir</string>
+  <string name="삭제">Hapus</string>
+  <string name="choose">Silakan pilih</string>
+  <string name="authenticate">Otentikasi</string>
+  <string name="password">Password</string>
+  <string name="confirm_password">Confirm password</string>
+  <string name="sign_in">Masuk</string>
+  <string name="sign_in_with_google">Masuk dengan Google</string>
+  <string name="no_accounts_error">Tak ada akun Google yang ditemukan di perangkat ini</string>
+  <string name="sign_up">Mendaftar</string>
+  <string name="sign_up_with_google">Mendaftar dengan Google</string>
+  <string name="sign_up_description">Tidak punya akun? Klik di sini untuk mendaftar!</string>
+  <string name="sign_out">Mendaftar</string>
+  <string name="sign_out_title">Mendaftar?</string>
+  <string name="sign_out_description">Kau harus mendaftar lagi untuk melihat catatanmu.</string>
+  <string name="delete_account_title">Delete account?</string>
+  <string name="delete_account_description">Anda akan kehilangan semua catatan Anda dan akun Anda akan dihapus. Tindakan ini tidak dapat diubah.</string>
+  <string name="delete_account">Delete account</string>
+  <string name="cancel">Cancel</string>
+  <string name="account_center">Account center</string>
+  <string name="profile_name">Display name</string>
+  <string name="profile_email">Email: %1$s</string>
+  <string name="profile_uid">UID: %1$s</string>
 </resources>

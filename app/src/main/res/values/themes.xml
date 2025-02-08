@@ -1,5 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+
 <resources>
-    <!-- Base application theme. -->
+   <!-- Base application theme. -->
     <style name="Theme.BikeRepairDoc" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">#0078FF</item>
@@ -27,7 +29,5 @@
         <item name="android:textColor">@color/text</item>
         <item name="android:textSize">17sp</item>
     </style>
-
-
-
 </resources>
+

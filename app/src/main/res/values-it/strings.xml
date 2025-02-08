@@ -1,150 +1,155 @@
 <?xml version="1.0" encoding="UTF-8"?><resources>
       
   <string name="app_name">BikeRepairDoc</string>
-      
+
+  <string name="authChange">Copia i dati dal cellulare sull\'altro cellulare.</string>
   <string name="hello_blank_fragment">Ciao frammento vuoto</string>
       
-  <string name="referenceinfo">Questa è una cifra basata sull\'esperienza reale basata sul Bugman 125 e questa informazione viene utilizzata semplicemente come riferimento. Non si assume alcuna responsabilità per questo contenuto.</string>
+  <string name="reference_info">Questa è una cifra basata sull\'esperienza reale basata sul Bugman 125 e questa informazione viene utilizzata semplicemente come riferimento. Non si assume alcuna responsabilità per questo contenuto.</string>
       
-  <string name="oilinfo">L\'olio viene cambiato tra 10 e 15 giorni a 1500 km. Il prezzo viene modificato al più economico Secondo il manuale, basato su Bugman 125 I primi 1.000 km, poi 3.000 km Dopodiché, viene cambiato una volta ogni 4.000 km. è elencato come </string>
+  <string name="oil_info">L\'olio viene cambiato tra 10 e 15 giorni a 1500 km. Il prezzo viene modificato al più economico Secondo il manuale, basato su Bugman 125 I primi 1.000 km, poi 3.000 km Dopodiché, viene cambiato una volta ogni 4.000 km. è elencato come </string>
       
-  <string name="brakepadinfo">Le pastiglie dei freni stridono quando si sente uno scricchiolio dalla ruota quando il disco si consuma, le pastiglie dei freni si consumano più velocemente</string>
+  <string name="brake_pad_info">Le pastiglie dei freni stridono quando si sente uno scricchiolio dalla ruota quando il disco si consuma, le pastiglie dei freni si consumano più velocemente</string>
       
-  <string name="tireinfo">Inaspettatamente gli pneumatici vengono presi con leggerezza,  ma sono la parte più importante.  Assicurati di sostituirli prima che la linea di usura si esaurisca</string>
+  <string name="tire_info">Inaspettatamente gli pneumatici vengono presi con leggerezza,  ma sono la parte più importante.  Assicurati di sostituirli prima che la linea di usura si esaurisca</string>
       
-  <string name="beltinfo">La cinghia viene cambiata a circa 20.000 km sulla base del Bugman 125,\n e ogni persona è diversa dalla moto\n alla moto Il manuale dice di cambiare a 12.000 km.</string>
+  <string name="belt_info">La cinghia viene cambiata a circa 20.000 km sulla base del Bugman 125,\n e ogni persona è diversa dalla moto\n alla moto Il manuale dice di cambiare a 12.000 km.</string>
       
-  <string name="moveballinfo">Controllo la pallina mobile quando cambio la cinghia La cambio a circa 40.000 km Se la moto non funziona bene vorrei controllarla</string>
+  <string name="move_ball_info">Controllo la pallina mobile quando cambio la cinghia La cambio a circa 40.000 km Se la moto non funziona bene vorrei controllarla</string>
       
-  <string name="missionoilinfo">Basato sul Bugman 125, l\'olio di missione viene cambiato contemporaneamente al cambio della cinghia e viene cambiato una volta ogni 20.000 km.</string>
+  <string name="mission_oil_info">Basato sul Bugman 125, l\'olio di missione viene cambiato contemporaneamente al cambio della cinghia e viene cambiato una volta ogni 20.000 km.</string>
       
-  <string name="aircleanerinfo">Il filtro dell\'aria non si pulisce spesso Si cambia a circa 10000 km Il manuale dice di pulirlo una volta ogni 3000 km e di cambiarlo a 12000 km.</string>
+  <string name="air_cleaner_info">Il filtro dell\'aria non si pulisce spesso Si cambia a circa 10000 km Il manuale dice di pulirlo una volta ogni 3000 km e di cambiarlo a 12000 km.</string>
       
-  <string name="shuinfo">Nel caso di un ceppo della frizione o di un set di pulegge, sembra che il valore di rottura sia compreso tra 40.000 e 70.000.  La variazione è ampia e costosa, quindi è difficile macinarla in anticipo ed è difficile cambiarla quando si rompe. </string>
+  <string name="shu_info">Nel caso di un ceppo della frizione o di un set di pulegge, sembra che il valore di rottura sia compreso tra 40.000 e 70.000.  La variazione è ampia e costosa, quindi è difficile macinarla in anticipo ed è difficile cambiarla quando si rompe. </string>
       
-  <string name="bearinginfo">I cuscinetti dovrebbero essere controllati frequentemente quando si cambiano gli pneumatici dopo circa 30.000 km o più e anche la gomma dei cuscinetti dovrebbe essere cambiata durante il cambio.</string>
+  <string name="bearing_info">I cuscinetti dovrebbero essere controllati frequentemente quando si cambiano gli pneumatici dopo circa 30.000 km o più e anche la gomma dei cuscinetti dovrebbe essere cambiata durante il cambio.</string>
       
-  <string name="pluginfo">Sostituire la candela dopo circa 20.000 km e sostituirla quando la moto perde potenza.  Il manuale dice di cambiarlo a 8.000 km.</string>
+  <string name="plug_info">Sostituire la candela dopo circa 20.000 km e sostituirla quando la moto perde potenza.  Il manuale dice di cambiarlo a 8.000 km.</string>
       
-  <string name="valveinfo">La regolazione del gioco delle valvole sembra essere effettuata una volta ogni 30.000\-50.000 km, il sintomo è che quando vai a fermarti il ​​motore si spegne o il motore si spegne frequentemente se il motore si spegne a quei chili è necessario controllarlo.</string>
+  <string name="valve_info">La regolazione del gioco delle valvole sembra essere effettuata una volta ogni 30.000\-50.000 km, il sintomo è che quando vai a fermarti il ​​motore si spegne o il motore si spegne frequentemente se il motore si spegne a quei chili è necessario controllarlo.</string>
       
-  <string name="drivesysteminfo">Controlla la trasmissione ogni volta che la apri per assicurarti che non si fermi durante la guida.</string>
+  <string name="drive_system_info">Controlla la trasmissione ogni volta che la apri per assicurarti che non si fermi durante la guida.</string>
       
-  <string name="engineinfo">Il motore si rompe raramente ma controllalo di tanto in tanto.</string>
+  <string name="engine_info">Il motore si rompe raramente ma controllalo di tanto in tanto.</string>
       
-  <string name="lampinfo">Le lampade si rompono più spesso nei giorni di pioggia se bruciano molto, quindi restiamo a casa nei giorni di pioggia o neve </string>
+  <string name="lamp_info">Le lampade si rompono più spesso nei giorni di pioggia se bruciano molto, quindi restiamo a casa nei giorni di pioggia o neve </string>
       
-  <string name="etcinfo">Controllatelo spesso senza che vi siano altri malfunzionamenti Viviamo a lungo</string>
+  <string name="etc_info">Controllatelo spesso senza che vi siano altri malfunzionamenti Viviamo a lungo</string>
       
-  <string name="diskinfo">I dischi dovrebbero essere usurati e sostituiti quando sono vecchi.  Se non vengono sostituite, le pastiglie dei freni si consumeranno rapidamente e la potenza diminuirà gradualmente.</string>
+  <string name="disk_info">I dischi dovrebbero essere usurati e sostituiti quando sono vecchi.  Se non vengono sostituite, le pastiglie dei freni si consumeranno rapidamente e la potenza diminuirà gradualmente.</string>
       
-  <string name="구입날짜">Data di\n acquistare</string>
+  <string name="purchase_date">Data di\n acquistare</string>
       
-  <string name="버그만">Bugmann</string>
+  <string name="bike_model">Bugmann</string>
       
   <string name="km">Km</string>
       
-  <string name="기타수리내용">Altre riparazioni</string>
+  <string name="other_repair_detail">Altre riparazioni</string>
+
+  <string name="other_details">altri dettagli</string>
+  <string name="currency_unit">$</string>
       
-  <string name="원">$</string>
-      
-  <string name="애칭">Soprannome</string>
+  <string name="nickname">Soprannome</string>
       
   <string name="_2000_01_01">2000\-01\-01</string>
       
   <string name="_0000000">0000000</string>
       
-  <string name="금액">Quantità</string>
+  <string name="amount">Quantità</string>
       
-  <string name="주행거리">Distanza percorsa</string>
+  <string name="mileage">Distanza percorsa</string>
       
-  <string name="수리날짜">Data di riparazione</string>
+  <string name="repair_date">Data di riparazione</string>
       
   <string name="etc">Eccetera</string>
       
-  <string name="저장">Salva</string>
-      
+  <string name="save">Salva</string>
+
+  <string name="korea_cancel">cancellazione</string>
   <string name="_0">0</string>
       
-  <string name="합계">Totale</string>
+  <string name="total">Totale</string>
       
   <string name="reference">Riferimento</string>
       
-  <string name="검색">Ricerca</string>
+  <string name="search">Ricerca</string>
       
-  <string name="검색가능">Ricercabile per nickname, data o anno</string>
+  <string name="search_hint">Ricercabile per nickname, data o anno</string>
       
-  <string name="날짜애칭">2023\-01\-01, 2023, Soprannome</string>
+  <string name="search_description">2023\-01\-01, 2023, Soprannome</string>
       
-  <string name="logininfo">Nessuna informazione di accesso. \n Procedi con l\'autenticazione.\n Autenticazione Google o indirizzo email\n Per favore registrati e accedi.\n Dopo aver effettuato l\'accesso, inviare i dati\n \n sul dispositivo su cui desideri trasferire i dati per accedere nuovamente\n Se ricevi dati\n I dati vengono trasferiti al dispositivo.</string>
+  <string name="login_info">Nessuna informazione di accesso. \n Procedi con l\'autenticazione.\n Autenticazione Google o indirizzo email\n Per favore registrati e accedi.\n Dopo aver effettuato l\'accesso, inviare i dati\n \n sul dispositivo su cui desideri trasferire i dati per accedere nuovamente\n Se ricevi dati\n I dati vengono trasferiti al dispositivo.</string>
       
   <string name="tran">Autenticazione</string>
       
   <string name="logout">Disconnettersi</string>
       
-  <string name="signin">aderire all\'adesione</string>
+  <string name="sign_in_email">aderire all\'adesione</string>
       
-  <string name="gglogin">Autenticazione di Google</string>
+  <string name="sign_in_google">Autenticazione di Google</string>
       
   <string name="email">E-mail</string>
       
-  <string name="sign">divenire socio di</string>
+  <string name="sign_up_button">divenire socio di</string>
       
   <string name="lonin">Log in</string>
+
+  <string name="login">Login</string>
+  <string name="data_put">Invia i dati</string>
       
-  <string name="dataput">Invia i dati</string>
-      
-  <string name="datapull">Ricevi dati</string>
+  <string name="data_pull">Ricevi dati</string>
       
   <string name="_6">Password di almeno 6 caratteri</string>
       
-  <string name="authsuc">Registrazione avvenuta con successo, controlla l\'email inviata</string>
+  <string name="sign_up_success">Registrazione avvenuta con successo, controlla l\'email inviata</string>
       
-  <string name="emailfail">L\'invio della posta non è riuscito</string>
+  <string name="email_fail">L\'invio della posta non è riuscito</string>
       
-  <string name="authfail">La registrazione dell\'iscrizione non è riuscita</string>
+  <string name="auth_fail">La registrazione dell\'iscrizione non è riuscita</string>
       
-  <string name="eauthfail">La verifica dell\'e-mail non è stata eseguita con l\'e-mail inviata.</string>
+  <string name="email_auth_fail">La verifica dell\'e-mail non è stata eseguita con l\'e-mail inviata.</string>
       
-  <string name="logfail">Accesso non riuscito</string>
+  <string name="login_fail">Accesso non riuscito</string>
       
-  <string name="authrun">Procedi con l\'autenticazione.</string>
+  <string name="auth_run">Procedi con l\'autenticazione.</string>
       
   <string name="nice">Piacere di conoscerti</string>
       
-  <string name="authlogin">Effettua il login o registrati.</string>
+  <string name="auth_login">Effettua il login o registrati.</string>
+
+  <string name="login_screen_info">Per trasferire i dati, premere il pulsante di trasmissione dati, accedere dal telefono cellulare a cui si vogliono ricevere i dati e premere il pulsante di ricezione dati.</string>
+  <string name="data_transfer_success">La trasmissione dei dati è completata.</string>
       
-  <string name="datacom">La trasmissione dei dati è completata.</string>
+  <string name="data_transfer_failed">La trasmissione dei dati non è riuscita.</string>
       
-  <string name="datafail">La trasmissione dei dati non è riuscita.</string>
+  <string name="data_transfer_received">I tuoi dati sono stati inviati.</string>
       
-  <string name="sent">I tuoi dati sono stati inviati.</string>
+  <string name="nickname_empty">Il soprannome è vuoto. Per favore inserisci il tuo nickname</string>
       
-  <string name="nickem">Il soprannome è vuoto. Per favore inserisci il tuo nickname</string>
-      
-  <string name="purem">La data di acquisto è vuota. Inserisci la data di acquisto</string>
+  <string name="purchase_data_empty">La data di acquisto è vuota. Inserisci la data di acquisto</string>
       
   <string name="select">Selezionare</string>
       
   <string name="oil">Olio</string>
       
-  <string name="oilfilter">Filtro dell\'olio</string>
+  <string name="oil_filter">Filtro dell\'olio</string>
       
-  <string name="fpad">Pastiglia freno anteriore</string>
+  <string name="front_pad">Pastiglia freno anteriore</string>
       
-  <string name="rpad">Pastiglia freno posteriore</string>
+  <string name="back_pad">Pastiglia freno posteriore</string>
       
-  <string name="ftire">Pneumatico anteriore</string>
+  <string name="front_tire">Pneumatico anteriore</string>
       
-  <string name="rtire">Pneumatico posteriore</string>
+  <string name="back_tire">Pneumatico posteriore</string>
       
   <string name="belt">Cintura</string>
       
-  <string name="moveball">Muovi la palla</string>
+  <string name="move_ball">Muovi la palla</string>
       
-  <string name="missionoil">Olio di missione</string>
+  <string name="mission_oil">Olio di missione</string>
       
-  <string name="aircleaner">Filtro dell\'aria</string>
+  <string name="air_cleaner">Filtro dell\'aria</string>
       
   <string name="shu">Ganascia della frizione</string>
       
@@ -154,24 +159,67 @@
       
   <string name="valve">Impostazione della valvola</string>
       
-  <string name="drivesystem">Altra trasmissione</string>
+  <string name="drive_system">Altra trasmissione</string>
       
   <string name="engine">Altri motori</string>
       
   <string name="lamp">Altre lampade</string>
       
-  <string name="fdisk">Disco anteriore</string>
+  <string name="front_dist">Disco anteriore</string>
       
-  <string name="rdisk">Disco posteriore</string>
+  <string name="back_disk">Disco posteriore</string>
       
-  <string name="oilfillterinfo">Il filtro dell\'olio viene cambiato a circa 10.000 km quando si cambia l\'olio. Nel manuale i primi 1.000 km ed i successivi 8.000 km sono indicati come ciclo di scambio.</string>
+  <string name="oil_filter_info">Il filtro dell\'olio viene cambiato a circa 10.000 km quando si cambia l\'olio. Nel manuale i primi 1.000 km ed i successivi 8.000 km sono indicati come ciclo di scambio.</string>
 
-  <string name="emailnice">%1$s\n\n Piacere di conoscerti</string>
+  <string name="email_nice">%1$s\n\n Piacere di conoscerti</string>
     <string name="deletion">Confirmazione della cancellazione</string>
-  <string name="wantDeletion">E\' sicuro di volerlo cancellare?</string>
+  <string name="want_deletion">E\' sicuro di volerlo cancellare?</string>
   <string name="yes">sì</string>
   <string name="no">N. di</string>
-  <string name="emailnm">L\'email non corrisponde.</string>
-  <string name="fdata">Impossibile ricevere i dati.</string>
-    <string name="backwords">indietro</string>
+  <string name="email_not_match">L\'email non corrisponde.</string>
+  <string name="data_not_receive">Impossibile ricevere i dati.</string>
+    <string name="back_words">indietro</string>
+  <string name="mainScreen">Salva cronologia delle riparazioni.</string>
+  <string name="totalScreen">Screenshot completo.</string>
+  <string name="profile_provider">Account provider: %1$s</string>
+  <string name="update">Update</string>
+  <string name="or">or</string>
+  <string name="signInScreen">schermo di registrazione</string>
+  <string name="forward_button">Forward</string>
+  <string name="back_button">Back</string>
+  <string name="editScreen">Revisione: serecea Resynch 720p: marylena</string>
+  <string name="authScreen">Screen di autenticazione.</string>
+  <string name="authDetailScreen">Screenshot dettagliato per l\'autenticazione</string>
+  <string name="edit">Modifica.</string>
+  <string name="logout_screen_info">Se vi siete iscritti a Google per l\'autenticazione o se vi siete iscritti a e-mail, vi preghiamo di registrarvi via e-mail.</string>
+  <string name="auto_insert">Inserimento automatico</string>
+  <string name="example_number">Esempio: 10000</string>
+  <string name="enter_other_content">Inserisci altri contenuti</string>
+  <string name="select_option">selezionare</string>
+  <string name="bike_repair_records">un libro per la pulizia della bicicletta</string>
+  <string name="total_amount">Totale %s dollari</string>
+  <string name="bike_memo_edit_title">Modifica BikeMemo</string>
+  <string name="edit_item_title">Modifica elemento</string>
+  <string name="삭제">Elimina</string>
+  <string name="choose">Scegli</string>
+  <string name="authenticate">Autenticazione</string>
+  <string name="password">Password</string>
+  <string name="confirm_password">Confirm password</string>
+  <string name="sign_in">Registrati</string>
+  <string name="sign_in_with_google">Iscriviti a Google</string>
+  <string name="no_accounts_error">Nessun account Google trovato su questo dispositivo</string>
+  <string name="sign_up">Iscriviti</string>
+  <string name="sign_up_with_google">Iscriviti a Google</string>
+  <string name="sign_up_description">Non hai un conto? Clicca qui per iscriverti!</string>
+  <string name="sign_out">Scriviti.</string>
+  <string name="sign_out_title">Fare il firmattina.</string>
+  <string name="sign_out_description">Dovrai registrarti di nuovo per vedere i tuoi appunti.</string>
+  <string name="delete_account_title">Delete account?</string>
+  <string name="delete_account_description">Anda akan kehilangan semua catatan Anda dan akun Anda akan dihapus. Tindakan ini tidak dapat diubah.</string>
+  <string name="delete_account">Delete account</string>
+  <string name="cancel">Cancel</string>
+  <string name="account_center">Account center</string>
+  <string name="profile_name">Display name</string>
+  <string name="profile_email">Email: %1$s</string>
+  <string name="profile_uid">UID: %1$s</string>
 </resources>

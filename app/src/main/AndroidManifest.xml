@@ -5,9 +5,10 @@
     <uses-permission
         android:name="com.google.android.gms.permission.AD_ID"
         tools:node="remove" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
-        android:name=".MyApplication"
+        android:name=".BikeMemoApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -17,12 +18,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BikeRepairDoc"
         tools:targetApi="31">
-        <activity
-            android:name=".AuthActivity"
-            android:exported="false" />
+
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.BikeRepairDoc">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,8 +30,9 @@
             </intent-filter>
 
             <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
+                android:name="com.google.android.gms.credential manager.ENABLED"
+                android:value="true" />
+            <!-- Credential Manager를 상용하기위한 메타데이터 -->
         </activity>
     </application>
 

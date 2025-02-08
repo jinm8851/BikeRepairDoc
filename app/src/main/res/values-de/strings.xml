@@ -1,150 +1,154 @@
 <?xml version="1.0" encoding="UTF-8"?><resources>
       
   <string name="app_name">BikeRepairDoc</string>
-      
+
+  <string name="authChange">Kopieren von Daten vom Handy auf ein anderes Handy</string>
   <string name="hello_blank_fragment">Hallo leeres Fragment</string>
       
-  <string name="referenceinfo">Hierbei handelt es sich um einen Wert, der auf tatsächlichen Erfahrungen mit dem Bugman 125 basiert und diese Informationen lediglich als Referenz dienen. Für diese Inhalte wird keine Haftung übernommen.</string>
+  <string name="reference_info">Hierbei handelt es sich um einen Wert, der auf tatsächlichen Erfahrungen mit dem Bugman 125 basiert und diese Informationen lediglich als Referenz dienen. Für diese Inhalte wird keine Haftung übernommen.</string>
       
-  <string name="oilinfo">Das Öl wird alle 10 bis 15 Tage bei 1500 km gewechselt. Der Preis wird am günstigsten geändert. Laut Handbuch, basierend auf Bugman 125. Die ersten 1.000 km, dann 3.000 km. Danach wird er alle 4.000 km einmal geändert. wird aufgeführt als </string>
+  <string name="oil_info">Das Öl wird alle 10 bis 15 Tage bei 1500 km gewechselt. Der Preis wird am günstigsten geändert. Laut Handbuch, basierend auf Bugman 125. Die ersten 1.000 km, dann 3.000 km. Danach wird er alle 4.000 km einmal geändert. wird aufgeführt als </string>
       
-  <string name="brakepadinfo">Die Bremsbeläge schleifen, wenn Sie ein knirschendes Geräusch vom Rad hören. Wenn die Scheibe abgenutzt ist, nutzen sich die Bremsbeläge schneller ab</string>
+  <string name="brake_pad_info">Die Bremsbeläge schleifen, wenn Sie ein knirschendes Geräusch vom Rad hören. Wenn die Scheibe abgenutzt ist, nutzen sich die Bremsbeläge schneller ab</string>
       
-  <string name="tireinfo">Über Reifen wird überraschenderweise wenig nachgedacht,  aber sie sind der wichtigste Teil.  Achten Sie darauf, sie auszutauschen, bevor die Verschleißlinie aufgebraucht ist</string>
+  <string name="tire_info">Über Reifen wird überraschenderweise wenig nachgedacht,  aber sie sind der wichtigste Teil.  Achten Sie darauf, sie auszutauschen, bevor die Verschleißlinie aufgebraucht ist</string>
+
+  <string name="belt_info">Der Gürtel wird auf Basis des Bugman 125 ca. 20.000 km gewechselt, und jede Person unterscheidet sich von Motorrad zu Motorrad. Das Handbuch sagt, um sich auf 12.000 km zu ändern.</string>
+  <string name="move_ball_info">Ich überprüfe die Bewegungskugel, wenn ich den Riemen wechsle. Ich wechsle sie nach etwa 40.000 km. Wenn das Motorrad nicht gut funktioniert, würde ich es gerne überprüfen</string>
       
-  <string name="beltinfo">Der Riemenwechsel erfolgt bei ca. 20.000 km basierend auf dem Bugman 125,\n und jeder Mensch ist anders als Motorrad\n zum Motorrad Laut Handbuch soll der Wechsel bei 12.000 km erfolgen.</string>
+  <string name="mission_oil_info">Basierend auf Bugman 125 wird das Missionsöl gleichzeitig mit dem Riemenwechsel gewechselt, und zwar einmal alle 20.000 km.</string>
       
-  <string name="moveballinfo">Ich überprüfe die Bewegungskugel, wenn ich den Riemen wechsle. Ich wechsle sie nach etwa 40.000 km. Wenn das Motorrad nicht gut funktioniert, würde ich es gerne überprüfen</string>
+  <string name="air_cleaner_info">Der Luftfilter wird nicht oft gereinigt. Er wird bei etwa 10.000 km gewechselt. Im Handbuch steht, dass man ihn alle 3.000 km einmal reinigen und bei 12.000 km wechseln soll.</string>
       
-  <string name="missionoilinfo">Basierend auf Bugman 125 wird das Missionsöl gleichzeitig mit dem Riemenwechsel gewechselt, und zwar einmal alle 20.000 km.</string>
+  <string name="shu_info">Bei einer Kupplungsbacke oder einem Riemenscheibensatz scheint es zwischen 40.000 und 70.000 kaputt zu gehen.  Die Variation ist groß und teuer, daher ist es schwierig, sie im Voraus zu mahlen, und es ist schwierig, sie auszutauschen, wenn sie kaputt geht. </string>
       
-  <string name="aircleanerinfo">Der Luftfilter wird nicht oft gereinigt. Er wird bei etwa 10.000 km gewechselt. Im Handbuch steht, dass man ihn alle 3.000 km einmal reinigen und bei 12.000 km wechseln soll.</string>
+  <string name="bearing_info">Bei einem Reifenwechsel nach ca. 30.000 km oder mehr sollten die Lager häufig überprüft werden und bei einem Reifenwechsel auch die Lagergummis erneuert werden.</string>
       
-  <string name="shuinfo">Bei einer Kupplungsbacke oder einem Riemenscheibensatz scheint es zwischen 40.000 und 70.000 kaputt zu gehen.  Die Variation ist groß und teuer, daher ist es schwierig, sie im Voraus zu mahlen, und es ist schwierig, sie auszutauschen, wenn sie kaputt geht. </string>
+  <string name="plug_info">Ersetzen Sie den Stecker nach etwa 20.000 km und ersetzen Sie ihn,wenn das Motorrad klappert und die Leistung verliert.  Im Handbuch steht,dass der Wechsel bei 8.000 km erfolgen soll.</string>
       
-  <string name="bearinginfo">Bei einem Reifenwechsel nach ca. 30.000 km oder mehr sollten die Lager häufig überprüft werden und bei einem Reifenwechsel auch die Lagergummis erneuert werden.</string>
+  <string name="valve_info">Die Einstellung des Ventilspiels scheint einmal alle 30.000 bis 50.000 km durchgeführt zu werden. Das Symptom ist, dass der Motor abschaltet, wenn Sie stehen, oder dass der Motor häufig abschaltet. Wenn der Motor bei dieser Kilozahl abschaltet, müssen Sie dies überprüfen.</string>
       
-  <string name="pluginfo">Ersetzen Sie den Stecker nach etwa 20.000 km und ersetzen Sie ihn,wenn das Motorrad klappert und die Leistung verliert.  Im Handbuch steht,dass der Wechsel bei 8.000 km erfolgen soll.</string>
+  <string name="drive_system_info">Überprüfen Sie den Antriebsstrang jedes Mal, wenn Sie ihn öffnen, um sicherzustellen, dass er während der Fahrt nicht stoppt.</string>
       
-  <string name="valveinfo">Die Einstellung des Ventilspiels scheint einmal alle 30.000 bis 50.000 km durchgeführt zu werden. Das Symptom ist, dass der Motor abschaltet, wenn Sie stehen, oder dass der Motor häufig abschaltet. Wenn der Motor bei dieser Kilozahl abschaltet, müssen Sie dies überprüfen.</string>
+  <string name="engine_info">Der Motor geht selten kaputt, aber überprüfen Sie ihn von Zeit zu Zeit.</string>
       
-  <string name="drivesysteminfo">Überprüfen Sie den Antriebsstrang jedes Mal, wenn Sie ihn öffnen, um sicherzustellen, dass er während der Fahrt nicht stoppt.</string>
+  <string name="lamp_info">An regnerischen Tagen gehen Lampen häufiger kaputt, wenn sie viel brennen. Bleiben Sie also an regnerischen oder verschneiten Tagen zu Hause </string>
       
-  <string name="engineinfo">Der Motor geht selten kaputt, aber überprüfen Sie ihn von Zeit zu Zeit.</string>
+  <string name="etc_info">Überprüfen Sie es häufig, ohne dass andere Störungen auftreten. Lasst uns noch lange leben</string>
       
-  <string name="lampinfo">An regnerischen Tagen gehen Lampen häufiger kaputt, wenn sie viel brennen. Bleiben Sie also an regnerischen oder verschneiten Tagen zu Hause </string>
+  <string name="disk_info">Scheiben sollten abgenutzt und ersetzt werden, wenn sie alt sind.  Wenn sie nicht ausgetauscht werden, verschleißen die Bremsbeläge schnell und die Leistung lässt allmählich nach.</string>
       
-  <string name="etcinfo">Überprüfen Sie es häufig, ohne dass andere Störungen auftreten. Lasst uns noch lange leben</string>
+  <string name="purchase_date">Datum von\n kaufen</string>
       
-  <string name="diskinfo">Scheiben sollten abgenutzt und ersetzt werden, wenn sie alt sind.  Wenn sie nicht ausgetauscht werden, verschleißen die Bremsbeläge schnell und die Leistung lässt allmählich nach.</string>
-      
-  <string name="구입날짜">Datum von\n kaufen</string>
-      
-  <string name="버그만">Bugman</string>
+  <string name="bike_model">Bugman</string>
       
   <string name="km">Km</string>
       
-  <string name="기타수리내용">Sonstige Reparaturen</string>
+  <string name="other_repair_detail">Sonstige Reparaturen</string>
+
+  <string name="other_details">Sonstige Inhalte</string>
+  <string name="currency_unit">$</string>
       
-  <string name="원">$</string>
-      
-  <string name="애칭">Spitzname</string>
+  <string name="nickname">Spitzname</string>
       
   <string name="_2000_01_01">01\-01\-2000</string>
       
   <string name="_0000000">0000000</string>
       
-  <string name="금액">Menge</string>
+  <string name="amount">Menge</string>
       
-  <string name="주행거리">Zurückgelegte Strecke</string>
+  <string name="mileage">Zurückgelegte Strecke</string>
       
-  <string name="수리날짜">Reparaturdatum</string>
+  <string name="repair_date">Reparaturdatum</string>
       
   <string name="etc">Usw</string>
       
-  <string name="저장">Speichern</string>
-      
+  <string name="save">Speichern</string>
+
+  <string name="korea_cancel">die Zurücknahme</string>
   <string name="_0">0</string>
       
-  <string name="합계">Gesamt</string>
+  <string name="total">Gesamt</string>
       
   <string name="reference">Referenz</string>
       
-  <string name="검색">Suchen</string>
+  <string name="search">Suchen</string>
       
-  <string name="검색가능">Durchsuchbar nach Spitzname, Datum oder Jahr</string>
+  <string name="search_hint">Durchsuchbar nach Spitzname, Datum oder Jahr</string>
       
-  <string name="날짜애칭">01\-01\-2023, 2023, Spitzname</string>
+  <string name="search_description">01\-01\-2023, 2023, Spitzname</string>
       
-  <string name="logininfo">Keine Anmeldeinformationen. \n Bitte fahren Sie mit der Authentifizierung fort.\n Google-Authentifizierung oder E-Mail-Adresse\n Bitte registrieren Sie sich und loggen Sie sich ein.\n Nach der Anmeldung Daten senden\n \n Auf dem Gerät, auf dem Sie die Daten übertragen möchten, melden Sie sich erneut an\n Wenn Sie Daten erhalten\n Die Daten werden an das Gerät übertragen.</string>
+  <string name="login_info">Keine Anmeldeinformationen. \n Bitte fahren Sie mit der Authentifizierung fort.\n Google-Authentifizierung oder E-Mail-Adresse\n Bitte registrieren Sie sich und loggen Sie sich ein.\n Nach der Anmeldung Daten senden\n \n Auf dem Gerät, auf dem Sie die Daten übertragen möchten, melden Sie sich erneut an\n Wenn Sie Daten erhalten\n Die Daten werden an das Gerät übertragen.</string>
       
   <string name="tran">Authentifizierung</string>
       
   <string name="logout">Ausloggen</string>
       
-  <string name="signin">Treten Sie der Mitgliedschaft bei</string>
+  <string name="sign_in_email">Treten Sie der Mitgliedschaft bei</string>
       
-  <string name="gglogin">Google-Authentifizierung</string>
+  <string name="sign_in_google">Google-Authentifizierung</string>
       
   <string name="email">Email</string>
       
-  <string name="sign">die Aufnahme</string>
+  <string name="sign_up_button">die Aufnahme</string>
       
   <string name="lonin">Anmeldung</string>
+
+  <string name="login">Anmelden</string>
+  <string name="data_put">Daten senden</string>
       
-  <string name="dataput">Daten senden</string>
-      
-  <string name="datapull">Empfange Daten</string>
+  <string name="data_pull">Empfange Daten</string>
       
   <string name="_6">Passwort mindestens 6 Zeichen</string>
       
-  <string name="authsuc">Die Registrierung war erfolgreich. Bitte überprüfen Sie die gesendete E-Mail</string>
+  <string name="sign_up_success">Die Registrierung war erfolgreich. Bitte überprüfen Sie die gesendete E-Mail</string>
       
-  <string name="emailfail">Der E-Mail-Versand ist fehlgeschlagen</string>
+  <string name="email_fail">Der E-Mail-Versand ist fehlgeschlagen</string>
       
-  <string name="authfail">Die Registrierung der Mitgliedschaft ist fehlgeschlagen</string>
+  <string name="auth_fail">Die Registrierung der Mitgliedschaft ist fehlgeschlagen</string>
       
-  <string name="eauthfail">Die E-Mail-Verifizierung wurde mit der gesendeten E-Mail nicht durchgeführt.</string>
+  <string name="email_auth_fail">Die E-Mail-Verifizierung wurde mit der gesendeten E-Mail nicht durchgeführt.</string>
       
-  <string name="logfail">Fehler bei der Anmeldung</string>
+  <string name="login_fail">Fehler bei der Anmeldung</string>
       
-  <string name="authrun">Bitte fahren Sie mit der Authentifizierung fort.</string>
+  <string name="auth_run">Bitte fahren Sie mit der Authentifizierung fort.</string>
       
   <string name="nice">Freut mich, Sie kennenzulernen</string>
       
-  <string name="authlogin">Bitte einloggen oder anmelden.</string>
+  <string name="auth_login">Bitte einloggen oder anmelden.</string>
+
+  <string name="login_screen_info">Um Daten zu senden, drücken Sie die Schaltfläche Daten senden, melden sich am Handy an und drücken den Knopf Daten empfangen.</string>
+  <string name="data_transfer_success">Die Datenübertragung ist abgeschlossen.</string>
       
-  <string name="datacom">Die Datenübertragung ist abgeschlossen.</string>
+  <string name="data_transfer_failed">Die Datenübertragung ist fehlgeschlagen.</string>
       
-  <string name="datafail">Die Datenübertragung ist fehlgeschlagen.</string>
+  <string name="data_transfer_received">Ihre Daten wurden abgesendet.</string>
       
-  <string name="sent">Ihre Daten wurden abgesendet.</string>
+  <string name="nickname_empty">Spitzname ist leer. Bitte geben Sie ihren Spitznamen ein</string>
       
-  <string name="nickem">Spitzname ist leer. Bitte geben Sie ihren Spitznamen ein</string>
-      
-  <string name="purem">Das Kaufdatum ist leer. Bitte geben Sie das Kaufdatum ein</string>
+  <string name="purchase_data_empty">Das Kaufdatum ist leer. Bitte geben Sie das Kaufdatum ein</string>
       
   <string name="select">Wählen</string>
       
   <string name="oil">Öl</string>
       
-  <string name="oilfilter">Ölfilter</string>
+  <string name="oil_filter">Ölfilter</string>
       
-  <string name="fpad">Vorderer Bremsbelag</string>
+  <string name="front_pad">Vorderer Bremsbelag</string>
       
-  <string name="rpad">Bremsbelag hinten</string>
+  <string name="back_pad">Bremsbelag hinten</string>
       
-  <string name="ftire">Vorderrad</string>
+  <string name="front_tire">Vorderrad</string>
       
-  <string name="rtire">Hinterrad</string>
+  <string name="back_tire">Hinterrad</string>
       
   <string name="belt">Gürtel</string>
       
-  <string name="moveball">Ball bewegen</string>
+  <string name="move_ball">Ball bewegen</string>
       
-  <string name="missionoil">Missionsöl</string>
+  <string name="mission_oil">Missionsöl</string>
       
-  <string name="aircleaner">Luftreiniger</string>
+  <string name="air_cleaner">Luftreiniger</string>
       
   <string name="shu">Kupplungsschuh</string>
       
@@ -154,24 +158,67 @@
       
   <string name="valve">Ventileinstellung</string>
       
-  <string name="drivesystem">Anderer Antriebsstrang</string>
+  <string name="drive_system">Anderer Antriebsstrang</string>
       
   <string name="engine">Andere Motoren</string>
       
   <string name="lamp">Andere Lampen</string>
       
-  <string name="fdisk">Vordere Scheibe</string>
+  <string name="front_dist">Vordere Scheibe</string>
       
-  <string name="rdisk">Hintere Scheibe</string>
+  <string name="back_disk">Hintere Scheibe</string>
       
-  <string name="oilfillterinfo">Der Ölfilter wird beim Ölwechsel etwa nach 10.000 km gewechselt. Im Handbuch sind die ersten 1.000 km und die nächsten 8.000 km als Austauschzyklus angegeben.</string>
+  <string name="oil_filter_info">Der Ölfilter wird beim Ölwechsel etwa nach 10.000 km gewechselt. Im Handbuch sind die ersten 1.000 km und die nächsten 8.000 km als Austauschzyklus angegeben.</string>
 
-  <string name="emailnice">%1$s\n\n Freut mich, Sie kennenzulernen</string>
+  <string name="email_nice">%1$s\n\n Freut mich, Sie kennenzulernen</string>
     <string name="deletion">Bestätigen Sie die Löschung</string>
-  <string name="wantDeletion">Sind Sie sicher, dass Sie es löschen möchten?</string>
+  <string name="want_deletion">Sind Sie sicher, dass Sie es löschen möchten?</string>
   <string name="yes">Ja.</string>
   <string name="no">Nein!</string>
-  <string name="emailnm">E-Mail passt nicht.</string>
-  <string name="fdata">Die Daten wurden nicht empfangen.</string>
-    <string name="backwords">rückwärts</string>
+  <string name="email_not_match">E-Mail passt nicht.</string>
+  <string name="data_not_receive">Die Daten wurden nicht empfangen.</string>
+    <string name="back_words">rückwärts</string>
+  <string name="mainScreen">Speichern Sie die Reparatur-History-Bildschirm</string>
+  <string name="totalScreen">Vollständige Historie</string>
+  <string name="profile_provider">Account provider: %1$s</string>
+  <string name="update">Update</string>
+  <string name="or">or</string>
+  <string name="signInScreen">Bildschirm für die Mitgliedschaft</string>
+  <string name="forward_button">Forward</string>
+  <string name="back_button">Back</string>
+  <string name="editScreen">Bildschirm zur Änderung der Geschichte</string>
+  <string name="authScreen">Authentifizierungsbildschirm</string>
+  <string name="authDetailScreen">Details zur Authentifizierung</string>
+  <string name="edit">Korrekturen vornehmen.</string>
+  <string name="logout_screen_info">Wenn Sie ein Google-Authentifizierungs-Login oder ein E-Mail-Mitglied sind, loggen Sie sich bitte per E-Mail ein.</string>
+  <string name="auto_insert">Automatische Einfügung</string>
+  <string name="example_number">Exemple : 10000</string>
+  <string name="enter_other_content">Andere Inhalte eingeben</string>
+  <string name="select_option">wählen</string>
+  <string name="bike_repair_records">ein Hausbuch für Fahrradreparaturen</string>
+  <string name="total_amount">Insgesamt %s Dollar</string>
+  <string name="bike_memo_edit_title">BikeMemo bearbeiten</string>
+  <string name="edit_item_title">Artikel bearbeiten</string>
+  <string name="삭제">Löschen</string>
+  <string name="choose">Bitte wählen</string>
+  <string name="authenticate">Authentifizieren</string>
+  <string name="password">Password</string>
+  <string name="confirm_password">Confirm password</string>
+  <string name="sign_in">Anmelden</string>
+  <string name="sign_in_with_google">Melden Sie sich bei Google an</string>
+  <string name="no_accounts_error">Auf diesem Gerät wurden keine Google-Accounts gefunden</string>
+  <string name="sign_up">Registrieren</string>
+  <string name="sign_up_with_google">Registrieren Sie sich bei Google</string>
+  <string name="sign_up_description">Haben Sie kein Konto? Klicken Sie hier, um sich anzumelden!</string>
+  <string name="sign_out">Unterschreiben</string>
+  <string name="sign_out_title">Unterschreiben?</string>
+  <string name="sign_out_description">Sie müssen sich erneut anmelden, um Ihre Notizen zu sehen.</string>
+  <string name="delete_account_title">Delete account?</string>
+  <string name="delete_account_description">Sie verlieren alle Ihre Notizen und Ihr Konto wird gelöscht. Diese Aktion ist irreversibel.</string>
+  <string name="delete_account">Delete account</string>
+  <string name="cancel">Cancel</string>
+  <string name="account_center">Account center</string>
+  <string name="profile_name">Display name</string>
+  <string name="profile_email">Email: %1$s</string>
+  <string name="profile_uid">UID: %1$s</string>
 </resources>

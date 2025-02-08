@@ -1,150 +1,155 @@
 <?xml version="1.0" encoding="UTF-8"?><resources>
       
   <string name="app_name">自転車修理ドクター</string>
-      
+
+  <string name="authChange">携帯電話から他の携帯電話にデータをコピー</string>
   <string name="hello_blank_fragment">こんにちは、空白のフラグメント</string>
       
-  <string name="referenceinfo">バグマン 125 をベースとした実体験に基づく数値であり、あくまで参考値としてご利用ください。この内容については一切の責任を負いません。</string>
+  <string name="reference_info">バグマン 125 をベースとした実体験に基づく数値であり、あくまで参考値としてご利用ください。この内容については一切の責任を負いません。</string>
       
-  <string name="oilinfo">オイル交換は 1500km 走行で 10 ～ 15 日程度です。価格は一番安いところで交換します 説明書によるとバグマン 125 をベースに 最初は 1,000km、次は 3,000km 以降は 4000km に 1 回交換です。としてリストされています</string>
+  <string name="oil_info">オイル交換は 1500km 走行で 10 ～ 15 日程度です。価格は一番安いところで交換します 説明書によるとバグマン 125 をベースに 最初は 1,000km、次は 3,000km 以降は 4000km に 1 回交換です。としてリストされています</string>
       
-  <string name="brakepadinfo">ブレーキパッドが磨耗している ホイールからカリカリ音が聞こえる ディスクが磨耗すると、ブレーキパッドの磨耗が早くなる</string>
+  <string name="brake_pad_info">ブレーキパッドが磨耗している ホイールからカリカリ音が聞こえる ディスクが磨耗すると、ブレーキパッドの磨耗が早くなる</string>
       
-  <string name="tireinfo">タイヤは意外と軽く考えられていますが、最も重要な部品です。摩耗ラインがなくなる前に必ず交換してください</string>
+  <string name="tire_info">タイヤは意外と軽く考えられていますが、最も重要な部品です。摩耗ラインがなくなる前に必ず交換してください</string>
       
-  <string name="beltinfo">バグマン 125 をベースに 2 万 km 程度でベルト交換、\n そしてバイクは人それぞれです\n バイクへ 説明書には 12,000km で交換と書いてあります。</string>
+  <string name="belt_info">バグマン 125 をベースに 2 万 km 程度でベルト交換、\n そしてバイクは人それぞれです\n バイクへ 説明書には 12,000km で交換と書いてあります。</string>
       
-  <string name="moveballinfo">ベルト交換時にムーブボールをチェックします 4 万 km くらいで交換します バイクの調子が悪くなったらチェックしたいです</string>
+  <string name="move_ball_info">ベルト交換時にムーブボールをチェックします 4 万 km くらいで交換します バイクの調子が悪くなったらチェックしたいです</string>
       
-  <string name="missionoilinfo">バグマン 125 をベースにミッションオイルもベルト交換と同時に交換し、2 万 km に 1 回交換しています。</string>
+  <string name="mission_oil_info">バグマン 125 をベースにミッションオイルもベルト交換と同時に交換し、2 万 km に 1 回交換しています。</string>
       
-  <string name="aircleanerinfo">エアクリーナーは頻繁に掃除していません 10000km くらいで交換しています 説明書には 3000km に 1 回掃除、12000km で交換と書いてあります。</string>
+  <string name="air_cleaner_info">エアクリーナーは頻繁に掃除していません 10000km くらいで交換しています 説明書には 3000km に 1 回掃除、12000km で交換と書いてあります。</string>
       
-  <string name="shuinfo">クラッチシューやプーリーセットの場合は 4 万～ 7 万くらいで収まるようです。バリエーションが大きく高価なので、事前に研磨するのが難しく、壊れた場合に変更するのが困難です。</string>
+  <string name="shu_info">クラッチシューやプーリーセットの場合は 4 万～ 7 万くらいで収まるようです。バリエーションが大きく高価なので、事前に研磨するのが難しく、壊れた場合に変更するのが困難です。</string>
       
-  <string name="bearinginfo">約 30,000km 以上のタイヤ交換時にはベアリングを頻繁に点検し、交換時にはベアリングゴムも交換してください。</string>
+  <string name="bearing_info">約 30,000km 以上のタイヤ交換時にはベアリングを頻繁に点検し、交換時にはベアリングゴムも交換してください。</string>
       
-  <string name="pluginfo">プラグは 20,000km 程度で交換し、バイクのガタつきやパワーがなくなったら交換してください。説明書には 8000km で交換と書いてあります。</string>
+  <string name="plug_info">プラグは 20,000km 程度で交換し、バイクのガタつきやパワーがなくなったら交換してください。説明書には 8000km で交換と書いてあります。</string>
       
-  <string name="valveinfo">バルブギャップ調整は 3 万キロから 5 万キロに一度行うようですが、症状としては、行って立つとエンジンが止まったり、頻繁にエンジンが止まったりするので、そのキロ数でエンジンが止まる場合は要確認です。</string>
+  <string name="valve_info">バルブギャップ調整は 3 万キロから 5 万キロに一度行うようですが、症状としては、行って立つとエンジンが止まったり、頻繁にエンジンが止まったりするので、そのキロ数でエンジンが止まる場合は要確認です。</string>
       
-  <string name="drivesysteminfo">ドライブトレインを開くたびにチェックして、走行中に停止しないことを確認してください。</string>
+  <string name="drive_system_info">ドライブトレインを開くたびにチェックして、走行中に停止しないことを確認してください。</string>
       
-  <string name="engineinfo">エンジンが壊れることはほとんどありませんが、時々点検してください。</string>
+  <string name="engine_info">エンジンが壊れることはほとんどありませんが、時々点検してください。</string>
       
-  <string name="lampinfo">雨の日はランプがたくさん燃えると壊れやすいので、雨や雪の日は家で過ごしましょう</string>
+  <string name="lamp_info">雨の日はランプがたくさん燃えると壊れやすいので、雨や雪の日は家で過ごしましょう</string>
       
-  <string name="etcinfo">他に不具合がないかよくチェックして長生きしましょう</string>
+  <string name="etc_info">他に不具合がないかよくチェックして長生きしましょう</string>
       
-  <string name="diskinfo">ディスクは摩耗し、古くなったら交換する必要があります。ブレーキパッドを交換しないと摩耗が早くなり、徐々にパワーが低下します。</string>
+  <string name="disk_info">ディスクは摩耗し、古くなったら交換する必要があります。ブレーキパッドを交換しないと摩耗が早くなり、徐々にパワーが低下します。</string>
       
-  <string name="구입날짜">日付\n 購入</string>
+  <string name="purchase_date">日付\n 購入</string>
       
-  <string name="버그만">バグマン</string>
+  <string name="bike_model">バグマン</string>
       
   <string name="km">キロ</string>
       
-  <string name="기타수리내용">その他の修理</string>
+  <string name="other_repair_detail">その他の修理</string>
+
+  <string name="other_details">その他の内容</string>
+  <string name="currency_unit">$</string>
       
-  <string name="원">$</string>
-      
-  <string name="애칭">ニックネーム</string>
+  <string name="nickname">ニックネーム</string>
       
   <string name="_2000_01_01">2000\-01\-01</string>
       
   <string name="_0000000">0000000</string>
       
-  <string name="금액">額</string>
+  <string name="amount">額</string>
       
-  <string name="주행거리">走行距離</string>
+  <string name="mileage">走行距離</string>
       
-  <string name="수리날짜">修理日</string>
+  <string name="repair_date">修理日</string>
       
   <string name="etc">等</string>
       
-  <string name="저장">保存</string>
-      
+  <string name="save">保存</string>
+
+  <string name="korea_cancel">キャンセル</string>
   <string name="_0">0</string>
       
-  <string name="합계">合計</string>
+  <string name="total">合計</string>
       
   <string name="reference">参照</string>
       
-  <string name="검색">検索</string>
+  <string name="search">検索</string>
       
-  <string name="검색가능">ニックネームや日付、年で検索可能</string>
+  <string name="search_hint">ニックネームや日付、年で検索可能</string>
       
-  <string name="날짜애칭">2023\-01\-01、2023、ニックネーム</string>
+  <string name="search_description">2023\-01\-01、2023、ニックネーム</string>
       
-  <string name="logininfo">ログイン情報がありません。\n 認証を進めてください。\n Google 認証またはメールアドレス\n サインアップしてログインしてください。\n ログイン後、データを送信\n \n データを移行したい端末で再度ログインしてください\n データを受信した場合\n データがデバイスに転送されます。</string>
+  <string name="login_info">ログイン情報がありません。\n 認証を進めてください。\n Google 認証またはメールアドレス\n サインアップしてログインしてください。\n ログイン後、データを送信\n \n データを移行したい端末で再度ログインしてください\n データを受信した場合\n データがデバイスに転送されます。</string>
       
   <string name="tran">認証</string>
       
   <string name="logout">ログアウト</string>
       
-  <string name="signin">メンバーシップに参加する</string>
+  <string name="sign_in_email">メンバーシップに参加する</string>
       
-  <string name="gglogin">Google 認証</string>
+  <string name="sign_in_google">Google 認証</string>
       
   <string name="email">E メール</string>
       
-  <string name="sign">加入</string>
+  <string name="sign_up_button">加入</string>
       
   <string name="lonin">ログイン</string>
+
+  <string name="login">Login</string>
+  <string name="data_put">データを送る</string>
       
-  <string name="dataput">データを送る</string>
-      
-  <string name="datapull">データを受信する</string>
+  <string name="data_pull">データを受信する</string>
       
   <string name="_6">パスワードは 6 文字以上</string>
       
-  <string name="authsuc">登録に成功しました。送信されたメールをご確認ください</string>
+  <string name="sign_up_success">登録に成功しました。送信されたメールをご確認ください</string>
       
-  <string name="emailfail">メール送信に失敗しました</string>
+  <string name="email_fail">メール送信に失敗しました</string>
       
-  <string name="authfail">会員登録に失敗しました</string>
+  <string name="auth_fail">会員登録に失敗しました</string>
       
-  <string name="eauthfail">送信されたメールではメール認証が行われていませんでした。</string>
+  <string name="email_auth_fail">送信されたメールではメール認証が行われていませんでした。</string>
       
-  <string name="logfail">ログインに失敗しました</string>
+  <string name="login_fail">ログインに失敗しました</string>
       
-  <string name="authrun">認証を進めてください。</string>
+  <string name="auth_run">認証を進めてください。</string>
       
   <string name="nice">はじめまして</string>
       
-  <string name="authlogin">ログインまたは登録してください。</string>
+  <string name="auth_login">ログインまたは登録してください。</string>
+
+  <string name="login_screen_info">データを送信するには、データ送信ボタンを押して、データを受信する携帯電話からログインして、データ受信ボタンを押してください。</string>
+  <string name="data_transfer_success">データ送信が完了しました。</string>
       
-  <string name="datacom">データ送信が完了しました。</string>
+  <string name="data_transfer_failed">データ送信に失敗しました。</string>
       
-  <string name="datafail">データ送信に失敗しました。</string>
+  <string name="data_transfer_received">データは送信されました。</string>
       
-  <string name="sent">データは送信されました。</string>
+  <string name="nickname_empty">ニックネームは空です。ニックネームを入力してください</string>
       
-  <string name="nickem">ニックネームは空です。ニックネームを入力してください</string>
-      
-  <string name="purem">購入日は空白です。購入日を入力してください</string>
+  <string name="purchase_data_empty">購入日は空白です。購入日を入力してください</string>
       
   <string name="select">選択する</string>
       
   <string name="oil">油</string>
       
-  <string name="oilfilter">オイルフィルター</string>
+  <string name="oil_filter">オイルフィルター</string>
       
-  <string name="fpad">フロントブレーキパッド</string>
+  <string name="front_pad">フロントブレーキパッド</string>
       
-  <string name="rpad">リアブレーキパッド</string>
+  <string name="back_pad">リアブレーキパッド</string>
       
-  <string name="ftire">フロントタイヤ</string>
+  <string name="front_tire">フロントタイヤ</string>
       
-  <string name="rtire">リアタイヤ</string>
+  <string name="back_tire">リアタイヤ</string>
       
   <string name="belt">ベルト</string>
       
-  <string name="moveball">ボールを動かす</string>
+  <string name="move_ball">ボールを動かす</string>
       
-  <string name="missionoil">ミッションオイル</string>
+  <string name="mission_oil">ミッションオイル</string>
       
-  <string name="aircleaner">エアクリーナー</string>
+  <string name="air_cleaner">エアクリーナー</string>
       
   <string name="shu">クラッチシュー</string>
       
@@ -154,24 +159,67 @@
       
   <string name="valve">バルブ設定</string>
       
-  <string name="drivesystem">その他のドライブトレイン</string>
+  <string name="drive_system">その他のドライブトレイン</string>
       
   <string name="engine">その他のエンジン</string>
       
   <string name="lamp">その他のランプ</string>
       
-  <string name="fdisk">フロントディスク</string>
+  <string name="front_dist">フロントディスク</string>
       
-  <string name="rdisk">リアディスク</string>
+  <string name="back_disk">リアディスク</string>
       
-  <string name="oilfillterinfo">オイルフィルターはオイル交換時約 10,000km で交換します。説明書には最初の 1,000km と次の 8,000km が交換周期として記載されています。</string>
+  <string name="oil_filter_info">オイルフィルターはオイル交換時約 10,000km で交換します。説明書には最初の 1,000km と次の 8,000km が交換周期として記載されています。</string>
 
-  <string name="emailnice">%1$s\n\n はじめまして</string>
+  <string name="email_nice">%1$s\n\n はじめまして</string>
     <string name="deletion">削除の確認</string>
-  <string name="wantDeletion">削除してよろしいですか？</string>
+  <string name="want_deletion">削除してよろしいですか？</string>
   <string name="yes">はい</string>
   <string name="no">いいえ</string>
-  <string name="emailnm">Eメールが一致しません。</string>
-  <string name="fdata">データの受信に失敗しました。</string>
-    <string name="backwords">後ろ向きに</string>
+  <string name="email_not_match">Eメールが一致しません。</string>
+  <string name="data_not_receive">データの受信に失敗しました。</string>
+    <string name="back_words">後ろ向きに</string>
+  <string name="mainScreen">修理履歴保存画面</string>
+  <string name="totalScreen">全内訳画面</string>
+  <string name="profile_provider">Account provider: %1$s</string>
+  <string name="update">Update</string>
+  <string name="or">or</string>
+  <string name="signInScreen">会員登録画面</string>
+  <string name="forward_button">Forward</string>
+  <string name="back_button">Back</string>
+  <string name="editScreen">内訳修正画面</string>
+  <string name="authScreen">認証画面</string>
+  <string name="authDetailScreen">認証詳細画面</string>
+  <string name="edit">修正します。</string>
+  <string name="logout_screen_info">Google認証ログインまたはEメールで会員登録し、Eメールで会員登録された方はEメールでログインしてください。</string>
+  <string name="auto_insert">自動挿入</string>
+  <string name="example_number">例: 10000</string>
+  <string name="enter_other_content">他のコンテンツの入力</string>
+  <string name="select_option">セレクト</string>
+  <string name="bike_repair_records">自転車修理のための家計簿</string>
+  <string name="total_amount">合計%sドル</string>
+  <string name="bike_memo_edit_title">Edit Bike Memo（バイクメモ編集）</string>
+  <string name="edit_item_title">アイテムの編集</string>
+  <string name="삭제">削除</string>
+  <string name="choose">選択してください</string>
+  <string name="authenticate">認証</string>
+  <string name="password">Password</string>
+  <string name="confirm_password">Confirm password</string>
+  <string name="sign_in">サインイン</string>
+  <string name="sign_in_with_google">Googleでサインインします</string>
+  <string name="no_accounts_error">このデバイスでGoogleアカウントを見つけることができません</string>
+  <string name="sign_up">サインアップ</string>
+  <string name="sign_up_with_google">Googleに登録する</string>
+  <string name="sign_up_description">アカウントはありませんか？ ここをクリックしてサインアップします！</string>
+  <string name="sign_out">サインアウト</string>
+  <string name="sign_out_title">サインアウト？</string>
+  <string name="sign_out_description">メモを見るには、再度サインインする必要があります。</string>
+  <string name="delete_account_title">Delete account?</string>
+  <string name="delete_account_description">すべてのメモが失われ、アカウントが削除されます。 このアクションは不可逆的です。</string>
+  <string name="delete_account">Delete account</string>
+  <string name="cancel">Cancel</string>
+  <string name="account_center">Account center</string>
+  <string name="profile_name">Display name</string>
+  <string name="profile_email">Email: %1$s</string>
+  <string name="profile_uid">UID: %1$s</string>
 </resources>
