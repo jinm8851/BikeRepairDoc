@@ -146,8 +146,8 @@ fun TotalScreenColum(
                     .weight(0.7f),
                 value = search,
                 onValueChange = onValueChange,
-                label = { Text(text = stringResource(id = R.string.search)) },
-                placeholder = { Text(text = stringResource(id = R.string.search_description)) },
+                label = { Text(text = stringResource(id = R.string.search),color = Color(0xFF703BE1)) },
+                placeholder = { Text(text = stringResource(id = R.string.search_description),color = Color(0xFF703BE1)) },
                 keyboardOptions = KeyboardOptions.Default,
                 textStyle = TextStyle(
                     textAlign = TextAlign.Center,

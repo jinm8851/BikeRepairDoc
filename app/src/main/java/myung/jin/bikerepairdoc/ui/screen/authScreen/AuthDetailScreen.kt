@@ -268,8 +268,8 @@ fun ShowAuthText(
     OutlinedTextField(
         value = value,
         onValueChange = onValueChange,//{ newValue -> onValueChange(newValue) },
-        label = { Text(text = stringResource(id = stringResource)) },
-        placeholder = { Text(text = stringResource(id = stringResource)) },
+        label = { Text(text = stringResource(id = stringResource),color = Color(0xFF703BE1)) },
+        placeholder = { Text(text = stringResource(id = stringResource), color = Color(0xFF703BE1)) },
         keyboardOptions = keyboardOptions,// KeyboardOptions.Default.copy(keyboardType = KeyboardType.Text),
         colors = OutlinedTextFieldDefaults.colors(
             focusedBorderColor = Color(0xFF703BE1),
