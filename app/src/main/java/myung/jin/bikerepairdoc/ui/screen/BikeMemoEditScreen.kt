@@ -257,15 +257,9 @@ fun EditBikeMemoForm(
             OutlinedTextField(
                 label = { Text(text = stringResource(id = R.string.mileage)) },
                 placeholder = { Text(text = stringResource(R.string.example_number)) },
-                value = bikeDetails.km.toString()
-                    .formatNumberWithCommas(), //bikeDetails.km.toString() //
+                value = bikeDetails.km.toString(),
                 onValueChange = { newKmString ->
-                    val newKm = if (newKmString.isEmpty()) {
-                        0
-                    } else {
-                        newKmString.replace(",", "").toIntOrNull() ?: bikeDetails.km
-                    }
-                    onValueChange(bikeDetails.copy(km = newKm))
+                    onValueChange(bikeDetails.copy(km = newKmString.filterNumbers().toIntOrNull() ?: 0))
                 },
                 suffix = {
                     Text(
@@ -289,6 +283,7 @@ fun EditBikeMemoForm(
                 ),
                 shape = shapes.small,
                 singleLine = true,
+                visualTransformation = thousandSeparatorTransformation()
             )
 
             Spacer(modifier = Modifier.size(16.dp))
@@ -296,14 +291,9 @@ fun EditBikeMemoForm(
             OutlinedTextField(
                 label = { Text(text = stringResource(id = R.string.amount)) },
                 placeholder = { Text(text = stringResource(id = R.string.example_number)) },
-                value = bikeDetails.amount.toString().formatNumberWithCommas(),
+                value = bikeDetails.amount.toString(),
                 onValueChange = { newAmountString ->
-                    val newAmount = if (newAmountString.isEmpty()) {
-                        0
-                    } else {
-                        newAmountString.replace(",", "").toIntOrNull() ?: bikeDetails.amount
-                    }
-                    onValueChange(bikeDetails.copy(amount = newAmount))
+                    onValueChange(bikeDetails.copy(amount = newAmountString.filterNumbers().toIntOrNull() ?: 0))
                 },
                 suffix = {
                     Text(
@@ -327,6 +317,7 @@ fun EditBikeMemoForm(
                 ),
                 shape = shapes.small,
                 singleLine = true,
+                visualTransformation = thousandSeparatorTransformation()
             )
         }
 

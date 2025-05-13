@@ -1,7 +1,7 @@
 package myung.jin.bikerepairdoc.ui.screen
 
 
-import android.icu.text.DecimalFormat
+import java.text.DecimalFormat
 import android.util.Log
 import androidx.annotation.StringRes
 import androidx.compose.foundation.BorderStroke
@@ -41,8 +41,12 @@ import androidx.compose.ui.focus.focusProperties
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.OffsetMapping
+import androidx.compose.ui.text.input.TransformedText
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -58,11 +62,75 @@ import myung.jin.bikerepairdoc.ui.room.BikeMemo
 import myung.jin.bikerepairdoc.ui.theme.shapes
 
 
+
 object HomeDestination : NavigationDestination {
     override val route = "home"
     override val titleRes = R.string.mainScreen
 }
 
+
+// 개선된 천 단위 구분자 변환 함수
+// VisualTransformation은 텍스트를 시각적으로 변환하는 데 사용되며, 실제 데이터는 변경하지 않고 화면에 표시되는 방식만 바꿉니다.
+fun thousandSeparatorTransformation(): VisualTransformation {
+    return VisualTransformation { text ->  // text는 TransformedText 타입으로, 입력된 텍스트에 대한 정보를 담고 있습니다.
+        // 입력된 텍스트를 String 타입으로 가져옵니다.
+        val originalText = text.text
+        val intValue = originalText.toIntOrNull()
+
+        // 입력된 텍스트를 정수로 변환하고, 콤마를 추가한 후 다시 문자열로 변환합니다.
+        val formattedText = intValue?.let {
+            DecimalFormat("#,###").format(it)
+        } ?: originalText
+
+        // OffsetMapping: 텍스트 변환 후 커서 위치를 올바르게 조정하는 데 필요한 인터페이스입니다.
+        val offsetMapping = object : OffsetMapping{
+            // originalToTransformed(offset: Int): 원래 텍스트에서의 커서 위치 (offset)를 변환된 텍스트에서의 위치로 매핑합니다.
+            override fun originalToTransformed(offset: Int): Int {
+                //offset < 0인 경우, 0을 반환하도록 하여 예외를 방지하고
+                if (intValue == null || offset < 0) return 0
+                // 입력된 offset까지의 원래 숫자를 추출합니다.
+                val originalNumber = originalText.substring(0, offset).toIntOrNull() ?: return formattedText.length
+                // 추출된 숫자를 DecimalFormat을 사용하여 포맷합니다.
+                val formattedNumber = DecimalFormat("#,###").format(originalNumber)
+                // 포맷된 숫자의 길이를 반환합니다. 이는 원래 offset이 변환된 텍스트에서 어디에 매핑되는지 정확하게 알려줍니다.
+                return formattedNumber.length
+            }
+            //transformedToOriginal(offset: Int): 변환된 텍스트에서의 커서 위치 (offset)를 원래 텍스트에서의 위치로 매핑합니다.
+            override fun transformedToOriginal(offset: Int): Int {
+                if (intValue == null || offset < 0) return 0
+
+                var formattedOffset = 0 // 변환된 텍스트에서의 현재 커서 위치
+                var originalOffset = 0  // 변환된 텍스트에서의 현재 커서 위치
+                // 변환된 텍스트의 각 문자(char)와 인덱스(index)를 순회합니다.
+                formattedText.forEachIndexed { index, char ->
+                    // 변환된 텍스트에서의 커서 위치(formattedOffset)가 입력된 offset(변환된 텍스트에서의 목표 커서 위치)보다 크거나 같으면 목표 위치에 도달했다는 의미입니다.
+                    if (formattedOffset >= offset) {
+                        return originalOffset  // 원래 텍스트에서의 커서 위치(originalOffset)를 반환합니다.
+                    }
+                    // 변환된 텍스트에서의 커서 위치를 한 칸 이동합니다.
+                    formattedOffset++
+                    // 현재 문자가 숫자이면, 원래 텍스트에서의 커서 위치도 한 칸 이동합니다.
+                    // 쉼표와 같은 구분자는 원래 텍스트에 없으므로, 숫자인 경우에만 originalOffset을 증가시킵니다.
+                    if (char.isDigit()) {
+                        originalOffset++
+                    }
+                }
+                // 순회를 마쳤지만 목표 offset에 도달하지 못한 경우, 현재 originalOffset을 반환합니다.
+                // 이 경우는 offset이 formattedText의 길이보다 큰 경우에 발생합니다.
+                return originalOffset
+
+            }
+        }
+        // AnnotatedString은 텍스트에 스타일이나 메타데이터를 추가할 수 있도록 해줍니다.
+        TransformedText(AnnotatedString(formattedText), offsetMapping)
+    }
+}
+
+
+// 숫자만 허용하는 함수
+fun String.filterNumbers(): String{
+    return filter { it.isDigit() }
+}
 
 // 숫자에 콤마 넣기 확장함수
 fun String.formatNumberWithCommas(): String {
@@ -108,10 +176,10 @@ fun MainScreen(
     LaunchedEffect(bikeUiState.bikeDetails.repairDate) {
         bikeUiState.bikeDetails.repairDate = displayedDate.value
     }
-    // 주행 거리
+ /*   // 주행 거리
     val driveKm = remember { mutableStateOf("0") }
     // 수리 금액
-    val repairCost = remember { mutableStateOf("0") }
+    val repairCost = remember { mutableStateOf("0") }*/
 
     val filteredBikeMemoList: List<BikeMemo> = bikeMemoList.bikeList.filter { bikeMemo ->
         bikeMemo.date.contains(displayedDate.value)
@@ -147,7 +215,7 @@ fun MainScreen(
                 focusManager.clearFocus()
                 coroutineScope.launch {
                     viewModel.saveBikeMemo()
-                    repairCost.value = "0"
+                    bikeUiState.bikeDetails.amount = 0
                     bikeUiState.bikeDetails.etc = ""
                 }
             },
@@ -158,8 +226,6 @@ fun MainScreen(
             },
             onItemClick = { bikeMemoId -> navigateToUpdate(bikeMemoId) },
             displayedDate = displayedDate,
-            driveKm = driveKm,
-            repairCost = repairCost,
         )
 
 
@@ -176,8 +242,6 @@ private fun MainScreenContent(
     onDeleteBikeMemo: (Int) -> Unit,
     onItemClick: (Int) -> Unit,
     displayedDate: MutableState<String>,
-    driveKm: MutableState<String>,
-    repairCost: MutableState<String>,
 ) {
     LazyColumn(
         modifier = modifier
@@ -196,8 +260,6 @@ private fun MainScreenContent(
                 onDeleteBikeMemo = onDeleteBikeMemo,
                 onItemClick = onItemClick,
                 displayedDate = displayedDate,
-                driveKm = driveKm,
-                repairCost = repairCost,
             )
         }
 
@@ -214,8 +276,6 @@ fun BikeInputFormContent(
     onDeleteBikeMemo: (Int) -> Unit,
     onItemClick: (Int) -> Unit,
     displayedDate: MutableState<String>,
-    driveKm: MutableState<String>,
-    repairCost: MutableState<String>,
 ) {
     Column(
         modifier = modifier
@@ -346,12 +406,9 @@ fun BikeInputFormContent(
         ) {
             //  주행 거리
             OutlinedTextField(
-                value = driveKm.value.formatNumberWithCommas(),
+                value = bikeDetails.km.toString(),
                 onValueChange = { newKmString ->
-                    driveKm.value = newKmString
-                    // 사용자가 입력한 문자열(newKmString)에서 쉼표(,)를 모두 제거하고 정수로 변경.
-                    val newKm = newKmString.replace(",", "").toIntOrNull() ?: bikeDetails.km
-                    onValueChange(bikeDetails.copy(km = newKm))
+                    onValueChange(bikeDetails.copy(km = newKmString.filterNumbers().toIntOrNull() ?: 0))
                 },
                 label = { Text(text = stringResource(id = R.string.mileage)) },
                 placeholder = { Text(text = stringResource(R.string.example_number)) },
@@ -378,18 +435,16 @@ fun BikeInputFormContent(
                 ),
                 shape = shapes.small,
                 singleLine = true,
+                visualTransformation = thousandSeparatorTransformation()
             )
 
             Spacer(modifier = Modifier.size(16.dp))
 
             //  금액
             OutlinedTextField(
-                value = repairCost.value.formatNumberWithCommas(),
+                value = bikeDetails.amount.toString(),
                 onValueChange = { newAmountString ->
-                    repairCost.value = newAmountString
-                    val newAmount =
-                        newAmountString.replace(",", "").toIntOrNull() ?: bikeDetails.amount
-                    onValueChange(bikeDetails.copy(amount = newAmount))
+                    onValueChange(bikeDetails.copy(amount = newAmountString.filterNumbers().toIntOrNull() ?: 0))
                 },
                 label = { Text(text = stringResource(id = R.string.amount)) },
                 placeholder = { Text(text = stringResource(id = R.string.example_number)) },
@@ -416,6 +471,7 @@ fun BikeInputFormContent(
                 ),
                 shape = shapes.small,
                 singleLine = true,
+                visualTransformation = thousandSeparatorTransformation()
             )
         }
 
@@ -572,6 +628,8 @@ fun DisplayInfoText(
         fontSize = fontSize.sp,
     )
 }
+
+
 
 @Preview
 @Composable

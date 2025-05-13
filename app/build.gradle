@@ -8,6 +8,7 @@ plugins {
 
     // 코틀린 ksp 이전 플러그인
     id("com.google.devtools.ksp")
+
 }
 
 
@@ -21,8 +22,8 @@ android {
         applicationId "myung.jin.bikerepairdoc"
         minSdk 26
         targetSdk 35
-        versionCode 23
-        versionName "23"
+        versionCode 28
+        versionName "28"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
@@ -58,58 +59,58 @@ android {
 dependencies {
 
 
-    def room_version = "2.6.1"
+    def room_version = "2.7.1"
 
-    implementation 'androidx.core:core-ktx:1.15.0'
-   // implementation 'androidx.appcompat:appcompat:1.7.0'
-    implementation 'com.google.android.material:material:1.12.0'
-  //  implementation 'androidx.constraintlayout:constraintlayout:2.2.0'
+    implementation 'androidx.core:core-ktx:1.16.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.2.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
-    //뷰페이져2
-  //  implementation("androidx.viewpager2:viewpager2:1.1.0")
+
 
     //Room
-    //noinspection GradleDependency
+
     implementation("androidx.room:room-runtime:$room_version")
     annotationProcessor("androidx.room:room-compiler:$room_version")
-    // kapt("androidx.room:room-compiler:$room_version")
+
     ksp("androidx.room:room-compiler:$room_version")
     implementation("androidx.room:room-ktx:$room_version")
     //firebase
-    implementation(platform("com.google.firebase:firebase-bom:33.9.0"))
-    implementation("com.google.firebase:firebase-analytics-ktx")
+    implementation(platform("com.google.firebase:firebase-bom:33.13.0"))
+   // implementation("com.google.firebase:firebase-analytics-ktx")
     implementation 'com.google.android.gms:play-services-auth:21.3.0'
-   // implementation 'androidx.multidex:multidex:2.0.1'
+
     implementation 'com.google.firebase:firebase-auth-ktx:23.2.0'
     implementation("com.google.firebase:firebase-firestore-ktx")
  // compose
-    implementation(platform("androidx.compose:compose-bom:2025.01.01"))
+    implementation(platform("androidx.compose:compose-bom:2025.05.00"))
     // other dependencies
     // Compose
-    implementation("androidx.activity:activity-compose:1.10.0")
+    implementation("androidx.activity:activity-compose:1.10.1")
     implementation("androidx.compose.material3:material3")
     implementation("com.google.accompanist:accompanist-themeadapter-material3:0.28.0")
 
     debugImplementation("androidx.compose.ui:ui-tooling")
     // 이전 기존에 있던 종속성
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.7")
-    implementation("androidx.compose.ui:ui:1.7.7")
-    implementation("androidx.compose.ui:ui-graphics:1.7.7")
-    implementation("androidx.compose.ui:ui-tooling-preview:1.7.7")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.9.0")
+    implementation("androidx.compose.ui:ui:1.8.1")
+    implementation("androidx.compose.ui:ui-graphics:1.8.1")
+    implementation("androidx.compose.ui:ui-tooling-preview:1.8.1")
     implementation("com.android.identity:identity-jvm:202411.1")
     implementation("androidx.tv:tv-material:1.0.0")
 
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.9.0")
     // navigation
-    implementation("androidx.navigation:navigation-compose:2.8.6")
-    implementation("androidx.compose.runtime:runtime-livedata:1.7.7")
+    implementation("androidx.navigation:navigation-compose:2.9.0")
+    implementation("androidx.compose.runtime:runtime-livedata:1.8.1")
     // 자격증명
-    implementation("androidx.credentials:credentials:1.3.0")
-    implementation("androidx.credentials:credentials-play-services-auth:1.3.0")
+    implementation("androidx.credentials:credentials:1.5.0")
+    implementation("androidx.credentials:credentials-play-services-auth:1.5.0")
     //구글 ID
     implementation("com.google.android.libraries.identity.googleid:googleid:1.1.1")
+    // BoM을 사용할 때 Firebase 종속성에 버전을 지정하지 마세요
+    // firebaseAnalytics
+    implementation("com.google.firebase:firebase-crashlytics")
+    implementation("com.google.firebase:firebase-analytics")
 
 
 }

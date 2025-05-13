@@ -41,6 +41,7 @@ object InventoryScreen {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun InventoryApp(
+    modifier: Modifier = Modifier,
     bikeMemoEditViewModel: BikeMemoEditViewModel = viewModel(factory = AppViewModelProvider.Factory)
 ) {
     val navController: NavHostController = rememberNavController()
@@ -48,7 +49,7 @@ fun InventoryApp(
         initialPage = InventoryScreen.HOME,
         pageCount = { 3 }) // 람다 함수를 사용하여 페이지 수 반환
 
-    Box(modifier = Modifier.fillMaxSize()) {
+    Box(modifier = modifier.fillMaxSize()) {
         // 메인 화면용 HorizontalPager
         HorizontalPager(
             state = pagerState,
