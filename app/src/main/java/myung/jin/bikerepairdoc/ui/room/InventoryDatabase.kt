@@ -21,7 +21,7 @@ abstract class InventoryDatabase : RoomDatabase(){
         private var Instance: InventoryDatabase? = null
 
         val MIGRATION_1_2 = object : Migration(1, 2){
-           override fun migrate(database: SupportSQLiteDatabase) {
+           override fun migrate(db: SupportSQLiteDatabase) {
                 // 버전 1에서 버전 2로 마이그레이션할 때 필요한 작업 수행
                 // 현재는 데이터베이스 스키마가 변경되지 않았으므로 아무 작업도 하지 않음
                 // 나중에 스키마가 변경되면 여기에 마이그레이션 로직을 추가해야 함

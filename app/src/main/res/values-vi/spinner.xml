@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="spinner_item">
+        <item>Chọn</item>
+        <item>Dầu nhớt</item>
+        <item>Lọc dầu</item>
+        <item>Má phanh trước</item>
+        <item>Má phanh sau</item>
+        <item>Lốp trước</item>
+        <item>Lốp sau</item>
+        <item>Dây curoa</item>
+        <item>Bi nồi</item>
+        <item>Dầu hộp số (Dầu láp)</item>
+        <item>Lọc gió</item>
+        <item>Guốc văng ly hợp</item>
+        <item>Bạc đạn</item>
+        <item>Bugi</item>
+        <item>Đĩa trước</item>
+        <item>Đĩa sau</item>
+        <item>Chỉnh xupáp</item>
+        <item>Hệ thống truyền động khác</item>
+        <item>Hệ thống động cơ khác</item>
+        <item>Đèn khác</item>
+        <item>Khác</item>
+    </string-array>
+</resources>
