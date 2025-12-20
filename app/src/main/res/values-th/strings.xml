@@ -35,13 +35,13 @@
       
   <string name="lamp_info">โคมไฟจะหักบ่อยขึ้นในวันที่ฝนตกหากไฟไหม้มากดังนั้นให้อยู่บ้านในวันที่ฝนตกหรือหิมะตก </string>
       
-  <string name="etc_info">ตรวจเช็คบ่อยๆไม่มีชำรุดใดๆให้มีอายุยืนยาวครับ</string>
+  <string name="etc_info">ลองเช็คบ่อยๆโดยไม่มีปัญหาอื่น ๆ และขี่เป็นเวลานาน</string>
       
   <string name="disk_info">ควรสวมและเปลี่ยนแผ่นดิสก์เมื่อเก่า  หากไม่ได้เปลี่ยนผ้าเบรกจะเสื่อมสภาพอย่างรวดเร็วและกำลังจะค่อยๆลดลง</string>
       
   <string name="purchase_date">วันที่\n ซื้อ</string>
       
-  <string name="bike_model">บั๊กแมน</string>
+  <string name="bike_model">Burgman</string>
       
   <string name="km">กม</string>
       
@@ -92,10 +92,8 @@
   <string name="email">อีเมล</string>
       
   <string name="sign_up_button">\tการเข้าร่วม</string>
-      
-  <string name="lonin">เข้าสู่ระบบ</string>
 
-  <string name="login">การลงชื่อเข้าสู่ระบบ, ล็อคอิน</string>
+    <string name="login">การลงชื่อเข้าสู่ระบบ, ล็อคอิน</string>
   <string name="data_put">ส่งข้อมูล</string>
       
   <string name="data_pull">รับข้อมูล</string>
@@ -196,11 +194,11 @@
   <string name="example_number">ตัวอย่าง: 10000</string>
   <string name="enter_other_content">ป้อนเนื้อหาอื่น ๆ</string>
   <string name="select_option">เลือก</string>
-  <string name="bike_repair_records">un libro de limpieza para la reparación de bicicletas</string>
+  <string name="bike_repair_records">บันทึกการบํารุงรักษารถจักรยานยนต์</string>
   <string name="total_amount">ทั้งหมด %s ดอลลาร์</string>
   <string name="bike_memo_edit_title">แก้ไขไบค์เมโม</string>
   <string name="edit_item_title">แก้ไขรายการ</string>
-  <string name="삭제">ลบ</string>
+  <string name="delete">ลบ</string>
   <string name="choose">โปรดเลือก</string>
   <string name="authenticate">ยืนยันความถูกต้อง</string>
   <string name="password">Password</string>

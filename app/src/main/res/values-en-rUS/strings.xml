@@ -19,10 +19,10 @@
     <string name="drive_system_info">Check the drivetrain every time you open it  to make sure it doesn\'t stop while going.</string>
     <string name="engine_info">The engine rarely breaks  but check it from time to time.</string>
     <string name="lamp_info">"Lamps break more often on rainy days  if they burn a lot, so let's stay at home on rainy or snowy days "</string>
-    <string name="etc_info">Check it often without any other malfunction  Let\'s live a long time</string>
+    <string name="etc_info">Let\'s check often without any other problems and ride for a long time</string>
     <string name="disk_info">Discs should be worn and replaced when they are old.  If they are not replaced, the brake pads will wear out quickly and the power will gradually decrease.</string>
     <string name="purchase_date">Date of\n purchase</string>
-    <string name="bike_model">Bugman</string>
+    <string name="bike_model">Burgman</string>
     <string name="km">Km</string>
     <string name="other_repair_detail">Other repairs</string>
     <string name="other_details">Other content</string>
@@ -53,11 +53,10 @@
      Data is transferred to the device.</string>
     <string name="tran">Authentication</string>
     <string name="logout">Log out</string>
-    <string name="sign_in_email">join the membership</string>
+    <string name="sign_in_email">Register</string>
     <string name="sign_in_google">Google Authentication</string>
     <string name="email">Email</string>
     <string name="sign_up_button">Join</string>
-    <string name="lonin">Log in</string>
     <string name="login">Login</string>
     <string name="data_put">Send data</string>
     <string name="data_pull">Receive data</string>
@@ -103,7 +102,7 @@
     <string name="no">No</string>
     <string name="email_not_match">Email does not match.</string>
     <string name="data_not_receive">Failed to receive data.</string>
-    <string name="back_words">backwords</string>
+    <string name="back_words">Back</string>
     <string name="mainScreen">Save repair details screen</string>
     <string name="totalScreen">Full History Screen</string>
     <string name="profile_provider">Account provider: %1$s</string>
@@ -121,11 +120,11 @@
     <string name="example_number">Example: 10000</string>
     <string name="enter_other_content">Enter other content</string>
     <string name="select_option">Select</string>
-    <string name="bike_repair_records">a housekeeping book for bicycle repairs</string>
+    <string name="bike_repair_records">Motorcycle Maintenance Log</string>
     <string name="total_amount">Total %s dollars</string>
     <string name="bike_memo_edit_title">Edit BikeMemo</string>
     <string name="edit_item_title">Edit Item</string>
-    <string name="삭제">Delete</string>
+    <string name="delete">Delete</string>
     <string name="choose">Please choose</string>
     <string name="authenticate">Authenticate</string>
     <string name="password">Password</string>

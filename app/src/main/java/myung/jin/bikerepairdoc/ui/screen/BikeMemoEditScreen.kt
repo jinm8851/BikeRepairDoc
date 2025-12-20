@@ -384,7 +384,7 @@ fun EditBikeMemoForm(
             border = BorderStroke(1.dp, Color(0xFF703BE1)),
         ) {
             Text(
-                text = stringResource(id = R.string.삭제),
+                text = stringResource(id = R.string.delete),
                 style = TextStyle(fontSize = 25.sp),
                 color = Color(0xFF703BE1)
             )

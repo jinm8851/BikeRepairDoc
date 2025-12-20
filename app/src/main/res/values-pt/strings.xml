@@ -35,13 +35,13 @@
       
   <string name="lamp_info">As lâmpadas quebram com mais frequência em dias de chuva se queimarem muito, então vamos ficar em casa em dias de chuva ou neve </string>
       
-  <string name="etc_info">Verifique frequentemente sem qualquer outro defeito Vamos viver muito tempo</string>
+  <string name="etc_info">Vamos verificar muitas vezes sem quaisquer outros problemas e andar por muito tempo</string>
       
   <string name="disk_info">Os discos devem ser desgastados e substituídos quando estiverem velhos.  Se não forem substituídas, as pastilhas dos travões desgastar-se-ão rapidamente e a potência diminuirá gradualmente.</string>
       
   <string name="purchase_date">Data de\n comprar</string>
       
-  <string name="bike_model">homem inseto</string>
+  <string name="bike_model">Burgman</string>
       
   <string name="km">Km</string>
       
@@ -92,10 +92,8 @@
   <string name="email">E-mail</string>
       
   <string name="sign_up_button">\ta afiliação</string>
-      
-  <string name="lonin">Conecte-se</string>
 
-  <string name="login">Login</string>
+    <string name="login">Login</string>
   <string name="data_put">Enviar dados</string>
       
   <string name="data_pull">Receber dados</string>
@@ -196,11 +194,11 @@
   <string name="example_number">Exemplo: 10000</string>
   <string name="enter_other_content">Inserir outro conteúdo</string>
   <string name="select_option">selecione</string>
-  <string name="bike_repair_records">um livro de limpeza para reparações de bicicletas</string>
+  <string name="bike_repair_records">Diário de manutenção de motocicletas</string>
   <string name="total_amount">Total %s dólares</string>
   <string name="bike_memo_edit_title">Modificar BikeMemo</string>
   <string name="edit_item_title">Editar item</string>
-  <string name="삭제">Suprimir</string>
+  <string name="delete">Suprimir</string>
   <string name="choose">Por favor, escolha.</string>
   <string name="authenticate">Autentica</string>
   <string name="password">Password</string>

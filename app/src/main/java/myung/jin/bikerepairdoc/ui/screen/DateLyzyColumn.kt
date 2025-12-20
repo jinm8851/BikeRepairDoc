@@ -266,7 +266,7 @@ fun OptionDialog(
                         .height(60.dp)
                         .width(100.dp),
                     onClick = onDelete,
-                    stringResId = R.string.삭제
+                    stringResId = R.string.delete
                 )
 
                 Spacer(modifier = Modifier.height(16.dp))

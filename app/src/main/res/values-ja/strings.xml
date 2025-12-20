@@ -35,13 +35,13 @@
       
   <string name="lamp_info">雨の日はランプがたくさん燃えると壊れやすいので、雨や雪の日は家で過ごしましょう</string>
       
-  <string name="etc_info">他に不具合がないかよくチェックして長生きしましょう</string>
+  <string name="etc_info">他の問題なく頻繁にチェックして、長時間乗りましょう</string>
       
   <string name="disk_info">ディスクは摩耗し、古くなったら交換する必要があります。ブレーキパッドを交換しないと摩耗が早くなり、徐々にパワーが低下します。</string>
       
   <string name="purchase_date">日付\n 購入</string>
       
-  <string name="bike_model">バグマン</string>
+  <string name="bike_model">Burgman</string>
       
   <string name="km">キロ</string>
       
@@ -92,10 +92,8 @@
   <string name="email">E メール</string>
       
   <string name="sign_up_button">加入</string>
-      
-  <string name="lonin">ログイン</string>
 
-  <string name="login">Login</string>
+    <string name="login">Login</string>
   <string name="data_put">データを送る</string>
       
   <string name="data_pull">データを受信する</string>
@@ -196,11 +194,11 @@
   <string name="example_number">例: 10000</string>
   <string name="enter_other_content">他のコンテンツの入力</string>
   <string name="select_option">セレクト</string>
-  <string name="bike_repair_records">自転車修理のための家計簿</string>
+  <string name="bike_repair_records">バイクメンテナンスログ</string>
   <string name="total_amount">合計%sドル</string>
   <string name="bike_memo_edit_title">Edit Bike Memo（バイクメモ編集）</string>
   <string name="edit_item_title">アイテムの編集</string>
-  <string name="삭제">削除</string>
+  <string name="delete">削除</string>
   <string name="choose">選択してください</string>
   <string name="authenticate">認証</string>
   <string name="password">Password</string>

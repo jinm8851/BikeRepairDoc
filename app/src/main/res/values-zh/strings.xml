@@ -41,7 +41,7 @@
       
   <string name="purchase_date">日期\n 购买</string>
       
-  <string name="bike_model">巴格曼</string>
+  <string name="bike_model">Burgman</string>
       
   <string name="km">公里</string>
       
@@ -92,10 +92,8 @@
   <string name="email">电子邮件</string>
       
   <string name="sign_up_button">加入</string>
-      
-  <string name="lonin">登录</string>
 
-  <string name="login">"注册 "</string>
+    <string name="login">"注册 "</string>
   <string name="data_put">发送数据</string>
       
   <string name="data_pull">接收数据</string>
@@ -196,11 +194,11 @@
   <string name="example_number">示例:10000</string>
   <string name="enter_other_content">输入其他内容</string>
   <string name="select_option">精选</string>
-  <string name="bike_repair_records">修理自行车的记账簿</string>
+  <string name="bike_repair_records">摩托车维修日志</string>
   <string name="total_amount">总计 %s 美元</string>
   <string name="bike_memo_edit_title">编辑 BikeMemo</string>
   <string name="edit_item_title">编辑项目</string>
-  <string name="삭제">删除</string>
+  <string name="delete">删除</string>
   <string name="choose">请选择:</string>
   <string name="authenticate">验证码:</string>
   <string name="password">Password</string>

@@ -35,13 +35,13 @@
       
   <string name="lamp_info">Les lampes se cassent plus souvent les jours de pluie si elles brûlent beaucoup, alors restons à la maison les jours de pluie ou de neige. </string>
       
-  <string name="etc_info">Vérifiez-le souvent sans autre dysfonctionnement Vivons longtemps</string>
+  <string name="etc_info">Vérifions souvent sans autre problème et montons longtemps.</string>
       
   <string name="disk_info">Les disques doivent être usés et remplacés lorsqu\'ils sont vieux.  Si elles ne sont pas remplacées, les plaquettes de frein s’useront rapidement et la puissance diminuera progressivement.</string>
       
   <string name="purchase_date">Date de\n achat</string>
       
-  <string name="bike_model">Bugman</string>
+  <string name="bike_model">Burgman</string>
       
   <string name="km">Km</string>
       
@@ -92,10 +92,8 @@
   <string name="email">E-mail</string>
       
   <string name="sign_up_button">" affiliation"</string>
-      
-  <string name="lonin">Se connecter</string>
 
-  <string name="login">"注册 "</string>
+    <string name="login">"注册 "</string>
   <string name="data_put">Envoyer des données</string>
       
   <string name="data_pull">Recevoir des données</string>
@@ -196,11 +194,11 @@
   <string name="example_number">Exemple : 10000</string>
   <string name="enter_other_content">Entrer un autre contenu</string>
   <string name="select_option">sélectionner</string>
-  <string name="bike_repair_records">un livre de ménage pour les réparations de vélos</string>
+  <string name="bike_repair_records">Journal d\'entretien des motocycles</string>
   <string name="total_amount">Total %s dollars</string>
   <string name="bike_memo_edit_title">Edit BikeMemo</string>
   <string name="edit_item_title">Point d\'édition</string>
-  <string name="삭제">Supprimer</string>
+  <string name="delete">Supprimer</string>
   <string name="choose">S\'il vous plaît, choisissez</string>
   <string name="authenticate">Authenticate</string>
   <string name="password">Password</string>

@@ -35,13 +35,13 @@
       
   <string name="lamp_info">Las lámparas se rompen más a menudo en días lluviosos si se queman mucho, así que quédemonos en casa en días lluviosos o nevados. </string>
       
-  <string name="etc_info">Compruébelo con frecuencia sin ningún otro mal funcionamiento. Vivamos mucho tiempo.</string>
+  <string name="etc_info">Vamos a comprobar a menudo sin ningún otro problema y montar durante mucho tiempo</string>
       
   <string name="disk_info">Los discos deben desgastarse y reemplazarse cuando sean viejos.  Si no se reemplazan, las pastillas de freno se desgastarán rápidamente y la potencia disminuirá gradualmente.</string>
       
   <string name="purchase_date">Fecha de\n compra</string>
       
-  <string name="bike_model">hombre insecto</string>
+  <string name="bike_model">Burgman</string>
       
   <string name="km">kilómetros</string>
       
@@ -92,10 +92,8 @@
   <string name="email">Correo electrónico</string>
       
   <string name="sign_up_button">" Inscripción"</string>
-      
-  <string name="lonin">Acceso</string>
 
-  <string name="login">Login</string>
+    <string name="login">Login</string>
   <string name="data_put">Enviar datos</string>
       
   <string name="data_pull">Recibir datos</string>
@@ -196,11 +194,11 @@
   <string name="example_number">Ejemplo: 10000</string>
   <string name="enter_other_content">Introduzca otro contenido</string>
   <string name="select_option">seleccionar</string>
-  <string name="bike_repair_records">un libro de limpieza para la reparación de bicicletas</string>
+  <string name="bike_repair_records">Diario de mantenimiento de motocicletas</string>
   <string name="total_amount">Total %s dólares</string>
   <string name="bike_memo_edit_title">Edición BikeMemo</string>
   <string name="edit_item_title">Edición de artículo</string>
-  <string name="삭제">Suprímase</string>
+  <string name="delete">Suprímase</string>
   <string name="choose">Por favor, elija</string>
   <string name="authenticate">Autentica</string>
   <string name="password">Password</string>

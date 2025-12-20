@@ -35,13 +35,13 @@
       
   <string name="lamp_info">Lampu lebih sering rusak di hari hujan jika banyak menyala, jadi mari kita tetap di rumah saat hujan atau bersalju </string>
       
-  <string name="etc_info">Sering-sering periksa tanpa ada kerusakan lain Biar umur panjang</string>
+  <string name="etc_info">Mari kita sering memeriksa tanpa masalah lain dan naik untuk waktu yang lama</string>
       
   <string name="disk_info">Cakram harus dipakai dan diganti bila sudah tua.  Jika tidak diganti maka kampas rem akan cepat aus dan tenaganya lambat laun berkurang.</string>
       
   <string name="purchase_date">Tanggal\n pembelian</string>
       
-  <string name="bike_model">manusia serangga</string>
+  <string name="bike_model">Burgman</string>
       
   <string name="km">km</string>
       
@@ -92,10 +92,8 @@
   <string name="email">Surel</string>
       
   <string name="sign_up_button">terdaftar</string>
-      
-  <string name="lonin">Gabung</string>
 
-  <string name="login">log in</string>
+    <string name="login">log in</string>
   <string name="data_put">Kirim data</string>
       
   <string name="data_pull">Menerima data</string>
@@ -196,11 +194,11 @@
   <string name="example_number">Contoh: 10000</string>
   <string name="enter_other_content">Masukkan konten lain</string>
   <string name="select_option">pilih</string>
-  <string name="bike_repair_records">buku pembantu untuk perbaikan sepeda.</string>
+  <string name="bike_repair_records">Log Pemeliharaan Sepeda Motor</string>
   <string name="total_amount">Total %s dolar</string>
   <string name="bike_memo_edit_title">Sunting Memo Sepeda</string>
   <string name="edit_item_title">Sunting Butir</string>
-  <string name="삭제">Hapus</string>
+  <string name="delete">Hapus</string>
   <string name="choose">Silakan pilih</string>
   <string name="authenticate">Otentikasi</string>
   <string name="password">Password</string>

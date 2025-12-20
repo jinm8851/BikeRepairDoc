@@ -34,13 +34,13 @@
       
   <string name="lamp_info">An regnerischen Tagen gehen Lampen häufiger kaputt, wenn sie viel brennen. Bleiben Sie also an regnerischen oder verschneiten Tagen zu Hause </string>
       
-  <string name="etc_info">Überprüfen Sie es häufig, ohne dass andere Störungen auftreten. Lasst uns noch lange leben</string>
+  <string name="etc_info">Lass uns oft ohne andere Probleme überprüfen und lange fahren</string>
       
   <string name="disk_info">Scheiben sollten abgenutzt und ersetzt werden, wenn sie alt sind.  Wenn sie nicht ausgetauscht werden, verschleißen die Bremsbeläge schnell und die Leistung lässt allmählich nach.</string>
       
   <string name="purchase_date">Datum von\n kaufen</string>
       
-  <string name="bike_model">Bugman</string>
+  <string name="bike_model">Burgman</string>
       
   <string name="km">Km</string>
       
@@ -91,10 +91,8 @@
   <string name="email">Email</string>
       
   <string name="sign_up_button">die Aufnahme</string>
-      
-  <string name="lonin">Anmeldung</string>
 
-  <string name="login">Anmelden</string>
+    <string name="login">Anmelden</string>
   <string name="data_put">Daten senden</string>
       
   <string name="data_pull">Empfange Daten</string>
@@ -195,11 +193,11 @@
   <string name="example_number">Exemple : 10000</string>
   <string name="enter_other_content">Andere Inhalte eingeben</string>
   <string name="select_option">wählen</string>
-  <string name="bike_repair_records">ein Hausbuch für Fahrradreparaturen</string>
+  <string name="bike_repair_records">Motorradwartungsprotokoll</string>
   <string name="total_amount">Insgesamt %s Dollar</string>
   <string name="bike_memo_edit_title">BikeMemo bearbeiten</string>
   <string name="edit_item_title">Artikel bearbeiten</string>
-  <string name="삭제">Löschen</string>
+  <string name="delete">Löschen</string>
   <string name="choose">Bitte wählen</string>
   <string name="authenticate">Authentifizieren</string>
   <string name="password">Password</string>

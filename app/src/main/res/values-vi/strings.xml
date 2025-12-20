@@ -27,7 +27,7 @@
     <string name="drive_system_info">Hãy kiểm tra hệ thống truyền động mỗi khi mở nắp để đảm bảo xe không bị dừng đột ngột.</string>
     <string name="engine_info">Động cơ hiếm khi hỏng, nhưng khó kiểm tra bằng mắt thường. Nếu xe bị yếu đi hoặc thỉnh thoảng bị giật, hãy kiểm tra.</string>
     <string name="lamp_info">Đèn sẽ cháy thường xuyên hơn nếu bạn đi xe nhiều trong những ngày mưa, vì vậy hãy ở nhà vào những ngày mưa hoặc tuyết.</string>
-    <string name="etc_info">Hãy thường xuyên kiểm tra để không có hỏng hóc nào khác và sử dụng xe được lâu dài.</string>
+    <string name="etc_info">Chúng ta hãy thường xuyên kiểm tra mà không gặp vấn đề gì khác và đi xe thật lâu nhé</string>
     <string name="disk_info">Đĩa phanh cần được thay thế khi bị mòn theo thời gian. Nếu không thay, má phanh sẽ mòn nhanh hơn và lực phanh sẽ giảm dần.</string>
     <string name="purchase_date">Ngày mua</string>
     <string name="bike_model">Ví dụ : Burgman</string>
@@ -108,11 +108,11 @@
     <string name="example_number">Ví dụ : 10000</string>
     <string name="enter_other_content">Nhập nội dung khác</string>
     <string name="select_option">Chọn</string>
-    <string name="bike_repair_records">Sổ ghi chép sửa chữa xe máy</string>
+    <string name="bike_repair_records">Nhật ký bảo dưỡng xe máy</string>
     <string name="total_amount">Tổng cộng %s đồng</string>
     <string name="bike_memo_edit_title">Chỉnh sửa BikeMemo</string>
     <string name="edit_item_title">Chỉnh sửa mục</string>
-    <string name="삭제">Xóa</string>
+    <string name="delete">Xóa</string>
     <string name="choose">Vui lòng chọn</string>
     <string name="authenticate">Xác thực</string>
     <string name="password">Mật khẩu</string>

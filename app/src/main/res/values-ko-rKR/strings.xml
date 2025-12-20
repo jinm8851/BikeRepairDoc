@@ -110,11 +110,11 @@
     <string name="example_number">예 : 10000</string>
     <string name="enter_other_content">기타 내용 입력하기</string>
     <string name="select_option">선택</string>
-    <string name="bike_repair_records">바이크 수리 가계부</string>
+    <string name="bike_repair_records">오토바이 수리 가계부</string>
     <string name="total_amount">합계  %s원</string>
     <string name="bike_memo_edit_title">Edit BikeMemo</string>
     <string name="edit_item_title">Edit Item</string>
-    <string name="삭제">삭제</string>
+    <string name="delete">삭제</string>
     <string name="choose">선택해주세요</string>
     <string name="authenticate">Authenticate</string>
     <string name="password">Password</string>
