@@ -257,7 +257,7 @@ fun EditBikeMemoForm(
             OutlinedTextField(
                 label = { Text(text = stringResource(id = R.string.mileage)) },
                 placeholder = { Text(text = stringResource(R.string.example_number)) },
-                value = bikeDetails.km.toString(),
+                value = if (bikeDetails.km == 0) "" else bikeDetails.km.toString(),
                 onValueChange = { newKmString ->
                     onValueChange(bikeDetails.copy(km = newKmString.filterNumbers().toIntOrNull() ?: 0))
                 },
@@ -291,7 +291,7 @@ fun EditBikeMemoForm(
             OutlinedTextField(
                 label = { Text(text = stringResource(id = R.string.amount)) },
                 placeholder = { Text(text = stringResource(id = R.string.example_number)) },
-                value = bikeDetails.amount.toString(),
+                value = if (bikeDetails.amount == 0) "" else bikeDetails.amount.toString(),
                 onValueChange = { newAmountString ->
                     onValueChange(bikeDetails.copy(amount = newAmountString.filterNumbers().toIntOrNull() ?: 0))
                 },

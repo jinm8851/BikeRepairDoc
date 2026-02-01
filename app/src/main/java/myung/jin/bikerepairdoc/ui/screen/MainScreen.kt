@@ -380,7 +380,7 @@ fun BikeInputFormContent(
                     textStyle = TextStyle(
                         fontSize = 20.sp,
                         color = Color(0xFF703BE1), textAlign = TextAlign.Center
-                    ),
+                ),
                     shape = shapes.small,
                     singleLine = true,
                 )
@@ -406,9 +406,9 @@ fun BikeInputFormContent(
         ) {
             //  주행 거리
             OutlinedTextField(
-                value = bikeDetails.km.toString(),
+                value = if (bikeDetails.km == 0) "" else bikeDetails.km.toString(),
                 onValueChange = { newKmString ->
-                    onValueChange(bikeDetails.copy(km = newKmString.filterNumbers().toIntOrNull() ?: 0))
+                    onValueChange(bikeDetails.copy(km = newKmString.filterNumbers().toIntOrNull() ?: 0 ))
                 },
                 label = { Text(text = stringResource(id = R.string.mileage)) },
                 placeholder = { Text(text = stringResource(R.string.example_number)) },
@@ -442,7 +442,7 @@ fun BikeInputFormContent(
 
             //  금액
             OutlinedTextField(
-                value = bikeDetails.amount.toString(),
+                value = if (bikeDetails.amount == 0) "" else bikeDetails.amount.toString(),
                 onValueChange = { newAmountString ->
                     onValueChange(bikeDetails.copy(amount = newAmountString.filterNumbers().toIntOrNull() ?: 0))
                 },
