@@ -153,6 +153,7 @@ fun BikeMemoDetail(
                     .align(Alignment.CenterHorizontally)
                     .padding(4.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
+                itemVerticalAlignment = Alignment.CenterVertically
 
                 ) {
 
