@@ -50,17 +50,29 @@ class MainScreenViewModel(
     private fun initializeBikeUiState() {
         viewModelScope.launch {
             bikeMemoRepository.getLastBikeMemoStream().firstOrNull()?.let { lastBikeMemo ->
-                _bikeUiState.value = lastBikeMemo.toBikeUiState()
+                // 기존 데이터를 가져오되, 수리 관련 필드만 초기화하여 새로운 상태 생성
+                val initialState = lastBikeMemo.toBikeDetails().copy(
+                    km = 0,
+                    amount = 0,
+                    selectedOption = "",
+                    etc = ""
+                )
+                _bikeUiState.value = BikeUiState(bikeDetails = initialState)
+               /* _bikeUiState.value = lastBikeMemo.toBikeUiState()
                 // km 와 amount을 0 으로 초기화
                 bikeUiState.value.bikeDetails.km = 0
                 bikeUiState.value.bikeDetails.amount = 0
                 bikeUiState.value.bikeDetails.selectedOption = ""
-                bikeUiState.value.bikeDetails.etc = ""
+                bikeUiState.value.bikeDetails.etc = ""*/
             } ?: run {
-                // If no last bike memo, set default values
+                // 기록이 없을 경우 완전히 새 상태로 초기화
+                _bikeUiState.value = BikeUiState(
+                    bikeDetails = BikeDetails(repairDate = dateState.value)
+                )
+               /* // If no last bike memo, set default values
                 _bikeUiState.value = BikeUiState(bikeDetails = BikeDetails())
                 bikeUiState.value.bikeDetails.repairDate =
-                    dateState.value.toString() // 아무것도 없을때 날짜넣기
+                    dateState.value // 아무것도 없을때 날짜넣기*/
             }
         }
     }
