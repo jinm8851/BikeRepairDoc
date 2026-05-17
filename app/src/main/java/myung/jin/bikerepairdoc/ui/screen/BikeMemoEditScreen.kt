@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.calculateEndPadding
 import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
@@ -45,6 +46,7 @@ import myung.jin.bikerepairdoc.InventoryTopAppBar
 import myung.jin.bikerepairdoc.ui.navigation.NavigationDestination.NavigationDestination
 import myung.jin.bikerepairdoc.R
 import myung.jin.bikerepairdoc.ui.AppViewModelProvider
+import myung.jin.bikerepairdoc.ui.components.DatePickerField
 import myung.jin.bikerepairdoc.ui.theme.shapes
 
 
@@ -178,7 +180,7 @@ fun EditBikeMemoForm(
                 modifier = Modifier.size(16.dp)
             )
             // 구입 날짜
-            OutlinedTextField(
+            /*OutlinedTextField(
                 label = { Text(text = stringResource(id = R.string.purchase_date)) },
                 placeholder = { Text(text = stringResource(id = R.string._2000_01_01)) },
                 value = bikeDetails.startDate,
@@ -201,6 +203,16 @@ fun EditBikeMemoForm(
                 ),
                 shape = shapes.small,
                 singleLine = true,
+            )*/
+            DatePickerField(
+                label = { Text(stringResource(R.string.purchase_date)) },
+                selectedDate = bikeDetails.startDate,
+                onDateSelected = { newDate ->
+                    onValueChange(bikeDetails.copy(startDate = newDate))
+                },
+                modifier = Modifier
+                    .weight(0.5f)
+                    .background(color = Color(0x32B193E6)),
             )
         }
 
@@ -210,7 +222,7 @@ fun EditBikeMemoForm(
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             //  수리 날짜
-            OutlinedTextField(
+           /* OutlinedTextField(
                 label = { Text(text = stringResource(id = R.string.repair_date)) },
                 placeholder = { Text(text = stringResource(R.string.auto_insert)) },
                 value = bikeDetails.repairDate,
@@ -233,6 +245,16 @@ fun EditBikeMemoForm(
                 ),
                 shape = shapes.small,
                 singleLine = true,
+            )*/
+            DatePickerField(
+                label = { Text(text = stringResource(id = R.string.repair_date)) },
+                selectedDate = bikeDetails.repairDate,
+                onDateSelected = { newDate ->
+                    onValueChange(bikeDetails.copy(repairDate = newDate))
+                },
+                modifier = Modifier
+                    .weight(0.5f)
+                    .background(color = Color(0x32B193E6)),
             )
             Spacer(
                 modifier = Modifier.size(16.dp),

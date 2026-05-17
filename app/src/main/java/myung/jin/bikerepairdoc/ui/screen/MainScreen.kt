@@ -57,6 +57,7 @@ import myung.jin.bikerepairdoc.InventoryTopAppBar
 import myung.jin.bikerepairdoc.ui.theme.BikeRepairDocTheme
 import myung.jin.bikerepairdoc.R
 import myung.jin.bikerepairdoc.ui.AppViewModelProvider
+import myung.jin.bikerepairdoc.ui.components.DatePickerField
 import myung.jin.bikerepairdoc.ui.navigation.NavigationDestination.NavigationDestination
 import myung.jin.bikerepairdoc.ui.room.BikeMemo
 import myung.jin.bikerepairdoc.ui.theme.shapes
@@ -323,7 +324,7 @@ fun BikeInputFormContent(
             )
 
             // 구입 날짜
-            OutlinedTextField(
+            /*OutlinedTextField(
                 value = bikeDetails.startDate,
                 onValueChange = {
                     onValueChange(bikeDetails.copy(startDate = it))
@@ -347,6 +348,17 @@ fun BikeInputFormContent(
                 ),
                 shape = shapes.small,
                 singleLine = true,
+            )*/
+            DatePickerField(
+                label = { Text(stringResource(R.string.purchase_date)) },
+                selectedDate = bikeDetails.startDate,
+                onDateSelected = { newDate ->
+                    onValueChange(bikeDetails.copy(startDate = newDate))
+                },
+                modifier = modifier
+                    .weight(1f)
+                    .heightIn(min = 56.dp)
+                    .background(color = Color(0x32B193E6)),
             )
         }
 
@@ -357,7 +369,7 @@ fun BikeInputFormContent(
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 //  수리 날짜
-                OutlinedTextField(
+                /*OutlinedTextField(
                     value = displayedDate.value,
                     onValueChange = { newRepairDate ->
                         displayedDate.value = newRepairDate
@@ -382,6 +394,17 @@ fun BikeInputFormContent(
                 ),
                     shape = shapes.small,
                     singleLine = true,
+                )*/
+                DatePickerField(
+                    label = { Text(text = stringResource(id = R.string.repair_date)) },
+                    selectedDate = displayedDate.value,
+                    onDateSelected = { newDate ->
+                        onValueChange(bikeDetails.copy(repairDate = newDate))
+                    },
+                    modifier = modifier
+                        .weight(1f)
+                        .heightIn(min = 56.dp)
+                        .background(color = Color(0x32B193E6)),
                 )
                 Spacer(
                     modifier = Modifier.size(16.dp),
