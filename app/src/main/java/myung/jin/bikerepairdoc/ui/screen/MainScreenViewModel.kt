@@ -131,14 +131,14 @@ data class BikeUiState(
 
 data class BikeDetails(
     val no: Int = 0,
-    var nickName: String = "",
-    var startDate: String = "",
-    var repairDate: String = "",
-    var km: Int = 0,
-    var selectedOption: String = "",
-    var amount: Int = 0,
-    var etc: String = "",
-    var year: String = "",
+    val nickName: String = "",
+    val startDate: String = "",
+    val repairDate: String = "",
+    val km: Int = 0,
+    val selectedOption: String = "",
+    val amount: Int = 0,
+    val etc: String = "",
+    val year: String = "",
 )
 
 // BikeUiState를  id 없이 BikeMemo로 변환하는 확장함수

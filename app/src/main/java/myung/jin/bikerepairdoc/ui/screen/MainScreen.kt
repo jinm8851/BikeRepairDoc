@@ -102,7 +102,7 @@ fun thousandSeparatorTransformation(): VisualTransformation {
                 var formattedOffset = 0 // 변환된 텍스트에서의 현재 커서 위치
                 var originalOffset = 0  // 변환된 텍스트에서의 현재 커서 위치
                 // 변환된 텍스트의 각 문자(char)와 인덱스(index)를 순회합니다.
-                formattedText.forEachIndexed { index, char ->
+                formattedText.forEachIndexed { _, char ->
                     // 변환된 텍스트에서의 커서 위치(formattedOffset)가 입력된 offset(변환된 텍스트에서의 목표 커서 위치)보다 크거나 같으면 목표 위치에 도달했다는 의미입니다.
                     if (formattedOffset >= offset) {
                         return originalOffset  // 원래 텍스트에서의 커서 위치(originalOffset)를 반환합니다.
@@ -174,7 +174,7 @@ fun MainScreen(
     val displayedDate = remember { mutableStateOf(date) }
 
     LaunchedEffect(bikeUiState.bikeDetails.repairDate) {
-        bikeUiState.bikeDetails.repairDate = displayedDate.value
+        displayedDate.value = bikeUiState.bikeDetails.repairDate
     }
  /*   // 주행 거리
     val driveKm = remember { mutableStateOf("0") }
@@ -215,8 +215,7 @@ fun MainScreen(
                 focusManager.clearFocus()
                 coroutineScope.launch {
                     viewModel.saveBikeMemo()
-                    bikeUiState.bikeDetails.amount = 0
-                    bikeUiState.bikeDetails.etc = ""
+                    viewModel.updateUiState(bikeUiState.bikeDetails.copy(amount = 0, etc = ""))
                 }
             },
             onDeleteBikeMemo = { bikeMemoId ->
