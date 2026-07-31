@@ -220,4 +220,13 @@
   <string name="profile_name">Display name</string>
   <string name="profile_email">Email: %1$s</string>
   <string name="profile_uid">UID: %1$s</string>
+    <string name="cashbookScreen">간단 금전출납부</string>
+  <string name="inputContent">내용 입력창\n</string>
+  <string name="inputText">간단하게 입출금할 내용을 입력하고 옆에 아이콘을 누르시면 밑에 선택창에 저장됩니다.</string>
+    <string name="inputAmount">금액 입력</string>
+  <string name="income">수입</string>
+  <string name="expenditure">지출</string>
+  <string name="current_date">날짜</string>
+    <string name="cashbook_search_title">입출금 전체 내역 화면</string>
+  <string name="search_hint_cashbook">날짜, 월, 년도 또는 내용으로 검색</string>
 </resources>

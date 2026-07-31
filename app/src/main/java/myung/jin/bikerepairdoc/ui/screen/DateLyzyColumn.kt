@@ -8,16 +8,23 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.MaterialTheme.colorScheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -29,6 +36,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -37,31 +45,88 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import myung.jin.bikerepairdoc.R
 import myung.jin.bikerepairdoc.ui.room.BikeMemo
+import myung.jin.bikerepairdoc.ui.room.CashBook
 
-//랜덤으로 색상 설정
+//랜덤으로 색상 설정 (Material 3 컨테이너 색상 계열로 변경)
 object ColorGenerator {
-    // 선택할 색상 목록 정의
     private val colorPalette = listOf(
-        Color(0x30EF9A9A), // Light Purple
-        Color(0x30CE93D8), // Medium Purple
-        Color(0x309FA8DA), // Pink
-        Color(0x3080DEEA), // Light Pink
-        Color(0x30A5D6A7), // Peach
-        Color(0x30E6EE9C), // Light Peach
-        Color(0x30FFE082), // Yellow
-        Color(0x30FFAB91), // Light Purple
-        Color(0x303B65E1), // Purple
-        Color(0x300B6380) // Blue
+        Color(0xFFEADDFF), // Primary Container light
+        Color(0xFFD0BCFF), // Primary light
+        Color(0xFFE8DEF8), // Secondary Container light
+        Color(0xFFF2B8B5), // Error Container light
+        Color(0xFFC1ECD6), // Tertiary Container light
+        Color(0xFFECE68D), // Primary Container alternative
+        Color(0xFFFFDAD6), // Error light
+        Color(0xFFD7E3FF), // Custom blue-ish
+        Color(0xFFF3E8FF), // Custom purple-ish
+        Color(0xFFE8F5E9)  // Custom green-ish
     )
 
     private var lastColor: Color? = null
 
     fun generateRandomColor(): Color {
-        // 파렛트에서 마지막색상하고 같지않은 색을 랜덤으로 선택
-        val newColor = colorPalette.filter { it != lastColor}.random()
+        val newColor = colorPalette.filter { it != lastColor }.random()
         lastColor = newColor
-        // 마지막 색상하고 같지 않은 색상 반환
-        return newColor
+        return newColor.copy(alpha = 0.4f) // 배경으로 쓰기 좋게 투명도 조절
+    }
+}
+
+
+@Composable
+fun <T> GenericDateList(
+    modifier: Modifier = Modifier,
+    itemList: List<T>,
+    showDateHeader: Boolean = true,
+    getDate: (T) -> String,
+    itemContent: @Composable (T, Color) -> Unit
+) {
+    val dateToColorMap = remember { mutableMapOf<String, Color>() }
+
+    LazyColumn(
+        modifier = modifier
+            .fillMaxWidth()
+            .background(colorScheme.surface)
+            .padding(4.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        items(itemList.size) { index ->
+            val item = itemList[index]
+            val date = getDate(item)
+
+            val backgroundColor = dateToColorMap.getOrPut(date) {
+                ColorGenerator.generateRandomColor()
+            }
+
+            val isFirstInGroup = index == 0 || date != getDate(itemList[index - 1])
+
+            if (isFirstInGroup) {
+                if (index > 0) {
+                    // 날짜가 변경될 때 구분선 추가
+                    HorizontalDivider(
+                        modifier = Modifier.padding(vertical = 8.dp),
+                        thickness = 1.dp,
+                        color = colorScheme.outline.copy(alpha = 0.2f)
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                }
+                if (showDateHeader) {
+                    Text(
+                        text = date,
+                        style = MaterialTheme.typography.titleMedium,
+                        color = colorScheme.primary,
+                        modifier = Modifier.padding(vertical = 8.dp)
+                    )
+                }
+            } else {
+                HorizontalDivider(
+                    modifier = Modifier.padding(horizontal = 16.dp),
+                    thickness = 0.5.dp,
+                    color = colorScheme.outlineVariant.copy(alpha = 0.5f)
+                )
+            }
+
+            itemContent(item, backgroundColor)
+        }
     }
 }
 
@@ -114,6 +179,60 @@ fun BikeMemoList(
 
 }
 
+@Composable
+fun CashBookDetail(
+    modifier: Modifier = Modifier,
+    cashBook: CashBook,
+    route: String,
+    onDeleteClick: () -> Unit,
+    onItemClick: (() -> Unit)? = null,
+    backgroundColor: Color = Color.Transparent
+) {
+    var showDialog by remember { mutableStateOf(false) }
+
+    Card(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(vertical = 1.dp)
+            .combinedClickable(
+                onClick = { },
+                onLongClick = { showDialog = true }
+            ),
+        colors = CardDefaults.cardColors(
+            containerColor = backgroundColor,
+            contentColor = colorScheme.onSurface
+        ),
+        shape = RectangleShape
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 8.dp),
+            verticalArrangement = Arrangement.Center
+        ) {
+            CashBookDetailTexts(cashBook = cashBook, route = route)
+        }
+    }
+
+    // 삭제 다이얼로그 추가
+    if (showDialog) {
+        OptionDialog(
+            onDismissRequest = { showDialog = false },
+            onDelete = {
+                onDeleteClick()
+                showDialog = false
+            },
+            onEdit = onItemClick?.let {
+                {
+                    it()
+                    showDialog = false
+                }
+            }
+        )
+    }
+}
+
+
 @OptIn(ExperimentalFoundationApi::class, ExperimentalLayoutApi::class)
 @Composable
 fun BikeMemoDetail(
@@ -135,7 +254,7 @@ fun BikeMemoDetail(
             ),
         colors = CardDefaults.cardColors(
             containerColor = backgroundColor,
-            contentColor = Color(0xFF703BE1)
+            contentColor = colorScheme.onSurface
         ),
         shape = RectangleShape
     ) {
@@ -155,7 +274,7 @@ fun BikeMemoDetail(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 itemVerticalAlignment = Alignment.CenterVertically
 
-                ) {
+            ) {
 
                 // 코드 중복을 방지하기 위해 도우미 기능 사용
                 BikeMemoDetailTexts(bikeMemo, route)
@@ -192,6 +311,46 @@ fun BikeMemoDetail(
 }
 
 @Composable
+fun CashBookDetailTexts(
+    modifier: Modifier = Modifier,
+    cashBook: CashBook,
+    route: String
+) {
+
+    val isIncome = cashBook.income != 0L
+
+    Row(
+        modifier = Modifier
+            .padding(horizontal = 16.dp, vertical = 4.dp)
+            .fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(
+            text = if (isIncome) stringResource(R.string.income) else stringResource(R.string.expenditure),
+            style = MaterialTheme.typography.bodyMedium,
+            color = if (isIncome) colorScheme.primary else colorScheme.error,
+            modifier = Modifier.weight(1f)
+        )
+        Text(
+            text = cashBook.content,
+            style = MaterialTheme.typography.bodyLarge,
+            color = colorScheme.onSurface,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.weight(2f)
+        )
+        Text(
+            text = if (isIncome) cashBook.income.toString()
+                .formatNumberWithCommas() else cashBook.expense.toString().formatNumberWithCommas(),
+            style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Bold),
+            color = if (isIncome) colorScheme.primary else colorScheme.error,
+            textAlign = TextAlign.End,
+            modifier = Modifier.weight(1.5f)
+        )
+    }
+}
+
+@Composable
 fun BikeMemoDetailTexts(bikeMemo: BikeMemo, route: String) {
 
     val fontSize = if (route == TotalScreenDestination.route) 18.sp else 20.sp
@@ -221,80 +380,77 @@ fun BikeMemoDetailTexts(bikeMemo: BikeMemo, route: String) {
 
 }
 
-//삭제 다이얼로그
 @Composable
 fun OptionDialog(
     onDismissRequest: () -> Unit,
     onDelete: () -> Unit,
-    onEdit: () -> Unit
+    onEdit: (() -> Unit)? = null
 ) {
     Dialog(
-        onDismissRequest = onDismissRequest, // 닫기 요청 시 호출되는 콜백 함수
+        onDismissRequest = onDismissRequest,
         properties = DialogProperties(
-            dismissOnBackPress = true, // 뒤로 가기 버튼으로 닫기 허용
-            dismissOnClickOutside = true  // 바깥쪽 클릭으로 닫기 허용
+            dismissOnBackPress = true,
+            dismissOnClickOutside = true
         )
     ) {
-
         Card(
-            shape = RoundedCornerShape(8.dp),
+            shape = RoundedCornerShape(16.dp),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp),
             colors = CardDefaults.cardColors(
-                containerColor = Color(0xFFF8F4B7),
-                contentColor = Color(0xFF703BE1)
+                containerColor = colorScheme.surfaceContainerHigh,
+                contentColor = colorScheme.onSurface
             )
-
         ) {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(16.dp),
-                // .background(Color(0x32B193E6)),
+                    .padding(24.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-
                 Text(
                     text = stringResource(R.string.choose),
-                    style = TextStyle(fontSize = 24.sp, color = Color(0xFF0B6380)),
-                    textAlign = TextAlign.Center, modifier = Modifier.padding(16.dp)
+                    style = MaterialTheme.typography.headlineSmall,
+                    color = colorScheme.primary,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.padding(bottom = 24.dp)
                 )
 
-                Spacer(modifier = Modifier.height(8.dp))
-                SaveButton(
-                    modifier = Modifier
-                        .height(60.dp)
-                        .width(100.dp),
+                Button(
+                    modifier = Modifier.fillMaxWidth(),
                     onClick = onDelete,
-                    stringResId = R.string.delete
-                )
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = colorScheme.error
+                    )
+                ) {
+                    Text(stringResource(R.string.delete))
+                }
 
-                Spacer(modifier = Modifier.height(16.dp))
-                SaveButton(
-                    modifier = Modifier
-                        .height(60.dp)
-                        .width(100.dp),
-                    onClick = onEdit,
-                    stringResId = R.string.edit
-                )
+                onEdit?.let {
+                    Spacer(modifier = Modifier.height(12.dp))
 
-                Spacer(modifier = Modifier.height(16.dp))
-                SaveButton(
-                    modifier = Modifier
-                        .height(60.dp)
-                        .width(100.dp),
-                    onClick = onDismissRequest,
-                    stringResId = R.string.korea_cancel
-                )
-                Spacer(modifier = Modifier.height(16.dp))
+                    OutlinedButton(
+                        modifier = Modifier.fillMaxWidth(),
+                        onClick = it
+                    ) {
+                        Text(stringResource(R.string.edit))
+                    }
+                }
 
+                Spacer(modifier = Modifier.height(12.dp))
+
+                TextButton(
+                    modifier = Modifier.fillMaxWidth(),
+                    onClick = onDismissRequest
+                ) {
+                    Text(stringResource(R.string.korea_cancel))
+                }
             }
-
         }
     }
-
 }
+
 
 @Preview
 @Composable

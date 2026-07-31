@@ -9,6 +9,8 @@ import myung.jin.bikerepairdoc.ui.screen.BikeMemoEditViewModel
 import myung.jin.bikerepairdoc.ui.screen.MainScreenViewModel
 import myung.jin.bikerepairdoc.ui.screen.TotalScreenViewModel
 import myung.jin.bikerepairdoc.ui.screen.authScreen.AuthViewModel
+import myung.jin.bikerepairdoc.ui.screen.cashbook.CashbookViewModel
+import myung.jin.bikerepairdoc.ui.screen.cashbook.CashbookSearchViewmodel
 
 
 object AppViewModelProvider {
@@ -32,6 +34,16 @@ object AppViewModelProvider {
         initializer {
             AuthViewModel(
                 bikeMemoApplication().appContainer.bikeMemoRepository,
+            )
+        }
+        initializer {
+            CashbookViewModel(
+                bikeMemoApplication().appContainer.cashBookRepository
+            )
+        }
+        initializer {
+            CashbookSearchViewmodel(
+                bikeMemoApplication().appContainer.cashBookRepository
             )
         }
     }

@@ -49,7 +49,7 @@
     <string name="reference">참고</string>
     <string name="search">검색</string>
     <string name="search_hint">애칭 또는 날짜 또는 년도 검색가능</string>
-    <string name="search_description">2023\\-01\\-01 또는 2023 또는 애칭 또는 선택내용으로 검색하세요</string>
+    <string name="search_description">2023\-01\-01 또는 2023 또는 애칭 또는 선택내용으로 검색하세요</string>
     <string name="login_info"> 휴대폰을 변경하셨다면 구글 인증 또는 이메일 주소로 회원가입 후 로그인 하십시요. 로그인 후 데이터 전송을 하시고 데이터를 이전할 기기 에서 다시 로그인 후 데이터 수신을 하시면 새로운 기기에 데이터가 이전 됩니다.</string>
     <string name="tran">인증</string>
     <string name="logout">로그아웃</string>
@@ -138,5 +138,14 @@
     <string name="or">or</string>
     <string name="edit_item_title">Edit Item</string>
     <string name="other_repair_detail">기타수리내용</string>
+    <string name="cashbookScreen">간단 금전출납부</string>
+    <string name="inputContent">내용 입력창\n</string>
+    <string name="inputText">간단하게 입출금할 내용을 입력하고 옆에 아이콘을 누르시면 밑에 선택창에 저장됩니다.</string>
+    <string name="inputAmount">금액 입력</string>
+    <string name="income">수입</string>
+    <string name="expenditure">지출</string>
+    <string name="current_date">날짜</string>
+    <string name="cashbook_search_title">입출금 전체 내역 화면</string>
+    <string name="search_hint_cashbook">날짜, 월, 년도 또는 내용으로 검색</string>
 
 </resources>

@@ -18,6 +18,7 @@ import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -26,17 +27,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import kotlinx.coroutines.launch
 import myung.jin.bikerepairdoc.InventoryTopAppBar
-import myung.jin.bikerepairdoc.ui.navigation.NavigationDestination.NavigationDestination
 import myung.jin.bikerepairdoc.R
+import myung.jin.bikerepairdoc.ui.navigation.NavigationDestination
+import myung.jin.bikerepairdoc.ui.screen.StartDestination
 
 object AuthScreenDestination : NavigationDestination {
     override val route: String = "Auth"
@@ -62,17 +61,21 @@ fun AuthScreen(
             InventoryTopAppBar(
                 title = stringResource(AuthScreenDestination.titleRes),
                 canNavigateBack = true,
-                canNavigateForward = false,
+                canNavigateForward = true,
                 modifier = modifier,
                 scrollBehavior = scrollBehavior,
                 onNavigateBack = {
                     coroutineScope.launch {
                         if (pagerState.currentPage > 0) {
                             pagerState.animateScrollToPage(pagerState.currentPage - 1)
+                        } else {
+                            navController.popBackStack(StartDestination.route, inclusive = false)
                         }
                     }
                 },
-                onNavigateForward = { },
+                onNavigateForward = {
+                    navController.popBackStack(StartDestination.route, inclusive = false)
+                },
             )
         }
     ) { innerPadding ->
@@ -80,7 +83,7 @@ fun AuthScreen(
             modifier = Modifier
                 .padding(innerPadding)
                 .fillMaxSize()
-                .background(color = Color(0xffFEF9CF)),
+                .background(color = MaterialTheme.colorScheme.background),
             navController = navController,
 
             )
@@ -103,11 +106,10 @@ fun AuthScreenContent(
 
         Text(
             text = stringResource(R.string.authChange),
-            modifier = Modifier.background(color = Color(0xffFEF9CF)),
-            style = TextStyle(
-                fontSize = 25.sp,
+            modifier = Modifier.background(color = MaterialTheme.colorScheme.background),
+            style = MaterialTheme.typography.titleLarge.copy(
                 textAlign = TextAlign.Center,
-                color = Color(0xFF0B6380),
+                color = MaterialTheme.colorScheme.primary,
             )
         )
 
@@ -120,41 +122,31 @@ fun AuthScreenContent(
                 navController.navigate(AuthDetailScreenDestination.route)
             },
             colors = ButtonDefaults.outlinedButtonColors(
-                contentColor = Color(0x32B193E6),// 텍스트 색상
-                disabledContentColor = Color(0xFF703BE1),// 비활성화상태에서 텍스트색상
-                containerColor = Color(0x32B193E6),// 버튼배경색상
-                disabledContainerColor = Color(0xFF703BE1) // 비 활성화상태에서 배경색상
+                contentColor = MaterialTheme.colorScheme.primary,
+                containerColor = MaterialTheme.colorScheme.surfaceVariant,
             ),
-            border = BorderStroke(1.dp, Color(0xFF703BE1)),
+            border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline),
         ) {
             Icon(
                 imageVector = Icons.Default.AccountCircle,
                 contentDescription = null,
-                tint = Color(0xFF703BE1),
+                tint = MaterialTheme.colorScheme.primary,
                 modifier = Modifier
                     .fillMaxHeight()
                     .padding(end = 18.dp)
             )
             Text(
                 text = stringResource(id = R.string.tran),
-                color = Color(0xFF703BE1),
-                style = TextStyle(
-                    fontSize = 25.sp,
-                ),
+                color = MaterialTheme.colorScheme.primary,
+                style = MaterialTheme.typography.titleLarge
             )
         }
         Text(
             text = stringResource(R.string.login_info),
-            modifier = Modifier.background(color = Color(0xffFEF9CF)),
-            style = TextStyle(
-                fontSize = 25.sp,
+            modifier = Modifier.background(color = MaterialTheme.colorScheme.background),
+            style = MaterialTheme.typography.bodyLarge.copy(
                 textAlign = TextAlign.Justify,
-                color = Color(0xFF0B6380),
-                /*   lineHeightStyle = LineHeightStyle(
-                       alignment = LineHeightStyle.Alignment.Center,  // 텍스트 라인정렬
-                       trim = LineHeightStyle.Trim.None  // 공백 제거 안 함
-                   ),
-                   lineHeight = 30.sp, // 텍스트 라인높이*/
+                color = MaterialTheme.colorScheme.onSurface,
             )
         )
     }

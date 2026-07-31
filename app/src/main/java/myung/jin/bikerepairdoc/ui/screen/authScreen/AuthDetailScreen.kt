@@ -15,6 +15,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
@@ -31,21 +32,18 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import kotlinx.coroutines.launch
 import myung.jin.bikerepairdoc.InventoryTopAppBar
-import myung.jin.bikerepairdoc.ui.navigation.NavigationDestination.NavigationDestination
 import myung.jin.bikerepairdoc.R
 import myung.jin.bikerepairdoc.ui.AppViewModelProvider
+import myung.jin.bikerepairdoc.ui.navigation.NavigationDestination
 import myung.jin.bikerepairdoc.ui.theme.shapes
 
 object AuthDetailScreenDestination : NavigationDestination {
@@ -102,7 +100,7 @@ fun AuthDetailScreen(
             modifier = Modifier
                 .padding(innerPadding)
                 .fillMaxSize()
-                .background(color = Color(0xffFEF9CF)),
+                .background(color = MaterialTheme.colorScheme.background),
             email = email, // 이메일 값 전달
             onEmailChange = { newValue -> email = newValue }, // 변경된 이메일 값 표시
             authEmail = authEmail.toString(), // fireStore 에서 받은 이메일 표시
@@ -195,6 +193,7 @@ fun AuthDetailScreenContent(
                     backWordOnClick = backWordOnClick
                 )
             }
+
             AuthState.Unauthenticated -> { // 로그아웃 화면 로그인 실패상태
                 UnauthenticatedContent(
                     googleAuthOnClick = googleAuthOnClick,
@@ -239,19 +238,15 @@ fun ShowAuthButton(
             .fillMaxWidth(),
         onClick = onClick,
         colors = ButtonDefaults.outlinedButtonColors(
-            contentColor = Color(0x32B193E6),// 텍스트 색상
-            disabledContentColor = Color(0xFF703BE1),// 비활성화상태에서 텍스트색상
-            containerColor = Color(0x32B193E6),// 버튼배경색상
-            disabledContainerColor = Color(0xFF703BE1) // 비 활성화상태에서 배경색상
+            contentColor = MaterialTheme.colorScheme.primary,
+            containerColor = MaterialTheme.colorScheme.surfaceVariant,
         ),
-        border = BorderStroke(1.dp, Color(0xFF703BE1)),
+        border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline),
     ) {
         Text(
             text = stringResource(stringResource),
-            color = Color(0xFF703BE1),
-            style = TextStyle(
-                fontSize = 25.sp,
-            ),
+            color = MaterialTheme.colorScheme.primary,
+            style = MaterialTheme.typography.titleLarge
         )
     }
 }
@@ -268,20 +263,30 @@ fun ShowAuthText(
     OutlinedTextField(
         value = value,
         onValueChange = onValueChange,//{ newValue -> onValueChange(newValue) },
-        label = { Text(text = stringResource(id = stringResource),color = Color(0xFF703BE1)) },
-        placeholder = { Text(text = stringResource(id = stringResource), color = Color(0xFF703BE1)) },
+        label = {
+            Text(
+                text = stringResource(id = stringResource),
+                color = MaterialTheme.colorScheme.primary
+            )
+        },
+        placeholder = {
+            Text(
+                text = stringResource(id = stringResource),
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        },
         keyboardOptions = keyboardOptions,// KeyboardOptions.Default.copy(keyboardType = KeyboardType.Text),
         colors = OutlinedTextFieldDefaults.colors(
-            focusedBorderColor = Color(0xFF703BE1),
-            unfocusedBorderColor = Color(0xFF703BE1),
-            focusedLabelColor = Color(0xFF703BE1),
-            unfocusedLabelColor = Color(0xFF703BE1),
+            focusedBorderColor = MaterialTheme.colorScheme.primary,
+            unfocusedBorderColor = MaterialTheme.colorScheme.outline,
+            focusedLabelColor = MaterialTheme.colorScheme.primary,
+            unfocusedLabelColor = MaterialTheme.colorScheme.onSurfaceVariant,
         ),
         modifier = modifier
-            .background(color = Color(0x32B193E6)),
-        textStyle = TextStyle(
-            fontSize = 20.sp,
-            color = Color(0xFF703BE1), textAlign = TextAlign.Center
+            .background(color = MaterialTheme.colorScheme.surfaceVariant),
+        textStyle = MaterialTheme.typography.bodyLarge.copy(
+            textAlign = TextAlign.Center,
+            color = MaterialTheme.colorScheme.onSurface
         ),
         shape = shapes.small,
         singleLine = true,

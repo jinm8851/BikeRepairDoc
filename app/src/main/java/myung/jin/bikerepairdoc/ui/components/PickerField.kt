@@ -3,7 +3,6 @@ package myung.jin.bikerepairdoc.ui.components
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.DatePicker
-import androidx.compose.material3.DatePickerColors
 import androidx.compose.material3.DatePickerDefaults
 import androidx.compose.material3.DatePickerDialog
 import androidx.compose.material3.MaterialTheme
@@ -19,10 +18,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.sp
-import myung.jin.bikerepairdoc.ui.theme.shapes
 import java.time.Instant
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
@@ -37,14 +33,16 @@ fun DatePickerField(
     var showDatePicker by remember { mutableStateOf(false) }
     val datePickerState = rememberDatePickerState()
 
+    val colorScheme = MaterialTheme.colorScheme
+
     // 다이얼로그가 열릴 때 현재 선택된 날짜를 초기값으로 설정 (선택 사항)
-    if (showDatePicker){
+    if (showDatePicker) {
         DatePickerDialog(
-            onDismissRequest = { showDatePicker = false},
+            onDismissRequest = { showDatePicker = false },
             confirmButton = {
                 TextButton(onClick = {
                     val selectedMillis = datePickerState.selectedDateMillis
-                    if (selectedMillis != null){
+                    if (selectedMillis != null) {
                         val localDate = Instant.ofEpochMilli(selectedMillis)
                             .atZone(ZoneId.systemDefault())
                             .toLocalDate()
@@ -53,25 +51,32 @@ fun DatePickerField(
                     }
                     showDatePicker = false
                 }) {
-                    Text("확인", color = Color(0xFF703BE1), fontSize = 18.sp)
+                    Text(
+                        "확인",
+                        style = MaterialTheme.typography.labelLarge,
+                        color = colorScheme.primary
+                    )
                 }
             },
             dismissButton = {
-                TextButton(onClick = { showDatePicker = false}) {
-                    Text("취소", color = Color(0xFF703BE1), fontSize = 18.sp)
+                TextButton(onClick = { showDatePicker = false }) {
+                    Text(
+                        "취소",
+                        style = MaterialTheme.typography.labelLarge,
+                        color = colorScheme.outline
+                    )
                 }
             }
         ) {
-            DatePicker(state = datePickerState,
+            DatePicker(
+                state = datePickerState,
                 colors = DatePickerDefaults.colors(
-                    dayContentColor = Color(0xFF703BE1),
-                    titleContentColor = Color(0xFF703BE1),
-                    headlineContentColor = Color(0xFF703BE1),
-                    weekdayContentColor = Color(0xFF703BE1),
-                    subheadContentColor = Color(0xFF703BE1),
-                    yearContentColor = Color(0xFF703BE1),
-                    navigationContentColor = Color(0xFF703BE1),
-                ))
+                    selectedDayContainerColor = colorScheme.primary,
+                    selectedDayContentColor = colorScheme.onPrimary,
+                    todayContentColor = colorScheme.primary,
+                    todayDateBorderColor = colorScheme.primary
+                )
+            )
         }
     }
     // 클릭 가능한 읽기 전용 텍스트 필드
@@ -82,18 +87,18 @@ fun DatePickerField(
         readOnly = true,
         enabled = false, // 클릭 이벤트를 부모 Box나 Modifier에서 처리하기 위해 false 또는 readonly 설정
         colors = OutlinedTextFieldDefaults.colors(
-            disabledTextColor = Color(0xFF703BE1),
-            disabledBorderColor = Color(0xFF703BE1),
-            disabledLabelColor = Color(0xFF703BE1),
-            disabledPlaceholderColor = Color(0xFF703BE1),
+            disabledTextColor = colorScheme.onSurface,
+            disabledBorderColor = colorScheme.outline,
+            disabledLabelColor = colorScheme.onSurfaceVariant,
+            disabledPlaceholderColor = colorScheme.onSurfaceVariant,
+            disabledLeadingIconColor = colorScheme.onSurfaceVariant,
+            disabledTrailingIconColor = colorScheme.onSurfaceVariant,
+            disabledContainerColor = Color.Transparent
         ),
         modifier = modifier
             .fillMaxWidth()
             .clickable { showDatePicker = true },
-        textStyle = TextStyle(
-            fontSize = 20.sp,
-            color = Color(0xFF703BE1), textAlign = TextAlign.Center
-        ),
-        shape = shapes.small,
+        textStyle = MaterialTheme.typography.bodyLarge.copy(textAlign = TextAlign.Center),
+        shape = MaterialTheme.shapes.small,
     )
 }

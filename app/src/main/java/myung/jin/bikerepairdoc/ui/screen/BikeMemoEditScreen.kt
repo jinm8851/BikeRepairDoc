@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.calculateEndPadding
 import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
@@ -20,6 +19,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
@@ -31,22 +31,19 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import kotlinx.coroutines.launch
 import myung.jin.bikerepairdoc.InventoryTopAppBar
-import myung.jin.bikerepairdoc.ui.navigation.NavigationDestination.NavigationDestination
 import myung.jin.bikerepairdoc.R
 import myung.jin.bikerepairdoc.ui.AppViewModelProvider
 import myung.jin.bikerepairdoc.ui.components.DatePickerField
+import myung.jin.bikerepairdoc.ui.navigation.NavigationDestination
 import myung.jin.bikerepairdoc.ui.theme.shapes
 
 
@@ -136,7 +133,7 @@ fun EditBikeMemoForm(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .background(color = Color(0xFFFEF9CF))
+            .background(MaterialTheme.colorScheme.background)
             .padding(8.dp)
             .verticalScroll(rememberScrollState()),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -159,18 +156,17 @@ fun EditBikeMemoForm(
                 placeholder = { Text(text = stringResource(id = R.string.bike_model)) },
                 keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Text),
                 colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = Color(0xFF703BE1),
-                    unfocusedBorderColor = Color(0xFF703BE1),
-                    focusedLabelColor = Color(0xFF703BE1),
-                    unfocusedLabelColor = Color(0xFF703BE1),
-
-                    ),
+                    focusedBorderColor = MaterialTheme.colorScheme.primary,
+                    unfocusedBorderColor = MaterialTheme.colorScheme.outline,
+                    focusedLabelColor = MaterialTheme.colorScheme.primary,
+                    unfocusedLabelColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                ),
                 modifier = Modifier
                     .weight(0.5f)
-                    .background(color = Color(0x32B193E6)),
-                textStyle = TextStyle(
-                    fontSize = 20.sp,
-                    color = Color(0xFF703BE1), textAlign = TextAlign.Center
+                    .background(MaterialTheme.colorScheme.surfaceVariant),
+                textStyle = MaterialTheme.typography.bodyLarge.copy(
+                    textAlign = TextAlign.Center,
+                    color = MaterialTheme.colorScheme.onSurface
                 ),
                 shape = shapes.small,
                 singleLine = true,
@@ -212,7 +208,7 @@ fun EditBikeMemoForm(
                 },
                 modifier = Modifier
                     .weight(0.5f)
-                    .background(color = Color(0x32B193E6)),
+                    .background(MaterialTheme.colorScheme.surfaceVariant),
             )
         }
 
@@ -222,30 +218,30 @@ fun EditBikeMemoForm(
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             //  수리 날짜
-           /* OutlinedTextField(
-                label = { Text(text = stringResource(id = R.string.repair_date)) },
-                placeholder = { Text(text = stringResource(R.string.auto_insert)) },
-                value = bikeDetails.repairDate,
-                onValueChange = {
-                    onValueChange(bikeDetails.copy(repairDate = it))
-                },
-                keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = Color(0xFF703BE1),
-                    unfocusedBorderColor = Color(0xFF703BE1),
-                    focusedLabelColor = Color(0xFF703BE1),
-                    unfocusedLabelColor = Color(0xFF703BE1)
-                ),
-                modifier = Modifier
-                    .weight(0.5f)
-                    .background(color = Color(0x32B193E6)),
-                textStyle = TextStyle(
-                    fontSize = 20.sp,
-                    color = Color(0xFF703BE1), textAlign = TextAlign.Center
-                ),
-                shape = shapes.small,
-                singleLine = true,
-            )*/
+            /* OutlinedTextField(
+                 label = { Text(text = stringResource(id = R.string.repair_date)) },
+                 placeholder = { Text(text = stringResource(R.string.auto_insert)) },
+                 value = bikeDetails.repairDate,
+                 onValueChange = {
+                     onValueChange(bikeDetails.copy(repairDate = it))
+                 },
+                 keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
+                 colors = OutlinedTextFieldDefaults.colors(
+                     focusedBorderColor = Color(0xFF703BE1),
+                     unfocusedBorderColor = Color(0xFF703BE1),
+                     focusedLabelColor = Color(0xFF703BE1),
+                     unfocusedLabelColor = Color(0xFF703BE1)
+                 ),
+                 modifier = Modifier
+                     .weight(0.5f)
+                     .background(color = Color(0x32B193E6)),
+                 textStyle = TextStyle(
+                     fontSize = 20.sp,
+                     color = Color(0xFF703BE1), textAlign = TextAlign.Center
+                 ),
+                 shape = shapes.small,
+                 singleLine = true,
+             )*/
             DatePickerField(
                 label = { Text(text = stringResource(id = R.string.repair_date)) },
                 selectedDate = bikeDetails.repairDate,
@@ -254,7 +250,7 @@ fun EditBikeMemoForm(
                 },
                 modifier = Modifier
                     .weight(0.5f)
-                    .background(color = Color(0x32B193E6)),
+                    .background(MaterialTheme.colorScheme.surfaceVariant),
             )
             Spacer(
                 modifier = Modifier.size(16.dp),
@@ -281,27 +277,31 @@ fun EditBikeMemoForm(
                 placeholder = { Text(text = stringResource(R.string.example_number)) },
                 value = if (bikeDetails.km == 0) "" else bikeDetails.km.toString(),
                 onValueChange = { newKmString ->
-                    onValueChange(bikeDetails.copy(km = newKmString.filterNumbers().toIntOrNull() ?: 0))
+                    onValueChange(
+                        bikeDetails.copy(
+                            km = newKmString.filterNumbers().toIntOrNull() ?: 0
+                        )
+                    )
                 },
                 suffix = {
                     Text(
                         text = stringResource(id = R.string.km),
-                        color = Color(0xFF703BE1)
+                        color = MaterialTheme.colorScheme.primary
                     )
                 },
                 keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
                 colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = Color(0xFF703BE1),
-                    unfocusedBorderColor = Color(0xFF703BE1),
-                    focusedLabelColor = Color(0xFF703BE1),
-                    unfocusedLabelColor = Color(0xFF703BE1),
+                    focusedBorderColor = MaterialTheme.colorScheme.primary,
+                    unfocusedBorderColor = MaterialTheme.colorScheme.outline,
+                    focusedLabelColor = MaterialTheme.colorScheme.primary,
+                    unfocusedLabelColor = MaterialTheme.colorScheme.onSurfaceVariant,
                 ),
                 modifier = Modifier
                     .weight(0.5f)
-                    .background(color = Color(0x32B193E6)),
-                textStyle = TextStyle(
-                    fontSize = 20.sp,
-                    color = Color(0xFF703BE1), textAlign = TextAlign.Center
+                    .background(MaterialTheme.colorScheme.surfaceVariant),
+                textStyle = MaterialTheme.typography.bodyLarge.copy(
+                    textAlign = TextAlign.Center,
+                    color = MaterialTheme.colorScheme.onSurface
                 ),
                 shape = shapes.small,
                 singleLine = true,
@@ -315,27 +315,31 @@ fun EditBikeMemoForm(
                 placeholder = { Text(text = stringResource(id = R.string.example_number)) },
                 value = if (bikeDetails.amount == 0) "" else bikeDetails.amount.toString(),
                 onValueChange = { newAmountString ->
-                    onValueChange(bikeDetails.copy(amount = newAmountString.filterNumbers().toIntOrNull() ?: 0))
+                    onValueChange(
+                        bikeDetails.copy(
+                            amount = newAmountString.filterNumbers().toIntOrNull() ?: 0
+                        )
+                    )
                 },
                 suffix = {
                     Text(
                         text = stringResource(id = R.string.currency_unit),
-                        color = Color(0xFF703BE1)
+                        color = MaterialTheme.colorScheme.primary
                     )
                 },
                 keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
                 colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = Color(0xFF703BE1),
-                    unfocusedBorderColor = Color(0xFF703BE1),
-                    focusedLabelColor = Color(0xFF703BE1),
-                    unfocusedLabelColor = Color(0xFF703BE1),
+                    focusedBorderColor = MaterialTheme.colorScheme.primary,
+                    unfocusedBorderColor = MaterialTheme.colorScheme.outline,
+                    focusedLabelColor = MaterialTheme.colorScheme.primary,
+                    unfocusedLabelColor = MaterialTheme.colorScheme.onSurfaceVariant,
                 ),
                 modifier = Modifier
                     .weight(0.5f)
-                    .background(color = Color(0x32B193E6)),
-                textStyle = TextStyle(
-                    fontSize = 20.sp,
-                    color = Color(0xFF703BE1), textAlign = TextAlign.Center
+                    .background(MaterialTheme.colorScheme.surfaceVariant),
+                textStyle = MaterialTheme.typography.bodyLarge.copy(
+                    textAlign = TextAlign.Center,
+                    color = MaterialTheme.colorScheme.onSurface
                 ),
                 shape = shapes.small,
                 singleLine = true,
@@ -357,17 +361,17 @@ fun EditBikeMemoForm(
                 onValueChange = { onValueChange(bikeDetails.copy(etc = it)) },
                 keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Text),
                 colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = Color(0xFF703BE1),
-                    unfocusedBorderColor = Color(0xFF703BE1),
-                    focusedLabelColor = Color(0xFF703BE1),
-                    unfocusedLabelColor = Color(0xFF703BE1),
+                    focusedBorderColor = MaterialTheme.colorScheme.primary,
+                    unfocusedBorderColor = MaterialTheme.colorScheme.outline,
+                    focusedLabelColor = MaterialTheme.colorScheme.primary,
+                    unfocusedLabelColor = MaterialTheme.colorScheme.onSurfaceVariant,
                 ),
                 modifier = Modifier
                     .weight(0.5f)
-                    .background(color = Color(0x32B193E6)),
-                textStyle = TextStyle(
-                    fontSize = 20.sp,
-                    color = Color(0xFF703BE1), textAlign = TextAlign.Center
+                    .background(MaterialTheme.colorScheme.surfaceVariant),
+                textStyle = MaterialTheme.typography.bodyLarge.copy(
+                    textAlign = TextAlign.Center,
+                    color = MaterialTheme.colorScheme.onSurface
                 ),
                 shape = shapes.small,
                 singleLine = true,
@@ -379,17 +383,15 @@ fun EditBikeMemoForm(
                 .fillMaxWidth(),
             onClick = { onSaveClick() },
             colors = ButtonDefaults.outlinedButtonColors(
-                contentColor = Color(0x32B193E6),// 텍스트 색상
-                disabledContentColor = Color(0xFF703BE1),// 비활성화상태에서 텍스트색상
-                containerColor = Color(0x32B193E6),// 버튼배경색상
-                disabledContainerColor = Color(0xFF703BE1) // 비 활성화상태에서 배경색상
+                contentColor = MaterialTheme.colorScheme.primary,
+                containerColor = MaterialTheme.colorScheme.surfaceVariant,
             ),
-            border = BorderStroke(1.dp, Color(0xFF703BE1)),
+            border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline),
         ) {
             Text(
                 text = stringResource(id = R.string.edit),
-                style = TextStyle(fontSize = 25.sp),
-                color = Color(0xFF703BE1)
+                style = MaterialTheme.typography.titleLarge,
+                color = MaterialTheme.colorScheme.primary
             )
         }
 
@@ -398,17 +400,15 @@ fun EditBikeMemoForm(
                 .fillMaxWidth(),
             onClick = { onDeleteBikeMemo() },
             colors = ButtonDefaults.outlinedButtonColors(
-                contentColor = Color(0x32B193E6),// 텍스트 색상
-                disabledContentColor = Color(0xFF703BE1),// 비활성화상태에서 텍스트색상
-                containerColor = Color(0x32B193E6),// 버튼배경색상
-                disabledContainerColor = Color(0xFF703BE1) // 비 활성화상태에서 배경색상
+                contentColor = MaterialTheme.colorScheme.error,
+                containerColor = MaterialTheme.colorScheme.surfaceVariant,
             ),
-            border = BorderStroke(1.dp, Color(0xFF703BE1)),
+            border = BorderStroke(1.dp, MaterialTheme.colorScheme.error),
         ) {
             Text(
                 text = stringResource(id = R.string.delete),
-                style = TextStyle(fontSize = 25.sp),
-                color = Color(0xFF703BE1)
+                style = MaterialTheme.typography.titleLarge,
+                color = MaterialTheme.colorScheme.error
             )
         }
     }

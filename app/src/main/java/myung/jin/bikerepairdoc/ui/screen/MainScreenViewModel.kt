@@ -9,12 +9,12 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
-import java.util.Locale
 import myung.jin.bikerepairdoc.R
 import myung.jin.bikerepairdoc.ui.room.BikeMemo
 import myung.jin.bikerepairdoc.ui.room.BikeMemoRepository
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.Locale
 
 class MainScreenViewModel(
     private val bikeMemoRepository: BikeMemoRepository
@@ -36,7 +36,7 @@ class MainScreenViewModel(
              )
  */
     //AI code
-    private val _bikeLazyUiState = MutableStateFlow(BikeLazyState())
+    private val _bikeLazyUiState = MutableStateFlow(BikeLazyState(isLoading = true))
     val bikeLazyUiState: StateFlow<BikeLazyState> = _bikeLazyUiState.asStateFlow()
 
     // 처음 시작할때 bikeUiState를 업데이트하고 화면을 초기화시킴
@@ -51,38 +51,41 @@ class MainScreenViewModel(
         viewModelScope.launch {
             bikeMemoRepository.getLastBikeMemoStream().firstOrNull()?.let { lastBikeMemo ->
                 // 기존 데이터를 가져오되, 수리 관련 필드만 초기화하여 새로운 상태 생성
-                val initialState = lastBikeMemo.toBikeDetails().copy(
-                    km = 0,
-                    amount = 0,
-                    selectedOption = "",
-                    etc = ""
+                    val initialState = lastBikeMemo.toBikeDetails().copy(
+                        repairDate = currentDateString(),
+                        km = 0,
+                        amount = 0,
+                        selectedOption = "",
+                        etc = ""
+                    )
+                _bikeUiState.value = BikeUiState(
+                    bikeDetails = initialState,
+                    isInitialized = true // 로딩 완료
                 )
-                _bikeUiState.value = BikeUiState(bikeDetails = initialState)
-               /* _bikeUiState.value = lastBikeMemo.toBikeUiState()
-                // km 와 amount을 0 으로 초기화
-                bikeUiState.value.bikeDetails.km = 0
-                bikeUiState.value.bikeDetails.amount = 0
-                bikeUiState.value.bikeDetails.selectedOption = ""
-                bikeUiState.value.bikeDetails.etc = ""*/
             } ?: run {
                 // 기록이 없을 경우 완전히 새 상태로 초기화
                 _bikeUiState.value = BikeUiState(
-                    bikeDetails = BikeDetails(repairDate = dateState.value)
+                    bikeDetails = BikeDetails(repairDate = dateState.value),
+                    isInitialized = true // 로딩 완료
                 )
-               /* // If no last bike memo, set default values
-                _bikeUiState.value = BikeUiState(bikeDetails = BikeDetails())
-                bikeUiState.value.bikeDetails.repairDate =
-                    dateState.value // 아무것도 없을때 날짜넣기*/
+                /* // If no last bike memo, set default values
+                 _bikeUiState.value = BikeUiState(bikeDetails = BikeDetails())
+                 bikeUiState.value.bikeDetails.repairDate =
+                     dateState.value // 아무것도 없을때 날짜넣기*/
             }
         }
     }
 
     // 바이크메모리스트를 불러옴
     private fun loadBikeMemoList() {
-        _bikeLazyUiState.value = BikeLazyState()
+          _bikeLazyUiState.value = BikeLazyState()
         viewModelScope.launch {
             bikeMemoRepository.getAllBikeMemoStream().collect { bikeMemos ->
-                _bikeLazyUiState.value = BikeLazyState(bikeMemos)
+                // 데이터를 가져오기 전까지는 isLoading이 true여야 함
+                _bikeLazyUiState.value = BikeLazyState(
+                    bikeList = bikeMemos,
+                    isLoading = false
+                )
             }
         }
     }
@@ -119,13 +122,17 @@ class MainScreenViewModel(
 }
 
 
-data class BikeLazyState(val bikeList: List<BikeMemo> = listOf())
+data class BikeLazyState(
+    val bikeList: List<BikeMemo> = listOf(),
+    val isLoading: Boolean = true // 로딩 상태 추가
+)
 
 
 // ui 상태
 data class BikeUiState(
     val bikeDetails: BikeDetails = BikeDetails(),
     val isEntryValid: Boolean = false, // 입력값이 유효한지 확인하는 함수
+    val isInitialized: Boolean = false, // 초기화 여부 추가
     // val bikeLazyUiState: BikeLazyState = BikeLazyState()
 )
 

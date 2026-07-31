@@ -4,32 +4,52 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+// 업데이트 할때 var를 val로 변경
 @Entity(tableName = "bike_memo")
 data class BikeMemo(
     @PrimaryKey(autoGenerate = true)
-    var no: Int = 0,
+    val no: Int = 0,
 
     @ColumnInfo(name = "model")
-    var model: String = "기종",
+    val model: String = "",
 
     @ColumnInfo(name = "purchaseDate")
-    var purchaseDate: String = "구입날짜",
+    val purchaseDate: String = "",
 
     @ColumnInfo(name = "date")
-    var date: String = "수리날짜",
+    val date: String = "",
 
     @ColumnInfo(name = "km")
-    var km: Int = 0,
+    val km: Int = 0,
 
     @ColumnInfo(name = "refer")
-    var refer: String = "수리내역",
+    val refer: String = "",
 
     @ColumnInfo(name = "amount")
-    var amount: Int = 0,
+    val amount: Int = 0,
 
     @ColumnInfo(name = "note")
-    var note: String = "비고",
+    val note: String = "",
 
     @ColumnInfo(name = "year")
-    var year: String = "년도"
+    val year: String = ""
+)
+
+// 사용자가 수출입 내용을 저장하는 테이블
+@Entity(tableName = "content_name")
+data class ContentName(
+    @PrimaryKey(autoGenerate = true)
+    val id: Long = 0,
+    val name: String = ""
+)
+
+// 수입 지출 기록 저장
+@Entity(tableName = "cash_book")
+data class CashBook(
+    @PrimaryKey(autoGenerate = true)
+    val id: Long = 0,
+    val date: String = "",
+    val content: String = "", // 내용(드롭다운 선택 항목)
+    val income: Long = 0, // 수입
+    val expense: Long = 0 // 지축
 )

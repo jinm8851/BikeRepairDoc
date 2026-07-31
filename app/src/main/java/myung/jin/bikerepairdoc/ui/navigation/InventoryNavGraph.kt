@@ -16,7 +16,14 @@ import myung.jin.bikerepairdoc.ui.screen.TotalScreenDestination
 import myung.jin.bikerepairdoc.ui.screen.authScreen.AuthDetailScreen
 import myung.jin.bikerepairdoc.ui.screen.authScreen.AuthDetailScreenDestination
 import myung.jin.bikerepairdoc.ui.screen.authScreen.AuthScreenDestination
+import myung.jin.bikerepairdoc.ui.screen.cashbook.CashbookScreen
+import myung.jin.bikerepairdoc.ui.screen.cashbook.CashbookDestination
+import myung.jin.bikerepairdoc.ui.screen.cashbook.CashbookSearch
+import myung.jin.bikerepairdoc.ui.screen.cashbook.CashbookSearchDestination
 
+
+import myung.jin.bikerepairdoc.ui.screen.StartDestination
+import myung.jin.bikerepairdoc.ui.screen.StartScreen
 
 @Composable
 fun InventoryNavHost(
@@ -27,9 +34,23 @@ fun InventoryNavHost(
 
     NavHost(
         navController = navController,
-        startDestination = HomeDestination.route,//"main_flow", // 임의의 시작 지점 설정
+        startDestination = StartDestination.route,
         modifier = modifier
     ) {
+        composable(
+            route = StartDestination.route
+        ) {
+            StartScreen(
+                onNavigateToMain = {
+                    navController.navigate(HomeDestination.route)
+                },
+                onNavigateToCashbook = {
+                    navController.navigate(CashbookDestination.route)
+                }
+            )
+            Log.d("InventoryNavHost", "StartDestination composable")
+        }
+
         composable(
             route = HomeDestination.route,
         ) {
@@ -70,6 +91,22 @@ fun InventoryNavHost(
             Log.d("InventoryNavHost", "AuthDetailScreenDestination composable")
             AuthDetailScreen(
                 navHostController = navController,
+            )
+        }
+        composable(
+            route = CashbookDestination.route
+        ){
+            Log.d("InventoryNavHost","CashBookScreenDestination composable")
+            CashbookScreen(
+                navHostController = navController
+            )
+        }
+        composable(
+            route = CashbookSearchDestination.route
+        ){
+            Log.d("InventoryNavHost","CashBookSearchScreenDestination composable")
+            CashbookSearch(
+                navHostController = navController
             )
         }
     }

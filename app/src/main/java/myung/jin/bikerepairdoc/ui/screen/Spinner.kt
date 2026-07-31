@@ -6,9 +6,10 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExposedDropdownMenuAnchorType
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
-import androidx.compose.material3.MenuAnchorType
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
@@ -18,16 +19,13 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import myung.jin.bikerepairdoc.ui.theme.BikeRepairDocTheme
 import myung.jin.bikerepairdoc.R
+import myung.jin.bikerepairdoc.ui.theme.BikeRepairDocTheme
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -55,7 +53,7 @@ fun MyDropdownMenu(
         OutlinedTextField(
             value = selectedOption,
             onValueChange = { },
-            label = { Text(text = selectOption, color = Color(0xFF703BE1)) },
+            label = { Text(text = selectOption, color = MaterialTheme.colorScheme.primary) },
             trailingIcon = { // 아이콘
                 ExposedDropdownMenuDefaults.TrailingIcon(
                     expanded = isExpanded,
@@ -64,18 +62,19 @@ fun MyDropdownMenu(
             },
             readOnly = true,
             modifier = Modifier
-                .background(Color(0x88E7D9D2))
+                .background(MaterialTheme.colorScheme.surfaceVariant)
                 //.width(180.dp)
-                .menuAnchor(MenuAnchorType.PrimaryNotEditable),
+                .menuAnchor(ExposedDropdownMenuAnchorType.PrimaryNotEditable),
+            //.menuAnchor(MenuAnchorType.PrimaryNotEditable),
             //.background(color = Color(0x32B193E6)),
             colors = OutlinedTextFieldDefaults.colors(
-                focusedBorderColor = Color(0xFF703BE1), // 선택 선 색갈
-                unfocusedBorderColor = Color(0xFF703BE1), // 선택 안됐을때 색갈
-                focusedTrailingIconColor = Color(0xFF703BE1), // 선택됐을때 아이콘 색갈
-                unfocusedTrailingIconColor = Color(0xFF703BE1), // 선택 안됐을때 아이콘 색갈
+                focusedBorderColor = MaterialTheme.colorScheme.primary, // 선택 선 색갈
+                unfocusedBorderColor = MaterialTheme.colorScheme.outline, // 선택 안됐을때 색갈
+                focusedTrailingIconColor = MaterialTheme.colorScheme.primary, // 선택됐을때 아이콘 색갈
+                unfocusedTrailingIconColor = MaterialTheme.colorScheme.onSurfaceVariant, // 선택 안됐을때 아이콘 색갈
             ),
-            textStyle = TextStyle(
-                color = Color(0xFF703BE1), fontSize = 20.sp,
+            textStyle = MaterialTheme.typography.bodyLarge.copy(
+                color = MaterialTheme.colorScheme.onSurface,
                 textAlign = TextAlign.Center
             ),
             enabled = dropdownItems.isNotEmpty() // 항목이 없는 경우 비활성화
@@ -89,12 +88,12 @@ fun MyDropdownMenu(
                 DropdownMenuItem(
                     text = {
                         Text(
-                            text = item, color = Color(0xFF703BE1),
+                            text = item, color = MaterialTheme.colorScheme.onSurface,
                             textAlign = TextAlign.Center,
-                            fontSize = 20.sp
+                            style = MaterialTheme.typography.bodyLarge
                         )
                     },
-                    modifier = Modifier.background(color = Color(0xABE7D9D2)),
+                    modifier = Modifier.background(color = MaterialTheme.colorScheme.surface),
                     onClick = {
                         selectedOption = item
                         isExpanded = false

@@ -9,12 +9,13 @@ import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 
 @Database(
-    entities = [BikeMemo::class],
-    version = 1,
-    exportSchema = false)
+    entities = [BikeMemo::class, ContentName::class, CashBook::class],
+    version = 2,
+    exportSchema = true)
 abstract class InventoryDatabase : RoomDatabase(){
 
     abstract fun bikeMemoDao(): BikeMemoDao
+    abstract fun cashBookDao(): CashBookDao
 
     companion object{
         @Volatile
@@ -25,6 +26,24 @@ abstract class InventoryDatabase : RoomDatabase(){
                 // 버전 1에서 버전 2로 마이그레이션할 때 필요한 작업 수행
                 // 현재는 데이터베이스 스키마가 변경되지 않았으므로 아무 작업도 하지 않음
                 // 나중에 스키마가 변경되면 여기에 마이그레이션 로직을 추가해야 함
+               // 1. cash_book 테이블 생성 SQL
+               db.execSQL("""
+                    CREATE TABLE IF NOT EXISTS `cash_book` (
+                        `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, 
+                        `date` TEXT NOT NULL, 
+                        `content` TEXT NOT NULL, 
+                        `income` INTEGER NOT NULL, 
+                        `expense` INTEGER NOT NULL
+                    )
+                """.trimIndent())
+
+               // 2. content_name 테이블 생성 SQL
+               db.execSQL("""
+                    CREATE TABLE IF NOT EXISTS `content_name` (
+                        `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, 
+                        `name` TEXT NOT NULL
+                    )
+                """.trimIndent())
             }
         }
         // "bike_memo" 이거 틀려서 데이터 다 날라감

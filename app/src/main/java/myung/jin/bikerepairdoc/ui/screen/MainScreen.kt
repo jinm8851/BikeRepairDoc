@@ -1,7 +1,6 @@
 package myung.jin.bikerepairdoc.ui.screen
 
 
-import java.text.DecimalFormat
 import android.util.Log
 import androidx.annotation.StringRes
 import androidx.compose.foundation.BorderStroke
@@ -22,6 +21,7 @@ import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
@@ -31,6 +31,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -38,11 +39,10 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.focusProperties
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
-import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.OffsetMapping
 import androidx.compose.ui.text.input.TransformedText
@@ -52,16 +52,17 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavHostController
 import kotlinx.coroutines.launch
 import myung.jin.bikerepairdoc.InventoryTopAppBar
-import myung.jin.bikerepairdoc.ui.theme.BikeRepairDocTheme
 import myung.jin.bikerepairdoc.R
 import myung.jin.bikerepairdoc.ui.AppViewModelProvider
 import myung.jin.bikerepairdoc.ui.components.DatePickerField
-import myung.jin.bikerepairdoc.ui.navigation.NavigationDestination.NavigationDestination
+import myung.jin.bikerepairdoc.ui.navigation.NavigationDestination
 import myung.jin.bikerepairdoc.ui.room.BikeMemo
+import myung.jin.bikerepairdoc.ui.theme.BikeRepairDocTheme
 import myung.jin.bikerepairdoc.ui.theme.shapes
-
+import java.text.DecimalFormat
 
 
 object HomeDestination : NavigationDestination {
@@ -84,18 +85,20 @@ fun thousandSeparatorTransformation(): VisualTransformation {
         } ?: originalText
 
         // OffsetMapping: 텍스트 변환 후 커서 위치를 올바르게 조정하는 데 필요한 인터페이스입니다.
-        val offsetMapping = object : OffsetMapping{
+        val offsetMapping = object : OffsetMapping {
             // originalToTransformed(offset: Int): 원래 텍스트에서의 커서 위치 (offset)를 변환된 텍스트에서의 위치로 매핑합니다.
             override fun originalToTransformed(offset: Int): Int {
                 //offset < 0인 경우, 0을 반환하도록 하여 예외를 방지하고
                 if (intValue == null || offset < 0) return 0
                 // 입력된 offset까지의 원래 숫자를 추출합니다.
-                val originalNumber = originalText.substring(0, offset).toIntOrNull() ?: return formattedText.length
+                val originalNumber =
+                    originalText.substring(0, offset).toIntOrNull() ?: return formattedText.length
                 // 추출된 숫자를 DecimalFormat을 사용하여 포맷합니다.
                 val formattedNumber = DecimalFormat("#,###").format(originalNumber)
                 // 포맷된 숫자의 길이를 반환합니다. 이는 원래 offset이 변환된 텍스트에서 어디에 매핑되는지 정확하게 알려줍니다.
                 return formattedNumber.length
             }
+
             //transformedToOriginal(offset: Int): 변환된 텍스트에서의 커서 위치 (offset)를 원래 텍스트에서의 위치로 매핑합니다.
             override fun transformedToOriginal(offset: Int): Int {
                 if (intValue == null || offset < 0) return 0
@@ -129,7 +132,7 @@ fun thousandSeparatorTransformation(): VisualTransformation {
 
 
 // 숫자만 허용하는 함수
-fun String.filterNumbers(): String{
+fun String.filterNumbers(): String {
     return filter { it.isDigit() }
 }
 
@@ -150,7 +153,8 @@ fun String.formatNumberWithCommas(): String {
 fun MainScreen(
     navigateToUpdate: (Int) -> Unit,
     viewModel: MainScreenViewModel = viewModel(factory = AppViewModelProvider.Factory),
-    pagerState: PagerState
+    pagerState: PagerState,
+    navController: NavHostController
 ) {
 
 
@@ -164,71 +168,88 @@ fun MainScreen(
     val bikeMemoList by viewModel.bikeLazyUiState.collectAsState()
     // 현재 날짜
     val date = currentDateString()
+    // 로딩중일때 상태표시
+    //  val lazyUiState by viewModel.bikeLazyUiState.collectAsState()
 
     // 현재 날짜를 입력 및 수정
     // LaunchedEffect는 컴포저블 함수가 처음 실행될 때 또는 지정된 키 값이 변경될 때 코루틴을 실행합니다.
-    //여기서는 bikeUiState.bikeDetails.km을 키 값으로 사용합니다. 즉, bikeUiState.bikeDetails.km 값이 변경될 때마다 LaunchedEffect 내부의 코드가 실행됩니다.
-    //LaunchedEffect 내부에서는 driveKm.value를 실행합니다. 이는 driveKm의 현재 값을 가져오는 것을 의미합니다.
-    //이 코드는 bikeUiState.bikeDetails.km 값이 변경될 때마다 driveKm의 값을 업데이트하는 데 사용됩니다.
     // LaunchedEffect를 사용해 bikeDetails.repairDate의 변경을 감지하고 displayedDate를 업데이트합니다.
     //사용자가 입력한 날짜는 displayedDate와 bikeDetails.repairDate에 모두 반영됩니다.
     val displayedDate = remember { mutableStateOf(date) }
 
+    // bikeDetails의 날짜가 변경될 때만 displayedDate 업데이트
     LaunchedEffect(bikeUiState.bikeDetails.repairDate) {
-        displayedDate.value = bikeUiState.bikeDetails.repairDate
-    }
- /*   // 주행 거리
-    val driveKm = remember { mutableStateOf("0") }
-    // 수리 금액
-    val repairCost = remember { mutableStateOf("0") }*/
-
-    val filteredBikeMemoList: List<BikeMemo> = bikeMemoList.bikeList.filter { bikeMemo ->
-        bikeMemo.date.contains(displayedDate.value)
+        if (bikeUiState.bikeDetails.repairDate.isNotEmpty()) {
+            displayedDate.value = bikeUiState.bikeDetails.repairDate
+        }
     }
 
-    Scaffold(
-        modifier = Modifier,
-        topBar = {
-            InventoryTopAppBar(
-                title = stringResource(HomeDestination.titleRes),
-                canNavigateBack = false,
-                canNavigateForward = true,
-                onNavigateBack = { }, // canNavigateBack = false,
-                onNavigateForward = {
-                    coroutineScope.launch {
-                        if (pagerState.currentPage < 2) {
-                            pagerState.animateScrollToPage(pagerState.currentPage + 1)
+    // derivedStateOf를 사용하여 상태가 변경될 때만 효율적으로 필터링 계산
+    val filteredBikeMemoList by remember(bikeMemoList.bikeList, displayedDate.value) {
+        derivedStateOf {
+            bikeMemoList.bikeList.filter { it.date.contains(displayedDate.value) }
+        }
+    }
+
+    /* val filteredBikeMemoList: List<BikeMemo> = bikeMemoList.bikeList.filter { bikeMemo ->
+         bikeMemo.date.contains(displayedDate.value)
+     }*/
+
+    // 데이터가 완전히 로드된 후에만 UI를 보여줌
+    if (bikeUiState.isInitialized && !bikeMemoList.isLoading) {
+        Scaffold(
+            modifier = Modifier,
+            topBar = {
+                InventoryTopAppBar(
+                    title = stringResource(HomeDestination.titleRes),
+                    canNavigateBack = true,
+                    canNavigateForward = true,
+                    onNavigateBack = {
+                        navController.popBackStack(StartDestination.route, inclusive = false)
+                    },
+                    onNavigateForward = {
+                        coroutineScope.launch {
+                            if (pagerState.currentPage < 2) {
+                                pagerState.animateScrollToPage(pagerState.currentPage + 1)
+                            } else {
+                                navController.popBackStack(
+                                    StartDestination.route,
+                                    inclusive = false
+                                )
+                            }
                         }
+                    },
+                )
+            },
+        ) { innerPadding ->
+            MainScreenContent(
+                modifier = Modifier
+                    .padding(innerPadding)
+                    .fillMaxSize()
+                    .background(MaterialTheme.colorScheme.background),
+                filteredBikeList = filteredBikeMemoList,
+                bikeUiState = bikeUiState,
+                onBikeValueChange = viewModel::updateUiState,
+                onSaveClick = {
+                    focusManager.clearFocus()
+                    coroutineScope.launch {
+                        viewModel.saveBikeMemo()
+                        viewModel.updateUiState(bikeUiState.bikeDetails.copy(amount = 0, etc = ""))
                     }
                 },
-            )
-        },
-    ) { innerPadding ->
-        MainScreenContent(
-            modifier = Modifier
-                .padding(innerPadding)
-                .fillMaxSize()
-                .background(color = Color(0xFFFEF9CF)),
-            filteredBikeList = filteredBikeMemoList,
-            bikeUiState = bikeUiState,
-            onBikeValueChange = viewModel::updateUiState,
-            onSaveClick = {
-                focusManager.clearFocus()
-                coroutineScope.launch {
-                    viewModel.saveBikeMemo()
-                    viewModel.updateUiState(bikeUiState.bikeDetails.copy(amount = 0, etc = ""))
-                }
-            },
-            onDeleteBikeMemo = { bikeMemoId ->
-                coroutineScope.launch {
-                    viewModel.deleteBikeMemo(bikeMemoId)
-                }
-            },
-            onItemClick = { bikeMemoId -> navigateToUpdate(bikeMemoId) },
-            displayedDate = displayedDate,
-        )
+                onDeleteBikeMemo = { bikeMemoId ->
+                    coroutineScope.launch {
+                        viewModel.deleteBikeMemo(bikeMemoId)
+                    }
+                },
+                onItemClick = { bikeMemoId -> navigateToUpdate(bikeMemoId) },
+                displayedDate = displayedDate,
 
-
+                )
+        }
+    } else {
+        // 로딩 중일 때는 빈 화면 또는 로딩 바
+        Box(modifier = Modifier.fillMaxSize())
     }
 }
 
@@ -280,7 +301,7 @@ fun BikeInputFormContent(
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .background(color = Color(0xFFFEF9CF))
+            .background(MaterialTheme.colorScheme.background)
             .padding(8.dp),
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
@@ -302,18 +323,18 @@ fun BikeInputFormContent(
                 placeholder = { Text(text = stringResource(id = R.string.bike_model)) },
                 keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Text),
                 colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = Color(0xFF703BE1),
-                    unfocusedBorderColor = Color(0xFF703BE1),
-                    focusedLabelColor = Color(0xFF703BE1),
-                    unfocusedLabelColor = Color(0xFF703BE1),
+                    focusedBorderColor = MaterialTheme.colorScheme.primary,
+                    unfocusedBorderColor = MaterialTheme.colorScheme.outline,
+                    focusedLabelColor = MaterialTheme.colorScheme.primary,
+                    unfocusedLabelColor = MaterialTheme.colorScheme.onSurfaceVariant,
                 ),
                 modifier = modifier
                     .weight(1f)
                     .heightIn(min = 56.dp)
-                    .background(color = Color(0x32B193E6)),
-                textStyle = TextStyle(
-                    fontSize = 20.sp,
-                    color = Color(0xFF703BE1), textAlign = TextAlign.Center
+                    .background(MaterialTheme.colorScheme.surfaceVariant),
+                textStyle = MaterialTheme.typography.bodyLarge.copy(
+                    textAlign = TextAlign.Center,
+                    color = MaterialTheme.colorScheme.onSurface
                 ),
                 shape = shapes.small,
                 singleLine = true,
@@ -324,31 +345,6 @@ fun BikeInputFormContent(
             )
 
             // 구입 날짜
-            /*OutlinedTextField(
-                value = bikeDetails.startDate,
-                onValueChange = {
-                    onValueChange(bikeDetails.copy(startDate = it))
-                },
-                label = { Text(text = stringResource(id = R.string.purchase_date)) },
-                placeholder = { Text(text = stringResource(id = R.string._2000_01_01)) },
-                keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = Color(0xFF703BE1),
-                    unfocusedBorderColor = Color(0xFF703BE1),
-                    focusedLabelColor = Color(0xFF703BE1),
-                    unfocusedLabelColor = Color(0xFF703BE1),
-                ),
-                modifier = modifier
-                    .weight(1f)
-                    .heightIn(min = 56.dp)
-                    .background(color = Color(0x32B193E6)),
-                textStyle = TextStyle(
-                    fontSize = 20.sp,
-                    color = Color(0xFF703BE1), textAlign = TextAlign.Center
-                ),
-                shape = shapes.small,
-                singleLine = true,
-            )*/
             DatePickerField(
                 label = { Text(stringResource(R.string.purchase_date)) },
                 selectedDate = bikeDetails.startDate,
@@ -358,7 +354,7 @@ fun BikeInputFormContent(
                 modifier = modifier
                     .weight(1f)
                     .heightIn(min = 56.dp)
-                    .background(color = Color(0x32B193E6)),
+                    .background(MaterialTheme.colorScheme.surfaceVariant),
             )
         }
 
@@ -369,32 +365,6 @@ fun BikeInputFormContent(
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 //  수리 날짜
-                /*OutlinedTextField(
-                    value = displayedDate.value,
-                    onValueChange = { newRepairDate ->
-                        displayedDate.value = newRepairDate
-                        onValueChange(bikeDetails.copy(repairDate = newRepairDate))
-                    },
-                    label = { Text(text = stringResource(id = R.string.repair_date)) },
-                    placeholder = { Text(text = stringResource(R.string.auto_insert)) },
-                    keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
-                    colors = OutlinedTextFieldDefaults.colors(
-                        focusedBorderColor = Color(0xFF703BE1),
-                        unfocusedBorderColor = Color(0xFF703BE1),
-                        focusedLabelColor = Color(0xFF703BE1),
-                        unfocusedLabelColor = Color(0xFF703BE1),
-                    ),
-                    modifier = modifier
-                        .weight(1f)
-                        .heightIn(min = 56.dp)
-                        .background(color = Color(0x32B193E6)),
-                    textStyle = TextStyle(
-                        fontSize = 20.sp,
-                        color = Color(0xFF703BE1), textAlign = TextAlign.Center
-                ),
-                    shape = shapes.small,
-                    singleLine = true,
-                )*/
                 DatePickerField(
                     label = { Text(text = stringResource(id = R.string.repair_date)) },
                     selectedDate = displayedDate.value,
@@ -404,7 +374,7 @@ fun BikeInputFormContent(
                     modifier = modifier
                         .weight(1f)
                         .heightIn(min = 56.dp)
-                        .background(color = Color(0x32B193E6)),
+                        .background(MaterialTheme.colorScheme.surfaceVariant),
                 )
                 Spacer(
                     modifier = Modifier.size(16.dp),
@@ -430,30 +400,34 @@ fun BikeInputFormContent(
             OutlinedTextField(
                 value = if (bikeDetails.km == 0) "" else bikeDetails.km.toString(),
                 onValueChange = { newKmString ->
-                    onValueChange(bikeDetails.copy(km = newKmString.filterNumbers().toIntOrNull() ?: 0 ))
+                    onValueChange(
+                        bikeDetails.copy(
+                            km = newKmString.filterNumbers().toIntOrNull() ?: 0
+                        )
+                    )
                 },
                 label = { Text(text = stringResource(id = R.string.mileage)) },
                 placeholder = { Text(text = stringResource(R.string.example_number)) },
                 suffix = {
                     Text(
                         text = stringResource(id = R.string.km),
-                        color = Color(0xFF703BE1)
+                        color = MaterialTheme.colorScheme.primary
                     )
                 },
                 keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
                 colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = Color(0xFF703BE1),
-                    unfocusedBorderColor = Color(0xFF703BE1),
-                    focusedLabelColor = Color(0xFF703BE1),
-                    unfocusedLabelColor = Color(0xFF703BE1),
+                    focusedBorderColor = MaterialTheme.colorScheme.primary,
+                    unfocusedBorderColor = MaterialTheme.colorScheme.outline,
+                    focusedLabelColor = MaterialTheme.colorScheme.primary,
+                    unfocusedLabelColor = MaterialTheme.colorScheme.onSurfaceVariant,
                 ),
                 modifier = modifier
                     .weight(1f)
                     .heightIn(min = 56.dp)
-                    .background(color = Color(0x32B193E6)),
-                textStyle = TextStyle(
-                    fontSize = 20.sp,
-                    color = Color(0xFF703BE1), textAlign = TextAlign.Center
+                    .background(MaterialTheme.colorScheme.surfaceVariant),
+                textStyle = MaterialTheme.typography.bodyLarge.copy(
+                    textAlign = TextAlign.Center,
+                    color = MaterialTheme.colorScheme.onSurface
                 ),
                 shape = shapes.small,
                 singleLine = true,
@@ -466,30 +440,34 @@ fun BikeInputFormContent(
             OutlinedTextField(
                 value = if (bikeDetails.amount == 0) "" else bikeDetails.amount.toString(),
                 onValueChange = { newAmountString ->
-                    onValueChange(bikeDetails.copy(amount = newAmountString.filterNumbers().toIntOrNull() ?: 0))
+                    onValueChange(
+                        bikeDetails.copy(
+                            amount = newAmountString.filterNumbers().toIntOrNull() ?: 0
+                        )
+                    )
                 },
                 label = { Text(text = stringResource(id = R.string.amount)) },
                 placeholder = { Text(text = stringResource(id = R.string.example_number)) },
                 suffix = {
                     Text(
                         text = stringResource(id = R.string.currency_unit),
-                        color = Color(0xFF703BE1)
+                        color = MaterialTheme.colorScheme.primary
                     )
                 },
                 keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
                 colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = Color(0xFF703BE1),
-                    unfocusedBorderColor = Color(0xFF703BE1),
-                    focusedLabelColor = Color(0xFF703BE1),
-                    unfocusedLabelColor = Color(0xFF703BE1),
+                    focusedBorderColor = MaterialTheme.colorScheme.primary,
+                    unfocusedBorderColor = MaterialTheme.colorScheme.outline,
+                    focusedLabelColor = MaterialTheme.colorScheme.primary,
+                    unfocusedLabelColor = MaterialTheme.colorScheme.onSurfaceVariant,
                 ),
                 modifier = modifier
                     .weight(1f)
                     .heightIn(min = 56.dp)
-                    .background(color = Color(0x32B193E6)),
-                textStyle = TextStyle(
-                    fontSize = 20.sp,
-                    color = Color(0xFF703BE1), textAlign = TextAlign.Center
+                    .background(MaterialTheme.colorScheme.surfaceVariant),
+                textStyle = MaterialTheme.typography.bodyLarge.copy(
+                    textAlign = TextAlign.Center,
+                    color = MaterialTheme.colorScheme.onSurface
                 ),
                 shape = shapes.small,
                 singleLine = true,
@@ -512,18 +490,18 @@ fun BikeInputFormContent(
                 placeholder = { Text(text = stringResource(R.string.other_details)) },
                 keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Text),
                 colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = Color(0xFF703BE1),
-                    unfocusedBorderColor = Color(0xFF703BE1),
-                    focusedLabelColor = Color(0xFF703BE1),
-                    unfocusedLabelColor = Color(0xFF703BE1),
+                    focusedBorderColor = MaterialTheme.colorScheme.primary,
+                    unfocusedBorderColor = MaterialTheme.colorScheme.outline,
+                    focusedLabelColor = MaterialTheme.colorScheme.primary,
+                    unfocusedLabelColor = MaterialTheme.colorScheme.onSurfaceVariant,
                 ),
                 modifier = modifier
                     .weight(1f)
                     .heightIn(min = 56.dp)
-                    .background(color = Color(0x32B193E6)),
-                textStyle = TextStyle(
-                    fontSize = 20.sp,
-                    color = Color(0xFF703BE1), textAlign = TextAlign.Center
+                    .background(MaterialTheme.colorScheme.surfaceVariant),
+                textStyle = MaterialTheme.typography.bodyLarge.copy(
+                    textAlign = TextAlign.Center,
+                    color = MaterialTheme.colorScheme.onSurface
                 ),
                 shape = shapes.small,
                 singleLine = true,
@@ -546,15 +524,30 @@ fun BikeInputFormContent(
         Log.d("MainScreen", "수리날짜: ${bikeDetails.repairDate}")
 
         // 리사이크러뷰
-        BikeMemoList(
-            modifier = Modifier
-                .padding(8.dp)
-                .height(180.dp),
-            bikeMemoList = filteredBikeList,//bikeLazyState.bikeList,
-            route = HomeDestination.route,
-            onDeleteBikeMemo = onDeleteBikeMemo,
-            onItemClick = onItemClick,
-        )
+        /* BikeMemoList(
+             modifier = Modifier
+                 .padding(8.dp)
+                 .height(180.dp),
+             bikeMemoList = filteredBikeList,//bikeLazyState.bikeList,
+             route = HomeDestination.route,
+             onDeleteBikeMemo = onDeleteBikeMemo,
+             onItemClick = onItemClick
+         )*/
+        // 리사이크러뷰
+        GenericDateList(
+            modifier = Modifier.height(180.dp),
+            itemList = filteredBikeList,
+            showDateHeader = false, // 날짜 표시하지 않음
+            getDate = { it.date } // BikeMemo의 date 필드 사용
+        ) { memo, color ->
+            BikeMemoDetail(
+                bikeMemo = memo,
+                route = HomeDestination.route,
+                onDeleteClick = { onDeleteBikeMemo(memo.no) },
+                onItemClick = { onItemClick(memo.no) },
+                backgroundColor = color
+            )
+        }
 
         // 합계
         OutlinedTextField(
@@ -562,11 +555,11 @@ fun BikeInputFormContent(
                 .focusProperties { canFocus = false } // 포커스 안되게 하기
                 .heightIn(min = 56.dp)
                 .padding(8.dp)
-                .background(color = Color(0x32B193E6)),
+                .background(MaterialTheme.colorScheme.surfaceVariant),
             label = {
                 Text(
                     text = stringResource(id = R.string.total),
-                    color = Color(0xFF703BE1)
+                    color = MaterialTheme.colorScheme.primary
                 )
             },
             value = filteredBikeList.sumOf { it.amount }.toString().formatNumberWithCommas(),
@@ -574,20 +567,20 @@ fun BikeInputFormContent(
             suffix = {
                 Text(
                     text = stringResource(id = R.string.currency_unit),
-                    color = Color(0xFF703BE1)
+                    color = MaterialTheme.colorScheme.primary
                 )
             },
             keyboardOptions = KeyboardOptions.Default
                 .copy(keyboardType = KeyboardType.Number),
             colors = OutlinedTextFieldDefaults.colors(
-                focusedBorderColor = Color(0xFF703BE1),
-                unfocusedBorderColor = Color(0xFF703BE1),
-                focusedLabelColor = Color(0xFF703BE1),
-                unfocusedLabelColor = Color(0xFF703BE1),
+                focusedBorderColor = MaterialTheme.colorScheme.primary,
+                unfocusedBorderColor = MaterialTheme.colorScheme.outline,
+                focusedLabelColor = MaterialTheme.colorScheme.primary,
+                unfocusedLabelColor = MaterialTheme.colorScheme.onSurfaceVariant,
             ),
-            textStyle = TextStyle(
-                fontSize = 20.sp,
-                color = Color(0xFF703BE1), textAlign = TextAlign.Center
+            textStyle = MaterialTheme.typography.bodyLarge.copy(
+                textAlign = TextAlign.Center,
+                color = MaterialTheme.colorScheme.onSurface
             ),
             shape = shapes.small,
             singleLine = true,
@@ -620,17 +613,20 @@ fun SaveButton(
 ) {
     OutlinedButton(
         modifier = modifier,
-        colors = ButtonDefaults.buttonColors(Color(0x32B193E6)),
+        colors = ButtonDefaults.outlinedButtonColors(
+            containerColor = MaterialTheme.colorScheme.surfaceVariant,
+            contentColor = MaterialTheme.colorScheme.primary
+        ),
         shape = shapes.small,
         onClick = {
             onClick()
         },
-        border = BorderStroke(1.dp, Color(0xFF703BE1)),
+        border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline),
     ) {
         Text(
             text = stringResource(id = stringResId),
-            fontSize = 20.sp,
-            color = Color(0xFF703BE1)
+            style = MaterialTheme.typography.labelLarge,
+            color = MaterialTheme.colorScheme.primary
         )
     }
 }
@@ -641,22 +637,25 @@ fun DisplayInfoText(
     stringResId: String,
     textAlign: TextAlign,
     fontSize: Int,
+    fontWeight: FontWeight = FontWeight.Normal
 ) {
+
     Text(
         text = stringResId,
-        modifier = modifier.background(color = Color(0xffFEF9CF)),
-        color = Color(0xFF0B6380),
+        modifier = modifier,
+        color = MaterialTheme.colorScheme.onSurface,
         textAlign = textAlign,
         fontSize = fontSize.sp,
+        fontWeight = fontWeight
     )
 }
-
 
 
 @Preview
 @Composable
 private fun SaveButtonPreview() {
-    SaveButton(modifier = Modifier,
+    SaveButton(
+        modifier = Modifier,
         stringResId = R.string.save,
         onClick = {}
     )

@@ -27,3 +27,20 @@ interface BikeMemoRepository {
 
     suspend fun deleteBikeMemoId(bikeMemoId: Int)
 }
+
+interface CashBookRepository {
+    // CashBook
+    suspend fun insertCashBook(cashBook: CashBook)
+
+    fun getAll(): Flow<List<CashBook>>
+
+    suspend fun deleteById(id: Long)
+
+    // ContentName
+    suspend fun insertContentName(contentName: ContentName)
+
+    fun getAllContentName(): Flow<List<ContentName>>
+
+    suspend fun deleteContentName(id: Long)
+}
+

@@ -5,10 +5,12 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
@@ -23,19 +25,18 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavHostController
 import kotlinx.coroutines.launch
 import myung.jin.bikerepairdoc.InventoryTopAppBar
-import myung.jin.bikerepairdoc.ui.AppViewModelProvider
-import myung.jin.bikerepairdoc.ui.navigation.NavigationDestination.NavigationDestination
 import myung.jin.bikerepairdoc.R
+import myung.jin.bikerepairdoc.ui.AppViewModelProvider
+import myung.jin.bikerepairdoc.ui.navigation.NavigationDestination
 import myung.jin.bikerepairdoc.ui.room.BikeMemo
 
 
@@ -50,7 +51,8 @@ fun TotalScreen(
     modifier: Modifier = Modifier,
     navigateToUpdate: (Int) -> Unit,
     viewModel: TotalScreenViewModel = viewModel(factory = AppViewModelProvider.Factory),
-    pagerState: PagerState
+    pagerState: PagerState,
+    navController: NavHostController
 ) {
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior() // 탑앱바 스크롤
     val totalUiState by viewModel.totalUiState.collectAsState() // 바이크메모 리스트
@@ -78,12 +80,20 @@ fun TotalScreen(
                 scrollBehavior = scrollBehavior,
                 onNavigateBack = {
                     coroutineScope.launch {
-                        pagerState.animateScrollToPage(pagerState.currentPage - 1)
+                        if (pagerState.currentPage > 0) {
+                            pagerState.animateScrollToPage(pagerState.currentPage - 1)
+                        } else {
+                            navController.popBackStack(StartDestination.route, inclusive = false)
+                        }
                     }
                 },
                 onNavigateForward = {
                     coroutineScope.launch {
-                        pagerState.animateScrollToPage(pagerState.currentPage + 1)
+                        if (pagerState.currentPage < 2) {
+                            pagerState.animateScrollToPage(pagerState.currentPage + 1)
+                        } else {
+                            navController.popBackStack(StartDestination.route, inclusive = false)
+                        }
                     }
                 },
             )
@@ -120,7 +130,7 @@ fun TotalScreenColum(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .background(Color(0xFFFEF9CF))
+            .background(MaterialTheme.colorScheme.background)
             .padding(8.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top
@@ -146,21 +156,29 @@ fun TotalScreenColum(
                     .weight(0.7f),
                 value = search,
                 onValueChange = onValueChange,
-                label = { Text(text = stringResource(id = R.string.search),color = Color(0xFF703BE1)) },
-                placeholder = { Text(text = stringResource(id = R.string.search_description),color = Color(0xFF703BE1)) },
+                label = {
+                    Text(
+                        text = stringResource(id = R.string.search),
+                        color = MaterialTheme.colorScheme.primary
+                    )
+                },
+                placeholder = {
+                    Text(
+                        text = stringResource(id = R.string.search_description),
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                },
                 keyboardOptions = KeyboardOptions.Default,
-                textStyle = TextStyle(
+                textStyle = MaterialTheme.typography.bodyLarge.copy(
                     textAlign = TextAlign.Center,
-                    color = Color(0xFF703BE1),
-                    fontSize = 24.sp
+                    color = MaterialTheme.colorScheme.onSurface
                 ),
                 colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = Color(0xFF703BE1),
-                    unfocusedBorderColor = Color(0xFF703BE1),
-                    focusedLabelColor = Color(0xFF703BE1),
-                    unfocusedLabelColor = Color(0xFF703BE1),
-
-                    ),
+                    focusedBorderColor = MaterialTheme.colorScheme.primary,
+                    unfocusedBorderColor = MaterialTheme.colorScheme.outline,
+                    focusedLabelColor = MaterialTheme.colorScheme.primary,
+                    unfocusedLabelColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                ),
             )
             SaveButton(
                 modifier = Modifier
@@ -172,14 +190,30 @@ fun TotalScreenColum(
         }
 
 
-        BikeMemoList(
+        /* BikeMemoList(
+             modifier = Modifier
+                 .weight(1f),
+             bikeMemoList = filteredBikeList,
+             route = TotalScreenDestination.route,
+             onDeleteBikeMemo = onDeleteBikeMemo,
+             onItemClick = onItemClick,
+         ) */
+        GenericDateList(
             modifier = Modifier
+                .height(180.dp)
                 .weight(1f),
-            bikeMemoList = filteredBikeList,
-            route = TotalScreenDestination.route,
-            onDeleteBikeMemo = onDeleteBikeMemo,
-            onItemClick = onItemClick,
-        )
+            itemList = filteredBikeList,
+            getDate = { it.date } // BikeMemo의 date 필드 사용
+        ) { memo, color ->
+            // 기존의 BikeMemoDetail을 여기서 호출
+            BikeMemoDetail(
+                bikeMemo = memo,
+                route = TotalScreenDestination.route,
+                onDeleteClick = { onDeleteBikeMemo(memo.no) },
+                onItemClick = { onItemClick(memo.no) },
+                backgroundColor = color
+            )
+        }
 
         DisplayInfoText(
             modifier = Modifier.padding(16.dp),
@@ -188,7 +222,8 @@ fun TotalScreenColum(
                 filteredBikeList.sumOf { it.amount }.toString().formatNumberWithCommas()
             ),
             textAlign = TextAlign.Center,
-            fontSize = 30
+            fontSize = 30,
+            fontWeight = FontWeight.Bold
         )
     }
 }

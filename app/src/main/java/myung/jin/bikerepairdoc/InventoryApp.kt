@@ -13,12 +13,12 @@ import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
@@ -63,7 +63,8 @@ fun InventoryApp(
                         bikeMemoEditViewModel.getBikeMemo(bikeMemoId)
                         navController.navigate("${BikeMemoEditDestination.route}/$bikeMemoId")
                     },
-                    pagerState = pagerState
+                    pagerState = pagerState,
+                    navController = navController
                 )
 
                 InventoryScreen.TOTAL -> TotalScreen(
@@ -71,7 +72,8 @@ fun InventoryApp(
                         bikeMemoEditViewModel.getBikeMemo(bikeMemoId)
                         navController.navigate("${BikeMemoEditDestination.route}/$bikeMemoId")
                     },
-                    pagerState = pagerState
+                    pagerState = pagerState,
+                    navController = navController
                 )
 
                 InventoryScreen.AUTH -> AuthScreen(
@@ -113,12 +115,14 @@ fun InventoryTopAppBar(
     onNavigateBack: () -> Unit,
     onNavigateForward: () -> Unit,
 ) {
+    val colorScheme = MaterialTheme.colorScheme
     // 탑앱바 컬러적용
-    val topAppBarColors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-        containerColor = Color(0xFFFEF9CF), // 배경색: 기본적으로 surface 색상 사용
-        titleContentColor = Color(0xFF703BE1), // 제목 색상: 기본적으로 onSurface 색상 사용
-        navigationIconContentColor = Color(0xFF703BE1), // 탐색 아이콘 (navigationIcon) 색상: 기본적으로 onSurface 색상 사용
-        actionIconContentColor = Color(0xFF703BE1) // 작업 아이콘 (actions)색상: 기본적으로 onSurface 색상 사용
+    val topAppBarColors = TopAppBarDefaults.topAppBarColors(
+        containerColor = colorScheme.primaryContainer,
+        scrolledContainerColor = colorScheme.surface,
+        navigationIconContentColor = colorScheme.onPrimaryContainer,
+        titleContentColor = colorScheme.onPrimaryContainer,
+        actionIconContentColor = colorScheme.onPrimaryContainer
     )
 
     //CenterAlignedTopAppBar는 제목을 가운데에 정렬하고 탐색 아이콘과 작업 아이콘을 양쪽에 배치하는 데 사용됩니다.
