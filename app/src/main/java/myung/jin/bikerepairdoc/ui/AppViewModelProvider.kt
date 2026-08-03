@@ -34,6 +34,7 @@ object AppViewModelProvider {
         initializer {
             AuthViewModel(
                 bikeMemoApplication().appContainer.bikeMemoRepository,
+                bikeMemoApplication().appContainer.cashBookRepository
             )
         }
         initializer {

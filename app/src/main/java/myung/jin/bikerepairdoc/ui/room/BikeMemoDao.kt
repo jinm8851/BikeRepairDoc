@@ -44,6 +44,9 @@ interface BikeMemoDao {
     @Query("DELETE FROM bike_memo WHERE `no` = :bikeMemoId")
     suspend fun deleteBikeMemoById(bikeMemoId: Int)
 
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertAll(bikeMemos: List<BikeMemo>)
+
 }
 
 
@@ -60,7 +63,7 @@ interface BikeMemoDao {
 @Dao
 interface CashBookDao {
     // CashBook 내용 금액 저장
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertCashBook(cashBook: CashBook)
 
     @Query("SELECT * FROM cash_book ORDER BY date DESC")
@@ -78,4 +81,10 @@ interface CashBookDao {
 
     @Query("DELETE FROM content_name WHERE id = :id")
     suspend fun deleteContentName(id: Long)
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertAllCashBooks(cashBooks: List<CashBook>)
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertAllContentNames(contentNames: List<ContentName>)
 }

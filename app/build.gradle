@@ -36,7 +36,10 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            // [중요] 용량을 줄이기 위해 true로 변경하세요!
+            minifyEnabled true
+            // 사용하지 않는 리소스 제거
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -69,6 +72,8 @@ dependencies {
     def room_version = "2.8.4"
 
     implementation 'androidx.core:core-ktx:1.19.0'
+    implementation 'androidx.appcompat:appcompat:1.7.1'
+    implementation 'com.google.android.material:material:1.14.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.3.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.7.0'
@@ -82,7 +87,7 @@ dependencies {
     ksp("androidx.room:room-compiler:$room_version")
     implementation("androidx.room:room-ktx:$room_version")
     //firebase
-    implementation(platform("com.google.firebase:firebase-bom:34.16.0"))
+    implementation(platform("com.google.firebase:firebase-bom:34.17.0"))
    // implementation("com.google.firebase:firebase-analytics-ktx")
     implementation 'com.google.android.gms:play-services-auth:21.6.0'
     // firebaseAnalytics
@@ -97,22 +102,27 @@ dependencies {
     // Compose
    // implementation("androidx.activity:activity-compose:1.11.0")
     implementation("androidx.compose.material3:material3")
-    implementation("com.google.accompanist:accompanist-themeadapter-material3:0.36.0")
+    // [삭제 추천] 코드에서 사용되지 않음 (XML 테마를 Compose로 옮길 때만 사용)
+    // implementation("com.google.accompanist:accompanist-themeadapter-material3:0.36.0")
 
     debugImplementation("androidx.compose.ui:ui-tooling")
     // 이전 기존에 있던 종속성
    // implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.9.4")
+    // [수정] implementation에 있던 ui-tooling은 삭제하고 debugImplementation만 남기세요.
+    // implementation("androidx.compose.ui:ui-tooling")
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")
-    implementation("androidx.compose.ui:ui-tooling")
     implementation("androidx.compose.ui:ui-tooling-preview")
-    implementation("com.android.identity:identity-jvm:202411.1")
-    implementation("androidx.tv:tv-material:1.1.0")
+    // [삭제 추천] 신원 인증 관련 특수 라이브러리인데 사용 중이지 않다면 삭제하세요.
+   // implementation("com.android.identity:identity-jvm:202411.1")
+    // [삭제 추천] 바이크 앱에 TV용 라이브러리가 포함되어 있습니다.
+    // implementation("androidx.tv:tv-material:1.1.0")
 
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.11.0")
     // navigation
     implementation("androidx.navigation:navigation-compose:2.9.8")
-    implementation("androidx.compose.runtime:runtime-livedata:1.11.4")
+    // [삭제 추천] LiveData를 사용하지 않고 StateFlow만 사용한다면 삭제 가능합니다.
+   // implementation("androidx.compose.runtime:runtime-livedata:1.11.4")
     // 자격증명
     implementation("androidx.credentials:credentials:1.6.0")
     implementation("androidx.credentials:credentials-play-services-auth:1.6.0")

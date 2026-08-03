@@ -6,9 +6,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -19,6 +16,7 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
@@ -173,7 +171,7 @@ fun NavigationIcon(
         }
     ) {
         Icon(
-            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+            painter = painterResource(R.drawable.outline_arrow_back_24),
             contentDescription = stringResource(id = R.string.back_button)
         )
     }
@@ -189,7 +187,7 @@ fun ForwardActonIcon(
         }
     ) {
         Icon(
-            imageVector = Icons.AutoMirrored.Filled.ArrowForward,
+            painter = painterResource(R.drawable.outline_arrow_forward_24),
             contentDescription = stringResource(id = R.string.forward_button)
         )
 

@@ -29,11 +29,16 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.flow.first
 import myung.jin.bikerepairdoc.ui.room.BikeMemo
 import myung.jin.bikerepairdoc.ui.room.BikeMemoRepository
+import myung.jin.bikerepairdoc.ui.room.CashBook
+import myung.jin.bikerepairdoc.ui.room.CashBookRepository
+import myung.jin.bikerepairdoc.ui.room.ContentName
 
 class AuthViewModel(
-    private val bikeMemoRepository: BikeMemoRepository
+    private val bikeMemoRepository: BikeMemoRepository,
+    private val cashBookRepository: CashBookRepository
 ) : ViewModel() {
     companion object {
         private const val TAG = "구글 인증"
@@ -59,6 +64,9 @@ class AuthViewModel(
 
     // 바이크메모 리스트 초기화
     private val bikeList: MutableList<BikeMemo> = mutableListOf<BikeMemo>()
+    // 금전출납부 리스트 초기화
+    private val cashBookList: MutableList<CashBook> = mutableListOf<CashBook>()
+    private val contentNameList: MutableList<ContentName> = mutableListOf<ContentName>()
 
     //데이터를 가져오는 코루틴을 viewModelScope.launch로 관리하고, 뷰모델이 살아있는 동안 데이터를 관찰하고 업데이트합니다.
     //데이터 저장 및 삭제와 같은 코루틴은 별도의 스코프(CoroutineScope(Dispatchers.IO))를 사용하여 뷰모델 생명주기와 분리합니다.
@@ -68,16 +76,28 @@ class AuthViewModel(
     init {
         // 로그인 상태 체크 밎 성공시 이메일 업데이트
         checkAuthStatus()
-        // 바이크메모 넣기
-        fetchBikeMemos()
+        // 데이터 불러오기
+        fetchData()
     }
 
-    // 바이크메모를 불러와서 리스트에 Flow를 컬렉션으로 List로 변경해 넣기
-    private fun fetchBikeMemos() {
+    // 데이터를 불러와서 리스트에 Flow를 컬렉션으로 List로 변경해 넣기
+    private fun fetchData() {
         viewModelScope.launch {
             bikeMemoRepository.getAllBikeMemoStream().collect { bikeMemos ->
                 bikeList.clear()
                 bikeList.addAll(bikeMemos)
+            }
+        }
+        viewModelScope.launch {
+            cashBookRepository.getAll().collect { cashBooks ->
+                cashBookList.clear()
+                cashBookList.addAll(cashBooks)
+            }
+        }
+        viewModelScope.launch {
+            cashBookRepository.getAllContentName().collect { contentNames ->
+                contentNameList.clear()
+                contentNameList.addAll(contentNames)
             }
         }
     }
@@ -270,96 +290,130 @@ class AuthViewModel(
         _toastMessage.value = Event(message)
     }
 
-    // fireStore 저장
+    // fireStore 저장 이메일 대신 UID를 사용하여 보안과 고유성 확보
     fun fireStoreSave() {
+        val currentUser = auth.currentUser
+        if (currentUser == null) {
+            showToast("로그인이 필요합니다.")
+            return
+        }
+
+        _authState.value = AuthState.Loading
         ioScope.launch {
             try {
                 val data = mapOf(
-                    "email" to _authEmail.value.toString(), // 키와 값으로 data 에 저장
-                    "roomdata" to bikeList // roomData 필드에 BikeMemo에서 가져온 bikeList를 저장
+                    "uid" to currentUser.uid, // UID 저장
+                    "email" to (currentUser.email ?: ""),
+                    "roomdata" to bikeList,
+                    "cashBookData" to cashBookList,
+                    "contentNameData" to contentNameList
                 )
-                firestoreDb.collection(_authEmail.value.toString()) // 컬렉션 이름
-                    .document() // 문서이름 지정으로 하나의 문서만 저장되게함document(_authEmail.value.toString()) 을 뺌 이메일로 저정되는데 바굼 오류
-                    .set(data) // set으로 중복 허용안함
+                // 이메일 대신 UID를 컬렉션 이름으로 사용
+                firestoreDb.collection("backups")
+                    .document(currentUser.uid) 
+                    .set(data)
                     .await()
                 showToast("데이터 전송을 완료했습니다.")
             } catch (e: Exception) {
                 showToast("데이터 전송에 실패했습니다.")
                 Log.e(TAG, "데이터 전송 실패", e)
+            } finally {
+                _authState.value = AuthState.Authenticated
             }
         }
     }
 
+    // 데이터가져오기 비교성능개선 id를 0으로 만들어 데이터 손실없게 처리
     fun fireStoreGetData() {
+        val currentUser = auth.currentUser
+        if (currentUser == null) {
+            showToast("로그인이 필요합니다.")
+            return
+        }
+
+        _authState.value = AuthState.Loading
         ioScope.launch {
             try {
-                val result = firestoreDb.collection(_authEmail.value.toString()).get().await()
-                var dataReceived = false // 데이터 수신여부 확인 플래그
-                for (document in result) {
-                    val itemData = document.toObject(ItemData::class.java) // 데이터를 ItemData 객체로 변환
-                    itemData.docId = document.id // 문서 ID를 설정
-                    Log.d("firebase", "itemData.docId: ${itemData.docId}")
-                   // itemData.email = document.email // 이메일로 아이디 저장
-                    Log.d("firebase", "itemData.email: ${itemData.email}")
-                    if (_authEmail.value.toString() == itemData.email) {
-                        dataReceived = true // 데이터 수신 확인
-                        itemData.roomdata.forEach { room ->
-                            val memo = BikeMemo(
-                                no = room.no,
-                                model = room.model,
-                                purchaseDate = room.purchaseDate,
-                                date = room.date,
-                                km = room.km,
-                                refer = room.refer,
-                                amount = room.amount,
-                                note = room.note,
-                                year = room.year
-                            )
-                            Log.d("firebase", "memo: $memo.id")
-                            bikeMemoRepository.insertBikeMemo(memo)
-                        }
-                        showToast("${itemData.email} 님 데이터를 전송 받았습니다.")
+                // 1. 로컬 데이터 가져오기 및 고유 키(Set) 생성 (속도 최적화: O(N))
+                // ID를 제외한 필드들을 결합하여 고유한 '지문'을 만듭니다.
+                val localMemos = bikeMemoRepository.getAllBikeMemoStream().first()
+                val localMemoKeys = localMemos.map { 
+                    "${it.model}|${it.purchaseDate}|${it.date}|${it.km}|${it.refer}|${it.amount}|${it.note}" 
+                }.toHashSet()
+
+                val localCashBooks = cashBookRepository.getAll().first()
+                val localCashKeys = localCashBooks.map { 
+                    "${it.date}|${it.content}|${it.income}|${it.expense}" 
+                }.toHashSet()
+
+                val localContentNames = cashBookRepository.getAllContentName().first()
+                val localNameKeys = localContentNames.map { it.name }.toHashSet()
+
+                // 2. 서버 데이터 가져오기
+                val document = firestoreDb.collection("backups")
+                    .document(currentUser.uid)
+                    .get()
+                    .await()
+
+                if (document.exists()) {
+                    val itemData = document.toObject(ItemData::class.java)
+                    if (itemData != null && itemData.uid == currentUser.uid) {
+                        
+                        // 3. 중복 제외 필터링 (HashSet 조회는 거의 즉시 완료됨: O(1))
+                        val newMemos = itemData.roomdata.filter { remote ->
+                            val remoteKey = "${remote.model}|${remote.purchaseDate}|${remote.date}|${remote.km}|${remote.refer}|${remote.amount}|${remote.note}"
+                            !localMemoKeys.contains(remoteKey)
+                        }.map { it.copy(no = 0) }
+                        
+                        val newCashBooks = itemData.cashBookData.filter { remote ->
+                            val remoteKey = "${remote.date}|${remote.content}|${remote.income}|${remote.expense}"
+                            !localCashKeys.contains(remoteKey)
+                        }.map { it.copy(id = 0) }
+                        
+                        val newContentNames = itemData.contentNameData.filter { remote ->
+                            !localNameKeys.contains(remote.name)
+                        }.map { it.copy(id = 0) }
+
+                        // 4. 새로운 데이터만 배치 삽입
+                        if (newMemos.isNotEmpty()) bikeMemoRepository.insertAll(newMemos)
+                        if (newCashBooks.isNotEmpty()) cashBookRepository.insertAllCashBooks(newCashBooks)
+                        if (newContentNames.isNotEmpty()) cashBookRepository.insertAllContentNames(newContentNames)
+                        
+                        showToast("새로운 데이터 ${newMemos.size + newCashBooks.size}건을 안전하게 추가했습니다.")
                     }
-                }
-                if (!dataReceived) {
-                    showToast("${_authEmail.value} 님 저장한 데이터를 전송 받지 못했습니다.")
+                } else {
+                    showToast("저장된 데이터를 찾을 수 없습니다.")
                 }
             } catch (e: Exception) {
-                showToast("${_authEmail.value} 님 저장한 데이터를 전송 받지 못했습니다.")
-                Log.d(TAG, "${_authEmail.value} 님 저장한 데이터를 전송 받지 못했습니다.", e)
+                showToast("데이터 수신 중 오류가 발생했습니다.")
+                Log.e(TAG, "데이터 수신 실패", e)
             } finally {
-                fireStoreDelete()
+                // 데이터 수신 후 백업 데이터 삭제 시 .await()를 통해 완료될 때까지 대기
+                currentUser.let { deleteBackupData(it.uid) }
+                _authState.value = AuthState.Authenticated
             }
         }
     }
 
-    // 모든 문서 삭제
-    fun fireStoreDelete() {
-        ioScope.launch{
-            try {
-                val result = firestoreDb.collection(_authEmail.value.toString()).get()
-                result.addOnSuccessListener{
-                    for (document in it) {
-                        document.reference.delete()
-                    }
-                }
-            }catch (e: Exception) {
-                Log.d("firebase", "화이어베이스 데이터 삭제 실패", e)
-            }
+    // 문서 삭제 (내부용 suspend 함수)
+    private suspend fun deleteBackupData(uid: String) {
+        try {
+            firestoreDb.collection("backups")
+                .document(uid)
+                .delete()
+                .await()
+            Log.d(TAG, "화이어베이스 데이터 삭제 완료")
+        } catch (e: Exception) {
+            Log.e(TAG, "화이어베이스 데이터 삭제 실패", e)
         }
-       /* email document 로 저장했을때 ( 특정 문서 삭제)
-       ioScope.launch {
-            try {
-                firestoreDb.collection(_authEmail.value.toString()) // 이메일로된 컬렉션
-                    .document(_authEmail.value.toString()) 을 변경
-                    .delete()
-                    .await()  // 비동기 작업이 완료될 때까지 기다립니다.
-                Log.d(TAG, "화이어베이스 데이터 삭제")
-            } catch (e: Exception) {
-                Log.d(TAG, "화이어베이스 데이터 삭제 실패", e)
-            }
+    }
 
-        } */
+    // 외부 호출용 (필요 시)
+    fun fireStoreDelete() {
+        val currentUser = auth.currentUser ?: return
+        ioScope.launch {
+            deleteBackupData(currentUser.uid)
+        }
     }
 
     override fun onCleared() {

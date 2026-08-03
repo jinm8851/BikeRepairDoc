@@ -26,6 +26,8 @@ interface BikeMemoRepository {
     suspend fun updateBikeMemo(bikeMemo: BikeMemo)
 
     suspend fun deleteBikeMemoId(bikeMemoId: Int)
+
+    suspend fun insertAll(bikeMemos: List<BikeMemo>)
 }
 
 interface CashBookRepository {
@@ -42,5 +44,9 @@ interface CashBookRepository {
     fun getAllContentName(): Flow<List<ContentName>>
 
     suspend fun deleteContentName(id: Long)
+
+    suspend fun insertAllCashBooks(cashBooks: List<CashBook>)
+
+    suspend fun insertAllContentNames(contentNames: List<ContentName>)
 }
 

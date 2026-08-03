@@ -34,6 +34,8 @@ class OfflineBikeMemoRepository(private val bikeMemoDao: BikeMemoDao) : BikeMemo
     override suspend fun deleteBikeMemoId(bikeMemoId: Int) =
         bikeMemoDao.deleteBikeMemoById(bikeMemoId)
 
+    override suspend fun insertAll(bikeMemos: List<BikeMemo>) = bikeMemoDao.insertAll(bikeMemos)
+
 }
 
 class OfflineCashBookRepository(private val cashBookDao: CashBookDao) : CashBookRepository {
@@ -50,5 +52,11 @@ class OfflineCashBookRepository(private val cashBookDao: CashBookDao) : CashBook
     override fun getAllContentName(): Flow<List<ContentName>> = cashBookDao.getAllContentNames()
 
     override suspend fun deleteContentName(id: Long) = cashBookDao.deleteContentName(id)
+
+    override suspend fun insertAllCashBooks(cashBooks: List<CashBook>) =
+        cashBookDao.insertAllCashBooks(cashBooks)
+
+    override suspend fun insertAllContentNames(contentNames: List<ContentName>) =
+        cashBookDao.insertAllContentNames(contentNames)
 
 }
