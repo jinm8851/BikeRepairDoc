@@ -2,32 +2,14 @@
 
 <resources>
    <!-- Base application theme. -->
-    <style name="Theme.BikeRepairDoc" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.BikeRepairDoc" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">#0078FF</item>
-        <item name="colorPrimaryVariant">#0000FF</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <!-- Status bar and Navigation bar colors are handled by edge-to-edge in Android 15. -->
         <!-- Customize your theme here. -->
-
-        <!-- 스피너 안에 글자 색깔 변경 코드추가-->
-        <item name="android:spinnerItemStyle">@style/SpinnerItem</item>
-        <item name="android:spinnerDropDownItemStyle">@style/SpinnerItem.DropDownItem</item>
-    </style>
-
-    <!-- 스피너 안에 글자 색깔 변경 코드추가-->
-    <style name="SpinnerItem" parent="android:style/Widget.TextView.SpinnerItem">
-        <item name="android:textColor">@color/text</item>
-        <item name="android:textSize">17sp</item>
-    </style>
-    <style name="SpinnerItem.DropDownItem" parent="@android:style/Widget.DropDownItem.Spinner">
-        <item name="android:textColor">@color/text</item>
-        <item name="android:textSize">17sp</item>
     </style>
 </resources>
-

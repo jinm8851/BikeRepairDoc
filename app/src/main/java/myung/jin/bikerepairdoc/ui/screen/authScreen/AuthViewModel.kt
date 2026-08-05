@@ -3,6 +3,7 @@ package myung.jin.bikerepairdoc.ui.screen.authScreen
 
 import android.content.Context
 import android.util.Log
+import androidx.annotation.StringRes
 import androidx.credentials.ClearCredentialStateRequest
 import androidx.credentials.Credential
 import androidx.credentials.CredentialManager
@@ -13,10 +14,12 @@ import androidx.credentials.exceptions.GetCredentialCancellationException
 import androidx.credentials.exceptions.GetCredentialException
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import myung.jin.bikerepairdoc.ui.model.ItemData
 import com.google.android.libraries.identity.googleid.GetGoogleIdOption
 import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
+import com.google.firebase.auth.FirebaseAuthInvalidUserException
+import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
@@ -27,9 +30,14 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
-import kotlinx.coroutines.flow.first
+import myung.jin.bikerepairdoc.R
+import myung.jin.bikerepairdoc.ui.model.ItemData
 import myung.jin.bikerepairdoc.ui.room.BikeMemo
 import myung.jin.bikerepairdoc.ui.room.BikeMemoRepository
 import myung.jin.bikerepairdoc.ui.room.CashBook
@@ -64,6 +72,7 @@ class AuthViewModel(
 
     // 바이크메모 리스트 초기화
     private val bikeList: MutableList<BikeMemo> = mutableListOf<BikeMemo>()
+
     // 금전출납부 리스트 초기화
     private val cashBookList: MutableList<CashBook> = mutableListOf<CashBook>()
     private val contentNameList: MutableList<ContentName> = mutableListOf<ContentName>()
@@ -71,6 +80,10 @@ class AuthViewModel(
     //데이터를 가져오는 코루틴을 viewModelScope.launch로 관리하고, 뷰모델이 살아있는 동안 데이터를 관찰하고 업데이트합니다.
     //데이터 저장 및 삭제와 같은 코루틴은 별도의 스코프(CoroutineScope(Dispatchers.IO))를 사용하여 뷰모델 생명주기와 분리합니다.
     private val ioScope = CoroutineScope(Dispatchers.IO)
+
+    // 메세지 상태관리 (SharedFlow로 변경하여 메시지 누락 방지)
+    private val _userMessageEvent = MutableSharedFlow<UserMessage>()
+    val userMessageEvent: SharedFlow<UserMessage> = _userMessageEvent.asSharedFlow()
 
     //뷰모델 초기화시  인증상태확인
     init {
@@ -140,18 +153,26 @@ class AuthViewModel(
                 if (user != null) {
                     if (isSignUp) {
                         user.sendEmailVerification().await() // 검증이메일 보내기
-                        showToast("회원가입 성공, 전송된 메일을 확인해주세요.")
+                        _userMessageEvent.emit(UserMessage.Success(R.string.sign_up_email_sent))
                     }
                     updateUI(user)  // 화면변경
-                    showToast("$email 님 ${if (isSignUp) "회원가입" else "로그인"} 성공")
+                    _userMessageEvent.emit(
+                        UserMessage.Success(if (isSignUp) R.string.sign_up_successed else R.string.sign_in_success)
+                    )
                 } else {
-                    _authState.value = AuthState.Error("로그인 실패")
-                    showToast("로그인 실패")
+                    _authState.value = AuthState.Error(R.string.sign_in_failed)
                 }
             } catch (e: Exception) {
-                _authState.value = AuthState.Error(e.message ?: "인증 실패")
                 Log.e(TAG, "인증 실패", e)
-                showToast(if (isSignUp) "회원가입 실패" else "로그인 실패")
+                _authState.value = AuthState.Unauthenticated
+                
+                val errorRes = when (e) {
+                    is FirebaseAuthUserCollisionException -> R.string.error_email_already_in_use
+                    is FirebaseAuthInvalidUserException -> R.string.error_user_not_found
+                    is FirebaseAuthInvalidCredentialsException -> R.string.error_invalid_credentials
+                    else -> if (isSignUp) R.string.sign_up_failed else R.string.sign_in_failed
+                }
+                _userMessageEvent.emit(UserMessage.Error(errorRes))
             }
         }
     }
@@ -159,8 +180,8 @@ class AuthViewModel(
     //이메일 코드 유효성 검사
     private fun validateEmailAndPassword(email: String, password: String): Boolean {
         if (email.isEmpty() || password.isEmpty()) {
-            _authState.value = AuthState.Error("이메일과 비밀번호를 입력하세요")
-            showToast("이메일과 비밀번호를 입력하세요")
+            _authState.value = AuthState.Error(R.string.input_email_password)
+            // showToast("이메일과 비밀번호를 입력하세요")
             return false
         }
         return true
@@ -176,7 +197,7 @@ class AuthViewModel(
                 // 구글 자격증명을 넘겨줘서 로그인함
                 handleGoogleSignIn(googleCredential)
             } catch (e: Exception) {
-                _authState.value = AuthState.Error("구글 로그인 실패 : ${e.message}")
+                _authState.value = AuthState.Error(R.string.sign_in_failed)
                 Log.d(TAG, "구글 로그인 실패 : ${e.message}")
             }
         }
@@ -194,19 +215,19 @@ class AuthViewModel(
         } catch (e: GetCredentialException) { //GetCredentialException은 자격 증명 검색 과정에서 오류가 발생했을 때 발생합니다.
             // 예외 처리
             credentialManager.clearCredentialState(ClearCredentialStateRequest()) // 자격증명 상태 지우기
-            _authState.value = AuthState.Error("구글 로그인 실패 : ${e.message}")
+            _authState.value = AuthState.Error(R.string.sign_in_failed)
             Log.d(TAG, "구글 로그인 실패 : ${e.message}")
             throw e
         } catch (e: GetCredentialCancellationException) { // GetCredentialCancellationException은 사용자가 작업을 취소했을 때 발생합니다.
             // 예외 처리
             credentialManager.clearCredentialState(ClearCredentialStateRequest()) // 자격증명 상태 지우기
-            _authState.value = AuthState.Error("구글 로그인 실패 : ${e.message}")
+            _authState.value = AuthState.Error(R.string.sign_in_failed)
             Log.d(TAG, "구글 로그인 실패 : ${e.message}")
             throw e
         } catch (e: CancellationException) { //CancellationException은 사용자가 작업을 취소했을 때 발생합니다.
             // 예외 처리
             credentialManager.clearCredentialState(ClearCredentialStateRequest()) // 자격증명 상태 지우기
-            _authState.value = AuthState.Error("구글 로그인 실패 : ${e.message}")
+            _authState.value = AuthState.Error(R.string.sign_in_failed)
             Log.d(TAG, "구글 로그인 실패 : ${e.message}")
             throw e
         }
@@ -244,18 +265,18 @@ class AuthViewModel(
                 val authResult = auth.signInWithCredential(authCredential).await()
                 if (authResult.user != null) {
                     _authEmail.value = tokenCredential.id
-                    showToast("${tokenCredential.id} 구글 인증 성공.")
+                    // _userMessageEvent.emit(UserMessage.Success(R.string.sign_in_success)) // updateUI에서 처리하므로 중복 제거
                     updateUI(authResult.user)
                 } else {
-                    _authState.value = AuthState.Error("구글 로그인 실패")
+                    _authState.value = AuthState.Error(R.string.sign_in_failed)
                 }
             } catch (e: Exception) {
-                _authState.value = AuthState.Error("구글 로그인 실패 : ${e.message}")
+                _authState.value = AuthState.Error(R.string.sign_in_failed)
                 Log.d(TAG, "구글 로그인 실패 : ${e.message}")
             }
         } else {
-            _authState.value = AuthState.Error("잘못된 구글 자격증명")
-            Log.d(TAG, "credential is not GoogleIdTokenCredential")
+            _authState.value = AuthState.Error(R.string.sign_in_failed)
+            Log.d(TAG, "credential is not GoogleIdTokenCredential : ${credential.type}")
         }
     }
 
@@ -274,11 +295,11 @@ class AuthViewModel(
 
     // updateUI(user: FirebaseUser?): 로그인 성공 또는 실패 시 호출되어 _authState와 _authEmail을 업데이트합니다.
     // user가 null이 아니면 로그인 성공으로 간주하고, user.email을 _authEmail에 저장합니다.
-    private fun updateUI(user: FirebaseUser?) {
+    private suspend fun updateUI(user: FirebaseUser?) {
         if (user != null) {
             _authState.value = AuthState.Authenticated
             _authEmail.value = user.email
-            showToast("${_authEmail.value}님 반갑습니다")
+            _userMessageEvent.emit(UserMessage.Success(R.string.sign_in_success))
         } else {
             _authState.value = AuthState.Unauthenticated //
             _authEmail.value = null
@@ -294,7 +315,9 @@ class AuthViewModel(
     fun fireStoreSave() {
         val currentUser = auth.currentUser
         if (currentUser == null) {
-            showToast("로그인이 필요합니다.")
+            viewModelScope.launch {
+                _userMessageEvent.emit(UserMessage.Error(R.string.sign_in_failed))
+            }
             return
         }
 
@@ -310,12 +333,13 @@ class AuthViewModel(
                 )
                 // 이메일 대신 UID를 컬렉션 이름으로 사용
                 firestoreDb.collection("backups")
-                    .document(currentUser.uid) 
+                    .document(currentUser.uid)
                     .set(data)
                     .await()
-                showToast("데이터 전송을 완료했습니다.")
+                _userMessageEvent.emit(UserMessage.Success(R.string.upload_success))
+                _authState.value = AuthState.Authenticated
             } catch (e: Exception) {
-                showToast("데이터 전송에 실패했습니다.")
+                _userMessageEvent.emit(UserMessage.Error(R.string.upload_failed))
                 Log.e(TAG, "데이터 전송 실패", e)
             } finally {
                 _authState.value = AuthState.Authenticated
@@ -327,7 +351,9 @@ class AuthViewModel(
     fun fireStoreGetData() {
         val currentUser = auth.currentUser
         if (currentUser == null) {
-            showToast("로그인이 필요합니다.")
+            viewModelScope.launch {
+                _userMessageEvent.emit(UserMessage.Error(R.string.sign_in_failed))
+            }
             return
         }
 
@@ -337,13 +363,13 @@ class AuthViewModel(
                 // 1. 로컬 데이터 가져오기 및 고유 키(Set) 생성 (속도 최적화: O(N))
                 // ID를 제외한 필드들을 결합하여 고유한 '지문'을 만듭니다.
                 val localMemos = bikeMemoRepository.getAllBikeMemoStream().first()
-                val localMemoKeys = localMemos.map { 
-                    "${it.model}|${it.purchaseDate}|${it.date}|${it.km}|${it.refer}|${it.amount}|${it.note}" 
+                val localMemoKeys = localMemos.map {
+                    "${it.model}|${it.purchaseDate}|${it.date}|${it.km}|${it.refer}|${it.amount}|${it.note}"
                 }.toHashSet()
 
                 val localCashBooks = cashBookRepository.getAll().first()
-                val localCashKeys = localCashBooks.map { 
-                    "${it.date}|${it.content}|${it.income}|${it.expense}" 
+                val localCashKeys = localCashBooks.map {
+                    "${it.date}|${it.content}|${it.income}|${it.expense}"
                 }.toHashSet()
 
                 val localContentNames = cashBookRepository.getAllContentName().first()
@@ -358,34 +384,39 @@ class AuthViewModel(
                 if (document.exists()) {
                     val itemData = document.toObject(ItemData::class.java)
                     if (itemData != null && itemData.uid == currentUser.uid) {
-                        
+
                         // 3. 중복 제외 필터링 (HashSet 조회는 거의 즉시 완료됨: O(1))
                         val newMemos = itemData.roomdata.filter { remote ->
-                            val remoteKey = "${remote.model}|${remote.purchaseDate}|${remote.date}|${remote.km}|${remote.refer}|${remote.amount}|${remote.note}"
+                            val remoteKey =
+                                "${remote.model}|${remote.purchaseDate}|${remote.date}|${remote.km}|${remote.refer}|${remote.amount}|${remote.note}"
                             !localMemoKeys.contains(remoteKey)
                         }.map { it.copy(no = 0) }
-                        
+
                         val newCashBooks = itemData.cashBookData.filter { remote ->
-                            val remoteKey = "${remote.date}|${remote.content}|${remote.income}|${remote.expense}"
+                            val remoteKey =
+                                "${remote.date}|${remote.content}|${remote.income}|${remote.expense}"
                             !localCashKeys.contains(remoteKey)
                         }.map { it.copy(id = 0) }
-                        
+
                         val newContentNames = itemData.contentNameData.filter { remote ->
                             !localNameKeys.contains(remote.name)
                         }.map { it.copy(id = 0) }
 
                         // 4. 새로운 데이터만 배치 삽입
                         if (newMemos.isNotEmpty()) bikeMemoRepository.insertAll(newMemos)
-                        if (newCashBooks.isNotEmpty()) cashBookRepository.insertAllCashBooks(newCashBooks)
-                        if (newContentNames.isNotEmpty()) cashBookRepository.insertAllContentNames(newContentNames)
-                        
-                        showToast("새로운 데이터 ${newMemos.size + newCashBooks.size}건을 안전하게 추가했습니다.")
+                        if (newCashBooks.isNotEmpty()) cashBookRepository.insertAllCashBooks(
+                            newCashBooks
+                        )
+                        if (newContentNames.isNotEmpty()) cashBookRepository.insertAllContentNames(
+                            newContentNames
+                        )
+                        _userMessageEvent.emit(UserMessage.Success(R.string.download_success))
                     }
                 } else {
-                    showToast("저장된 데이터를 찾을 수 없습니다.")
+                    _userMessageEvent.emit(UserMessage.Error(R.string.download_failed))
                 }
             } catch (e: Exception) {
-                showToast("데이터 수신 중 오류가 발생했습니다.")
+                _userMessageEvent.emit(UserMessage.Error(R.string.data_download_failed))
                 Log.e(TAG, "데이터 수신 실패", e)
             } finally {
                 // 데이터 수신 후 백업 데이터 삭제 시 .await()를 통해 완료될 때까지 대기
@@ -429,7 +460,16 @@ sealed class AuthState {
     object Unauthenticated : AuthState() // 로그인 안됨
     object Loading : AuthState()  // 로그인 중
     object SignInScreen : AuthState() // 회원가입 화면으로 이동
-    data class Error(val message: String) : AuthState() // 로그인 실패 메세지 전달
+
+    // data class Error(val message: String) : AuthState() // 로그인 실패 메세지 전달
+    data class Error(@param:StringRes val messageResId: Int) : AuthState()
+}
+
+sealed class UserMessage {
+
+    data class Success(@param:StringRes val messageResId: Int) : UserMessage()
+
+    data class Error(@param:StringRes val messageResId: Int) : UserMessage()
 }
 
 // Event 클래스: Toast 메시지와 같은 이벤트를 한 번만 처리하도록 보장하는 래퍼 클래스입니다.
@@ -451,3 +491,4 @@ open class Event<out T>(private val content: T) {
     //  이미 처리된 내용이라도 반환합니다.
     fun peekContent(): T = content
 }
+

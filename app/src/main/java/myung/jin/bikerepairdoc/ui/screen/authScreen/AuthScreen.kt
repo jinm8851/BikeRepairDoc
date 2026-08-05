@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -112,31 +113,29 @@ fun AuthScreenContent(
             )
         )
 
-        OutlinedButton(
+        Button(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp),
             onClick = {
-                Log.d("AuthScreenContent", "OutlinedButton 클릭됨") // 로그 추가
+                Log.d("AuthScreenContent", "Button 클릭됨")
                 navController.navigate(AuthDetailScreenDestination.route)
             },
-            colors = ButtonDefaults.outlinedButtonColors(
-                contentColor = MaterialTheme.colorScheme.primary,
-                containerColor = MaterialTheme.colorScheme.surfaceVariant,
+            colors = ButtonDefaults.buttonColors(
+                containerColor = MaterialTheme.colorScheme.primary,
+                contentColor = MaterialTheme.colorScheme.onPrimary,
             ),
-            border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline),
+            shape = MaterialTheme.shapes.small,
         ) {
             Icon(
                 painter = painterResource(R.drawable.baseline_account_circle_24),
                 contentDescription = null,
-                tint = MaterialTheme.colorScheme.primary,
                 modifier = Modifier
                     .fillMaxHeight()
                     .padding(end = 18.dp)
             )
             Text(
                 text = stringResource(id = R.string.tran),
-                color = MaterialTheme.colorScheme.primary,
                 style = MaterialTheme.typography.titleLarge
             )
         }

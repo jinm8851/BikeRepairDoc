@@ -19,6 +19,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -323,6 +324,8 @@ fun BikeInputFormContent(
                 placeholder = { Text(text = stringResource(id = R.string.bike_model)) },
                 keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Text),
                 colors = OutlinedTextFieldDefaults.colors(
+                    focusedContainerColor = MaterialTheme.colorScheme.surface,
+                    unfocusedContainerColor = MaterialTheme.colorScheme.surface,
                     focusedBorderColor = MaterialTheme.colorScheme.primary,
                     unfocusedBorderColor = MaterialTheme.colorScheme.outline,
                     focusedLabelColor = MaterialTheme.colorScheme.primary,
@@ -330,8 +333,7 @@ fun BikeInputFormContent(
                 ),
                 modifier = modifier
                     .weight(1f)
-                    .heightIn(min = 56.dp)
-                    .background(MaterialTheme.colorScheme.surfaceVariant),
+                    .heightIn(min = 56.dp),
                 textStyle = MaterialTheme.typography.bodyLarge.copy(
                     textAlign = TextAlign.Center,
                     color = MaterialTheme.colorScheme.onSurface
@@ -353,8 +355,7 @@ fun BikeInputFormContent(
                 },
                 modifier = modifier
                     .weight(1f)
-                    .heightIn(min = 56.dp)
-                    .background(MaterialTheme.colorScheme.surfaceVariant),
+                    .heightIn(min = 56.dp),
             )
         }
 
@@ -373,8 +374,7 @@ fun BikeInputFormContent(
                     },
                     modifier = modifier
                         .weight(1f)
-                        .heightIn(min = 56.dp)
-                        .background(MaterialTheme.colorScheme.surfaceVariant),
+                        .heightIn(min = 56.dp),
                 )
                 Spacer(
                     modifier = Modifier.size(16.dp),
@@ -416,6 +416,8 @@ fun BikeInputFormContent(
                 },
                 keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
                 colors = OutlinedTextFieldDefaults.colors(
+                    focusedContainerColor = MaterialTheme.colorScheme.surface,
+                    unfocusedContainerColor = MaterialTheme.colorScheme.surface,
                     focusedBorderColor = MaterialTheme.colorScheme.primary,
                     unfocusedBorderColor = MaterialTheme.colorScheme.outline,
                     focusedLabelColor = MaterialTheme.colorScheme.primary,
@@ -423,8 +425,7 @@ fun BikeInputFormContent(
                 ),
                 modifier = modifier
                     .weight(1f)
-                    .heightIn(min = 56.dp)
-                    .background(MaterialTheme.colorScheme.surfaceVariant),
+                    .heightIn(min = 56.dp),
                 textStyle = MaterialTheme.typography.bodyLarge.copy(
                     textAlign = TextAlign.Center,
                     color = MaterialTheme.colorScheme.onSurface
@@ -456,6 +457,8 @@ fun BikeInputFormContent(
                 },
                 keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
                 colors = OutlinedTextFieldDefaults.colors(
+                    focusedContainerColor = MaterialTheme.colorScheme.surface,
+                    unfocusedContainerColor = MaterialTheme.colorScheme.surface,
                     focusedBorderColor = MaterialTheme.colorScheme.primary,
                     unfocusedBorderColor = MaterialTheme.colorScheme.outline,
                     focusedLabelColor = MaterialTheme.colorScheme.primary,
@@ -463,8 +466,7 @@ fun BikeInputFormContent(
                 ),
                 modifier = modifier
                     .weight(1f)
-                    .heightIn(min = 56.dp)
-                    .background(MaterialTheme.colorScheme.surfaceVariant),
+                    .heightIn(min = 56.dp),
                 textStyle = MaterialTheme.typography.bodyLarge.copy(
                     textAlign = TextAlign.Center,
                     color = MaterialTheme.colorScheme.onSurface
@@ -490,6 +492,8 @@ fun BikeInputFormContent(
                 placeholder = { Text(text = stringResource(R.string.other_details)) },
                 keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Text),
                 colors = OutlinedTextFieldDefaults.colors(
+                    focusedContainerColor = MaterialTheme.colorScheme.surface,
+                    unfocusedContainerColor = MaterialTheme.colorScheme.surface,
                     focusedBorderColor = MaterialTheme.colorScheme.primary,
                     unfocusedBorderColor = MaterialTheme.colorScheme.outline,
                     focusedLabelColor = MaterialTheme.colorScheme.primary,
@@ -497,8 +501,7 @@ fun BikeInputFormContent(
                 ),
                 modifier = modifier
                     .weight(1f)
-                    .heightIn(min = 56.dp)
-                    .background(MaterialTheme.colorScheme.surfaceVariant),
+                    .heightIn(min = 56.dp),
                 textStyle = MaterialTheme.typography.bodyLarge.copy(
                     textAlign = TextAlign.Center,
                     color = MaterialTheme.colorScheme.onSurface
@@ -554,8 +557,7 @@ fun BikeInputFormContent(
             modifier = Modifier
                 .focusProperties { canFocus = false } // 포커스 안되게 하기
                 .heightIn(min = 56.dp)
-                .padding(8.dp)
-                .background(MaterialTheme.colorScheme.surfaceVariant),
+                .padding(8.dp),
             label = {
                 Text(
                     text = stringResource(id = R.string.total),
@@ -573,6 +575,8 @@ fun BikeInputFormContent(
             keyboardOptions = KeyboardOptions.Default
                 .copy(keyboardType = KeyboardType.Number),
             colors = OutlinedTextFieldDefaults.colors(
+                focusedContainerColor = MaterialTheme.colorScheme.surface,
+                unfocusedContainerColor = MaterialTheme.colorScheme.surface,
                 focusedBorderColor = MaterialTheme.colorScheme.primary,
                 unfocusedBorderColor = MaterialTheme.colorScheme.outline,
                 focusedLabelColor = MaterialTheme.colorScheme.primary,
@@ -611,22 +615,18 @@ fun SaveButton(
     onClick: () -> Unit = {},
     @StringRes stringResId: Int,
 ) {
-    OutlinedButton(
+    Button(
         modifier = modifier,
-        colors = ButtonDefaults.outlinedButtonColors(
-            containerColor = MaterialTheme.colorScheme.surfaceVariant,
-            contentColor = MaterialTheme.colorScheme.primary
-        ),
+        onClick = onClick,
         shape = shapes.small,
-        onClick = {
-            onClick()
-        },
-        border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline),
+        colors = ButtonDefaults.buttonColors(
+            containerColor = MaterialTheme.colorScheme.primary,
+            contentColor = MaterialTheme.colorScheme.onPrimary
+        )
     ) {
         Text(
             text = stringResource(id = stringResId),
-            style = MaterialTheme.typography.labelLarge,
-            color = MaterialTheme.colorScheme.primary
+            style = MaterialTheme.typography.labelLarge
         )
     }
 }

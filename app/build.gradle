@@ -22,8 +22,8 @@ android {
         applicationId "myung.jin.bikerepairdoc"
         minSdk 26
         targetSdk 36
-        versionCode 33
-        versionName "33"
+        versionCode 34
+        versionName "34"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
@@ -41,6 +41,10 @@ android {
             // 사용하지 않는 리소스 제거
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            // [추가] 네이티브 디버그 기호를 App Bundle에 포함시킵니다.
+            ndk {
+                debugSymbolLevel 'FULL'
+            }
         }
     }
     compileOptions {

@@ -37,6 +37,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import kotlinx.coroutines.launch
@@ -71,13 +72,17 @@ fun AuthDetailScreen(
     val authEmail by authViewModel.authEmail.collectAsState()
     // Toast 메세지
     val context = LocalContext.current
-    val toastMessage by authViewModel.toastMessage.collectAsState()
-
-    LaunchedEffect(toastMessage) { // 키가 변경되면 자동으로 실행 (key = toastMessage)
-        toastMessage?.getContentIfNotHandled()?.let { message ->
-            Toast.makeText(context, message, Toast.LENGTH_LONG).show()
+    // SharedFlow를 수집하기 위한 LaunchedEffect
+    LaunchedEffect(Unit) {
+        authViewModel.userMessageEvent.collect { message ->
+            val messageResId = when (message) {
+                is UserMessage.Success -> message.messageResId
+                is UserMessage.Error -> message.messageResId
+            }
+            Toast.makeText(context, messageResId, Toast.LENGTH_SHORT).show()
         }
     }
+
     val coroutineScope = rememberCoroutineScope()
 
     Scaffold(
@@ -175,7 +180,7 @@ fun AuthDetailScreenContent(
     authViewModel: AuthViewModel,
     googleAuthOnClick: () -> Unit
 ) {
-
+    val context = LocalContext.current
 
     Column(
         modifier = modifier.verticalScroll(rememberScrollState()),
@@ -219,7 +224,13 @@ fun AuthDetailScreenContent(
                 LoadingScreen(modifier = modifier)
             }
 
-            is AuthState.Error -> authViewModel.showToast(authState.message)
+            is AuthState.Error -> {
+                // authState.message -> authState.messageResId 로 수정
+                val errorResId = authState.messageResId
+                LaunchedEffect(errorResId) {
+                    Toast.makeText(context, errorResId, Toast.LENGTH_SHORT).show()
+                }
+            }
 
             else -> {}
         }

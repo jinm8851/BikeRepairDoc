@@ -17,7 +17,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import java.time.Instant
 import java.time.ZoneId
@@ -93,7 +92,7 @@ fun DatePickerField(
             disabledPlaceholderColor = colorScheme.onSurfaceVariant,
             disabledLeadingIconColor = colorScheme.onSurfaceVariant,
             disabledTrailingIconColor = colorScheme.onSurfaceVariant,
-            disabledContainerColor = Color.Transparent
+            disabledContainerColor = colorScheme.surface
         ),
         modifier = modifier
             .fillMaxWidth()

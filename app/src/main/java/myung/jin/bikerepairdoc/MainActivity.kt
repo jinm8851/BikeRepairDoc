@@ -17,19 +17,13 @@ import myung.jin.bikerepairdoc.ui.theme.BikeRepairDocTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // 전체 화면 모드 활성화 (Android 15 필수 사항)
         enableEdgeToEdge()
         setContent {
-
             BikeRepairDocTheme {
-                // 속성을 false로 설정하면 사실상 3버튼 탐색 배경을 투명으로 설정하는 것입니다.
-                // 3버튼 탐색에만 영향을 미치며 동작 탐색에는 영향을 미치지 않습니다.
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                    window.isNavigationBarContrastEnforced = false
-                }
-                Scaffold(Modifier.windowInsetsPadding(WindowInsets.safeDrawing)) { innerPadding ->
-
-                    InventoryApp(modifier = Modifier.padding(innerPadding))
-                }
+                // 루트 수준의 Scaffold와 패딩을 제거하여 
+                // 시스템 바 영역까지 앱이 그려지도록 합니다.
+                InventoryApp()
             }
         }
     }

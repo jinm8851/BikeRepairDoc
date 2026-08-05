@@ -2,7 +2,7 @@ package myung.jin.bikerepairdoc.ui.screen
 
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -53,52 +53,51 @@ fun MyDropdownMenu(
         OutlinedTextField(
             value = selectedOption,
             onValueChange = { },
-            label = { Text(text = selectOption, color = MaterialTheme.colorScheme.primary) },
+            label = { Text(text = selectOption) },
             trailingIcon = { // 아이콘
-                ExposedDropdownMenuDefaults.TrailingIcon(
-                    expanded = isExpanded,
-                    modifier = Modifier.size(50.dp)
-                )
+                ExposedDropdownMenuDefaults.TrailingIcon(expanded = isExpanded)
             },
             readOnly = true,
             modifier = Modifier
-                .background(MaterialTheme.colorScheme.surfaceVariant)
-                //.width(180.dp)
-                .menuAnchor(ExposedDropdownMenuAnchorType.PrimaryNotEditable),
-            //.menuAnchor(MenuAnchorType.PrimaryNotEditable),
-            //.background(color = Color(0x32B193E6)),
-            colors = OutlinedTextFieldDefaults.colors(
-                focusedBorderColor = MaterialTheme.colorScheme.primary, // 선택 선 색갈
-                unfocusedBorderColor = MaterialTheme.colorScheme.outline, // 선택 안됐을때 색갈
-                focusedTrailingIconColor = MaterialTheme.colorScheme.primary, // 선택됐을때 아이콘 색갈
-                unfocusedTrailingIconColor = MaterialTheme.colorScheme.onSurfaceVariant, // 선택 안됐을때 아이콘 색갈
+                .menuAnchor(ExposedDropdownMenuAnchorType.PrimaryNotEditable)
+                .fillMaxWidth(),
+            colors = ExposedDropdownMenuDefaults.outlinedTextFieldColors(
+                focusedContainerColor = MaterialTheme.colorScheme.surface,
+                unfocusedContainerColor = MaterialTheme.colorScheme.surface,
+                focusedBorderColor = MaterialTheme.colorScheme.primary,
+                unfocusedBorderColor = MaterialTheme.colorScheme.outline,
             ),
             textStyle = MaterialTheme.typography.bodyLarge.copy(
                 color = MaterialTheme.colorScheme.onSurface,
                 textAlign = TextAlign.Center
             ),
             enabled = dropdownItems.isNotEmpty() // 항목이 없는 경우 비활성화
-
         )
         ///3
-        ExposedDropdownMenu(expanded = isExpanded, onDismissRequest = { isExpanded = false }
+        ExposedDropdownMenu(
+            expanded = isExpanded,
+            onDismissRequest = { isExpanded = false },
+            modifier = Modifier.background(MaterialTheme.colorScheme.surfaceContainer)
         ) {
             //===4  드롭다운 메뉴의 각 항목을 구성하는 컴포저블입니다.
             dropdownItems.forEach { item ->
                 DropdownMenuItem(
                     text = {
                         Text(
-                            text = item, color = MaterialTheme.colorScheme.onSurface,
+                            text = item,
+                            color = MaterialTheme.colorScheme.onSurface,
                             textAlign = TextAlign.Center,
+                            modifier = Modifier.fillMaxWidth(),
                             style = MaterialTheme.typography.bodyLarge
                         )
                     },
-                    modifier = Modifier.background(color = MaterialTheme.colorScheme.surface),
                     onClick = {
                         selectedOption = item
                         isExpanded = false
                         onValueChange(item) // 선택한 옵션을 직접 사용합니다
-                    })
+                    },
+                    contentPadding = ExposedDropdownMenuDefaults.ItemContentPadding
+                )
             }
         }
     }
