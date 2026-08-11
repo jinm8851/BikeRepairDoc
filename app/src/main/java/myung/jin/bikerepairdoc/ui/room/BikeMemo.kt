@@ -1,55 +1,59 @@
 package myung.jin.bikerepairdoc.ui.room
 
+import androidx.annotation.Keep
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 // 업데이트 할때 var를 val로 변경
+@Keep
 @Entity(tableName = "bike_memo")
 data class BikeMemo(
     @PrimaryKey(autoGenerate = true)
-    val no: Int = 0,
+    var no: Int = 0,
 
     @ColumnInfo(name = "model")
-    val model: String = "",
+    var model: String = "",
 
     @ColumnInfo(name = "purchaseDate")
-    val purchaseDate: String = "",
+    var purchaseDate: String = "",
 
     @ColumnInfo(name = "date")
-    val date: String = "",
+    var date: String = "",
 
     @ColumnInfo(name = "km")
-    val km: Int = 0,
+    var km: Int = 0,
 
     @ColumnInfo(name = "refer")
-    val refer: String = "",
+    var refer: String = "",
 
     @ColumnInfo(name = "amount")
-    val amount: Int = 0,
+    var amount: Int = 0,
 
     @ColumnInfo(name = "note")
-    val note: String = "",
+    var note: String = "",
 
     @ColumnInfo(name = "year")
-    val year: String = ""
+    var year: String = ""
 )
 
 // 사용자가 수출입 내용을 저장하는 테이블
+@Keep
 @Entity(tableName = "content_name")
 data class ContentName(
     @PrimaryKey(autoGenerate = true)
-    val id: Long = 0,
-    val name: String = ""
+    var id: Long = 0,
+    var name: String = ""
 )
 
 // 수입 지출 기록 저장
+@Keep
 @Entity(tableName = "cash_book")
 data class CashBook(
     @PrimaryKey(autoGenerate = true)
-    val id: Long = 0,
-    val date: String = "",
-    val content: String = "", // 내용(드롭다운 선택 항목)
-    val income: Long = 0, // 수입
-    val expense: Long = 0 // 지축
+    var id: Long = 0,
+    var date: String = "",
+    var content: String = "", // 내용(드롭다운 선택 항목)
+    var income: Long = 0, // 수입
+    var expense: Long = 0 // 지축
 )

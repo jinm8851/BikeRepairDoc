@@ -78,9 +78,12 @@ fun <T> GenericDateList(
     itemList: List<T>,
     showDateHeader: Boolean = true,
     getDate: (T) -> String,
+    dateHeaderExtra: @Composable ((String, List<T>) -> Unit)? = null,
     itemContent: @Composable (T, Color) -> Unit
 ) {
     val dateToColorMap = remember { mutableMapOf<String, Color>() }
+    // 날짜별 그룹 데이터 미리 계산하여 효율적으로 접근
+    val itemsByDate = remember(itemList) { itemList.groupBy { getDate(it) } }
 
     LazyColumn(
         modifier = modifier
@@ -110,12 +113,21 @@ fun <T> GenericDateList(
                     Spacer(modifier = Modifier.height(8.dp))
                 }
                 if (showDateHeader) {
-                    Text(
-                        text = date,
-                        style = MaterialTheme.typography.titleMedium,
-                        color = colorScheme.primary,
-                        modifier = Modifier.padding(vertical = 8.dp)
-                    )
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 16.dp, vertical = 8.dp),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(
+                            text = date,
+                            style = MaterialTheme.typography.titleMedium,
+                            color = colorScheme.primary
+                        )
+                        // 날짜별 추가 정보 표시 (예: 일일 합계)
+                        dateHeaderExtra?.invoke(date, itemsByDate[date] ?: emptyList())
+                    }
                 }
             } else {
                 HorizontalDivider(

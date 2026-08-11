@@ -109,7 +109,15 @@ fun CashbookSearchScreen(
                 .weight(1f)
                 .padding(vertical = 16.dp),
             itemList = cashBookList,
-            getDate = { it.date }
+            getDate = { it.date },
+            dateHeaderExtra = { _, items ->
+                val dailyTotal = items.sumOf { it.income - it.expense }
+                Text(
+                    text = "${stringResource(R.string.total)}: ${dailyTotal.toString().formatNumberWithCommas()}원",
+                    style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.Bold),
+                    color = if (dailyTotal >= 0) colorScheme.primary else colorScheme.error
+                )
+            }
         ) { cashBook, color ->
             CashBookDetail(
                 cashBook = cashBook,

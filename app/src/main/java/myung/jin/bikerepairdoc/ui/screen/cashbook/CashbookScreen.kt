@@ -13,6 +13,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
@@ -21,12 +22,14 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.focusProperties
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
@@ -48,6 +51,7 @@ import myung.jin.bikerepairdoc.ui.screen.CashBookDetail
 import myung.jin.bikerepairdoc.ui.screen.DisplayInfoText
 import myung.jin.bikerepairdoc.ui.screen.GenericDateList
 import myung.jin.bikerepairdoc.ui.screen.StartDestination
+import myung.jin.bikerepairdoc.ui.screen.currentDateString
 import myung.jin.bikerepairdoc.ui.screen.formatNumberWithCommas
 import myung.jin.bikerepairdoc.ui.theme.shapes
 
@@ -67,6 +71,8 @@ fun CashbookScreen(
     val uiState by viewModel.uiState.collectAsState()
     val cashBookList by viewModel.cashBookList.collectAsState()
     val totalAmount by viewModel.totalAmount.collectAsState()
+
+
 
     Scaffold(
         modifier = Modifier,
@@ -94,7 +100,7 @@ fun CashbookScreen(
             onValueChange = { viewModel.updateSelectedText(it) },
             onSaveClick = { viewModel.saveCashBook() },
             onDeleteClick = { viewModel.deleteCashBook(it) },
-            viewModel = viewModel
+            viewModel = viewModel,
         )
 
     }
@@ -109,11 +115,19 @@ fun CashbookScreenContent(
     onValueChange: (String) -> Unit,
     onSaveClick: () -> Unit,
     onDeleteClick: (Long) -> Unit,
-    viewModel: CashbookViewModel
+    viewModel: CashbookViewModel,
 ) {
 
     var newContentInput by remember { mutableStateOf("") }
     val names by viewModel.contentNames.collectAsState()
+
+    val date = currentDateString()
+    val displayedDate = remember{ mutableStateOf(date)}
+    val filteredCashBookList by remember(cashBookList, displayedDate.value) {
+        derivedStateOf {
+            cashBookList.filter { it.date.contains(displayedDate.value) }
+        }
+    }
 
     Column(
         modifier = modifier
@@ -133,8 +147,10 @@ fun CashbookScreenContent(
             //날짜
             DatePickerField(
                 label = { Text(stringResource(R.string.current_date)) },
-                selectedDate = uiState.cashBookDetails.date,
-                onDateSelected = { viewModel.updateDate(it) },
+                selectedDate = displayedDate.value,
+                onDateSelected = { newDate ->
+                    viewModel.updateDate(newDate)
+                                 displayedDate.value = newDate},
                 modifier = Modifier
                     .fillMaxWidth()
                     .heightIn(56.dp)
@@ -315,7 +331,8 @@ fun CashbookScreenContent(
         // 레이지컬럼 (남은 공간 모두 차지)
         GenericDateList(
             modifier = Modifier.weight(0.5f),
-            itemList = cashBookList,
+            itemList = filteredCashBookList,
+            showDateHeader = false,
             getDate = { it.date }
         ) { cashBook, color ->
             CashBookDetail(
@@ -328,7 +345,25 @@ fun CashbookScreenContent(
 
         //합계 (항상 하단에 고정)
 
-        Surface(
+            OutlinedTextField(
+                modifier = Modifier
+                    .focusProperties{canFocus = false},
+                label ={
+                    Text(text = stringResource(R.string.total),color = colorScheme.primary)
+                     },
+                value = filteredCashBookList.sumOf { it.income - it.expense }.toString().formatNumberWithCommas(),
+                onValueChange = {},
+                textStyle = MaterialTheme.typography.bodyLarge.copy(
+                    textAlign = TextAlign.Center,
+                    color = colorScheme.primary,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 22.sp
+                ),
+                shape = shapes.small,
+                enabled = true
+
+            )
+        /*Surface(
             modifier = Modifier.fillMaxWidth(),
             color = colorScheme.surfaceContainer,
             tonalElevation = 4.dp
@@ -343,7 +378,7 @@ fun CashbookScreenContent(
                 fontSize = 24,
                 fontWeight = FontWeight.Bold
             )
-        }
+        }*/
     }
 
 }

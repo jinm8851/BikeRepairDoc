@@ -361,7 +361,6 @@ class AuthViewModel(
         ioScope.launch {
             try {
                 // 1. 로컬 데이터 가져오기 및 고유 키(Set) 생성 (속도 최적화: O(N))
-                // ID를 제외한 필드들을 결합하여 고유한 '지문'을 만듭니다.
                 val localMemos = bikeMemoRepository.getAllBikeMemoStream().first()
                 val localMemoKeys = localMemos.map {
                     "${it.model}|${it.purchaseDate}|${it.date}|${it.km}|${it.refer}|${it.amount}|${it.note}"
@@ -387,6 +386,7 @@ class AuthViewModel(
 
                         // 3. 중복 제외 필터링 (HashSet 조회는 거의 즉시 완료됨: O(1))
                         val newMemos = itemData.roomdata.filter { remote ->
+                            // [수정] remote.purchaseDate 오타 수정
                             val remoteKey =
                                 "${remote.model}|${remote.purchaseDate}|${remote.date}|${remote.km}|${remote.refer}|${remote.amount}|${remote.note}"
                             !localMemoKeys.contains(remoteKey)
@@ -411,16 +411,20 @@ class AuthViewModel(
                             newContentNames
                         )
                         _userMessageEvent.emit(UserMessage.Success(R.string.download_success))
+                        
+                        // 성공했을 때만 백업 삭제
+                        deleteBackupData(currentUser.uid)
+                    } else {
+                        // UID가 다르거나 데이터가 올바르지 않은 경우
+                        _userMessageEvent.emit(UserMessage.Error(R.string.download_failed))
                     }
                 } else {
                     _userMessageEvent.emit(UserMessage.Error(R.string.download_failed))
                 }
             } catch (e: Exception) {
+                Log.e(TAG, "데이터 수신 실패 구체적 원인: ", e)
                 _userMessageEvent.emit(UserMessage.Error(R.string.data_download_failed))
-                Log.e(TAG, "데이터 수신 실패", e)
             } finally {
-                // 데이터 수신 후 백업 데이터 삭제 시 .await()를 통해 완료될 때까지 대기
-                currentUser.let { deleteBackupData(it.uid) }
                 _authState.value = AuthState.Authenticated
             }
         }
