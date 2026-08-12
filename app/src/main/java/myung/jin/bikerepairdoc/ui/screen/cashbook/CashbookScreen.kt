@@ -18,7 +18,6 @@ import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -48,7 +47,6 @@ import myung.jin.bikerepairdoc.ui.components.DatePickerField
 import myung.jin.bikerepairdoc.ui.navigation.NavigationDestination
 import myung.jin.bikerepairdoc.ui.room.CashBook
 import myung.jin.bikerepairdoc.ui.screen.CashBookDetail
-import myung.jin.bikerepairdoc.ui.screen.DisplayInfoText
 import myung.jin.bikerepairdoc.ui.screen.GenericDateList
 import myung.jin.bikerepairdoc.ui.screen.StartDestination
 import myung.jin.bikerepairdoc.ui.screen.currentDateString
@@ -122,7 +120,7 @@ fun CashbookScreenContent(
     val names by viewModel.contentNames.collectAsState()
 
     val date = currentDateString()
-    val displayedDate = remember{ mutableStateOf(date)}
+    val displayedDate = remember { mutableStateOf(date) }
     val filteredCashBookList by remember(cashBookList, displayedDate.value) {
         derivedStateOf {
             cashBookList.filter { it.date.contains(displayedDate.value) }
@@ -150,7 +148,8 @@ fun CashbookScreenContent(
                 selectedDate = displayedDate.value,
                 onDateSelected = { newDate ->
                     viewModel.updateDate(newDate)
-                                 displayedDate.value = newDate},
+                    displayedDate.value = newDate
+                },
                 modifier = Modifier
                     .fillMaxWidth()
                     .heightIn(56.dp)
@@ -330,7 +329,7 @@ fun CashbookScreenContent(
 
         // 레이지컬럼 (남은 공간 모두 차지)
         GenericDateList(
-            modifier = Modifier.weight(0.5f),
+            //  modifier = Modifier.weight(0.5f),
             itemList = filteredCashBookList,
             showDateHeader = false,
             getDate = { it.date }
@@ -345,24 +344,25 @@ fun CashbookScreenContent(
 
         //합계 (항상 하단에 고정)
 
-            OutlinedTextField(
-                modifier = Modifier
-                    .focusProperties{canFocus = false},
-                label ={
-                    Text(text = stringResource(R.string.total),color = colorScheme.primary)
-                     },
-                value = filteredCashBookList.sumOf { it.income - it.expense }.toString().formatNumberWithCommas(),
-                onValueChange = {},
-                textStyle = MaterialTheme.typography.bodyLarge.copy(
-                    textAlign = TextAlign.Center,
-                    color = colorScheme.primary,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 22.sp
-                ),
-                shape = shapes.small,
-                enabled = true
+        OutlinedTextField(
+            modifier = Modifier
+                .focusProperties { canFocus = false },
+            label = {
+                Text(text = stringResource(R.string.total), color = colorScheme.primary)
+            },
+            value = filteredCashBookList.sumOf { it.income - it.expense }.toString()
+                .formatNumberWithCommas(),
+            onValueChange = {},
+            textStyle = MaterialTheme.typography.bodyLarge.copy(
+                textAlign = TextAlign.Center,
+                color = colorScheme.primary,
+                fontWeight = FontWeight.Bold,
+                fontSize = 22.sp
+            ),
+            shape = shapes.small,
+            enabled = true
 
-            )
+        )
         /*Surface(
             modifier = Modifier.fillMaxWidth(),
             color = colorScheme.surfaceContainer,

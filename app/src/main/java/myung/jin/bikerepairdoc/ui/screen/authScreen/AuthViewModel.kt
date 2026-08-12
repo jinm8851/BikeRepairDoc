@@ -27,12 +27,12 @@ import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
@@ -65,10 +65,6 @@ class AuthViewModel(
     //인증된 이메일을 저장하는 변수
     private val _authEmail = MutableStateFlow<String?>(null)
     val authEmail: StateFlow<String?> = _authEmail.asStateFlow()
-
-    // 토스트메세지가 변경되면 메세지실행
-    private val _toastMessage = MutableStateFlow<Event<String>?>(null)
-    val toastMessage: StateFlow<Event<String>?> = _toastMessage.asStateFlow()
 
     // 바이크메모 리스트 초기화
     private val bikeList: MutableList<BikeMemo> = mutableListOf<BikeMemo>()
@@ -165,7 +161,7 @@ class AuthViewModel(
             } catch (e: Exception) {
                 Log.e(TAG, "인증 실패", e)
                 _authState.value = AuthState.Unauthenticated
-                
+
                 val errorRes = when (e) {
                     is FirebaseAuthUserCollisionException -> R.string.error_email_already_in_use
                     is FirebaseAuthInvalidUserException -> R.string.error_user_not_found
@@ -306,11 +302,6 @@ class AuthViewModel(
         }
     }
 
-    // 토스트 메세지전달
-    fun showToast(message: String) {
-        _toastMessage.value = Event(message)
-    }
-
     // fireStore 저장 이메일 대신 UID를 사용하여 보안과 고유성 확보
     fun fireStoreSave() {
         val currentUser = auth.currentUser
@@ -411,7 +402,7 @@ class AuthViewModel(
                             newContentNames
                         )
                         _userMessageEvent.emit(UserMessage.Success(R.string.download_success))
-                        
+
                         // 성공했을 때만 백업 삭제
                         deleteBackupData(currentUser.uid)
                     } else {

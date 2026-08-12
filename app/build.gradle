@@ -22,8 +22,8 @@ android {
         applicationId "myung.jin.bikerepairdoc"
         minSdk 26
         targetSdk 36
-        versionCode 37
-        versionName "37"
+        versionCode 38
+        versionName "38"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true

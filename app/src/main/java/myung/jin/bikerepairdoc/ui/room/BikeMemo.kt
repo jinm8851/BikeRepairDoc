@@ -6,7 +6,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 // 업데이트 할때 var를 val로 변경
-@Keep
+@Keep // @Keep 어노테이션을 붙여 난독화 대상에서 제외해 주세요. 역직렬화 오류 다운받을때 이름이 변경되 오류 나는것을 방지
 @Entity(tableName = "bike_memo")
 data class BikeMemo(
     @PrimaryKey(autoGenerate = true)
