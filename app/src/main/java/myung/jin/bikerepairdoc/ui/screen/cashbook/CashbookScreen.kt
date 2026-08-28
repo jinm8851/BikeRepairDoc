@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
@@ -25,6 +26,7 @@ import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -39,6 +41,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 import myung.jin.bikerepairdoc.InventoryTopAppBar
 import myung.jin.bikerepairdoc.R
 import myung.jin.bikerepairdoc.ui.AppViewModelProvider
@@ -63,12 +67,14 @@ object CashbookDestination : NavigationDestination {
 fun CashbookScreen(
     modifier: Modifier = Modifier,
     navHostController: NavHostController,
+    pagerState: PagerState,
     viewModel: CashbookViewModel = viewModel(factory = AppViewModelProvider.Factory)
 ) {
 
     val uiState by viewModel.uiState.collectAsState()
     val cashBookList by viewModel.cashBookList.collectAsState()
     val totalAmount by viewModel.totalAmount.collectAsState()
+    val coroutineScope = rememberCoroutineScope()
 
 
 
@@ -83,7 +89,16 @@ fun CashbookScreen(
                     navHostController.popBackStack(StartDestination.route, inclusive = false)
                 },
                 onNavigateForward = {
-                    navHostController.navigate(CashbookSearchDestination.route)
+                    coroutineScope.launch{
+                        if(pagerState.currentPage < 1){
+                            pagerState.animateScrollToPage(pagerState.currentPage + 1)
+                        }else{
+                            navHostController.popBackStack(
+                                StartDestination.route, inclusive = false
+                            )
+                        }
+                    }
+                   // navHostController.navigate(CashbookSearchDestination.route)
                 },
             )
         }

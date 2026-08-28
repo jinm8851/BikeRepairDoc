@@ -9,6 +9,8 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import myung.jin.bikerepairdoc.CashbookPagerScreen
+import myung.jin.bikerepairdoc.RepairPagerScreen
 import myung.jin.bikerepairdoc.ui.screen.BikeMemoEditDestination
 import myung.jin.bikerepairdoc.ui.screen.BikeMemoEditScreen
 import myung.jin.bikerepairdoc.ui.screen.HomeDestination
@@ -25,12 +27,17 @@ import myung.jin.bikerepairdoc.ui.screen.cashbook.CashbookSearchDestination
 import myung.jin.bikerepairdoc.ui.screen.StartDestination
 import myung.jin.bikerepairdoc.ui.screen.StartScreen
 
+object PagerDestinations{
+    const val REPAIR_PAGER = "repair_pager"
+    const val CASHBOOK_PAGER = "cashbook_pager"
+}
+
 @Composable
 fun InventoryNavHost(
     navController: NavHostController,
     modifier: Modifier = Modifier,
 ) {
-    Log.d("InventoryNavHost", "InventoryNavHost 함수 시작")
+ //   Log.d("InventoryNavHost", "InventoryNavHost 함수 시작")
 
     NavHost(
         navController = navController,
@@ -42,33 +49,24 @@ fun InventoryNavHost(
         ) {
             StartScreen(
                 onNavigateToMain = {
-                    navController.navigate(HomeDestination.route)
+                    navController.navigate(PagerDestinations.REPAIR_PAGER)
                 },
                 onNavigateToCashbook = {
-                    navController.navigate(CashbookDestination.route)
+                    navController.navigate(PagerDestinations.CASHBOOK_PAGER)
                 }
             )
-            Log.d("InventoryNavHost", "StartDestination composable")
+         //   Log.d("InventoryNavHost", "StartDestination composable")
         }
 
-        composable(
-            route = HomeDestination.route,
-        ) {
-            Log.d("InventoryNavHost", "HomeDestination composable")
+        // 수리 내역 페이저 흐름
+        composable(route = PagerDestinations.REPAIR_PAGER) {
+            RepairPagerScreen(navController = navController)
         }
 
-        composable(
-            route = TotalScreenDestination.route
-        ) {
-            Log.d("InventoryNavHost", "TotalScreenDestination composable")
+        // 금전출납부 페이저 흐름
+        composable(route = PagerDestinations.CASHBOOK_PAGER) {
+            CashbookPagerScreen(navController = navController)
         }
-
-        composable(
-            route = AuthScreenDestination.route
-        ) {
-            Log.d("InventoryNavHost", "AuthScreenDestination composable")
-        }
-
 
         composable(
             route = BikeMemoEditDestination.routeWithArgs,
@@ -76,7 +74,7 @@ fun InventoryNavHost(
                 type = NavType.IntType
             })
         ) {
-            Log.d("InventoryNavHost", "BikeMemoEditDestination composable")
+          //  Log.d("InventoryNavHost", "BikeMemoEditDestination composable")
             val bikeMemoId = it.arguments?.getInt(BikeMemoEditDestination.bikeMemoIdArg) ?: 0
             BikeMemoEditScreen(
                 bikeMemoId = bikeMemoId,
@@ -85,28 +83,13 @@ fun InventoryNavHost(
                 },
             )
         }
+
         composable(
             route = AuthDetailScreenDestination.route
         ) {
-            Log.d("InventoryNavHost", "AuthDetailScreenDestination composable")
+          //  Log.d("InventoryNavHost", "AuthDetailScreenDestination composable")
             AuthDetailScreen(
                 navHostController = navController,
-            )
-        }
-        composable(
-            route = CashbookDestination.route
-        ){
-            Log.d("InventoryNavHost","CashBookScreenDestination composable")
-            CashbookScreen(
-                navHostController = navController
-            )
-        }
-        composable(
-            route = CashbookSearchDestination.route
-        ){
-            Log.d("InventoryNavHost","CashBookSearchScreenDestination composable")
-            CashbookSearch(
-                navHostController = navController
             )
         }
     }

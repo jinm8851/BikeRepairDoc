@@ -67,7 +67,7 @@ fun AuthDetailScreen(
     // 화면 패스워드
     var password by remember { mutableStateOf("") }
     // 로그인 상태
-    var authState = authViewModel.authState.collectAsState()
+    val authState = authViewModel.authState.collectAsState()
     // 로그인한 이메일
     val authEmail by authViewModel.authEmail.collectAsState()
     // Toast 메세지
@@ -95,7 +95,9 @@ fun AuthDetailScreen(
                 modifier = modifier,
                 scrollBehavior = scrollBehavior,  // 스크로
                 onNavigateBack = {
-                    navHostController.navigate(AuthScreenDestination.route)
+                    // 수정 후: 이전 화면(페이저의 Auth 페이지)으로 돌아감
+                    navHostController.popBackStack()
+                   // navHostController.navigate(AuthScreenDestination.route)
                 }, // 뒤로가기 버튼
                 onNavigateForward = { }, // 앞으로가기 버튼
             )
@@ -112,7 +114,8 @@ fun AuthDetailScreen(
             logOutOnClick = {         // 로그 아웃
                 coroutineScope.launch {
                     authViewModel.signOut() // 파이어베이스 로그 아웃
-                    navHostController.navigate(AuthScreenDestination.route) // 인증세부 화면 이동
+                    navHostController.popBackStack()
+                   // navHostController.navigate(AuthScreenDestination.route) // 인증세부 화면 이동
                 }
             },
             dataPutOnClick = {
@@ -123,12 +126,14 @@ fun AuthDetailScreen(
             dataPullOnClick = {
                 coroutineScope.launch {
                     authViewModel.fireStoreGetData() // 화이어베이스에서 데이터 가져오기
-                    navHostController.navigate(AuthScreenDestination.route)
+                    navHostController.popBackStack()
+                  //  navHostController.navigate(AuthScreenDestination.route)
                 }
             },
             backWordOnClick = {
                 coroutineScope.launch {
-                    navHostController.navigate(AuthScreenDestination.route)
+                    navHostController.popBackStack()
+                  //  navHostController.navigate(AuthScreenDestination.route)
                 }
             }, // 뒤로가기 버튼
             signUpScreenOnClick = {
@@ -151,7 +156,6 @@ fun AuthDetailScreen(
                 }
             }, // 로그인실패시 빈 화면으로 변경
             authState = authState.value,
-            authViewModel = authViewModel,
             googleAuthOnClick = {
                 coroutineScope.launch {
                     authViewModel.googleSignIn(context) // 구글 로그인 시도
@@ -177,7 +181,6 @@ fun AuthDetailScreenContent(
     logInOnClick: () -> Unit,
     signUpOnClick: () -> Unit,
     authState: AuthState?,
-    authViewModel: AuthViewModel,
     googleAuthOnClick: () -> Unit
 ) {
     val context = LocalContext.current
@@ -288,13 +291,13 @@ fun ShowAuthText(
         },
         keyboardOptions = keyboardOptions,// KeyboardOptions.Default.copy(keyboardType = KeyboardType.Text),
         colors = OutlinedTextFieldDefaults.colors(
+            focusedContainerColor = MaterialTheme.colorScheme.surface,
+            unfocusedContainerColor = MaterialTheme.colorScheme.surface,
             focusedBorderColor = MaterialTheme.colorScheme.primary,
             unfocusedBorderColor = MaterialTheme.colorScheme.outline,
             focusedLabelColor = MaterialTheme.colorScheme.primary,
             unfocusedLabelColor = MaterialTheme.colorScheme.onSurfaceVariant,
         ),
-        modifier = modifier
-            .background(color = MaterialTheme.colorScheme.surfaceVariant),
         textStyle = MaterialTheme.typography.bodyLarge.copy(
             textAlign = TextAlign.Center,
             color = MaterialTheme.colorScheme.onSurface

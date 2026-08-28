@@ -156,14 +156,16 @@ fun EditBikeMemoForm(
                 placeholder = { Text(text = stringResource(id = R.string.bike_model)) },
                 keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Text),
                 colors = OutlinedTextFieldDefaults.colors(
+                    focusedContainerColor = MaterialTheme.colorScheme.surface,
+                    unfocusedContainerColor = MaterialTheme.colorScheme.surface,
                     focusedBorderColor = MaterialTheme.colorScheme.primary,
                     unfocusedBorderColor = MaterialTheme.colorScheme.outline,
                     focusedLabelColor = MaterialTheme.colorScheme.primary,
                     unfocusedLabelColor = MaterialTheme.colorScheme.onSurfaceVariant,
                 ),
                 modifier = Modifier
-                    .weight(0.5f)
-                    .background(MaterialTheme.colorScheme.surfaceVariant),
+                    .weight(0.5f),
+                   // .background(MaterialTheme.colorScheme.surfaceVariant),
                 textStyle = MaterialTheme.typography.bodyLarge.copy(
                     textAlign = TextAlign.Center,
                     color = MaterialTheme.colorScheme.onSurface
@@ -208,7 +210,7 @@ fun EditBikeMemoForm(
                 },
                 modifier = Modifier
                     .weight(0.5f)
-                    .background(MaterialTheme.colorScheme.surfaceVariant),
+                 //   .background(MaterialTheme.colorScheme.surfaceVariant),
             )
         }
 
@@ -250,7 +252,7 @@ fun EditBikeMemoForm(
                 },
                 modifier = Modifier
                     .weight(0.5f)
-                    .background(MaterialTheme.colorScheme.surfaceVariant),
+                   // .background(MaterialTheme.colorScheme.surfaceVariant),
             )
             Spacer(
                 modifier = Modifier.size(16.dp),
@@ -291,14 +293,16 @@ fun EditBikeMemoForm(
                 },
                 keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
                 colors = OutlinedTextFieldDefaults.colors(
+                    focusedContainerColor = MaterialTheme.colorScheme.surface,
+                    unfocusedContainerColor = MaterialTheme.colorScheme.surface,
                     focusedBorderColor = MaterialTheme.colorScheme.primary,
                     unfocusedBorderColor = MaterialTheme.colorScheme.outline,
                     focusedLabelColor = MaterialTheme.colorScheme.primary,
                     unfocusedLabelColor = MaterialTheme.colorScheme.onSurfaceVariant,
                 ),
                 modifier = Modifier
-                    .weight(0.5f)
-                    .background(MaterialTheme.colorScheme.surfaceVariant),
+                    .weight(0.5f),
+                   // .background(MaterialTheme.colorScheme.surfaceVariant),
                 textStyle = MaterialTheme.typography.bodyLarge.copy(
                     textAlign = TextAlign.Center,
                     color = MaterialTheme.colorScheme.onSurface
@@ -329,14 +333,16 @@ fun EditBikeMemoForm(
                 },
                 keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
                 colors = OutlinedTextFieldDefaults.colors(
+                    focusedContainerColor = MaterialTheme.colorScheme.surface,
+                    unfocusedContainerColor = MaterialTheme.colorScheme.surface,
                     focusedBorderColor = MaterialTheme.colorScheme.primary,
                     unfocusedBorderColor = MaterialTheme.colorScheme.outline,
                     focusedLabelColor = MaterialTheme.colorScheme.primary,
                     unfocusedLabelColor = MaterialTheme.colorScheme.onSurfaceVariant,
                 ),
                 modifier = Modifier
-                    .weight(0.5f)
-                    .background(MaterialTheme.colorScheme.surfaceVariant),
+                    .weight(0.5f),
+                  //  .background(MaterialTheme.colorScheme.surfaceVariant),
                 textStyle = MaterialTheme.typography.bodyLarge.copy(
                     textAlign = TextAlign.Center,
                     color = MaterialTheme.colorScheme.onSurface
@@ -361,14 +367,16 @@ fun EditBikeMemoForm(
                 onValueChange = { onValueChange(bikeDetails.copy(etc = it)) },
                 keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Text),
                 colors = OutlinedTextFieldDefaults.colors(
+                    focusedContainerColor = MaterialTheme.colorScheme.surface,
+                    unfocusedContainerColor = MaterialTheme.colorScheme.surface,
                     focusedBorderColor = MaterialTheme.colorScheme.primary,
                     unfocusedBorderColor = MaterialTheme.colorScheme.outline,
                     focusedLabelColor = MaterialTheme.colorScheme.primary,
                     unfocusedLabelColor = MaterialTheme.colorScheme.onSurfaceVariant,
                 ),
                 modifier = Modifier
-                    .weight(0.5f)
-                    .background(MaterialTheme.colorScheme.surfaceVariant),
+                    .weight(0.5f),
+                   // .background(MaterialTheme.colorScheme.surfaceVariant),
                 textStyle = MaterialTheme.typography.bodyLarge.copy(
                     textAlign = TextAlign.Center,
                     color = MaterialTheme.colorScheme.onSurface

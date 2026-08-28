@@ -2,7 +2,6 @@ package myung.jin.bikerepairdoc.ui.screen.authScreen
 
 
 import android.content.Context
-import android.util.Log
 import androidx.annotation.StringRes
 import androidx.credentials.ClearCredentialStateRequest
 import androidx.credentials.Credential
@@ -159,7 +158,7 @@ class AuthViewModel(
                     _authState.value = AuthState.Error(R.string.sign_in_failed)
                 }
             } catch (e: Exception) {
-                Log.e(TAG, "인증 실패", e)
+                //  Log.e(TAG, "인증 실패", e)
                 _authState.value = AuthState.Unauthenticated
 
                 val errorRes = when (e) {
@@ -194,7 +193,7 @@ class AuthViewModel(
                 handleGoogleSignIn(googleCredential)
             } catch (e: Exception) {
                 _authState.value = AuthState.Error(R.string.sign_in_failed)
-                Log.d(TAG, "구글 로그인 실패 : ${e.message}")
+                //   Log.d(TAG, "구글 로그인 실패 : ${e.message}")
             }
         }
     }
@@ -212,19 +211,19 @@ class AuthViewModel(
             // 예외 처리
             credentialManager.clearCredentialState(ClearCredentialStateRequest()) // 자격증명 상태 지우기
             _authState.value = AuthState.Error(R.string.sign_in_failed)
-            Log.d(TAG, "구글 로그인 실패 : ${e.message}")
+            //  Log.d(TAG, "구글 로그인 실패 : ${e.message}")
             throw e
         } catch (e: GetCredentialCancellationException) { // GetCredentialCancellationException은 사용자가 작업을 취소했을 때 발생합니다.
             // 예외 처리
             credentialManager.clearCredentialState(ClearCredentialStateRequest()) // 자격증명 상태 지우기
             _authState.value = AuthState.Error(R.string.sign_in_failed)
-            Log.d(TAG, "구글 로그인 실패 : ${e.message}")
+            //  Log.d(TAG, "구글 로그인 실패 : ${e.message}")
             throw e
         } catch (e: CancellationException) { //CancellationException은 사용자가 작업을 취소했을 때 발생합니다.
             // 예외 처리
             credentialManager.clearCredentialState(ClearCredentialStateRequest()) // 자격증명 상태 지우기
             _authState.value = AuthState.Error(R.string.sign_in_failed)
-            Log.d(TAG, "구글 로그인 실패 : ${e.message}")
+            //  Log.d(TAG, "구글 로그인 실패 : ${e.message}")
             throw e
         }
 
@@ -268,11 +267,11 @@ class AuthViewModel(
                 }
             } catch (e: Exception) {
                 _authState.value = AuthState.Error(R.string.sign_in_failed)
-                Log.d(TAG, "구글 로그인 실패 : ${e.message}")
+                //  Log.d(TAG, "구글 로그인 실패 : ${e.message}")
             }
         } else {
             _authState.value = AuthState.Error(R.string.sign_in_failed)
-            Log.d(TAG, "credential is not GoogleIdTokenCredential : ${credential.type}")
+            //  Log.d(TAG, "credential is not GoogleIdTokenCredential : ${credential.type}")
         }
     }
 
@@ -331,7 +330,7 @@ class AuthViewModel(
                 _authState.value = AuthState.Authenticated
             } catch (e: Exception) {
                 _userMessageEvent.emit(UserMessage.Error(R.string.upload_failed))
-                Log.e(TAG, "데이터 전송 실패", e)
+                //    Log.e(TAG, "데이터 전송 실패", e)
             } finally {
                 _authState.value = AuthState.Authenticated
             }
@@ -413,7 +412,7 @@ class AuthViewModel(
                     _userMessageEvent.emit(UserMessage.Error(R.string.download_failed))
                 }
             } catch (e: Exception) {
-                Log.e(TAG, "데이터 수신 실패 구체적 원인: ", e)
+                //   Log.e(TAG, "데이터 수신 실패 구체적 원인: ", e)
                 _userMessageEvent.emit(UserMessage.Error(R.string.data_download_failed))
             } finally {
                 _authState.value = AuthState.Authenticated
@@ -428,9 +427,9 @@ class AuthViewModel(
                 .document(uid)
                 .delete()
                 .await()
-            Log.d(TAG, "화이어베이스 데이터 삭제 완료")
+            //  Log.d(TAG, "화이어베이스 데이터 삭제 완료")
         } catch (e: Exception) {
-            Log.e(TAG, "화이어베이스 데이터 삭제 실패", e)
+            //   Log.e(TAG, "화이어베이스 데이터 삭제 실패", e)
         }
     }
 

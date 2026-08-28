@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.pager.PagerState
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
@@ -15,6 +16,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -23,6 +25,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
+import kotlinx.coroutines.launch
 import myung.jin.bikerepairdoc.InventoryTopAppBar
 import myung.jin.bikerepairdoc.R
 import myung.jin.bikerepairdoc.ui.AppViewModelProvider
@@ -31,6 +34,7 @@ import myung.jin.bikerepairdoc.ui.room.CashBook
 import myung.jin.bikerepairdoc.ui.screen.CashBookDetail
 import myung.jin.bikerepairdoc.ui.screen.DisplayInfoText
 import myung.jin.bikerepairdoc.ui.screen.GenericDateList
+import myung.jin.bikerepairdoc.ui.screen.StartDestination
 import myung.jin.bikerepairdoc.ui.screen.formatNumberWithCommas
 
 object CashbookSearchDestination : NavigationDestination {
@@ -43,11 +47,13 @@ object CashbookSearchDestination : NavigationDestination {
 fun CashbookSearch(
     modifier: Modifier = Modifier,
     navHostController: NavHostController,
+    pagerState: PagerState,
     viewModel: CashbookSearchViewmodel = viewModel(factory = AppViewModelProvider.Factory),
 ) {
     val searchQuery by viewModel.searchQuery.collectAsState()
     val filteredList by viewModel.filteredCashBookList.collectAsState()
     val totalAmount by viewModel.filteredTotalAmount.collectAsState()
+    val coroutineScope = rememberCoroutineScope()
 
     Scaffold(
         topBar = {
@@ -55,7 +61,16 @@ fun CashbookSearch(
                 title = stringResource(CashbookSearchDestination.titleRes),
                 canNavigateBack = true,
                 canNavigateForward = false,
-                onNavigateBack = { navHostController.popBackStack() },
+                onNavigateBack = {
+                    coroutineScope.launch {
+                        if (pagerState.currentPage > 0){
+                            pagerState.animateScrollToPage(pagerState.currentPage - 1)
+                        }else{
+                            navHostController.popBackStack(StartDestination.route, inclusive = false)
+                        }
+                    }
+                   // navHostController.popBackStack()
+                                 },
                 onNavigateForward = { }
             )
         }

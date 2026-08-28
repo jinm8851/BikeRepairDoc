@@ -33,9 +33,9 @@ class BikeMemoEditViewModel(
                     .first()  // 첫 번째 값을 가져옴
                     .toBikeUiState(true)  // bikeUiState를 업데이트
             } catch (e: Exception) {
-                Log.d("BikeMemoEditViewModel", "getBikeMemo: $e")
+             //   Log.d("BikeMemoEditViewModel", "getBikeMemo: $e")
             }
-            Log.d("BikeMemoEditViewModel", "getBikeMemo: ${bikeUiState.bikeDetails}")
+        //    Log.d("BikeMemoEditViewModel", "getBikeMemo: ${bikeUiState.bikeDetails}")
         }
     }
 
@@ -59,13 +59,13 @@ class BikeMemoEditViewModel(
             try {
                 bikeMemoRepository.updateBikeMemo(bikeUiState.bikeDetails.toBikeMemoWithId())
                 // 바이크메모에 아이디가 맞지 않아 업데이트가 안되었음 아이디를 불러와 복사해줌
-                Log.d(
+              /*  Log.d(
                     "BikeMemoEditViewModel",
                     "updateBikeMemo: ${bikeUiState.bikeDetails.toBikeMemoWithId()}"
-                )
+                )*/
 
             } catch (e: Exception) {
-                Log.d("BikeMemoEditViewModel", "updateBikeMemo: $e")
+             //   Log.d("BikeMemoEditViewModel", "updateBikeMemo: $e")
 
             }
         }
