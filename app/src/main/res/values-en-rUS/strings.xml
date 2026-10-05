@@ -169,4 +169,13 @@
     <string name="download_success">Data downloaded successfully.</string>
     <string name="download_failed">Saved data not found.</string>
     <string name="data_download_failed">Data download failed.</string>
+    <string name="cashbook_month">Monthly and Yearly Income and Expenses</string>
+    <string name="monthly_income">Monthly Income: %s $</string>
+    <string name="monthly_expense">Monthly Expense: %s $</string>
+    <string name="monthly_net_total">Monthly Total: %s $</string>
+    <string name="monthly">Monthly</string>
+    <string name="yearly">Yearly</string>
+    <string name="yearly_income">Yearly Income: %s $</string>
+    <string name="yearly_expense">Yearly Expense: %s $</string>
+    <string name="yearly_net_total">Yearly Total: %s $</string>
 </resources>

@@ -161,4 +161,13 @@
     <string name="download_success">Đã tải dữ liệu xuống.</string>
     <string name="download_failed">Không tìm thấy dữ liệu đã lưu.</string>
     <string name="data_download_failed">Tải dữ liệu xuống thất bại.</string>
+    <string name="cashbook_month">Tình hình thu chi theo tháng và năm</string>
+    <string name="monthly_income">Thu nhập hàng tháng: %s đồng</string>
+    <string name="monthly_expense">Chi tiêu hàng tháng: %s đồng</string>
+    <string name="monthly_net_total">Tổng cộng hàng tháng: %s đồng</string>
+    <string name="monthly">월 단위</string>
+    <string name="yearly">년 단위</string>
+    <string name="yearly_income">년 수입 : %s 원</string>
+    <string name="yearly_expense">년 지출 : %s 원</string>
+    <string name="yearly_net_total">년 합계 : %s 원</string>
 </resources>

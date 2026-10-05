@@ -244,4 +244,13 @@
     <string name="download_success">Dati scaricati con successo.</string>
     <string name="download_failed">Dati salvati non trovati.</string>
     <string name="data_download_failed">Download dati fallito.</string>
+    <string name="cashbook_month">Stato mensile e annuale entrate e uscite</string>
+    <string name="monthly_income">Entrate mensili: %s $</string>
+    <string name="monthly_expense">Uscite mensili: %s $</string>
+    <string name="monthly_net_total">Totale mensile: %s $</string>
+    <string name="monthly">Mensile</string>
+    <string name="yearly">Annuale</string>
+    <string name="yearly_income">Entrate annuali: %s $</string>
+    <string name="yearly_expense">Uscite annuali: %s $</string>
+    <string name="yearly_net_total">Totale annuale: %s $</string>
 </resources>

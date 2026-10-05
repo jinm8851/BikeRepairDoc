@@ -243,4 +243,13 @@
     <string name="download_success">Daten erfolgreich heruntergeladen.</string>
     <string name="download_failed">Gespeicherte Daten nicht gefunden.</string>
     <string name="data_download_failed">Daten-Download fehlgeschlagen.</string>
+    <string name="cashbook_month">Monats- und Jahresübersicht der Einnahmen und Ausgaben</string>
+    <string name="monthly_income">Monatliche Einnahmen: %s $</string>
+    <string name="monthly_expense">Monatliche Ausgaben: %s $</string>
+    <string name="monthly_net_total">Monatliche Summe: %s $</string>
+    <string name="monthly">Monatlich</string>
+    <string name="yearly">Jährlich</string>
+    <string name="yearly_income">Jährliche Einnahmen: %s $</string>
+    <string name="yearly_expense">Jährliche Ausgaben: %s $</string>
+    <string name="yearly_net_total">Jährliche Summe: %s $</string>
 </resources>

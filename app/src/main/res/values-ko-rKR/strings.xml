@@ -163,6 +163,15 @@
     <string name="download_success">데이터를 다운로드 받았습니다.</string>
     <string name="download_failed">저장된 데이터를 찾을 수 없습니다.</string>
     <string name="data_download_failed">데이터 다운로드 실패</string>
+    <string name="cashbook_month">년월별 수입 지출 현황</string>
+    <string name="monthly_income">월 수입 : %s 원</string>
+    <string name="monthly_expense">월 지출 : %s 원</string>
+    <string name="monthly_net_total">월 합계 : %s 원</string>
+    <string name="monthly">월 단위</string>
+    <string name="yearly">년 단위</string>
+    <string name="yearly_income">년 수입 : %s 원</string>
+    <string name="yearly_expense">년 지출 : %s 원</string>
+    <string name="yearly_net_total">년 합계 : %s 원</string>
 </resources>
 
 

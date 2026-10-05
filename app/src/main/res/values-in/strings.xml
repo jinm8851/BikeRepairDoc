@@ -244,4 +244,13 @@
     <string name="download_success">Data berhasil diunduh.</string>
     <string name="download_failed">Data tersimpan tidak ditemukan.</string>
     <string name="data_download_failed">Unduh data gagal.</string>
+    <string name="cashbook_month">Status Pendapatan dan Pengeluaran Bulanan dan Tahunan</string>
+    <string name="monthly_income">Pendapatan bulanan: %s $</string>
+    <string name="monthly_expense">Pengeluaran bulanan: %s $</string>
+    <string name="monthly_net_total">Total bulanan: %s $</string>
+    <string name="monthly">Bulanan</string>
+    <string name="yearly">Tahunan</string>
+    <string name="yearly_income">Pendapatan tahunan: %s $</string>
+    <string name="yearly_expense">Pengeluaran tahunan: %s $</string>
+    <string name="yearly_net_total">Total tahunan: %s $</string>
 </resources>

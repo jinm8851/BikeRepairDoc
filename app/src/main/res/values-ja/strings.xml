@@ -244,4 +244,13 @@
     <string name="download_success">データをダウンロードしました。</string>
     <string name="download_failed">保存されたデータが見つかりません。</string>
     <string name="data_download_failed">データのダウンロードに失敗しました。</string>
+    <string name="cashbook_month">月別・年別収入・支出状況</string>
+    <string name="monthly_income">月間収入: %s $</string>
+    <string name="monthly_expense">月間支出: %s $</string>
+    <string name="monthly_net_total">月間合計: %s $</string>
+    <string name="monthly">月単位</string>
+    <string name="yearly">年単位</string>
+    <string name="yearly_income">年間収入: %s $</string>
+    <string name="yearly_expense">年間支出: %s $</string>
+    <string name="yearly_net_total">年間合計: %s $</string>
 </resources>

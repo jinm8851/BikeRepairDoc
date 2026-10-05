@@ -1,10 +1,9 @@
 package myung.jin.bikerepairdoc
 
 
-import android.util.Log
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.CenterAlignedTopAppBar
@@ -12,7 +11,6 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
@@ -30,62 +28,10 @@ import myung.jin.bikerepairdoc.ui.screen.BikeMemoEditViewModel
 import myung.jin.bikerepairdoc.ui.screen.MainScreen
 import myung.jin.bikerepairdoc.ui.screen.TotalScreen
 import myung.jin.bikerepairdoc.ui.screen.authScreen.AuthScreen
+import myung.jin.bikerepairdoc.ui.screen.cashbook.CashbookMonthScreen
 import myung.jin.bikerepairdoc.ui.screen.cashbook.CashbookScreen
 import myung.jin.bikerepairdoc.ui.screen.cashbook.CashbookSearch
 
-/*
-
-object InventoryScreen {
-    const val HOME = 0
-    const val TOTAL = 1
-    const val AUTH = 2
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun InventoryApp(
-    modifier: Modifier = Modifier,
-    bikeMemoEditViewModel: BikeMemoEditViewModel = viewModel(factory = AppViewModelProvider.Factory)
-) {
-    val navController: NavHostController = rememberNavController()
-    val pagerState = rememberPagerState(
-        initialPage = InventoryScreen.HOME, pageCount = { 3 }) // 람다 함수를 사용하여 페이지 수 반환
-
-    Box(modifier = modifier.fillMaxSize()) {
-        // 메인 화면용 HorizontalPager
-        HorizontalPager(
-            state = pagerState, modifier = Modifier.fillMaxSize(), userScrollEnabled = true
-        ) { page ->
-            when (page) {
-                InventoryScreen.HOME -> MainScreen(
-                    navigateToUpdate = { bikeMemoId ->
-                     //   Log.d("InventoryApp", "${BikeMemoEditDestination.route}/$bikeMemoId 으로 이동")
-                        bikeMemoEditViewModel.getBikeMemo(bikeMemoId)
-                        navController.navigate("${BikeMemoEditDestination.route}/$bikeMemoId")
-                    }, pagerState = pagerState, navController = navController
-                )
-
-                InventoryScreen.TOTAL -> TotalScreen(
-                    navigateToUpdate = { bikeMemoId ->
-                        bikeMemoEditViewModel.getBikeMemo(bikeMemoId)
-                        navController.navigate("${BikeMemoEditDestination.route}/$bikeMemoId")
-                    }, pagerState = pagerState, navController = navController
-                )
-
-                InventoryScreen.AUTH -> AuthScreen(
-                    navController = navController, pagerState = pagerState
-                )
-            }
-        }
-
-        // 세부 화면용 NavHost
-        InventoryNavHost(
-            navController = navController,
-            modifier = Modifier.fillMaxSize(),
-            )
-    }
-}
-*/
 
 object InventoryScreen {
     const val HOME = 0
@@ -107,49 +53,58 @@ fun InventoryApp(modifier: Modifier = Modifier) {
 }
 
 // 1. 수리 내역 흐름 페이저 (메인, 토탈, 인증)
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
 fun RepairPagerScreen(
     navController: NavHostController,
     bikeMemoEditViewModel: BikeMemoEditViewModel = viewModel(factory = AppViewModelProvider.Factory)
 ) {
     val pagerState = rememberPagerState(pageCount = { 3 })
-        HorizontalPager(state = pagerState, modifier = Modifier.fillMaxSize()) { page ->
-            when(page) {
-                InventoryScreen.HOME -> MainScreen(
-                    navigateToUpdate = { id ->
-                        bikeMemoEditViewModel.getBikeMemo(id)
-                        navController.navigate("${BikeMemoEditDestination.route}/$id") },
-                    pagerState = pagerState,
-                    navController = navController
-                )
-                InventoryScreen.TOTAL -> TotalScreen(
-                    navigateToUpdate = { id ->
-                        bikeMemoEditViewModel.getBikeMemo(id)
-                        navController.navigate("${BikeMemoEditDestination.route}/$id") },
-                    pagerState = pagerState,
-                    navController = navController
-                )
-                InventoryScreen.AUTH -> AuthScreen(navController = navController, pagerState = pagerState)
-            }
+    HorizontalPager(state = pagerState, modifier = Modifier.fillMaxSize()) { page ->
+        when (page) {
+            InventoryScreen.HOME -> MainScreen(
+                navigateToUpdate = { id ->
+                    bikeMemoEditViewModel.getBikeMemo(id)
+                    navController.navigate("${BikeMemoEditDestination.route}/$id")
+                },
+                pagerState = pagerState,
+                navController = navController
+            )
+
+            InventoryScreen.TOTAL -> TotalScreen(
+                navigateToUpdate = { id ->
+                    bikeMemoEditViewModel.getBikeMemo(id)
+                    navController.navigate("${BikeMemoEditDestination.route}/$id")
+                },
+                pagerState = pagerState,
+                navController = navController
+            )
+
+            InventoryScreen.AUTH -> AuthScreen(
+                navController = navController,
+                pagerState = pagerState
+            )
         }
+    }
 
 }
 
 // 2. 금전출납부 흐름 페이저 (캐쉬북, 캐쉬북 검색)
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
 fun CashbookPagerScreen(
     navController: NavHostController
 ) {
-    val pagerState = rememberPagerState(pageCount = { 2 })
+    val pagerState = rememberPagerState(pageCount = { 3 })
     HorizontalPager(state = pagerState, modifier = Modifier.fillMaxSize()) { page ->
-        when(page){
-            0 -> CashbookScreen(navHostController = navController,pagerState = pagerState)
-            1 -> CashbookSearch(navHostController = navController,pagerState = pagerState)
+        when (page) {
+            0 -> CashbookScreen(navHostController = navController, pagerState = pagerState)
+            1 -> CashbookSearch(navHostController = navController, pagerState = pagerState)
+            2 -> CashbookMonthScreen(navHostController = navController, pagerState = pagerState)
         }
     }
 }
+
 /**
  * 인벤토리 앱을 위한 맞춤형 상단 앱 바.
  *
@@ -251,3 +206,56 @@ fun ForwardActonIcon(
 
 }
 
+/*
+
+object InventoryScreen {
+    const val HOME = 0
+    const val TOTAL = 1
+    const val AUTH = 2
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun InventoryApp(
+    modifier: Modifier = Modifier,
+    bikeMemoEditViewModel: BikeMemoEditViewModel = viewModel(factory = AppViewModelProvider.Factory)
+) {
+    val navController: NavHostController = rememberNavController()
+    val pagerState = rememberPagerState(
+        initialPage = InventoryScreen.HOME, pageCount = { 3 }) // 람다 함수를 사용하여 페이지 수 반환
+
+    Box(modifier = modifier.fillMaxSize()) {
+        // 메인 화면용 HorizontalPager
+        HorizontalPager(
+            state = pagerState, modifier = Modifier.fillMaxSize(), userScrollEnabled = true
+        ) { page ->
+            when (page) {
+                InventoryScreen.HOME -> MainScreen(
+                    navigateToUpdate = { bikeMemoId ->
+                     //   Log.d("InventoryApp", "${BikeMemoEditDestination.route}/$bikeMemoId 으로 이동")
+                        bikeMemoEditViewModel.getBikeMemo(bikeMemoId)
+                        navController.navigate("${BikeMemoEditDestination.route}/$bikeMemoId")
+                    }, pagerState = pagerState, navController = navController
+                )
+
+                InventoryScreen.TOTAL -> TotalScreen(
+                    navigateToUpdate = { bikeMemoId ->
+                        bikeMemoEditViewModel.getBikeMemo(bikeMemoId)
+                        navController.navigate("${BikeMemoEditDestination.route}/$bikeMemoId")
+                    }, pagerState = pagerState, navController = navController
+                )
+
+                InventoryScreen.AUTH -> AuthScreen(
+                    navController = navController, pagerState = pagerState
+                )
+            }
+        }
+
+        // 세부 화면용 NavHost
+        InventoryNavHost(
+            navController = navController,
+            modifier = Modifier.fillMaxSize(),
+            )
+    }
+}
+*/

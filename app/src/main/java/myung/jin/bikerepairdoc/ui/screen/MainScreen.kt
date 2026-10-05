@@ -3,7 +3,6 @@ package myung.jin.bikerepairdoc.ui.screen
 
 import android.util.Log
 import androidx.annotation.StringRes
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -23,7 +22,6 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
@@ -185,16 +183,17 @@ fun MainScreen(
         }
     }
 
-    // derivedStateOf를 사용하여 상태가 변경될 때만 효율적으로 필터링 계산
+    // 이 코드는 Jetpack Compose에서 성능 최적화를 고려하여 특정 조건(날짜)에 맞는 데이터를 필터링할 때 사용하는 매우 표준적이고 효율적인 방식입니다.
+    //전체 리스트(bikeMemoList.bikeList)에서 사용자가 선택한 날짜(displayedDate.value)를 포함하는 데이터만 뽑아내어 새로운 리스트(filteredBikeMemoList)를 만드는 것입니다.
+    //리컴포지션(화면 다시 그리기)이 발생할 때, 괄호 안의 키 값(bikeList, displayedDate)이 변경되지 않았다면 이전에 계산해둔 값을 그대로 재사용합니다.
     val filteredBikeMemoList by remember(bikeMemoList.bikeList, displayedDate.value) {
+        //derivedStateOf는 내부에서 참조하는 상태가 바뀌더라도, 최종 결과값(필터링된 리스트)이 이전과 같다면 이 상태를 관찰하는 컴포저블들을 다시 그리게 하지 않습니다.
         derivedStateOf {
+            //각 아이템(it)의 날짜 정보에 선택된 날짜 문자열이 포함되어 있는지 검사합니다.
             bikeMemoList.bikeList.filter { it.date.contains(displayedDate.value) }
         }
     }
 
-    /* val filteredBikeMemoList: List<BikeMemo> = bikeMemoList.bikeList.filter { bikeMemo ->
-         bikeMemo.date.contains(displayedDate.value)
-     }*/
 
     // 데이터가 완전히 로드된 후에만 UI를 보여줌
     if (bikeUiState.isInitialized && !bikeMemoList.isLoading) {

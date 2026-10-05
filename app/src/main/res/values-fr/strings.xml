@@ -244,4 +244,13 @@
     <string name="download_success">Données téléchargées avec succès.</string>
     <string name="download_failed">Données enregistrées introuvables.</string>
     <string name="data_download_failed">Échec du téléchargement des données.</string>
+    <string name="cashbook_month">Situation mensuelle et annuelle des revenus et dépenses</string>
+    <string name="monthly_income">Revenus mensuels : %s $</string>
+    <string name="monthly_expense">Dépenses mensuelles : %s $</string>
+    <string name="monthly_net_total">Total mensuel : %s $</string>
+    <string name="monthly">Mensuel</string>
+    <string name="yearly">Annuel</string>
+    <string name="yearly_income">Revenus annuels : %s $</string>
+    <string name="yearly_expense">Dépenses annuelles : %s $</string>
+    <string name="yearly_net_total">Total annuel : %s $</string>
 </resources>

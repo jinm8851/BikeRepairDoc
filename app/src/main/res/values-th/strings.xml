@@ -244,4 +244,13 @@
     <string name="download_success">ดาวน์โหลดข้อมูลสำเร็จ</string>
     <string name="download_failed">ไม่พบข้อมูลที่บันทึกไว้</string>
     <string name="data_download_failed">ดาวน์โหลดข้อมูลล้มเหลว</string>
+    <string name="cashbook_month">สถานะรายรับรายจ่ายรายเดือนและรายปี</string>
+    <string name="monthly_income">รายรับรายเดือน: %s $</string>
+    <string name="monthly_expense">รายจ่ายรายเดือน: %s $</string>
+    <string name="monthly_net_total">ยอดรวมรายเดือน: %s $</string>
+    <string name="monthly">รายเดือน</string>
+    <string name="yearly">รายปี</string>
+    <string name="yearly_income">รายรับรายปี: %s $</string>
+    <string name="yearly_expense">รายจ่ายรายปี: %s $</string>
+    <string name="yearly_net_total">ยอดรวมรายปี: %s $</string>
 </resources>

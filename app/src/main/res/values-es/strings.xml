@@ -244,4 +244,13 @@
     <string name="download_success">Datos descargados con éxito.</string>
     <string name="download_failed">No se encontraron datos guardados.</string>
     <string name="data_download_failed">Error al descargar datos.</string>
+    <string name="cashbook_month">Estado mensual y anual de ingresos y gastos</string>
+    <string name="monthly_income">Ingresos mensuales: %s ps</string>
+    <string name="monthly_expense">Gastos mensuales: %s ps</string>
+    <string name="monthly_net_total">Total mensual: %s ps</string>
+    <string name="monthly">Mensual</string>
+    <string name="yearly">Anual</string>
+    <string name="yearly_income">Ingresos anuales: %s ps</string>
+    <string name="yearly_expense">Gastos anuales: %s ps</string>
+    <string name="yearly_net_total">Total anual: %s ps</string>
 </resources>

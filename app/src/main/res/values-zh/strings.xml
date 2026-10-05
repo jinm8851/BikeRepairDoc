@@ -244,4 +244,13 @@
     <string name="download_success">数据下载成功。</string>
     <string name="download_failed">未找到已保存的数据。</string>
     <string name="data_download_failed">数据下载失败。</string>
+    <string name="cashbook_month">每月及每年收支情况</string>
+    <string name="monthly_income">每月收入：%s $</string>
+    <string name="monthly_expense">每月支出：%s $</string>
+    <string name="monthly_net_total">每月合计：%s $</string>
+    <string name="monthly">按月</string>
+    <string name="yearly">按年</string>
+    <string name="yearly_income">年度收入：%s $</string>
+    <string name="yearly_expense">年度支出：%s $</string>
+    <string name="yearly_net_total">年度合计：%s $</string>
 </resources>

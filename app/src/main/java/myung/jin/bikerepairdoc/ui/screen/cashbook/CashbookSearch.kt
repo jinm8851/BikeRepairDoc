@@ -60,7 +60,7 @@ fun CashbookSearch(
             InventoryTopAppBar(
                 title = stringResource(CashbookSearchDestination.titleRes),
                 canNavigateBack = true,
-                canNavigateForward = false,
+                canNavigateForward = true,
                 onNavigateBack = {
                     coroutineScope.launch {
                         if (pagerState.currentPage > 0){
@@ -71,7 +71,13 @@ fun CashbookSearch(
                     }
                    // navHostController.popBackStack()
                                  },
-                onNavigateForward = { }
+                onNavigateForward = {
+                    coroutineScope.launch {
+                        if (pagerState.currentPage < pagerState.pageCount - 1) {
+                            pagerState.animateScrollToPage(pagerState.currentPage + 1)
+                        }
+                    }
+                }
             )
         }
     ) { innerPadding ->

@@ -259,7 +259,7 @@ class AuthViewModel(
                 // 자격증명과 idToken을 넘겨줌
                 val authResult = auth.signInWithCredential(authCredential).await()
                 if (authResult.user != null) {
-                    _authEmail.value = tokenCredential.id
+                    _authEmail.value = tokenCredential.email
                     // _userMessageEvent.emit(UserMessage.Success(R.string.sign_in_success)) // updateUI에서 처리하므로 중복 제거
                     updateUI(authResult.user)
                 } else {
